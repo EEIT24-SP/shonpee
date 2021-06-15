@@ -1,5 +1,8 @@
+# 自己手動加的
+target/m2e-wtp/web-resources/META-INF/maven/com.shonpee/shonpee/pom.properties
+
 HELP.md
-target/
+target/*
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
