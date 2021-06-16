@@ -1,4 +1,4 @@
-package com.shonpee.domain;
+package com.shonpee.shonpee.entity;
 
 import java.io.Serializable;
 
@@ -16,8 +16,16 @@ public class Seller implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
+	
 	@Column(unique = true, nullable = false)
 	private String sellerAccount;
+	
+	@Column(nullable = false)
+	private String shopName;
+	
+	private String avatarUrl;
+	
+	private String intro;
 	
 }
