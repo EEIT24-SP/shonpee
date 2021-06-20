@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/shopProfile.css">
+    <link rel="stylesheet" th:href="@{css/shopProfile.css}">
     <title>賣場介紹</title>
 </head>
 
@@ -126,13 +126,13 @@
                                                 <div class="form-title">
                                                     賣場名稱
                                                 </div>
-                                                <form autocomplete="off" class="form-content">
+                                                <div class="form-content">
                                                     <div class="shopee-form-item">
                                                         <div class="shopee-form-item-control">
                                                             <div class="shopee-form-item-content">
                                                                 <div class="shopee-input shopee-name-input">
                                                                     <div class="shopee-input-inner">
-                                                                        <input type="text" placeholder="賣場名稱" name="profile-nickname" resize="vertical" rows="2" minrows="2" maxlength="40" restrictiontype="input" showwordlimit="true" max="Infinity" min="-Infinity" class="shopee-input-input">
+                                                                        <input type="text" th:value="${seller.shopName}" name="profile-nickname" resize="vertical" rows="2" minrows="2" maxlength="40" restrictiontype="input" showwordlimit="true" max="Infinity" min="-Infinity" class="shopee-input-input">
                                                                         <div class="shopee-input-suffix">
                                                                             <span class="shopee-input-count">13/40</span>
                                                                         </div>
@@ -141,7 +141,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
                                             <div class="form-section media-location">
                                                 <div class="form-title">
@@ -266,7 +266,7 @@
                                                 </div>
                                                 <div class="form-content">
                                                     <div class="shopee-input shopee-input-area">
-                                                        <textarea type="textarea" placeholder="在此處輸入您的賣場資訊及敘述" resize="vertical" rows="2" minrows="5" maxlength="500" restrictiontype="input" showwordlimit="true" max="Infinity" min="-Infinity" class="shopee-input-inner" style="resize: vertical; min-height: 97.9907px;"></textarea>
+                                                        <textarea type="textarea" th:text="${seller.shopIntro}" placeholder="在此處輸入您的賣場資訊及敘述" resize="vertical" rows="2" minrows="5" maxlength="500" restrictiontype="input" showwordlimit="true" max="Infinity" min="-Infinity" class="shopee-input-inner" style="resize: vertical; min-height: 97.9907px;"></textarea>
                                                         <span class="shopee-input-count">0/500</span>
                                                     </div>
                                                 </div>

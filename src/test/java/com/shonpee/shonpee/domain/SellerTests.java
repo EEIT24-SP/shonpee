@@ -1,10 +1,12 @@
-package com.shonpee.shonpee.entity;
+package com.shonpee.shonpee.domain;
 
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.shonpee.shonpee.domain.Seller;
 
 @SpringBootTest
 public class SellerTests {
