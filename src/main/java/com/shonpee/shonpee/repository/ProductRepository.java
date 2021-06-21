@@ -9,7 +9,7 @@ import com.shonpee.shonpee.domain.ProductBean;
 @EnableJpaRepositories
 public interface ProductRepository extends JpaRepository<ProductBean, Integer> {
 	
-	@Query("Select max(ProductId) from ProductBean")
+	@Query("Select max(Productid) from ProductBean")
 	Integer findmaxproductid();
 	
 }

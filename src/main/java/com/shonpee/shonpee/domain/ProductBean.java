@@ -1,14 +1,12 @@
 package com.shonpee.shonpee.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.Data;
 
 
@@ -16,10 +14,12 @@ import lombok.Data;
 @Table(name="product")
 @Data
 public class ProductBean {
-	
+//	@OneToOne(
+//			mappedBy = "product",
+//			cascade = {CascadeType.REMOVE})
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer ProductId;
+	private Integer Productid;
 	private String ProductName;
 	private Integer ProductPrice;
 	private Integer ProductStock;

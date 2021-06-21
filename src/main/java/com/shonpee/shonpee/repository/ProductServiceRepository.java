@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shonpee.shonpee.domain.ProductBean;
 import com.shonpee.shonpee.domain.PropertyBean;
+import com.shonpee.shonpee.domain.PropertyBeanSecond;
 
 @Service
 @Transactional
@@ -17,6 +18,9 @@ public class ProductServiceRepository {
 	@Autowired
 	private PropertyRepository property = null;
 	
+	@Autowired
+	private PropertySecondRepository propertySecond = null;
+	
 	
 	public PropertyBean insert(PropertyBean bean) {
 		PropertyBean Propertyresult = null;
@@ -24,11 +28,19 @@ public class ProductServiceRepository {
 		return Propertyresult;
 	}
 
+	public PropertyBeanSecond insert(PropertyBeanSecond bean) {
+		PropertyBeanSecond PropertySecondresult = null;
+		PropertySecondresult = propertySecond.save(bean);
+		return PropertySecondresult;
+	}
+
+	
 	public ProductBean insert(ProductBean bean) {
 		ProductBean ProductBeanresult = null;
 		ProductBeanresult = productDao.save(bean);
 		return ProductBeanresult;
 	}
+	
 	
 	
 	

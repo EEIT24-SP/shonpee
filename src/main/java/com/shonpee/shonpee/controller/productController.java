@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.shonpee.shonpee.domain.ProductBean;
 import com.shonpee.shonpee.domain.PropertyBean;
+import com.shonpee.shonpee.domain.PropertyBeanSecond;
 import com.shonpee.shonpee.repository.ProductRepository;
 import com.shonpee.shonpee.repository.ProductServiceRepository;
 
@@ -43,32 +44,21 @@ public class productController {
     public String MyCategoriesPage1( ) {
 		
 		 System.out.println("apple");
-        return "MyCategoriesPage1";
-    }
-	
-	
-	@RequestMapping("/NewProduct")
-    public String NewProduct(HttpServletRequest request,@RequestParam(name="first",required=false ) String first,
-    		@RequestParam(name="second" ,required=false) String second,@RequestParam(name="third",required=false) String third ) {
-		request.setAttribute("first", first);
-		request.setAttribute("second", second);
-		request.setAttribute("third", third);
-		System.out.println(first);
         return "NewProduct";
     }
 	
+
 	
 	 @PostMapping("/addProduct")
 	    public String newproduct( @RequestParam(value="productphoto",required=false) List<MultipartFile> productphoto,String productID,String productName,Integer productPrice,Integer productStock,String productDetail,
-	    						String sellerProductCategory,String sellerID,String productFirstCategoryId,String propertyName,String propertyValue,
-	    						String productSecondCategoryId,String productThirdCategoryId,ProductBean bean, PropertyBean propertyBean,BindingResult result,Model model,Locale locale) throws IllegalStateException, IOException {
+	    						String sellerProductCategory,String sellerID,String productFirstCategoryId, String propertyName,String propertyValue,String propertySecondName,String propertySecondValue,
+	    						String productSecondCategoryId,String productThirdCategoryId,ProductBean bean, PropertyBean propertyBean,PropertyBeanSecond propertyBeanSecond,BindingResult result,Model model)
+	    								throws IllegalStateException, IOException {
 		 File path = new File(uploadpath);
 		 if(!path.exists()) {
 			 path.mkdir();
 		 }
-		 
-//		 if(!productphoto.isEmpty()) {
-		 
+		 		 
 			 List<String> filepathlist = new ArrayList<String>();
 			 
 			 for(int i=0;i<productphoto.size();i++) {
@@ -88,23 +78,20 @@ public class productController {
 			 	bean.setProductPhoto(filepathstr);
 			 	
 		 
-				 System.out.println("bee");
-
-		 
 		 bean.setSellerId("allen3375");
 		 bean.setProductFirstCategoryId("1");
 		 bean.setProductSecondCategoryId("2");
 		 bean.setProductThirdCategoryId("3");
+		 ProductBean newbean = productService.insert(bean);
+		 Integer newid = newbean.getProductid();
 		 
-		 
-		 
-		 Integer maxmaxproductid = productRepository.findmaxproductid();
-		 propertyBean.setProductId(maxmaxproductid+1);
-		 productService.insert(bean);
-		 productService.insert(propertyBean);
-		 System.out.println("cat");
+		 propertyBean.setProductid1(newid);
+		 propertyBeanSecond.setProductid2(newid);
 
-		 System.out.println(maxmaxproductid);
+		 
+		 productService.insert(propertyBean);
+		 productService.insert(propertyBeanSecond);
+		 
 	        return "login";
 	    }
 	

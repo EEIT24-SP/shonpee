@@ -37,7 +37,7 @@ $('.prompt').mouseleave(function(){
 $('.specification-plus-first').click(function(){
     $('.basic-information-specification-middle-first').append(`
     <div class="input-container-specification">
-        <input type="text" name="" placeholder="請輸入選項" class="product-specification-first-type">
+        <input type="text" name="propertyValue" placeholder="請輸入選項" class="product-specification-first-type">
         <div class="delete-options"><img src="/pic/delete.png" alt=""></div>
     </div>
     `)
@@ -45,7 +45,7 @@ $('.specification-plus-first').click(function(){
 $('.specification-plus-second').click(function(){
     $('.basic-information-specification-middle-second').append(`
     <div class="input-container-specification">
-        <input type="text" name="" placeholder="請輸入選項" class="product-specification-second-type">
+        <input type="text" name="propertySecondValue" placeholder="請輸入選項" class="product-specification-second-type">
         <div class="delete-options"><img src="/pic/delete.png" alt=""></div>
     </div>      
     `)
