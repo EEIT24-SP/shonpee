@@ -1,10 +1,13 @@
 package com.shonpee.shonpee.domain;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
@@ -14,9 +17,6 @@ import lombok.Data;
 @Table(name="product")
 @Data
 public class ProductBean {
-//	@OneToOne(
-//			mappedBy = "product",
-//			cascade = {CascadeType.REMOVE})
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Productid;
@@ -25,11 +25,14 @@ public class ProductBean {
 	private Integer ProductStock;
 	private String ProductPhoto;
 	private String ProductDetail;
-	private Integer MemberId;
+	private String MemberId;
 	private Integer ProductFirstCategoryId;
 	private Integer ProductSecondCategoryId;
 	private Integer ProductThirdCategoryId;
 	
-	
+//	@OneToMany(
+//			mappedBy = "PropertyBeanScond",
+//			cascade = {CascadeType.REMOVE})
+//	private List<PropertyBean> propertyBeans;
 	
 }
