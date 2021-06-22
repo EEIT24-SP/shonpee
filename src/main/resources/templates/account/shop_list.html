@@ -1,0 +1,353 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/css/account.css" />
+  <link rel="stylesheet" href="/css/Bear_Shop.css" />
+</head>
+<script src="/js/user.js" defer></script>
+
+<body ondragstart="return false" oncopy="return false;">
+  <nav class="Bear-header-top">
+    <ul>
+      <li>
+        <a href="https://www.w3schools.com/html/default.asp">
+          <strong>賣家中心</strong>
+        </a>
+      </li>
+      <li style="user-select: none">|</li>
+      <li>
+        <a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong>
+        </a>
+      </li>
+      <li style="user-select: none">|</li>
+      <li>
+        <a href="https://www.w3schools.com/html/default.asp">
+          <strong>追蹤我們</strong></a>
+      </li>
+      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="/pic/FB.svg"
+          alt="" /></a>
+      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="/pic/Line.svg"
+          alt="" /></a>
+      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="/pic/IG.svg"
+          alt="" /></a>
+      <li style="user-select: none; visibility: hidden">
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+      </li>
+      <li>
+        <a href="https://www.w3schools.com/html/default.asp"><img src="/pic/Bell.svg" style="width: 18px" alt="" />
+          <strong>通知總覽</strong></a>
+      </li>
+      <li>
+        <a href="https://www.w3schools.com/html/default.asp"><img src="/pic/Help_icon.svg"
+            alt="" /><strong>幫助中心</strong>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.w3schools.com/html/default.asp"><img src="/pic/Account.svg" style="width: 20px"
+            alt="" /><strong>會員帳戶</strong>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <nav class="Bear-header-bottom">
+    <div class="Bear-header-bottom-container">
+      <div class="Bear-header-bottom-container-left">
+        <a href="../Bear_Shop.html">
+          <div class="Bear-header-bottom-container-left-container">
+            <div style="width: 40%">
+              <img class="icon_Bear" src="/pic/Bear.svg" alt="" />
+            </div>
+            <div style="font-size: 30px">熊熊商城</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="Bear-header-bottom-container-middle">
+        <div class="Bear-header-bottom-search">
+          <input type="text" class="Bear-header-input" placeholder="輸入搜尋文字" value="" />
+          <button onclick="btn_Bgc()" class="Bear-header-btn">
+            <img src="/pic/Search.svg" alt="" />
+          </button>
+        </div>
+      </div>
+
+      <div class="Bear-header-bottom-container-right">
+        <a href="../../cart.html">
+          <div class="Bear-header-bottom-container-right-container">
+            <img class="icon-Shop-Car" src="/pic/Shop_Car.svg" alt="" />
+            <div class="cart-ccount-manger" id="ccount"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ------------------------------------------------主頁面------------------------------------------------------------- -->
+  <div class="main">
+    <div style="display: flex">
+      <div style="width: 25%">
+        <div class="main-user-head">
+          <div class="main-user-head-border">
+            <img class="main-user-head-border-img" src="/pic/Bear.svg" alt="" />
+          </div>
+
+          <div class="main-user-head-text">
+            <div class="main-user-head-text-a">
+              <div class="main-user-head-text-b">
+                <div>使用者名稱</div>
+                <div>
+                  <a href="./profile.html">編輯個人檔案</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <table class="main-table">
+          <tr>
+            <td class="acc">
+              <div onclick="btn_list_profile()">
+                <img class="main-table-acc-img" src="/pic/Account.svg" alt="" />
+                <span class="main-left-list-name">我的帳戶</span>
+              </div>
+              <ul id="acc-profile" class="acc-list">
+                <li>
+                  <a href="./profile.html">個人檔案</a>
+                </li>
+                <li>
+                  <a href="./credit_card.html">銀行帳號/信用卡</a>
+                </li>
+                <li><a href="./address.html">地址</a></li>
+                <li>
+                  <a href="./password.html">更改密碼</a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <img class="main-table-acc-img" src="/pic/List.svg" alt="" />
+              <span class="main-left-list-name"><a href="../shop_list/shop_list.html">購買清單</a> </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="acc" onclick="btn_list_notice()">
+              <img class="main-table-acc-img" src="/pic/Notice.svg" alt="" />
+              <span class="main-left-list-name">通知總覽</span>
+              <ul id="acc-notice" class="acc-list">
+                <li>
+                  <a href="../notice/notice.html">訂單更新通知</a>
+              </li>
+              <li>
+                  <a href="../notice/promotin_notice.html">促銷活動相關通知</a>
+              </li>
+              <li>
+                  <a href="../notice/dynamic_notice.html">動態通知</a>
+              </li>
+              <li>
+                  <a href="../notice/bear_notice.html">熊熊通知</a>
+              </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img class="main-table-acc-img" src="/pic/Coupon.svg" alt="" />
+              <span class="main-left-list-name">我的優惠券</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div style="width: 950px;">
+        <div style="display: flex;justify-content: center;">
+          <div class="main-right">
+            <div class="titles-list" onclick="openTitle('main-right-list-1')">
+              全部
+            </div>
+            <div class="titles-list" onclick="openTitle('main-right-list-2')">
+              待付款
+            </div>
+
+            <div class="titles-list" onclick="openTitle('main-right-list-3')">
+              未出貨
+            </div>
+
+            <div class="titles-list" onclick="openTitle('main-right-list-4')">
+              待收貨
+            </div>
+
+            <div class="titles-list" onclick="openTitle('main-right-list-5')">
+              完成
+            </div>
+
+            <div class="titles-list" onclick="openTitle('main-right-list-6')">
+              取消
+            </div>
+          </div>
+        </div>
+
+        <div id="shop_list_serch" style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-top: 15px;
+            ">
+          <div style="
+                width: 50px;
+                height: 50px;
+                background-color: rgb(225, 225, 225);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              ">
+            <img style="width: 30px" src="/pic/Search.svg" alt="" />
+          </div>
+          <input style="
+                background-color: rgb(225, 225, 225);
+                width: 100%;
+                height: 50px;
+              " type="text" placeholder="您可以透過賣家名稱,訂單編號或商品名稱查詢" />
+        </div>
+
+        <div class="main-right-list">
+          <div id="main-right-list-1" style="width: 100%;">
+            <!-- <div class="main-right-content">
+                <img src="/pic/List.svg" alt="" />
+                <h2>尚未有訂單</h2>
+              </div> -->
+
+            <div style="display: flex;justify-content: center;">
+              <div class="main-right-list-border" style="
+                  width: 100%;
+                  background-color: rgb(255, 255, 255);
+                  border-radius: 0px 0px 5px 5px;
+                  margin-top: 15px;">
+                <div style="width: 90%;height: 90%;margin: auto;">
+                  <div style="width: 100%; display: flex">
+                    <div style="
+                      width: 90%;
+                      display: flex;
+                      justify-content: left;
+                      align-items: center;
+                      border-right: 1px solid rgb(225, 225, 225);
+                      margin: 15px 0px 15px 0px;
+                    ">
+                      <div style="display: flex;width: 85%;">
+                        <div>賣家名稱</div>
+                        <div><button>聊聊</button></div>
+                        <div><button>查看賣場</button></div>
+                      </div>
+                      <div style="display: flex;justify-content: flex-end;">
+                        <div>買家取貨成功</div>
+                      </div>
+                    </div>
+                    <div style="display: flex;justify-content: center;width: 10%;">
+                      <div style="display: flex;align-items: center;">
+                        已評價
+                      </div>
+                    </div>
+                  </div>
+                  <div style="
+                    display: flex;
+                    justify-content: left;
+                    border-top: 1px solid rgb(225, 225, 225);
+                  ">
+                    <div style="width: 90%;margin:10px 0px;">
+                      <img style="width: 80px; float: left; padding: 0px 10px 0px 0px" src="/pic/bear-b.png" alt="" />
+                      <div style="text-align: left">
+                        <div>白人白漱口水</div>
+                        <div>規格</div>
+                        <div>數量</div>
+                      </div>
+                    </div>
+                    <div style="display: flex;justify-content: center;align-items: center; width: 10%;">
+                      <div>
+                        $299 $199
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex;justify-content: center;">
+              <div style="
+                  background-color: rgb(255, 255, 255);
+                  width: 100%;
+                  border-radius: 5px 5px 0px 0px;
+                  border-top: 1px solid rgb(225, 225, 225);
+                ">
+                <div style="width: 90%;height: 90%;margin: auto;">
+                  <div style="
+                    display: flex;
+                    justify-content: flex-end;
+                    padding: 10px 0px;
+                  ">
+                    <div>訂單金額:</div>
+                    <div style="padding: 0 0 0 10px">$9999</div>
+                  </div>
+
+                  <div style="display: flex; justify-content: flex-end">
+                    <div>
+                      <button style="width: 150px; margin-right: 10px">
+                        再買一次
+                      </button>
+                    </div>
+                    <div>
+                      <button style="width: 150px; margin-right: 10px">
+                        聯絡賣家
+                      </button>
+                    </div>
+                    <button style="width: 64px">更多</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="main-right-list-2">
+            <h2>Paris</h2>
+            <p>Paris is the capital of France.</p>
+          </div>
+
+          <div id="main-right-list-3">
+            <h2>Tokyo</h2>
+            <p>Tokyo is the capital of Japan.</p>
+          </div>
+
+          <div id="main-right-list-4">
+            <h2>Tokyo</h2>
+            <p>Tokyo is the capital of Japan.</p>
+          </div>
+          <div id="main-right-list-5">
+            <h2>Tokyo</h2>
+            <p>Tokyo is the capital of Japan.</p>
+          </div>
+          <div id="main-right-list-6">
+            <h2>Tokyo</h2>
+            <p>Tokyo is the capital of Japan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br /><br />
+  <hr class="main-page-container-hr" />
+  <br /><br />
+
+    <div th:insert="model/footer::footer"></div>
+  
+  <script src="/js/cookie.js" type="text/javascript" charset="utf-8" defer></script>
+
+  <script type="text/javascript" src="/js/index.js" defer></script>
+  <script type="text/javascript" src="/js/server.js"></script>
+  <script src="/js/user.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,369 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <script src="../../js/cookie.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../../css/account.css" />
+    <link rel="stylesheet" href="../../css/Bear_Shop.css" />
+</head>
+
+<body ondragstart="return false" oncopy="return false;">
+    <nav class="Bear-header-top">
+        <ul>
+            <li>
+                <a href="https://www.w3schools.com/html/default.asp">
+                    <strong>賣家中心</strong>
+                </a>
+            </li>
+            <li style="user-select: none">|</li>
+            <li>
+                <a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong>
+                </a>
+            </li>
+            <li style="user-select: none">|</li>
+            <li>
+                <a href="https://www.w3schools.com/html/default.asp">
+                    <strong>追蹤我們</strong></a>
+            </li>
+            <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon"
+                    src="../../pic/FB.svg" alt="" /></a>
+            <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon"
+                    src="../../pic/Line.svg" alt="" /></a>
+            <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon"
+                    src="../../pic/IG.svg" alt="" /></a>
+            <li style="user-select: none; visibility: hidden">
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            </li>
+            <li>
+                <a href="https://www.w3schools.com/html/default.asp"><img src="../../pic/Bell.svg" style="width: 18px"
+                        alt="" />
+                    <strong>通知總覽</strong></a>
+            </li>
+            <li>
+                <a href="https://www.w3schools.com/html/default.asp"><img src="../../pic/Help_icon.svg"
+                        alt="" /><strong>幫助中心</strong>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.w3schools.com/html/default.asp"><img src="../../pic/Account.svg"
+                        style="width: 20px" alt="" /><strong>會員帳戶</strong>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="Bear-header-bottom">
+
+        <div class="Bear-header-bottom-container">
+            <div class="Bear-header-bottom-container-left">
+                <a href="../Bear_Shop.html">
+                    <div class="Bear-header-bottom-container-left-container">
+                        <div style="width: 40%;">
+                            <img class="icon_Bear" src="../../pic/Bear.svg" alt="">
+                        </div>
+                        <div style="font-size: 30px;">熊熊商城</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="Bear-header-bottom-container-middle">
+                <div class="Bear-header-bottom-search">
+                    <input type="text" class="Bear-header-input" placeholder="輸入搜尋文字" value="">
+                    <button onclick="btn_Bgc()" class="Bear-header-btn">
+                        <img src="../../pic/Search.svg" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <div class="Bear-header-bottom-container-right">
+                <a href="../../cart.html">
+                    <div class="Bear-header-bottom-container-right-container">
+                        <img class="icon-Shop-Car" src="../../pic/Shop_Car.svg" alt="">
+                        <div class="cart-ccount-manger" id="ccount"></div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- ------------------------------------------------主頁面------------------------------------------------------------- -->
+    <div class="main">
+        		<div class="main-user" th:insert="model/leftBar::leftBar"></div>
+        
+
+            <div class="main-right-address">
+                <div class="main-right-address-a">
+                    <div class="main-right-address-title">
+                        <div class="main-right-address-title-desc">
+                            <span><b>我的地址</b></span> <br>
+                        </div>
+                        <div class="main-right-address-b">
+                            <div class="main-right-address-c">
+                                <div>
+                                    <button class="main-right-profile-save-btn" onclick="add_market()">
+                                        <div><span>+ 新增超商地址</span>
+                                        </div>
+                                    </button>
+                                    <button class="main-right-profile-save-btn" onclick="add_address()">
+                                        <div><span>+ 新增地址</span>
+                                        </div>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-right-address-container">
+                        <div class="main-right-address-container-a">
+                            <div>
+                                <span class="main-right-address-container-b">全名 </span>
+                                <span>XXX</span>
+                            </div>
+                            <div>
+                                <sapn class="main-right-address-container-b">手機</sapn> <span>0919000000</span>
+                            </div>
+                            <div> <span class="main-right-address-container-b">超商</span> <span> 全家草屯東寶店</span></div>
+                            <div> <span class="main-right-address-container-b">地址</span> <span>南投縣草屯鎮虎山路７６６號１樓
+                                    全家草屯東寶店</span></div>
+                        </div>
+                        <div class="main-right-address-container-c">
+                            <div>
+                                刪除
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div id="all_light-market" class="pop-up-window">
+
+            <div class="pop-up-window-a" style="width: 100%;height: 100vh;display: flex;justify-content: center;align-items: center;">
+                <div id="content-market" class="pop-up-window-content">
+                    <div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
+                        <div style="display: flex;height: 90%;width: 90%;flex-direction: column;">
+
+                            <div style="width:100%;height:20%;">
+                                <div style="display: flex;align-items: center;height: 100%;font-size: 25px;">新增信用卡</div>
+                            </div>
+                            <br>
+
+
+
+
+                            <form class="new_credit_card" style=" width: 100%;height: 75%;">
+                                <div class="SC" style="height: 85%;align-items: center;overflow-y:scroll;">
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input class="new_credit_card_input" type="text" placeholder="姓名" />
+                                    </div><br>
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input type="text" class="new_credit_card_input" placeholder="身分證字號" />
+
+                                    </div><br>
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <div style="width: 100%;">生日／公司核准設立日期</div>
+
+                                    </div>
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input type="number" class="new_credit_card_input" placeholder="MM/YY" />
+                                    </div><br>
+
+
+
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <div style="width: 75%;">戶籍地址／公司地址</div>
+                                        <div><a href="">從我的地址選取</a> </div>
+
+                                    </div>
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input type="number" class="new_credit_card_input" placeholder="MM/YY" />
+                                    </div><br>
+
+
+                                    <br>
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input type="text" class="new_credit_card_input" placeholder="區" />
+                                    </div><br>
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input type="text" class="new_credit_card_input" placeholder="地址" />
+                                    </div><br>
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input type="text" class="new_credit_card_input" placeholder="郵遞區號" />
+                                    </div><br>
+                                    <div>
+                                        We partner with AirPay to ensure that your credit card details are kept safe and
+                                        secure. Shopee will not have access to your credit card info.
+                                    </div>
+                                    <br>
+
+                                </div>
+                                <br>
+                                <div style="text-align: right;">
+                                    <button type="submit" style="width:27%;height: 38px;">取消</button>
+                                    <button type="submit" style="width:27%;height: 38px;">完成</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div id="all_light-address" class="pop-up-window">
+
+            <div style="width: 100%;height: 100vh;display: flex;justify-content: center;align-items: center;">
+                <div id="content-address" class="pop-up-window-content">
+                    <div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
+                        <div style="display: flex;height: 90%;width: 90%;flex-direction: column;">
+
+                            <div style="width:100%;height:20%;">
+                                <div style="display: flex;align-items: center;height: 100%;font-size: 25px;">新增地址</div>
+                            </div>
+                            <br>
+
+
+
+
+                            <form class="new_credit_card" style=" width: 100%;height: 75%;">
+                                <div class="SC" style="height: 85%;align-items: center;overflow-y:scroll;">
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input class="new_credit_card_input" type="text" placeholder="全名" />
+                                    </div><br>
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input type="text" class="new_credit_card_input" placeholder="電話" />
+
+                                    </div><br>
+
+
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input type="text" class="new_credit_card_input" placeholder="郵遞區號" />
+                                    </div><br>
+
+
+                                    <div class="birth-month">
+                                        <div class="birth-month-a" id="Select_Month"
+                                            style="display: flex;flex-direction: column;">
+                                            <div class="birth-month-b" onclick="btn_input_month_list()">
+                                                <input class="main-left-list-name birth-month-input"
+                                                    id="input-month-list" type="button" value="請選擇">
+                                                <div class="birth-month-c">
+                                                    <div class="birth-month-d">月</div>
+                                                </div>
+                                            </div>
+                                            <select size="5" name="" class="input-sel-list"
+                                                style="position: relative;margin-top: 0px;" id="input-month-sel"
+                                                onclick="input_month_sel()"></select>
+                                        </div>
+                                    </div>
+                                    <br>
+
+
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input type="text" class="new_credit_card_input" placeholder="區" />
+                                    </div><br>
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <input type="text" class="new_credit_card_input" placeholder="街道樓層" />
+                                    </div><br>
+
+
+
+
+
+                                    <div
+                                        style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                                        <div style="width: 100%;">標記為:</div>
+
+                                    </div>
+                                    <div
+                                        style="display: flex;justify-content:flex-start;align-items: center;padding: 5px 0px;">
+                                        <button style="width: 50px;height: 40px;">住家</button>
+                                        &emsp;
+                                        <button style="width: 50px;height: 40px;">公司</button>
+                                    </div><br>
+
+                                    <div
+                                        style="display: flex;justify-content:flex-start;align-items: center;padding: 5px 0px;">
+
+                                        <input type="checkbox"><span>設為預設值</span>
+                                        &emsp;
+                                        <input type="checkbox"><span>設為快遞取件地址</span>
+
+                                    </div><br>
+
+
+
+
+
+
+
+
+                                </div>
+                                <br>
+                                <div style="text-align: right;">
+                                    <button type="submit" style="width:27%;height: 38px;">取消</button>
+                                    <button type="submit" style="width:27%;height: 38px;">完成</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+   
+
+
+    <br><br>
+    <hr class="main-page-container-hr" />
+    <br><br>
+  
+    <div th:insert="model/footer::footer"></div>
+  
+    <script type="text/javascript" src="../../js/index.js" defer></script>
+    <script type="text/javascript" src="../../js/server.js"></script>
+    <script src="../../js/user.js" defer></script>
+    <script src="../../js/change.js"></script>
+</body>
+
+</html>

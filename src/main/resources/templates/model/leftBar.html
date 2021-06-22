@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div  th:fragment="leftBar" >
+      <div class="main-user-head">
+        <div class="main-user-head-border">
+          <img class="main-user-head-border-img" src="../../pic/Bear.svg" alt="" />
+        </div>
+
+        <div class="main-user-head-text">
+          <div class="main-user-head-text-a">
+            <div class="main-user-head-text-b">
+              <div>使用者名稱</div>
+              <div>
+                <a href="./profile.html">編輯個人檔案</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <table class="main-table">
+        <tr>
+          <td class="acc">
+            <div onclick="btn_list_profile()">
+              <img class="main-table-acc-img" src="../../pic/Account.svg" alt="" />
+              <span class="main-left-list-name">我的帳戶</span>
+            </div>
+            <ul id="acc-profile" class="acc-list">
+              <li>
+                <a href="/main/acc">個人檔案</a>
+              </li>
+              <li>
+                <a href="/main/card">銀行帳號/信用卡</a>
+              </li>
+              <li><a href="/main/address">地址</a></li>
+              <li>
+                <a href="/main/password">更改密碼</a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <img class="main-table-acc-img" src="../../pic/List.svg" alt="" />
+            <span class="main-left-list-name"><a href="../shop_list/shop_list.html">購買清單</a> </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="acc">
+            <div onclick="btn_list_notice()">
+              <img class="main-table-acc-img" src="../../pic/Notice.svg" alt="" />
+              <span class="main-left-list-name">通知總覽</span>
+            </div>
+            <ul id="acc-notice" class="acc-list">
+              <li>
+                <a href="../notice/notice.html">訂單更新通知</a>
+              </li>
+              <li>
+                <a href="../notice/promotin_notice.html">促銷活動相關通知</a>
+              </li>
+              <li>
+                <a href="../notice/dynamic_notice.html">動態通知</a>
+              </li>
+              <li>
+                <a href="../notice/bear_notice.html">熊熊通知</a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img class="main-table-acc-img" src="../../pic/Coupon.svg" alt="" />
+            <span class="main-left-list-name">我的優惠券</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+</body>
+</html>
