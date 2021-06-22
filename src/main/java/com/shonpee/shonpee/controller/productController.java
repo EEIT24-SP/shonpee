@@ -78,10 +78,10 @@ public class productController {
 			 	bean.setProductPhoto(filepathstr);
 			 	
 		 
-		 bean.setSellerId("allen3375");
-		 bean.setProductFirstCategoryId("1");
-		 bean.setProductSecondCategoryId("2");
-		 bean.setProductThirdCategoryId("3");
+		 bean.setMemberId(1);
+		 bean.setProductFirstCategoryId(1);
+		 bean.setProductSecondCategoryId(2);
+		 bean.setProductThirdCategoryId(3);
 		 ProductBean newbean = productService.insert(bean);
 		 Integer newid = newbean.getProductid();
 		 

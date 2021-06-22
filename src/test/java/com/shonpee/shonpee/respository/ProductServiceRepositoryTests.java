@@ -28,11 +28,10 @@ public class ProductServiceRepositoryTests {
 		bean.setProductStock(2);;
 		bean.setProductPhoto("testpic");
 		bean.setProductDetail("cry");
-		bean.setSellerProductCategory("還沒做");
-		bean.setSellerId("allen3375");;
-		bean.setProductFirstCategoryId("1");;
-		bean.setProductSecondCategoryId("2");
-		bean.setProductThirdCategoryId("3");
+		bean.setMemberId(1);
+		bean.setProductFirstCategoryId(1);;
+		bean.setProductSecondCategoryId(2);
+		bean.setProductThirdCategoryId(3);
 		
 		ProductBean insert = productServiceRepository.insert(bean);
 		System.out.println("insert="+insert);
