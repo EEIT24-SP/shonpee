@@ -39,19 +39,19 @@ public class ProductController {
 
 	@Autowired
 	private ProductRepository productRepository;
-	
+
 	@Autowired
 	private ProductcategoryRepository productcategoryRepository;
 
 	@Value("${upload-path}")
 	private String uploadpath;
 
-//	@RequestMapping("/")
-//	public String MyCategoriesPage1() {
-//
-//		System.out.println("apple");
-//		return "NewProduct";
-//	}
+	@GetMapping("/")
+	public String mainPage(Model model) {
+		// 找出第一層的全部類別，放入頁面
+		model.addAttribute("categories", listFirstCategories());
+		return "Main";
+	}
 
 	@PostMapping("/addProduct")
 	public String newproduct(@RequestParam(value = "productphoto", required = false) List<MultipartFile> productphoto,
@@ -102,19 +102,27 @@ public class ProductController {
 
 		return "login";
 	}
-	
-	
-	@GetMapping("/cat/{id}")
-	public String showOneCategoryProducts(Model model) {
-		// 找出第一層的全部類別，放入頁面
-		List<Productcategory> firstProductcategories = productcategoryRepository.findByParentId(0);
-		model.addAttribute("categories", firstProductcategories);
-		
-		
-//		List<ProductBean> catProds = productRepository.findByProductFirstCategoryId(1);
 
+	@GetMapping("/cat/{categoryId}")
+	public String showOneCategoryProducts(@PathVariable("categoryId") Integer categoryId, 
+											Model model) {
+		// 找出第一層的全部類別，放入頁面
+		List aaaList = listFirstCategories();
+		model.addAttribute("categories", listFirstCategories());
+		// 找出
+		List<ProductBean> productsOfTheCategory = productRepository.findByProductFirstCategoryId(categoryId);
+		model.addAttribute("products", productsOfTheCategory);
+		System.out.println("--------");
+		System.out.println(model);
+		System.out.println("--------");
 		return "Main";
-		
+	}
+
+	
+	// 以下是抽離的重複程式，沒有設定RequestMapping路徑
+	public List<Productcategory> listFirstCategories() {
+		List<Productcategory> firstProductcategories = productcategoryRepository.findByParentId(0);
+		return firstProductcategories;
 	}
 
 }
