@@ -25,11 +25,10 @@ public class ProductBean {
 	private Integer ProductStock;
 	private String ProductPhoto;
 	private String ProductDetail;
-	private String SellerProductCategory;
-	private String SellerId;
-	private String ProductFirstCategoryId;
-	private String ProductSecondCategoryId;
-	private String ProductThirdCategoryId;
+	private Integer MemberId;
+	private Integer ProductFirstCategoryId;
+	private Integer ProductSecondCategoryId;
+	private Integer ProductThirdCategoryId;
 	
 	
 	
