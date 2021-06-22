@@ -9,9 +9,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
-
 @Entity
-@Table(name="product")
+@Table(name = "product")
 @Data
 public class ProductBean {
 //	@OneToOne(
@@ -19,17 +18,15 @@ public class ProductBean {
 //			cascade = {CascadeType.REMOVE})
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Productid;
-	private String ProductName;
-	private Integer ProductPrice;
-	private Integer ProductStock;
-	private String ProductPhoto;
-	private String ProductDetail;
-	private Integer MemberId;
-	private Integer ProductFirstCategoryId;
-	private Integer ProductSecondCategoryId;
-	private Integer ProductThirdCategoryId;
-	
-	
-	
+	private Integer productid;
+	private String productName;
+	private Integer productPrice;
+	private Integer productStock;
+	private String productPhoto;
+	private String productDetail;
+	private String memberId;
+	private Integer productFirstCategoryId;
+	private Integer productSecondCategoryId;
+	private Integer productThirdCategoryId;
+
 }

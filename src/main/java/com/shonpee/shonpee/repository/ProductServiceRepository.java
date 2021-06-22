@@ -14,14 +14,13 @@ public class ProductServiceRepository {
 
 	@Autowired
 	private ProductRepository productDao = null;
-	
+
 	@Autowired
 	private PropertyRepository property = null;
-	
+
 	@Autowired
 	private PropertySecondRepository propertySecond = null;
-	
-	
+
 	public PropertyBean insert(PropertyBean bean) {
 		PropertyBean Propertyresult = null;
 		Propertyresult = property.save(bean);
@@ -34,19 +33,10 @@ public class ProductServiceRepository {
 		return PropertySecondresult;
 	}
 
-	
 	public ProductBean insert(ProductBean bean) {
 		ProductBean ProductBeanresult = null;
 		ProductBeanresult = productDao.save(bean);
 		return ProductBeanresult;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

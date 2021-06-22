@@ -6,5 +6,5 @@ import com.shonpee.shonpee.domain.PropertyBean;
 import com.shonpee.shonpee.domain.PropertyBeanSecond;
 
 public interface PropertySecondRepository extends JpaRepository<PropertyBeanSecond, String> {
-	
+
 }
