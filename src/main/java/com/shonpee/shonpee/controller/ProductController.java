@@ -112,9 +112,6 @@ public class ProductController {
 		// 找出
 		List<ProductBean> productsOfTheCategory = productRepository.findByProductFirstCategoryId(categoryId);
 		model.addAttribute("products", productsOfTheCategory);
-		System.out.println("--------");
-		System.out.println(model);
-		System.out.println("--------");
 		return "Main";
 	}
 

@@ -218,27 +218,19 @@
     <div class="shop-search-container-right">
         <div class="shop-search-container-right-products">
             <div class="shop-search-right-product" th:each="product : ${products}">
-                <div><img src="/pic/product1.png" alt=""></div>
-                <div class="fastShipment"><img th:src="@{/pic/fastShipment.png}" alt=""></div>
-                <div class="shop-search-right-product-content">
-                    <div class="shop-search-right-product-name">[[${product.productName}]]</div>
-                    <div class="product-price">
-                        <div class="real-price"><span>$</span><span>[[${product.productPrice}]]</span></div>
+                <a th:href="@{/product/__${product.productid}__}">
+                    <div><img th:src="@{__${product.productPhoto}__}" alt=""></div>
+                    <div class="fastShipment"><img th:src="@{/pic/fastShipment.png}" alt=""></div>
+                    <div class="shop-search-right-product-content">
+                        <div class="shop-search-right-product-name">[[${product.productName}]]</div>
+                        <div class="product-price">
+                            <div class="real-price"><span>$</span><span>[[${product.productPrice}]]</span></div>
+                        </div>
+                        <div class="evaluation">
+                            <div>庫存<span class="soldquantity">[[${product.productStock}]]</span></div>
+                        </div>
                     </div>
-                    <div class="evaluation">
-                        <div>庫存<span class="soldquantity">[[${product.productStock}]]</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="shop-search-container-right-pages">
-                <div><img src="/pic/left-arrow-gray.png" alt=""></div>
-                <div><button>1</button></div>
-                <div><button>2</button></div>
-                <div><button>3</button></div>
-                <div><button>4</button></div>
-                <div><button>5</button></div>
-                <div><button>...</button></div>
-                <div><img src="/pic/right-arrow-gray.png" alt=""></div>
+                </a>
             </div>
         </div>
     </div>
