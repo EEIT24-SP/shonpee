@@ -46,7 +46,7 @@ public class PublicController {
 	public String profile() {
 		return "account/profile";
 	}
-	
+
 //	@RequestMapping("/main-page/item")
 //	public String item() {
 //		return "Bear-item";

@@ -109,11 +109,32 @@ public class AccountController {
 					CR.save(CB);
 				}
 			}
-
 		}
-	
-
 		return "redirect:/main-page/item";
 	}
+	
+	
+	@RequestMapping("/main-page/cart")
+	public String cart(HttpSession session, Model model, MemberBean MB, CartBean CB, ProductBean PB) {
+		List<CartBean>list =CR.findAll();
+			model.addAttribute("cartitem", list);		
+		return "cart";
+	}
+	
+	
+	
+	
+	
+	
+	@PostMapping(value = ("/main-page/cart"))
+	public String cartview(CartBean CB, HttpSession session, Model model) {
+			System.out.println("我是CB"+ CB.getMember_Id());
+		
+		
+		return "redirect:/main-page/cart";
+	}
+	
+	
+	
 
 }
