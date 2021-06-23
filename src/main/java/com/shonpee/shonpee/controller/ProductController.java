@@ -50,7 +50,7 @@ public class ProductController {
 	public String mainPage(Model model) {
 		// 找出第一層的全部類別，放入頁面
 		model.addAttribute("categories", listFirstCategories());
-		return "main";
+		return "Main";
 	}
 
 	@PostMapping("/addProduct")
@@ -112,7 +112,7 @@ public class ProductController {
 		// 找出該分類的產品，放入頁面
 		List<ProductBean> productsOfTheCategory = productRepository.findByProductFirstCategoryId(categoryId);
 		model.addAttribute("products", productsOfTheCategory);
-		return "main";
+		return "Main";
 	}
 
 	

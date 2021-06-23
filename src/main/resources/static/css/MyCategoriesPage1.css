@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     background-color: rgb(255, 255, 255);
@@ -91,11 +92,12 @@ h2 {
     width: 110px;
     height: 15px;
     font-size: 12px;
-    margin:0 0 0 10px ;
+    margin: 0 0 0 10px;
 }
-.border-red{
-   outline: 1px solid #ff4e4e;
-   border-radius: 5px;
+
+.border-red {
+    outline: 1px solid #ff4e4e;
+    border-radius: 5px;
 }
 
 .input-text {
