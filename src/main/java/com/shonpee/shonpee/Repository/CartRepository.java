@@ -8,12 +8,12 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.shonpee.shonpee.domain.CartBean;
 import com.shonpee.shonpee.domain.MemberBean;
 
 
 
-public interface MemberRepository extends JpaRepository<MemberBean, String>,JpaSpecificationExecutor<MemberBean> {
+public interface CartRepository extends JpaRepository<CartBean, String>,JpaSpecificationExecutor<CartBean> {
 
-	@Query(nativeQuery = true,value = "select password from member where password = :xxx")
-	String QueryAnnotationParams(@Param("xxx") String password);
+
 }

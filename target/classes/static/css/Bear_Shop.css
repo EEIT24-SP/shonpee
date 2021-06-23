@@ -20,6 +20,7 @@ body {
     white-space: nowrap;
     height: 25px;
     width: 100%;
+    min-width: 1400px;
     /* list-style-type: none; */
     text-align: center;
     background-color: #a06464;
@@ -29,7 +30,7 @@ body {
     display: inline-block;
 }
 
-/* 用 inline把list變成一排 */
+/* � inline��ist霈����� */
 
 .Bear-header-top li:hover {
     background-color: #656565;
@@ -44,6 +45,7 @@ body {
 .Bear-header-bottom {
     height: 100px;
     width: 100%;
+    min-width: 1400px;
     text-align: center;
     background-color: #ffbb55;
 }
@@ -151,7 +153,7 @@ td {
     color: lightgoldenrodyellow;
 }
 
-/*隱藏*/
+/*����*/
 
 .footer {
     width: 1200px;
@@ -355,10 +357,11 @@ td {
     background-color: sandybrown;
     border: 0px;
     width: 100%;
+    min-width: 1400px;
     margin: auto;
 }
 
-/* /輪播css/ */
+/* /頛芣css/ */
 
 #slider, .slieder-item-container, .img-animate {
     width: 1200px;
@@ -428,7 +431,7 @@ td {
     width: 20px;
     height: 20px;
     /* background-color: transparent; */
-    /* 模块背景为透明 */
+    /* 璅∪��銝粹��� */
     border-color: #ffffff;
     border-style: solid;
     border-width: 5px 5px 0px 0px;
@@ -443,7 +446,7 @@ td {
     width: 20px;
     height: 20px;
     /* background-color: transparent; */
-    /* 模块背景为透明 */
+    /* 璅∪��銝粹��� */
     border-color: #ffffff;
     border-style: solid;
     border-width: 5px 5px 0px 0px;

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>購物車</title>
+	<!--購物車样式表-->
+	<link rel="stylesheet" type="text/css" href="../css/cart.css" />
+	<!--操作cookie的js文件-->
+	<script type="text/javascript" src="../js/cookie.js"></script>
+	<link rel="stylesheet" href="../css/Bear_Shop.css">
+</head>
+
+<body style="background-color:rgb(235, 235, 235);">
+	<nav class="Bear-header-top">
+		<ul style="margin: 0px;">
+			<li> <a href="https://www.w3schools.com/html/default.asp"> <strong>賣家中心</strong> </a> </li>
+			<li style="user-select: none;">|</li>
+			<li> <a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong> </a> </li>
+			<li style="user-select: none;"> |</li>
+			<li> <a href="https://www.w3schools.com/html/default.asp"> <strong>追蹤我們</strong></a> </li>
+			<a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/FB.svg"
+					alt=""></a>
+			<a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/Line.svg"
+					alt=""></a>
+			<a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/IG.svg"
+					alt=""></a>
+			<li style="user-select: none; visibility: hidden;">
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			</li>
+			<li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Bell.svg" style="width: 18px;"
+						alt="">
+					<strong>通知總覽</strong></a> </li>
+			<li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
+						alt=""><strong>幫助中心</strong> </a></li>
+			<li> <a href="././user/user.html"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
+						id="ssaa">會員帳戶</strong> </a></li>
+		</ul>
+
+	</nav>
+	<nav style=" height: 100px;
+    width: 100vw;
+    min-width: 100%;
+    text-align: center;
+    background-color: #ffffff;border-bottom: 1px solid rgba(121, 121, 121, 0.3);">
+
+		<div class="Bear-header-bottom-container">
+			<div style="  width: 30%;
+			height: 100px;
+			display: flex;
+			align-items: center;
+			;">
+				<a href="./Bear_Shop.html">
+					<div style=" display: flex;
+					align-items: center;
+					width: 340px;">
+						<div>
+							<img style=" width: 100px;
+							height: 80px; " src="../pic/Bear.svg" alt="">
+						</div>
+						<div
+							style="font-size: 25px;border-right: 1px solid orange;padding: 10px;height: 20px;display: flex;align-items: center;color: tomato;">
+							熊熊商城</div>
+						<div style="font-size: 20px;padding: 10px;color: tomato;">購物車</div>
+
+					</div>
+				</a>
+			</div>
+
+			<div style="height: 100px;
+			display: flex;align-items:center;justify-content: flex-end;width: 55%;">
+				<div style=" background-color:tomato;
+				width: 600px;
+				height: 37px;
+				border-radius: 5px;">
+					<input type="text" style=" width: 550px;
+					height: 30px;
+					margin-left: -40px;
+					margin-top: 3px;
+					border-radius: 5px;" placeholder="輸入搜尋文字" value="">
+					<button onclick="btn_Bgc()" class="cart-header-btn">
+						<img src="../pic/Search.svg" alt="">
+					</button>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="cart-mid" id="cart-mid-id">
+		<div class="cart-mid" id="cart-mid-freeshipping">
+			<img src="../pic/free-delivery.png" alt="">
+			<span>點選下方優惠券，享受運費優惠！</span>
+		</div>
+		<div class="cart-mid" id="cart-page-product-header">
+			<div>
+				<input type="checkbox" class="cart-page-checkbox">
+				<div class="cart-page-product-header__product">商品</div>
+				<div class="cart-page-product-header__unit-price">單價</div>
+				<div class="cart-page-product-header__quantity">數量</div>
+				<div class="cart-page-product-header__total-price">總計</div>
+				<div class="cart-page-product-header__action">操作</div>
+			</div>
+		</div>
+		<div class="cart-page-shop-section">
+			<div class="cart-page-shop-header">
+				<div>
+					<input type="checkbox" class="cart-page-checkbox">
+					<div>
+						<img src="../pic/store.svg" class="cart-page-shop-header-icon">
+						<span>店家名稱</span>
+						<img src="../pic/chat.svg" class="cart-page-shop-header-icon">
+					</div>
+				</div>
+			</div>
+			
+			<div class="cart-page-product">
+				<div class="cart-page-product-discount">
+					<span>贈品</span>
+					<div class="cart-page-product-discount-message">滿 $12,990 即可獲得 1 個贈品</div>
+					<a href="">查看></a>
+				</div>
+				<div class="cart-page-product-allitems">
+					<div>
+						<input type="checkbox" class="cart-page-checkbox">
+						<img src="../pic/dogtest.jpg" alt="" class="product-img">
+						<div class="product-description-box">
+							<div>
+								<a href="../pic/dogtest.jpg"class="product-description">
+									這裡有隻超可愛的狗勾，我想來看看這隻狗勾，狗狗~，omgggggggggggggg
+								</a>
+							</div>
+							<span class="product-Stockup">較長備貨</span><br>
+							<span class="product-Soldout-text">你選擇的規格已售完，請選擇其他規格</span>
+						</div>
+						<div class="product-size">
+							<div class="product-size-button">
+								規格
+								<div class="product-size-button-icon"></div>
+							</div>
+							<div>
+								藍色XL
+							</div>
+						</div>
+						<div class="product-unit-price">
+							<span class="product-unit-price-Originalprice">123456</span>
+							<span>156151</span>
+							<div class="product-unit-price-update">
+								<div class="product-unit-price-discount">9折</div>
+								<div>已更新</div>
+							</div>
+						</div>
+						<div class="product-quanftity">
+							<div>
+								<button>-</button>
+								<input type="text">
+								<button>+</button>
+							</div>
+							<div>剩下10000件</div>
+						</div>
+						<div class="product-total-price-box">
+							<span class="product-total-price">$100</span>
+						</div>
+						<div class="product-action">
+							<button class="product-action-delet">刪除</button>
+							<button class="product-action-like">
+								<span>找相似<img src="../pic/triangle.svg" alt=""></span>
+							</button>
+						</div>
+					</div>
+					<div>
+						<input type="checkbox" class="cart-page-checkbox">
+						<img src="../pic/dogtest.jpg" alt="" class="product-img">
+						<div class="product-description-box">
+							<div>
+								<a href="../pic/dogtest.jpg"
+									class="product-description">
+									這裡有隻超可愛的狗勾，我想來看看這隻狗勾，狗狗~，omgggggggggggggg
+								</a>
+							</div>
+							<span class="product-Stockup">較長備貨</span><br>
+							<span class="product-Soldout-text">你選擇的規格已售完，請選擇其他規格</span>
+						</div>
+						<div class="product-size">
+							<div class="product-size-button">
+								規格
+								<div class="product-size-button-icon"></div>
+							</div>
+							<div>
+								藍色XL
+							</div>
+						</div>
+						<div class="product-unit-price">
+							<span class="product-unit-price-Originalprice">123456</span>
+							<span>156151</span>
+							<div class="product-unit-price-update">
+								<div class="product-unit-price-discount">9折</div>
+								<div>已更新</div>
+							</div>
+						</div>
+						<div class="product-quanftity">
+							<div>
+								<button>-</button>
+								<input type="text">
+								<button>+</button>
+							</div>
+							<div>剩下10000件</div>
+						</div>
+						<div class="product-total-price-box">
+							<span class="product-total-price">$100</span>
+						</div>
+						<div class="product-action">
+							<button class="product-action-delet">刪除</button>
+							<button class="product-action-like">
+								<span>找相似<img src="../pic/triangle.svg" alt=""></span>
+							</button>
+						</div>
+					</div><div>
+						<input type="checkbox" class="cart-page-checkbox">
+						<img src="../pic/dogtest.jpg" alt="" class="product-img">
+						<div class="product-description-box">
+							<div>
+								<a href="../pic/dogtest.jpg"
+									class="product-description">
+									這裡有隻超可愛的狗勾，我想來看看這隻狗勾，狗狗~，omgggggggggggggg
+								</a>
+							</div>
+							<span class="product-Stockup">較長備貨</span><br>
+							<span class="product-Soldout-text">你選擇的規格已售完，請選擇其他規格</span>
+						</div>
+						<div class="product-size">
+							<div class="product-size-button">
+								規格
+								<div class="product-size-button-icon"></div>
+							</div>
+							<div>
+								藍色XL
+							</div>
+						</div>
+						<div class="product-unit-price">
+							<span class="product-unit-price-Originalprice">123456</span>
+							<span>156151</span>
+							<div class="product-unit-price-update">
+								<div class="product-unit-price-discount">9折</div>
+								<div>已更新</div>
+							</div>
+						</div>
+						<div class="product-quanftity">
+							<div>
+								<button>-</button>
+								<input type="text">
+								<button>+</button>
+							</div>
+							<div>剩下10000件</div>
+						</div>
+						<div class="product-total-price-box">
+							<span class="product-total-price">$100</span>
+						</div>
+						<div class="product-action">
+							<button class="product-action-delet">刪除</button>
+							<button class="product-action-like">
+								<span>找相似<img src="../pic/triangle.svg" alt=""></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cart-voucher">
+				<img src="../pic/ticket.png" alt="">
+				<div>
+					<div class="cart-voucher-message">最高 7.7 折</div>
+					<div class="cart-voucher-newvoucher">有新的折價券!</div>
+					<a href="" class="cart-voucher-moremessage">查看更多</a>
+				</div>
+			</div>
+            <div class="cart-shipping">
+				<img src="../pic/free-delivery.png" alt="">
+				<div class="cart-shipping-message" >訂單滿$99，蝦皮海外 - 萊爾富（空運） 免運費</div>
+				<span class="cart-shipping-more" style="color: blue;">了解更多</span>
+			</div>
+		</div>
+	</div>
+	<div id="cart-page-flex-fixed-footer">
+		<div>
+			<div id="cart-page-flex-fixed-footer-fristroll">
+				<img src="../pic/ticket.png" id="cart-page-flex-fixed-footer-ticket" alt="">
+				<div id="cart-page-flex-fixed-footer-div1">全站折價券</div>
+				<div id="cart-page-flex-fixed-footer-div2">
+					<a href="">選擇折價券或輸入全站折扣碼</a>
+				</div>
+			</div>
+		</div>
+		<div id="cart-page-flex-fixed-footer-secondroll">
+			<div>
+				<input type="checkbox" name="" id="cart-page-flex-fixed-footer-secondroll-checkbox">
+			</div>
+			<div id="cart-page-flex-fixed-footer-secondroll-coin">
+				<img src="../pic/money.png" alt="">
+				<div>蝦幣</div>
+				<div>蝦幣餘額不足</div>
+				<img src="../pic/information.svg" id="coin-information" alt="">
+			</div>
+			<div id="cart-page-flex-fixed-footer-secondroll-coin-discount">-$0</div>
+		</div>
+		<div id="cart-page-flex-fixed-footer-thredroll">
+			<div id="cart-page-flex-fixed-footer-thredroll-checkbox">
+				<input type="checkbox" name="" id="">
+				<button>全選(20)</button>
+			</div>
+			<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts">
+				<button>去買單</button>
+				<div>
+					<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total">
+						<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total-price">$0</div>
+						<div>總金額 (0 個商品):</div>
+					</div>
+					<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-discount">
+						<div>+226 蝦幣</div>
+						<div>$7,397,</div>
+						<div>已省下</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<br><br>
+	<hr class="main-page-container-hr" />
+	<br><br>
+
+	<div class="footer">
+		<table class="footer-table">
+			<tr>
+				<td><b> 客服中心 </b>
+				<td><strong> 關於蝦皮 </strong> </td>
+				<td><strong> 付款 </strong> </td>
+				<td><strong> 關注我們 </strong> </td>
+				<td><strong> 下載熊熊 </strong> </td>
+			</tr>
+
+			<tr>
+				<td>幫助中心</td>
+				<td>關於蝦皮</td>
+				<td>客服中心</td>
+				<td><img src="../pic/fb-b.png" class="footer-table-img" alt=""> Facebook</td>
+				<td rowspan="3">
+					<div>
+						<img src="../pic/FB.svg" class="footer-table-QRcode" alt="">
+
+						<div>
+							<p><img src="../pic/apple.svg" class="footer-table-img" alt=""> Apple Store</p>
+						</div>
+						<div>
+							<p><img src="../pic/googleplay.svg" class="footer-table-img" alt=""> Google Play</p>
+						</div>
+
+
+
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>蝦皮商城</td>
+				<td>加入我們</td>
+				<td>客服中心</td>
+				<td><img src="../pic/ig-b.png" class="footer-table-img" alt=""> Instagram</td>
+
+			</tr>
+
+			<tr>
+				<td>付款方式</td>
+				<td>蝦皮條款</td>
+				<td>客服中心</td>
+				<td><img src="../pic/line-b.png" class="footer-table-img" alt=""> Line</td>
+			</tr>
+
+			<tr>
+				<td>蝦皮錢包</td>
+				<td>隱私權政策</td>
+				<td>客服中心</td>
+				<td><img src="../pic/in-b.png" class="footer-table-img" alt=""> LinkedIn</td>
+			</tr>
+
+			<tr>
+				<td>蝦幣</td>
+				<td>蝦皮商城</td>
+				<td>客服中心</td>
+				<td><img src="../pic/bear-b.png" class="footer-table-img" alt=""> 熊熊輯部落格</td>
+			</tr>
+
+			<tr>
+				<td>運費補助</td>
+				<td>賣家中心</td>
+				<td>客服中心</td>
+				<td rowspan="5"></td>
+			</tr>
+
+			<tr>
+				<td>退貨退款</td>
+				<td>限時特賣</td>
+				<td>客服中心</td>
+			</tr>
+
+			<tr>
+				<td>蝦皮承諾</td>
+				<td>聯絡媒體</td>
+				<td>客服中心</td>
+			</tr>
+
+			<tr>
+				<td>聯絡客服</td>
+				<td rowspan="2"></td>
+				<td>客服中心</td>
+			</tr>
+			<tr>
+				<td>防詐騙宣導</td>
+				<td>客服中心</td>
+			</tr>
+		</table>
+		<hr>
+		<div class="footer-footer">
+			<div class="footer-footer-copyright">© 2021 Bear. 版權所有。</div>
+			<div>
+				國家和地區:
+				新加坡
+				印尼
+				台灣
+				泰國
+				馬來西亞
+				越南
+				菲律賓
+				巴西
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+	<!--操作购物车页面的cart.js-->
+	<script src="../js/cart.js"></script>
+</body>
+
+</html>
