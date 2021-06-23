@@ -109,7 +109,7 @@ public class ProductController {
 		// 找出第一層的全部類別，放入頁面
 		List aaaList = listFirstCategories();
 		model.addAttribute("categories", listFirstCategories());
-		// 找出
+		// 找出該分類的產品，放入頁面
 		List<ProductBean> productsOfTheCategory = productRepository.findByProductFirstCategoryId(categoryId);
 		model.addAttribute("products", productsOfTheCategory);
 		return "main";

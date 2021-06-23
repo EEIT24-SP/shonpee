@@ -2,12 +2,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" href="../css/Bear_Shop.css">
+    <link rel="stylesheet" th:href="@{/css/Main.css}">
     <link rel="stylesheet" th:href="@{/css/MainPagesort.css}">
-    <link rel="stylesheet" th:href="@{/css/sellerIndex.css}">
-    <meta charset="UTF-8">
-    <script defer src="/js/jquery-3.4.1.js"></script>
-    <script src="/js/main.js" defer></script>
+    <link rel="stylesheet" th:href="@{/css/SellerIndex.css}">
     <!--商品列表样式表-->
     <!--cookie操作的js库-->
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
@@ -15,71 +13,8 @@
 </head>
 
 <body ondragstart="return false" oncopy="return false;">
-    <nav class="Bear-header-top">
-        <ul>
-            <li>
-                <a href="https://www.w3schools.com/html/default.asp"> <strong>賣家中心</strong> </a>
-            </li>
-            <li style="user-select: none;">|</li>
-            <li> <a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong> </a> </li>
-            <li style="user-select: none;"> |</li>
-            <li>
-                <a href="https://www.w3schools.com/html/default.asp"> <strong>追蹤我們</strong></a>
-            </li>
-            <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/FB.svg" alt=""></a>
-            <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/Line.svg" alt=""></a>
-            <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/IG.svg" alt=""></a>
-            <li style="user-select: none; visibility: hidden;">
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            </li>
-            <li>
-                <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Bell.svg" style="width: 18px;" alt="">
-                    <strong>通知總覽</strong></a>
-            </li>
-            <li>
-                <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg" alt=""><strong>幫助中心</strong> </a>
-            </li>
-            <li>
-                <a href="./shop_list/shop_list.html"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong id="ssaa">會員帳戶</strong> </a>
-            </li>
-        </ul>
 
-    </nav>
-    <nav class="Bear-header-bottom">
-
-        <div class="Bear-header-bottom-container">
-            <div class="Bear-header-bottom-container-left">
-                <a href="./Bear_Shop.html">
-                    <div class="Bear-header-bottom-container-left-container">
-                        <div style="width: 40%;">
-                            <img class="icon_Bear" src="../pic/Bear.svg" alt="">
-                        </div>
-                        <div style="font-size: 30px;">熊熊商城</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="Bear-header-bottom-container-middle">
-                <div class="Bear-header-bottom-search">
-                    <input type="text" class="Bear-header-input" placeholder="輸入搜尋文字" value="">
-                    <button onclick="btn_Bgc()" class="Bear-header-btn">
-            <img src="../pic/Search.svg" alt="">
-          </button>
-                </div>
-            </div>
-
-            <div class="Bear-header-bottom-container-right">
-                <a href="./cart.html">
-                    <div class="Bear-header-bottom-container-right-container">
-                        <img class="icon-Shop-Car" src="../pic/Shop_Car.svg" alt="">
-                        <div class="cart-ccount-manger" id="ccount"></div>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-    </nav>
-
+    <div th:insert="model/header::header"></div>
     <div class="main-page-container">
         <div class="main-page-container-outside">
             <div class="main-page-container-middle">
@@ -114,12 +49,9 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
 
         <div class="main-page-container-a">
-
             <a href="./Baer-item.html">
                 <div class="main-page-container-a-list">
                     <img class="main-page-container-a-list-img" src="../pic/FB.svg" alt="">
@@ -200,7 +132,6 @@
                     </div>
                 </div>
             </a>
-
         </div>
     </div>
 
@@ -239,73 +170,8 @@
     <hr class="main-page-container-hr" />
     <br><br>
 
-    <div class="footer">
-        <div style="display: flex;">
-            <div style=" width: 240px;line-height: 35px;font-size: 13px;">
-                <div><b>客服中心</b></div>
-                <div>幫助中心</div>
-                <div>熊熊商城</div>
-                <div>付款方式</div>
-                <div>蝦幣</div>
-                <div>運費補助</div>
-                <div>退貨退款</div>
-                <div>延長訂單撥款</div>
-                <div>聯絡客服</div>
-                <div>防詐騙宣導</div>
-
-            </div>
-            <div style=" width: 240px;line-height: 35px;font-size: 13px;">
-                <div><b>關於熊熊</b></div>
-                <div>關於熊熊</div>
-                <div>加入我們</div>
-                <div>熊熊條款</div>
-                <div>隱私權政策</div>
-                <div>熊熊商城</div>
-                <div>賣家中心</div>
-                <div>限時特賣</div>
-                <div>聯絡媒體</div>
-            </div>
-            <div style=" width: 240px;line-height: 35px;font-size: 13px;">
-                <div><b>付款</b></div>
-                <div><img src="../pic/visa-b.png" style="width: 50px;" alt=""></div>
-                <div>物流合作</div>
-                <div><img src="" alt="">塞圖片</div>
-            </div>
-            <div style=" width: 240px;line-height: 35px;font-size: 13px;">
-                <div><b>關注我們</b></div>
-                <div> <img src="../pic/fb-b.png" class="footer-table-img" alt=""> Facebook</div>
-                <div><img src="../pic/ig-b.png" class="footer-table-img" alt=""> Instagram</div>
-                <div><img src="../pic/line-b.png" class="footer-table-img" alt=""> Line</div>
-                <div><img src="../pic/in-b.png" class="footer-table-img" alt=""> LinkedIn</div>
-                <div><img src="../pic/bear-b.png" class="footer-table-img" alt=""> 熊熊輯部落格</div>
-            </div>
-            <div style=" width: 240px;line-height: 35px;font-size: 13px;">
-                <div><b>下載熊熊</b></div>
-                <div>
-                    <img src="../pic/QRcode.png" class="footer-table-QRcode" alt="">
-                </div>
-                <div>
-                    <img src="../pic/apple.svg" class="footer-table-img" alt=""> Apple Store
-                </div>
-                <div>
-                    <img src="../pic/googleplay.svg" class="footer-table-img" alt=""> Google Play
-                </div>
-                <div>
-                    <img src="../pic/googleplay.svg" class="footer-table-img" alt=""> Google Play
-                </div>
-
-            </div>
-
-        </div>
-        <hr>
-        <div class="footer-footer">
-            <div class="footer-footer-copyright">© 2021 Bear. 版權所有。</div>
-            <div>
-                國家和地區: 新加坡 印尼 台灣 泰國 馬來西亞 越南 菲律賓 巴西
-            </div>
-
-        </div>
-    </div>
+    <p th:text="${name}"></p>
+    <div th:insert="model/footer::footer"></div>
 
     <script src="/js/Bear_Shop.js"></script>
     <!-- <script src="/js/user.js" defer></script> -->

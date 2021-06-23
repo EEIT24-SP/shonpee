@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="login.js"></script>
     <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/login.js"></script>
 </head>
-
 
 <body>
     <div id=login_top>
@@ -33,63 +32,134 @@
                     <p>台灣與東南亞地區</p>
                     <p>最優直線上購物平台</p>
                 </div>
-            </div>           
+            </div>
         </div>
 
         <div id=login_mid_right>
-            <div id="login_mid_right_title_box">
-                <p id="login_mid_right_title">登入</p>
-            </div>
-            <div id=login_mid_right_box>
-                <div class=login_mid_right_APE id="login_mid_right_APE_erro">
-                    登入失敗
-                </div>
-                <input type="text" placeholder="電話號碼/使用者名稱/Email" class=login_mid_right_APE id="account">
-                <div class="login_mid_right_box_accountremind">請填寫此欄位</div>
-                <div class=login_mid_right_APE id="password">
-                    <input type="text" placeholder="密碼" id="password_input">
-                    <div id="password_hide_password">
-                        <img src="../pic//visibility.png" alt="" id="login_mid_right_APE_eye">
+            <form action="/login" method="post">
+                <div id=login_mid_right_login class="login_registered">
+                    <div class="login_mid_right_title_box">
+                        <div class="login_mid_right_title_login" id="login_mid_right_title_login" onclick="change_login()">
+                            登入</div>
+                        <div class="login_mid_right_title_registered" onclick="change_registered()">註冊</div>
                     </div>
-                    
-                </div>
-                <div class="login_mid_right_box_passwordremind">請填寫此欄位</div>
-                <div id="login_mid_right_button">
-                    <input type="button" value="登入"><br>
-                    <div>
-                        <span id="forget_password"><a href="https://shopee.tw/buyer/login?next=https%3A%2F%2Fshopee.tw%2F">忘記密碼</a></span>
-                        <span id="smslogin"><a href="https://shopee.tw/buyer/login?next=https%3A%2F%2Fshopee.tw%2F">使用SMS簡訊登入</a></span>
-                    </div>
-                </div>
-                <div id="login_mid_right_hr">
-                    <div>
-                        <div></div><!--虛線-->
-                        <span>或</span>
-                        <div></div>
-                    </div>
-                </div>
-                <div id="login_mid_right_otherlogin">
-                    <div id="fb_login">
-                        <div class="login_logo_box">
-                            <img src="../pic//FB.svg" alt="">
+                    <div class=login_mid_right_box>
+                        <div class=login_mid_right_APE id="login_mid_right_APE_erro">
+                            帳號或密碼輸入錯誤
                         </div>
-                        <div style="font-size: 16px;">Facebook</div>
-                    </div>
-                    <div id="google_login">
-                        <div class="login_logo_box">
-                            <img src="../pic//google-symbol.png" alt="">
+                        <input type="text" placeholder="電話號碼/使用者名稱/Email" class=login_mid_right_APE id="account" name="loginaccount">
+                        <div id="login_mid_right_box_accountremind">請填寫此欄位</div>
+                        <div class=login_mid_right_APE id="password">
+                            <input type="password" placeholder="密碼" id="password_input" name="loginpassword">
+                            <div class="password_hide_password">
+                                <img src="../pic//visibility.png" alt="" class="login_mid_right_APE_eye" id="login_mid_right_APE_eye_loginopen" style="visibility: hidden;" onclick="login_eyes_visible(event)">
+                                <img src="../pic/invisible.png" alt="" class="login_mid_right_APE_eye" id="login_mid_right_APE_eye_loginclose" style="visibility: visible;" onclick="login_eyes_hidden(event)">
+                            </div>
+
                         </div>
-                        <div id="google_login_text">Google</div>
-                    </div>
-                    <div id="apple_login">
-                        <div class="login_logo_box">
-                            <img src="../pic//appleture.png" alt="" id="apple_login_img">
+                        <div id="login_mid_right_box_passwordremind">請填寫此欄位</div>
+                        <div id="login_mid_right_button">
+                            <input type="button" value="登入" id="loginbutton" onclick="login_approve()"><br>
+                            <div>
+                                <span id="forget_password"><a
+                                        href="https://shopee.tw/buyer/login?next=https%3A%2F%2Fshopee.tw%2F">忘記密碼</a></span>
+                                <span id="smslogin"><a
+                                        href="https://shopee.tw/buyer/login?next=https%3A%2F%2Fshopee.tw%2F">使用SMS簡訊登入</a></span>
+                            </div>
                         </div>
-                        <div id="apple_login_text">Apple</div>
+                        <div id="login_mid_right_hr">
+                            <div>
+                                <div></div>
+                                <!--虛線-->
+                                <span>或</span>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="login_mid_right_otherlogin">
+                            <div class="fb_login">
+                                <div class="login_logo_box">
+                                    <img src="../pic//FB.svg" alt="">
+                                </div>
+                                <div style="font-size: 16px;">Facebook</div>
+                            </div>
+                            <div class="google_login">
+                                <div class="login_logo_box">
+                                    <img src="../pic//google-symbol.png" alt="">
+                                </div>
+                                <div class="google_login_text">Google</div>
+                            </div>
+                            <div class="apple_login">
+                                <div class="login_logo_box">
+                                    <img src="../pic//appleture.png" alt="" class="apple_login_img">
+                                </div>
+                                <div class="apple_login_text">Apple</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <span>蝦皮新朋友?<a href="../pic//IG.svg" style="color:rgb(238,77,45) ;">註冊</a></span>
-            </div>
+            </form>
+            <!--申請帳號-->
+            <form action="/login" method="post">
+                <div id="login_mid_right_registered" class="login_registered">
+                    <div class="login_mid_right_title_box">
+                        <div class="login_mid_right_title_login" onclick="change_login()">登入</div>
+                        <div class="login_mid_right_title_registered" id="login_mid_right_title_registered" onclick="change_registered()">註冊</div>
+                    </div>
+                    <div class=login_mid_right_box>
+                        <div class=login_mid_right_APE id="login_mid_right_APE_erro_registered">
+                            <!-- <span th:text="${erro}">註冊新會員</span> -->
+                            <span>註冊新會員</span>
+                        </div>
+                        <input type="text" placeholder="電話號碼/使用者名稱/Email" class=login_mid_right_APE id="account_registered" name="registered_account">
+                        <div id="registered_mid_right_box_accountremind">欲申請帳號</div>
+                        <div class=login_mid_right_APE id="password_registered">
+                            <input type="password" placeholder="密碼" id="password_input_registered" name="registered_password">
+                            <div class="password_hide_password">
+                                <img src="../pic//visibility.png" alt="" class="login_mid_right_APE_eye" id="login_mid_right_APE_eye_registeredopen" style="visibility: hidden;" onclick="registered_eyes_visible()">
+                                <img src="../pic/invisible.png" alt="" class="login_mid_right_APE_eye" id="login_mid_right_APE_eye_registeredclose" style="visibility: visible;" onclick="registered_eyes_hidden()">
+                            </div>
+                        </div>
+                        <div id="registered_mid_right_box_passwordremind">欲申請密碼</div>
+                        <div id="login_mid_right_button_registered">
+                            <input type="button" value="註冊" id="registered_button" onclick="registered_approve()"><br>
+                            <div>
+                                <span id="forget_password_registered"><a
+                                        href="https://shopee.tw/buyer/login?next=https%3A%2F%2Fshopee.tw%2F">忘記密碼</a></span>
+                                <span id="smslogin_registered"><a
+                                        href="https://shopee.tw/buyer/login?next=https%3A%2F%2Fshopee.tw%2F">使用SMS簡訊登入</a></span>
+                            </div>
+                        </div>
+                        <div id="login_mid_right_hr_registered">
+                            <div>
+                                <div></div>
+                                <!--虛線-->
+                                <span>或</span>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="login_mid_right_otherlogin">
+                            <div class="fb_login">
+                                <div class="login_logo_box">
+                                    <img src="../pic//FB.svg" alt="">
+                                </div>
+                                <div style="font-size: 16px;">Facebook</div>
+                            </div>
+                            <div class="google_login">
+                                <div class="login_logo_box">
+                                    <img src="../pic//google-symbol.png" alt="">
+                                </div>
+                                <div class="google_login_text">Google</div>
+                            </div>
+                            <div class="apple_login">
+                                <div class="login_logo_box">
+                                    <img src="../pic//appleture.png" alt="" class="apple_login_img">
+                                </div>
+                                <div class="apple_login_text">Apple</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -99,10 +169,10 @@
         <table class="footer-table">
             <tr>
                 <td><b> 客服中心 </b>
-                <td><strong> 關於蝦皮 </strong> </td>
-                <td><strong> 付款 </strong> </td>
-                <td><strong> 關注我們 </strong> </td>
-                <td><strong> 下載熊熊 </strong> </td>
+                    <td><strong> 關於蝦皮 </strong> </td>
+                    <td><strong> 付款 </strong> </td>
+                    <td><strong> 關注我們 </strong> </td>
+                    <td><strong> 下載熊熊 </strong> </td>
             </tr>
 
             <tr>
@@ -189,15 +259,7 @@
         <div class="footer-footer">
             <div class="footer-footer-copyright">© 2021 Bear. 版權所有。</div>
             <div>
-                國家和地區:
-                新加坡
-                印尼
-                台灣
-                泰國
-                馬來西亞
-                越南
-                菲律賓
-                巴西
+                國家和地區: 新加坡 印尼 台灣 泰國 馬來西亞 越南 菲律賓 巴西
             </div>
         </div>
     </div>
