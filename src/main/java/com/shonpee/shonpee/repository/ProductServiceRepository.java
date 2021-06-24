@@ -22,13 +22,13 @@ public class ProductServiceRepository {
 	private PropertySecondRepository propertySecond = null;
 	
 	
-	public PropertyBean insert(PropertyBean bean) {
+	public PropertyBean insertFirstProperty(PropertyBean bean) {
 		PropertyBean Propertyresult = null;
 		Propertyresult = property.save(bean);
 		return Propertyresult;
 	}
 
-	public PropertyBeanSecond insert(PropertyBeanSecond bean) {
+	public PropertyBeanSecond insertSecondProperty(PropertyBeanSecond bean) {
 		PropertyBeanSecond PropertySecondresult = null;
 		PropertySecondresult = propertySecond.save(bean);
 		return PropertySecondresult;

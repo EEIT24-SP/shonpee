@@ -10,6 +10,8 @@ import com.shonpee.shonpee.domain.ProductBean;
 public interface ProductRepository extends JpaRepository<ProductBean, Integer> {
 	
 	@Query("Select max(Productid) from ProductBean")
-	Integer findmaxproductid();
+	public Integer findmaxproductid();
 	
+	@Query("Select p from ProductBean p where p.Productid = ?1")
+	public ProductBean findProductBeanbyID(Integer data);
 }
