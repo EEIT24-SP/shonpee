@@ -16,5 +16,5 @@ public interface ProductRepository extends JpaRepository<ProductBean, Integer> {
 //	Integer findmaxproductid();
 
 	List<ProductBean> findByProductFirstCategoryId(Integer productFirstCategoryId);
-
+	
 }

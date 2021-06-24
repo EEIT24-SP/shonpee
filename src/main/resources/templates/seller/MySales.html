@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/MyCategoriesPage1.css">
-    <link rel="stylesheet" href="/css/Seller.css">
-
+    <link rel="stylesheet" th:href="@{/css/MyCategoriesPage1.css}">
+    <link rel="stylesheet" th:href="@{/css/Seller.css}">
 
 </head>
 
@@ -46,7 +45,7 @@
                         </div>
                         <div class="myProduct-right-ItemList-container">
                             <div class="myProduct-right-ItemList-container-body">
-                                <div class="myProduct-right-ItemList-container-body-list">
+                                <div class="myProduct-right-ItemList-container-body-list" th:each="status1Order : ${status1Orders}">
                                     <div class="myProduct-right-ItemList-bar-list">
                                         <div><img style="width: 56px;height: 56px;float: left;" src="/pic/apple.svg" alt="">
                                         </div>
@@ -55,75 +54,9 @@
                                         </div>
                                     </div>
                                     <div class="myProduct-right-ItemList-bar-list-a">規格</div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">買家應付金額</div>
+                                    <div class="myProduct-right-ItemList-bar-list-a">買家應付額</div>
 
-                                    <div class="myProduct-right-ItemList-bar-list-a">狀態</div>
-                                    <div class="myProduct-right-ItemList-bar-list-b">
-                                        <div class="button-container"><button class="modify-button">出貨</button> <button class="delete-button">取消</button> </div>
-                                    </div>
-                                </div>
-                                <div class="myProduct-right-ItemList-container-body-list">
-                                    <div class="myProduct-right-ItemList-bar-list">
-
-                                        <div><img style="width: 56px;height: 56px;float: left;" src="/pic/apple.svg" alt="">
-                                        </div>
-                                        <div>
-                                            <div>品名</div>
-                                        </div>
-                                    </div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">規格</div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">買家應付金額</div>
-
-                                    <div class="myProduct-right-ItemList-bar-list-a">狀態</div>
-                                    <div class="myProduct-right-ItemList-bar-list-b">
-                                        <div class="button-container"><button class="modify-button">出貨</button> <button class="delete-button">取消</button> </div>
-                                    </div>
-                                </div>
-                                <div class="myProduct-right-ItemList-container-body-list">
-                                    <div class="myProduct-right-ItemList-bar-list">
-                                        <div><img style="width: 56px;height: 56px;float: left;" src="/pic/apple.svg" alt="">
-                                        </div>
-                                        <div>
-                                            <div>品名</div>
-                                        </div>
-                                    </div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">規格</div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">買家應付金額</div>
-
-                                    <div class="myProduct-right-ItemList-bar-list-a">狀態</div>
-                                    <div class="myProduct-right-ItemList-bar-list-b">
-                                        <div class="button-container"><button class="modify-button">出貨</button> <button class="delete-button">取消</button> </div>
-                                    </div>
-                                </div>
-                                <div class="myProduct-right-ItemList-container-body-list">
-                                    <div class="myProduct-right-ItemList-bar-list">
-                                        <div><img style="width: 56px;height: 56px;float: left;" src="/pic/apple.svg" alt="">
-                                        </div>
-                                        <div>
-                                            <div>品名</div>
-                                        </div>
-                                    </div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">規格</div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">買家應付金額</div>
-
-                                    <div class="myProduct-right-ItemList-bar-list-a">狀態</div>
-                                    <div class="myProduct-right-ItemList-bar-list-b">
-                                        <div class="button-container"><button class="modify-button">出貨</button> <button class="delete-button">取消</button> </div>
-                                    </div>
-                                </div>
-                                <div class="myProduct-right-ItemList-container-body-list">
-                                    <div class="myProduct-right-ItemList-bar-list">
-
-                                        <div><img style="width: 56px;height: 56px;float: left;" src="/pic/apple.svg" alt="">
-                                        </div>
-                                        <div>
-                                            <div>品名</div>
-                                        </div>
-                                    </div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">規格</div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">買家應付金額</div>
-
-                                    <div class="myProduct-right-ItemList-bar-list-a">狀態</div>
+                                    <div class="myProduct-right-ItemList-bar-list-a">待收貨</div>
                                     <div class="myProduct-right-ItemList-bar-list-b">
                                         <div class="button-container"><button class="modify-button">出貨</button> <button class="delete-button">取消</button> </div>
                                     </div>
