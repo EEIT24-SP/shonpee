@@ -31,5 +31,7 @@ public class ShonpeeOrderBean {
 	private Integer status;
 	private Timestamp shippedDate;
 	private Timestamp requiredDate;
-	
+	private String type_value1;
+	private String type_value2;
+
 }

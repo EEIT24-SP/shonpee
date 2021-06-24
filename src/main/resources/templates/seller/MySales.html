@@ -15,9 +15,9 @@
                 <a href=""><img src="/pic/Bear.svg" alt=""></a>
             </div>
             <div>
-                <div><a href="">首頁</a></div>
-                <div><a href="">賣家商品</a></div>
-                <div><a href="">賣家銷售</a></div>
+                <div><a th:href="@{/}">首頁</a></div>
+                <div><a th:href="@{/}">賣家商品</a></div>
+                <div><a th:href="@{/mysales}">賣家銷售</a></div>
             </div>
         </div>
         <div class="header-navbar-right">
@@ -52,7 +52,10 @@
                                         </div>
                                         <div class="myProduct-right-ItemList-item-prodname">[[${status1Order.productBean.productName}]]</div>
                                     </div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">[[${status1Order.shonpeeOrderBean.type_value1}]]</div>
+                                    <div class="myProduct-right-ItemList-bar-list-a itemList-item-prodtype">
+                                        <div class="myProduct-right-ItemList-item-prodtype-1">[[${status1Order.shonpeeOrderBean.type_value1}]]<span>,&nbsp;</span></div>
+                                        <div class="myProduct-right-ItemList-item-prodtype-2">[[${status1Order.shonpeeOrderBean.type_value2}]]</div>
+                                    </div>
                                     <div class="myProduct-right-ItemList-bar-list-a">[[${status1Order.shonpeeOrderBean.total}]]</div>
 
                                     <div class="myProduct-right-ItemList-bar-list-a">[[${status1Order.shonpeeOrderBean.status}]]</div>
