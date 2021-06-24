@@ -95,7 +95,9 @@ public class AccountController {
 				//如果有商品,則判別商品ID是否重複,重複則自行遞增
 				if (cartBean.getProductBean().getProductid().equals(Id)) {
 					System.out.println(cartBean.getMember_Id());
-					cartBean.setQuantity(PB.getProduct_Stock()+cartBean.getQuantity());
+					cartBean.setTotal_Price(Integer.toString(Integer.parseInt(cartBean.getTotal_Price()) /Integer.parseInt( cartBean.getQuantity())));
+					cartBean.setQuantity(Integer.toString(PB.getProduct_Stock()+Integer.parseInt(cartBean.getQuantity())));
+					cartBean.setTotal_Price(Integer.toString(Integer.parseInt(cartBean.getTotal_Price()) *Integer.parseInt( cartBean.getQuantity())));
 					CR.save(cartBean);
 					return "redirect:/main-page/item";
 				} 
@@ -103,7 +105,8 @@ public class AccountController {
 			for (ProductBean productBean : list1) {
 				if (productBean.getProductid().equals(Id) && productBean.getMemberBean().getUser_Account().equals(Name)) {
 //					 System.out.println(productBean.getMemberBean().getUser_Account().equals("bee567"));
-					CB.setQuantity(PB.getProduct_Stock());
+					CB.setQuantity(Integer.toString(PB.getProduct_Stock()));
+					CB.setTotal_Price(Integer.toString(PB.getProduct_Stock()*productBean.getProduct_Price()));
 					CB.setProductBean(productBean);
 					CB.setMember_Id(productBean.getMemberBean().getUser_Account());
 					CR.save(CB);
@@ -115,9 +118,12 @@ public class AccountController {
 	
 	
 	@RequestMapping("/main-page/cart")
-	public String cart(HttpSession session, Model model, MemberBean MB, CartBean CB, ProductBean PB) {
+	public String cart(HttpSession session, Model model ,CartBean CB) {
 		List<CartBean>list =CR.findAll();
-			model.addAttribute("cartitem", list);		
+//		for(CartBean cartBean:list) {
+//			System.out.println("我是CaBean"+ cartBean.getProductBean().getProduct_Stock());
+//		}
+			model.addAttribute("cartitem", list);
 		return "cart";
 	}
 	
@@ -129,8 +135,12 @@ public class AccountController {
 	@PostMapping(value = ("/main-page/cart"))
 	public String cartview(CartBean CB, HttpSession session, Model model) {
 			System.out.println("我是CB"+ CB.getMember_Id());
-		
-		
+			System.out.println("我是CBstock"+ CB.getProductBean().getProduct_Stock());
+			System.out.println("我是QY"+ CB.getQuantity());
+			System.out.println("我是CBstock"+ Integer.toString(CB.getProductBean().getProduct_Price()));
+			System.out.println("我是CBstock"+ CB.getProductBean().getProduct_Photo());
+			System.out.println("我是CBstock"+ CB.getTotal_Price());
+
 		return "redirect:/main-page/cart";
 	}
 	

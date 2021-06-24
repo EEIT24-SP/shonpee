@@ -19,8 +19,9 @@ public class CartBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cart_Id;
-	private Integer quantity;
+	private String quantity;
 	private String 	member_Id;
+	private String 	total_Price;
 	@ManyToOne
 	@JoinColumn(name = "product_Id")
 	private ProductBean productBean;

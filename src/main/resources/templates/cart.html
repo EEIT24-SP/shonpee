@@ -7,6 +7,7 @@
 <!--購物車样式表-->
 <link rel="stylesheet" type="text/css" href="../css/cart.css" />
 <!--操作cookie的js文件-->
+<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="../js/cookie.js"></script>
 <link rel="stylesheet" href="../css/Bear_Shop.css">
 </head>
@@ -43,7 +44,7 @@
 
 		<div class="Bear-header-bottom-container">
 			<div style="width: 30%; height: 100px; display: flex; align-items: center;">
-				<a href="./Bear_Shop.html">
+				<a href="/main-page">
 					<div style="display: flex; align-items: center; width: 340px;">
 						<div>
 							<img style="width: 100px; height: 80px;" src="../pic/Bear.svg" alt="">
@@ -72,10 +73,7 @@
 	</nav>
 
 	<div class="cart-mid" id="cart-mid-id">
-		<div class="cart-mid" id="cart-mid-freeshipping">
-			<img src="../pic/free-delivery.png" alt=""> <span>點選下方優惠券，享受運費優惠！</span>
-		</div>
-		<div class="cart-mid" id="cart-page-product-header">
+				<div class="cart-mid" id="cart-page-product-header">
 			<div>
 				<input type="checkbox" class="cart-page-checkbox">
 				<div class="cart-page-product-header__product">商品</div>
@@ -85,63 +83,60 @@
 				<div class="cart-page-product-header__action">操作</div>
 			</div>
 		</div>
-		<div class="cart-page-shop-section">
+		
+		
+			<form action=""  th:action="@{/main-page/cart}"  method="post">
+		
+		<div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
 			<div class="cart-page-shop-header">
 				<div>
 					<input type="checkbox" class="cart-page-checkbox">
 					<div>
-						<img src="../pic/store.svg" class="cart-page-shop-header-icon"> <span>店家名稱</span> <img
-							src="../pic/chat.svg" class="cart-page-shop-header-icon">
+						<img src="../pic/store.svg" class="cart-page-shop-header-icon"> <input th:name="|member_Id|" th:value="${userto.member_Id}" readonly="readonly"> 
 					</div>
 				</div>
 			</div>
 			
 
 
-	<form action="" th:action="@{/main-page/cart}"  method="post">
-
-
 
 				<div class="cart-page-product">
 					<div class="cart-page-product-allitems">
-						<div th:each="userto : ${cartitem}">
-							<input type="checkbox" class="cart-page-checkbox"> <img src="../pic/dogtest.jpg"
+						<div>
+							<input type="checkbox" class="cart-page-checkbox"> <img 
+ th:name="|productBean.product_Photo|" th:src="${userto.productBean.product_Photo}"
 								alt="" class="product-img">
 							<div class="product-description-box">
 								<div>
-									<input th:name="|member_Id|" th:value="${userto.member_Id}">
+								<input type="text"  th:name="|productBean.product_Name|" th:value="${userto.productBean.product_Name}">
 								</div>
-								<span class="product-Stockup">較長備貨</span><br> <span class="product-Soldout-text">你選擇的規格已售完，請選擇其他規格</span>
 							</div>
 							<div class="product-size">
-								<div class="product-size-button">
+								<div class="product-size-button" >
 									規格
 									<div class="product-size-button-icon"></div>
 								</div>
 								<div>藍色XL</div>
 							</div>
 							<div class="product-unit-price">
-								<span class="product-unit-price-Originalprice">123456</span> <span>156151</span>
-								<div class="product-unit-price-update">
-									<div class="product-unit-price-discount">9折</div>
-									<div>已更新</div>
-								</div>
+							<input type="text" class="unit-price"  th:name="|productBean.product_Price|" 
+							th:value="${userto.productBean.product_Price}" readonly="readonly" >
 							</div>
 							<div class="product-quanftity">
 								<div>
-									<button>-</button>
-									<input type="text">
-									<button>+</button>
+									<button class="minus"  type="button">-</button>
+							<input type="text"  class="numcount" th:name="|Quantity|" th:value="${userto.Quantity}"  value="1" readonly="readonly">
+									<button  class="plus"  type="button">+</button>
 								</div>
 								<div>剩下10000件</div>
 							</div>
 							<div class="product-total-price-box">
-								<span class="product-total-price">$100</span>
+								<input readonly="readonly" class="product-total-price" type="text" th:name="|total_Price|" th:value="${userto.Total_Price}">
 							</div>
 							<div class="product-action">
 								<button class="product-action-delet">刪除</button>
 								<button class="product-action-like">
-									<span>找相似<img src="../pic/triangle.svg" alt=""></span>
+									<div>找相似<img src="../pic/triangle.svg" alt=""></div>
 								</button>
 							</div>
 						</div>
@@ -313,6 +308,32 @@
 
 	<!--操作购物车页面的cart.js-->
 	<script src="../js/cart.js"></script>
+	<script type="text/javascript" th:inline="javascript">
+	
+	
+	$('.plus').on('click', function () {
+			var temp = $(this).parent().children('.numcount').prop('value');
+			var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').val();
+			$(this).parents().children('.numcount').prop('value', parseInt(temp) + 1);
+			var price = $(this).parents().children('.product-unit-price').children('.unit-price').val();
+			$(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(total) + parseInt(price)));
+			console.log($(this).parents().children('.product-total-price-box').children('.product-total-price').val());
+			console.log($(this).parents().children('.product-unit-price').children('.unit-price').children());
+		})
+		$('.minus').on('click', function () {
+			var temp = $(this).parent().children('.numcount').val();
+			var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').val();
+			var price = $(this).parents().children('.product-unit-price').children('.unit-price').val();
+			if (temp > 1) {
+				$(this).parents().children('.numcount').prop('value', parseInt(temp) - 1);
+				$(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(total) - parseInt(price)));
+			}
+			// var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value');
+
+		})
+		
+		
+	</script>
 </body>
 
 </html>
