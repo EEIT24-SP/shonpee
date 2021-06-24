@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.shonpee.shonpee.Repository.MemberRepository;
 import com.shonpee.shonpee.domain.MemberBean;
+import com.shonpee.shonpee.repository.MemberRepository;
 
 @Controller
 public class AccountController {

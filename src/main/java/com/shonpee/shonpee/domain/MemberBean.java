@@ -20,7 +20,7 @@ public class MemberBean {
 	private String real_Name;
 	private String email;
 	private String tel;
-	private String gender;
+	private Integer gender;
 	private String address;
 	private String year;
 	private String month;

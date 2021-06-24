@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/mycategoriespage1.css}">
+    <script th:src="@{/js/jquery-3.4.1.js}" defer></script>
+    <script th:src="@{/js/mycategoriespage1.js}" defer></script>
+</head>
+
+<body>
+    <div class="header-navbar-container">
+        <div class="header-navbar-left">
+            <div><a href=""><img src="/pic/Bear.svg" alt=""></a></div>
+            <div>
+                <div><a href="">首頁</a></div>
+                <div><img src="/pic/right-arrow-gray.png" alt=""></div>
+                <div><a href="">我的商品</a></div>
+                <div><img src="/pic/right-arrow-gray.png" alt=""></div>
+                <div><a href="">商品分類</a></div>
+            </div>
+        </div>
+        <div class="header-navbar-right">
+            <div class="head-account"><img src="/pic/bear.png" alt=""><span>account1234</span></div>
+            <div class="logout"><span>登出</span></div>
+        </div>
+    </div>
+    <div class="Category-container">
+        <div class="Category-container-all">
+            <div class="Category-header">
+                <h2>新增商品</h2>
+                <p>請在下方填入您的商品所屬分類</p>
+            </div>
+            <div class="Category-Product-Search">
+                <div class="ProductName">商品名稱:
+                    <div class="ProductName-input">
+                        <div class="input-hint">
+                            <span class="msg">商品名稱不能為空白</span>
+                            <input type="text" class="input-text"  maxlength="50" placeholder="請輸入相關資訊">
+                        </div>
+                        <div class="input-distinct"><span class="input-length">0</span>/50</div>
+                    </div>
+                </div>
+            </div>
+        <div class="Category-selector">
+            <div class="Category-selector-wrap">
+                <div class="Category-selector-list">
+                    <ul class="Category-scroll-item">
+                        <li class="Category-item">
+                            <p>女生衣著</p>
+                            <img src="/pic/right-arrow-gray.png" alt="">
+                            <div class="Category-second-container display-none">
+                                <ul class="Category-scroll-item-second">
+                                    <li class="Category-item-second">
+                                        <p>T恤/T-Shirt</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>其他T恤/T-Shirt</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>短袖T恤/T-Shirt</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>長袖T恤/T-Shirt</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>七分T恤/T-Shirt</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>大尺碼T恤/T-Shirt</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>襯衫</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>其他襯衫</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>短袖襯衫</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>長袖襯衫</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>無袖襯衫</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>七分袖襯衫</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>洋裝</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>其他洋裝</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>短袖洋裝</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>長袖洋裝</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>無袖洋裝</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>過膝長洋裝</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>短褲</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>其他短褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>休閒短褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>牛仔短褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>內搭短褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>連身褲/吊帶褲</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>長褲</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>其他長褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>寬褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>休閒長褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>七分褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>哈倫褲/西裝褲</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="Category-item">
+                            <p>男生衣著</p>
+                            <img src="/pic/right-arrow-gray.png" alt="">
+                            <div class="Category-second-container display-none">
+                                <ul class="Category-scroll-item-second">
+                                    <li class="Category-item-second">
+                                        <p>T恤/T-Shirt</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>其他T恤/T-Shirt</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>短袖T恤/T-Shirt</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>長袖T恤/T-Shirt</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>七分T恤/T-Shirt</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>大尺碼T恤/T-Shirt</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    <li class="Category-item-second">
+                                        <p>長褲</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>其他長褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>休閒長褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>牛仔長褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>哈倫褲/西裝褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>七分褲</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>外套</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>其他外套</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>棒球外套</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>防風外套</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>羽絨外套</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>西裝外套</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>運動服飾</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>其他運動服飾</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>運動上衣</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>運動褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>運動外套</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>短褲</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>其他短褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>休閒短褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>牛仔短褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>大尺碼短褲</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>海灘褲</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        <li class="Category-item">
+                            <p>書籍及文創相關商品</p>
+                            <img src="/pic/right-arrow-gray.png" alt="">
+                            <div class="Category-second-container display-none">
+                                <ul class="Category-scroll-item-second">
+                                    <li class="Category-item-second">
+                                        <p>教科參考書</p>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>雜誌期刊</p>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>文學小說</p>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>旅遊相關書籍</p>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>語言學習相關書籍</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="Category-item">
+                            <p>居家生活用品</p>
+                            <img src="/pic/right-arrow-gray.png" alt="">
+                            <div class="Category-second-container display-none">
+                                <ul class="Category-scroll-item-second">
+                                    <li class="Category-item-second">
+                                        <p>餐廚用品</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>刀具/砧板</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>餐具</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>保鮮盒/便當盒</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>烘焙用具</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>炒鍋/平底鍋</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>收納用品</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>收納袋/壓縮袋</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>桌上收納</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>鞋盒/鞋架</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>層架/置物架</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>掛勾</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>傢具/家具用品</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>沙發/沙發床</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>化妝台/化妝鏡</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>躺椅/折疊椅</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>餐桌/餐桌椅</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>茶几</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>寢具用品</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>床包/床罩</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>床墊</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>睡袋</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>毯子</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>枕頭/枕頭罩</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>五金用品</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>油漆顏料</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>鉗子/板手</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>工具梯</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>開關/電氣材料</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>螺絲起子</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="Category-item">
+                            <p>手機平板相關商品</p>
+                            <img src="/pic/right-arrow-gray.png" alt="">
+                            <div class="Category-second-container display-none">
+                                <ul class="Category-scroll-item-second">
+                                    <li class="Category-item-second">
+                                        <p>Apple空機</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>IPHONE 12 系列</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>IPHONE 11 系列</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>IPHONE XR 系列</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>IPHONE SE 系列</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>IPHONE 其他系列</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>Android空機</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>Samsung系列</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>Sony系列</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>OPPO系列</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>VIVO系列</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>ASUS系列</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>平板電腦</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>IPad系列</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>Android系列</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>其他系列</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>耳機喇叭</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>有線耳機</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>藍牙耳機</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>有線喇叭</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>藍牙喇叭</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>AirPods系列</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="Category-item-second">
+                                        <p>行動電源</p>
+                                        <img src="/pic/right-arrow-gray.png" alt="">
+                                        <div class="Category-third-container">
+                                            <ul class="Category-scroll-item-third">
+                                                <li class="Category-item-third">
+                                                    <p>5000mAh以下</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>5000-10000mAh</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>10000mAh-20000mAh</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>20000mAh以上</p>
+                                                </li>
+                                                <li class="Category-item-third">
+                                                    <p>其他</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="Category-selector-list">
+                </div>
+                <div class="Category-selector-list">
+                </div>
+            </div>
+            <div class="category-selected"> 目前已選擇:
+                <span name="first" id="category-first"></span>
+                <span  class="span1" id="span1">></span>
+                <span name="second" id="category-second"></span>
+                <span class="span1" id="span2">></span>
+                <span name="third" id="category-third"></span>
+            </div>
+        </div>
+        <div class="btn">
+            <a th:href="@{/NewProduct}">
+                <p>下一步</p>
+            </a>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

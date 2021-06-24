@@ -2,15 +2,12 @@ package com.shonpee.shonpee;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.ui.Model;
 
-import com.shonpee.shonpee.Repository.MemberRepository;
 import com.shonpee.shonpee.domain.MemberBean;
+import com.shonpee.shonpee.repository.MemberRepository;
 
 @SpringBootTest
 class ShonpeeApplicationTests {
