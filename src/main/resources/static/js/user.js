@@ -25,8 +25,6 @@ $('#item-input-qty').on('keyup',function(e){
 })
 
 
-
-
 function view_img(myid) {
     document.getElementById('main-img').src = document.getElementById(`${myid.id}`).src;
     // alert("id 為: " + myid.id);
@@ -67,6 +65,6 @@ function add_address() {
     document.getElementById('content-address').style.display = 'block';
     document.getElementById('body').style.overflow="hidden";
 
-    
 }
+
 

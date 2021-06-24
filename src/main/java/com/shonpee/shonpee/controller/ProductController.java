@@ -6,13 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -26,26 +22,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.shonpee.shonpee.ServiceRepository.ProductServiceRepository;
 import com.shonpee.shonpee.domain.ProductBean;
-import com.shonpee.shonpee.domain.ProductCategoryBean;
+import com.shonpee.shonpee.domain.Productcategory;
 import com.shonpee.shonpee.domain.PropertyBean;
 import com.shonpee.shonpee.domain.PropertyBeanSecond;
-import com.shonpee.shonpee.repository.ProductCategoryRepository;
 import com.shonpee.shonpee.repository.ProductRepository;
-import com.shonpee.shonpee.repository.ProductServiceRepository;
+import com.shonpee.shonpee.repository.ProductcategoryRepository;
 import com.shonpee.shonpee.repository.PropertyRepository;
 import com.shonpee.shonpee.repository.PropertySecondRepository;
 
-
 @Controller
 public class ProductController {
-	
+
 	@Autowired
 	private ProductServiceRepository productService;
-	
+
 	@Autowired
 	private ProductRepository productRepository;
-	
+
 	@Autowired
 	private PropertyRepository propertyRepository;
 	
@@ -53,11 +48,18 @@ public class ProductController {
 	private PropertySecondRepository propertySecondRepository;
 	
 	@Autowired
-	private ProductCategoryRepository productCategoryRepository;
-	
+	private ProductcategoryRepository productcategoryRepository;
+
 	@Value("${upload-path}")
 	private String uploadpath;
-	
+
+	@GetMapping("/")
+	public String mainPage(Model model) {
+		// 找出第一層的全部類別，放入頁面
+		model.addAttribute("categories", listFirstCategories());
+		return "main";
+	}
+
 	@GetMapping("/product/{productid}")
     public String bearitem(@PathVariable("productid") Integer productid, Model model ) {
 		
@@ -102,7 +104,7 @@ public class ProductController {
 	
 	@RequestMapping("/NewProduct")
     public String NewProductpage( ) {
-		
+		//MyCategoriesPage1進入NewProduct
 		 System.out.println("BEE");
         return "NewProduct";
     }
@@ -111,6 +113,7 @@ public class ProductController {
 	@RequestMapping("/NewProduct.page")
 	@ResponseBody
     public String Newproduct(String first,String second,String third,String name,HttpSession session ) throws IOException {
+		//MyCategoriesPage1帶入的分類
 		 session.setAttribute("first",first);
 		 session.setAttribute("second",second);
 		 session.setAttribute("third",third);
@@ -157,8 +160,8 @@ public class ProductController {
 			 	
 			 	
 			//類別 	
-		 List<ProductCategoryBean>  ProductCategoryBeans= productCategoryRepository.findAll();
-		 	 for(ProductCategoryBean productCategoryBean  : ProductCategoryBeans) {
+		 List<Productcategory>  ProductCategoryBeans= productcategoryRepository.findAll();
+		 	 for(Productcategory productCategoryBean  : ProductCategoryBeans) {
 		 		 if(productCategoryBean.getCategoryName().equals(session.getAttribute("first"))) {
 		 			bean.setProductFirstCategoryId(productCategoryBean.getCategoryId());
 		 		 }else if(productCategoryBean.getCategoryName().equals(session.getAttribute("second"))){
@@ -168,7 +171,6 @@ public class ProductController {
 		 		 }
 		 		 
 		 	 }
-		 	 		 	 
 		 bean.setMemberId("anna38");
 		 
 		 ProductBean newbean = productService.insert(bean);
@@ -184,10 +186,25 @@ public class ProductController {
 		 productService.insertFirstProperty(propertyBean);
 		 productService.insertSecondProperty(propertyBeanSecond);
 		 
-	        return "bear_item";
+	    return "bear_item";
 	    }
 	
-	 
-	 
-	 
+	@GetMapping("/cat/{categoryId}")
+	public String showOneCategoryProducts(@PathVariable("categoryId") Integer categoryId, 
+											Model model) {
+		// 找出第一層的全部類別，放入頁面
+		List aaaList = listFirstCategories();
+		model.addAttribute("categories", listFirstCategories());
+		// 找出該分類的產品，放入頁面
+		List<ProductBean> productsOfTheCategory = productRepository.findByProductFirstCategoryId(categoryId);
+		model.addAttribute("products", productsOfTheCategory);
+		return "main";
+	}
+
+	
+	// 以下是抽離的重複程式，沒有設定RequestMapping路徑
+	public List<Productcategory> listFirstCategories() {
+		List<Productcategory> firstProductcategories = productcategoryRepository.findByParentId(0);
+		return firstProductcategories;
+	}
 }

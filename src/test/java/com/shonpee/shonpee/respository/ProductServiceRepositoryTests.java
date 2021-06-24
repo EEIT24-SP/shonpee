@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.shonpee.shonpee.ServiceRepository.ProductServiceRepository;
 import com.shonpee.shonpee.domain.ProductBean;
-import com.shonpee.shonpee.repository.ProductServiceRepository;
 
 @SpringBootTest
 public class ProductServiceRepositoryTests {
@@ -28,7 +28,7 @@ public class ProductServiceRepositoryTests {
 		bean.setProductStock(2);;
 		bean.setProductPhoto("testpic");
 		bean.setProductDetail("cry");
-		bean.setMemberId("allen3375");
+		bean.setMemberId("anna38");
 		bean.setProductFirstCategoryId(1);;
 		bean.setProductSecondCategoryId(2);
 		bean.setProductThirdCategoryId(3);

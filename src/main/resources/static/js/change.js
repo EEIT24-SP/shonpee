@@ -1,4 +1,6 @@
+
 var cot = 0;
+
     function nex() {
         if (cot <= 3) {
             $('.item-container-left-b img').eq(cot).animate({ 'margin-left': '-89px' }, 100);
@@ -11,13 +13,16 @@ var cot = 0;
             $('.item-container-left-b img').eq(cot).animate({ 'margin-left': '0px' }, 100);
         }
     }
+
     var input_cnt = 0;
     var input_sel_list = document.getElementById("input-sel");
     var input_list = document.getElementById("input-list");
     function btn_input_year_list() {
+
         for (var i = 1900; i <= 2021; i++) {
             var input_sel_list_option = document.createElement("option");
             input_sel_list_option.innerHTML = i;
+
             input_sel_list.appendChild(input_sel_list_option);
         }
         if (input_cnt < 2) {
@@ -46,9 +51,11 @@ var cot = 0;
     var input_month_list = document.getElementById("input-month-list");
     
     function btn_input_month_list() {
+
         for (var i = 1; i <= 12; i++) {
             var input_sel_list_option = document.createElement("option");
             input_sel_list_option.innerHTML = i;
+
             input_month_sel_list.appendChild(input_sel_list_option);
         }
         if (input_month_cnt < 2) {
@@ -74,9 +81,11 @@ var cot = 0;
     var input_day_sel_list = document.getElementById("input-day-sel");
     var input_day_list = document.getElementById("input-day-list");
     function btn_input_day_list() {
+
         for (var i = 1; i <= 31; i++) {
             var input_sel_list_option = document.createElement("option");
             input_sel_list_option.innerHTML = i;
+
             input_day_sel_list.appendChild(input_sel_list_option);
         }
         if (input_day_cnt < 2) {
@@ -96,6 +105,7 @@ var cot = 0;
         input_day_sel_list.style.visibility = 'hidden'
         input_day_cnt = 0;
     }
+
 
     function waithide() {
         var obj = document.getElementById("success-msg");
@@ -119,3 +129,4 @@ $('.property-value-second').on("click",function(){
   	$(this).attr("name","selectsecond");
     $(this).addClass('property-select');
 })
+

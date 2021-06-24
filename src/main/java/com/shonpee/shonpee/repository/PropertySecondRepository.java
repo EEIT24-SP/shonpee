@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.shonpee.shonpee.domain.PropertyBeanSecond;
 
+
 public interface PropertySecondRepository extends JpaRepository<PropertyBeanSecond, Integer> {
 	
 	@Query(value="Select * from product_type_detail_second where Productid2 = ?1",nativeQuery = true)

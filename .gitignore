@@ -2,13 +2,12 @@ src/main/resources/static/pic/*
 target/*
 
 
-# HELP.md
-# target/
-# !.mvn/wrapper/maven-wrapper.jar
-# !**/src/main/**/target/
-# !**/src/test/**/target/
-
-
+HELP.md
+target/
+target/*
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 ### STS ###
 .apt_generated
