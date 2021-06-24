@@ -47,16 +47,15 @@
                             <div class="myProduct-right-ItemList-container-body">
                                 <div class="myProduct-right-ItemList-container-body-list" th:each="status1Order : ${status1Orders}">
                                     <div class="myProduct-right-ItemList-bar-list">
-                                        <div><img style="width: 56px;height: 56px;float: left;" src="/pic/apple.svg" alt="">
+                                        <div class="myProduct-right-ItemList-item-prodpic">
+                                            <img src="/pic/apple.svg" alt="">
                                         </div>
-                                        <div>
-                                            <div>品名</div>
-                                        </div>
+                                        <div class="myProduct-right-ItemList-item-prodname">[[${status1Order.productBean.productName}]]</div>
                                     </div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">規格</div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">買家應付額</div>
+                                    <div class="myProduct-right-ItemList-bar-list-a">[[${status1Order.shonpeeOrderBean.type_value1}]]</div>
+                                    <div class="myProduct-right-ItemList-bar-list-a">[[${status1Order.shonpeeOrderBean.total}]]</div>
 
-                                    <div class="myProduct-right-ItemList-bar-list-a">待收貨</div>
+                                    <div class="myProduct-right-ItemList-bar-list-a">[[${status1Order.shonpeeOrderBean.status}]]</div>
                                     <div class="myProduct-right-ItemList-bar-list-b">
                                         <div class="button-container"><button class="modify-button">出貨</button> <button class="delete-button">取消</button> </div>
                                     </div>
