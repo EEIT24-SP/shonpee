@@ -488,7 +488,7 @@ $(document).ready(function () {
                         "name": $('.input-text').val()
                     },
                     success: function (data) {
-                        window.location.href = "http://localhost:8081/NewProduct";
+                        window.location.href = "http://localhost:8080/NewProduct";
                     },
                     error: function (e) {
                         alert("資料尚未完成!!!")

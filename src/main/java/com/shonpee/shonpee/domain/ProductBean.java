@@ -13,8 +13,7 @@ import lombok.Data;
 public class ProductBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-	private Integer productid;
+	private Integer Productid;
 	private String productName;
 	private Integer productPrice;
 	private Integer productStock;
