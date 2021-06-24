@@ -34,7 +34,7 @@
 					style="width: 18px;" alt=""> <strong>通知總覽</strong></a></li>
 			<li><a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
 					alt=""><strong>幫助中心</strong> </a></li>
-			<li><a href="././user/user.html"><img src="../pic/Account.svg" style="width: 20px"
+			<li><a href="/main/acc"><img src="../pic/Account.svg" style="width: 20px"
 					alt=""><strong id="ssaa">會員帳戶</strong> </a></li>
 		</ul>
 
@@ -88,22 +88,26 @@
 			<form action=""  th:action="@{/main-page/cart}"  method="post">
 		
 		<div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
+		 <input th:name="|cart_Id|" th:value="${userto.cart_Id}" class="Cart_id" readonly="readonly" type="hidden"> 
 			<div class="cart-page-shop-header">
 				<div>
-					<input type="checkbox" class="cart-page-checkbox">
+					<input  class="cart-page-checkbox">
 					<div>
-						<img src="../pic/store.svg" class="cart-page-shop-header-icon"> <input th:name="|member_Id|" th:value="${userto.member_Id}" readonly="readonly"> 
+						<img src="../pic/store.svg" class="cart-page-shop-header-icon">
+						 <input th:name="|member_Id|" th:value="${userto.member_Id}" readonly="readonly"> 
+						 
 					</div>
 				</div>
 			</div>
 			
 
+						
 
 
 				<div class="cart-page-product">
 					<div class="cart-page-product-allitems">
 						<div>
-							<input type="checkbox" class="cart-page-checkbox"> <img 
+							<input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97"> <img 
  th:name="|productBean.product_Photo|" th:src="${userto.productBean.product_Photo}"
 								alt="" class="product-img">
 							<div class="product-description-box">
@@ -134,7 +138,7 @@
 								<input readonly="readonly" class="product-total-price" type="text" th:name="|total_Price|" th:value="${userto.Total_Price}">
 							</div>
 							<div class="product-action">
-								<button class="product-action-delet">刪除</button>
+								<button type="submit"  name="delete" class="product-action-delet" value="GG">刪除</button>
 								<button class="product-action-like">
 									<div>找相似<img src="../pic/triangle.svg" alt=""></div>
 								</button>
@@ -172,7 +176,7 @@
 				<button>全選(20)</button>
 			</div>
 			<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts">
-				<button type="submit">去買單</button>
+				<button name="checkout"  value="checkout">去買單</button>
 				<div>
 					<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total">
 						<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total-price">$0</div>
@@ -309,7 +313,22 @@
 	<!--操作购物车页面的cart.js-->
 	<script src="../js/cart.js"></script>
 	<script type="text/javascript" th:inline="javascript">
+
+	$('.cart-page-checkbox').on('click',function(){
+		var Cid =  $(this).parents().children('.Cart_id').val();
+		$(this).prop('value',Cid);
+		console.log( "我是CKBX"+$(this).val());	
+	})
 	
+	
+	
+	
+	$('.product-action-delet').on('click',function(){
+		var Cid =  $(this).parents().children('.Cart_id').val();
+		$(this).prop('value',Cid);
+		console.log( $(this).parents().children('.Cart_id').val());
+		console.log( $(this).val());		
+	})
 	
 	$('.plus').on('click', function () {
 			var temp = $(this).parent().children('.numcount').prop('value');

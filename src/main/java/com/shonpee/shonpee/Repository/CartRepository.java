@@ -13,7 +13,7 @@ import com.shonpee.shonpee.domain.MemberBean;
 
 
 
-public interface CartRepository extends JpaRepository<CartBean, String>,JpaSpecificationExecutor<CartBean> {
+public interface CartRepository extends JpaRepository<CartBean, Integer>,JpaSpecificationExecutor<CartBean> {
 
 
 }
