@@ -88,13 +88,13 @@
 			<form action=""  th:action="@{/main-page/cart}"  method="post">
 		
 		<div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
-		 <input th:name="|cart_Id|" th:value="${userto.cart_Id}" class="Cart_id" readonly="readonly" type="hidden"> 
+		 <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden"> 
 			<div class="cart-page-shop-header">
 				<div>
 					<input  class="cart-page-checkbox">
 					<div>
 						<img src="../pic/store.svg" class="cart-page-shop-header-icon">
-						 <input th:name="|member_Id|" th:value="${userto.member_Id}" readonly="readonly"> 
+						 <input th:name="|memberId|" th:value="${userto.memberId}" readonly="readonly"> 
 						 
 					</div>
 				</div>
@@ -108,11 +108,11 @@
 					<div class="cart-page-product-allitems">
 						<div>
 							<input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97"> <img 
- th:name="|productBean.product_Photo|" th:src="${userto.productBean.product_Photo}"
+ th:name="|productBean.productPhoto|" th:src="${userto.productBean.productPhoto}"
 								alt="" class="product-img">
 							<div class="product-description-box">
 								<div>
-								<input type="text"  th:name="|productBean.product_Name|" th:value="${userto.productBean.product_Name}">
+								<input type="text"  th:name="|productBean.productName|" th:value="${userto.productBean.productName}">
 								</div>
 							</div>
 							<div class="product-size">
@@ -123,8 +123,8 @@
 								<div>藍色XL</div>
 							</div>
 							<div class="product-unit-price">
-							<input type="text" class="unit-price"  th:name="|productBean.product_Price|" 
-							th:value="${userto.productBean.product_Price}" readonly="readonly" >
+							<input type="text" class="unit-price"  th:name="|productBean.productPrice|" 
+							th:value="${userto.productBean.productPrice}" readonly="readonly" >
 							</div>
 							<div class="product-quanftity">
 								<div>
@@ -135,7 +135,7 @@
 								<div>剩下10000件</div>
 							</div>
 							<div class="product-total-price-box">
-								<input readonly="readonly" class="product-total-price" type="text" th:name="|total_Price|" th:value="${userto.Total_Price}">
+								<input readonly="readonly" class="product-total-price" type="text" th:name="|totalPrice|" th:value="${userto.TotalPrice}">
 							</div>
 							<div class="product-action">
 								<button type="submit"  name="delete" class="product-action-delet" value="GG">刪除</button>

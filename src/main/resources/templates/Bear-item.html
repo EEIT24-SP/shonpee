@@ -21,21 +21,14 @@
 				<div class="item-container-left">
 					<div>
 						<div class="item-container-left-a">
-							<img id="main-img" class="item-container-left-a-img" src="../pic/Bear.svg" alt="">
+							<img id="main-img" class="item-container-left-a-img" th:src="*{productPhoto}" alt="">
 						</div>
-						<div class="item-container-left-b">
-							<img onmouseover="mousehover_img(this)" onclick="view_img(this)" src="../pic/apple.svg"
-								id="view-img-1" /> <img onmouseover="mousehover_img(this)" onclick="view_img(this)"
-								src="../pic/visa-b.png" id="view-img-2" /> <img onmouseover="mousehover_img(this)"
-								onclick="view_img(this)" src="../pic/Shop_Car.svg" id="view-img-3" /> <img
-								onmouseover="mousehover_img(this)" onclick="view_img(this)" src="../pic/Bear.svg"
-								id="view-img-4" /> <img onmouseover="mousehover_img(this)" onclick="view_img(this)"
-								src="../pic/Coupon.svg" id="view-img-5" /> <img onmouseover="mousehover_img(this)"
-								onclick="view_img(this)" src="../pic/fb-b.png" id="view-img-6" /> <img
-								onmouseover="mousehover_img(this)" onclick="view_img(this)" src="../pic/googleplay.svg"
-								id="view-img-7" /> <img onmouseover="mousehover_img(this)" onclick="view_img(this)"
-								src="../pic/FB.svg" id="view-img-8" /> <img onmouseover="mousehover_img(this)"
-								onclick="view_img(this)" src="../pic/Bear.svg" id="view-img-9" />
+						<div class="item-container-left-b" >
+						<input id="photolength" th:value="${photolist.length}" type="hidden">
+						
+						<div th:each="photo,userStat:${photolist}" style="width: 89px;">
+								<img alt="" style="height: 100%;width: 89px; background-color: royalblue;" th:id="|view-img-${(userStat.index)}|" th:src="${photo}">
+						</div>
 						</div>
 						<div class="item-container-left-pre" onclick="pre()">
 							<div class="arrow-left"></div>
@@ -81,7 +74,7 @@
 
 				<div class="item-container-right">
 					<div class="item-container-right-a">
-						<strong th:name="|product_Name|" th:text="*{product_Name}"> 花崗大理石 保護殼套 MacBook Pro Air 11 12 13 15 16 Mac 殼 筆電殼 防摔 注音鍵盤膜 16 Mac 殼 筆電殼 防摔
+						<strong th:name="|productName|" th:text="*{productName}"> 花崗大理石 保護殼套 MacBook Pro Air 11 12 13 15 16 Mac 殼 筆電殼 防摔 注音鍵盤膜 16 Mac 殼 筆電殼 防摔
 							注音鍵盤膜 </strong>
 					</div>
 
@@ -97,7 +90,7 @@
 
 
 					<div class="item-container-right-c">
-						<div id="item-price"><input type="text" th:name="|product_Price|" th:value="*{product_Price}" readonly="readonly"></div>
+						<div id="item-price"><input type="text" th:name="|productPrice|" th:value="*{productPrice}" readonly="readonly"></div>
 					</div>
 
 					<div class="item-container-right-f">
@@ -130,10 +123,10 @@
 						<div class="item-container-right-j-a">數量</div>
 						<div class="item-container-right-plus">
 							<button  type="button" onclick="item_minus()">-</button>
-							<input id = "item-input-qty" type="text" th:name="|product_Stock|"   readonly value="1">
+							<input id = "item-input-qty" type="text" th:name="|productStock|"   readonly value="1">
 							<button type="button" onclick="item_plus()">+</button>
 						</div>
-						<div class="item-container-right-j-b" >還剩<div th:text="*{product_Stock}"></div> 件</div>
+						<div class="item-container-right-j-b" >還剩<div th:text="*{productStock}"></div> 件</div>
 					</div>
 					<div class="item-container-right-k">
 						<button type="submit" id="item-cart-count-check" onclick="item_cart_count_check()"

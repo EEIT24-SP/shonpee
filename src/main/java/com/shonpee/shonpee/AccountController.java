@@ -71,9 +71,18 @@ public class AccountController {
 			if (memberBean.getUserAccount().equals(Name)) {
 				List<ProductBean> list1 = PR.findAll();
 				for (ProductBean productBean : list1) {
-					if (productBean.getMemberBean().getUserAccount().equals(Name)) {
+					if (productBean.getMemberBean().getUserAccount().equals(Name)&&productBean.getProductid().equals(10)) {
 						model.addAttribute("item", productBean);
-						// 預設z
+System.out.println(productBean.getProductPhoto());
+
+String[] split =  productBean.getProductPhoto().split(",");
+model.addAttribute("photolist",split);
+System.out.println(split);
+for (int i = 0; i < split.length; i++) {
+	System.out.println("我是SP"+split.length);
+}
+
+						// 預設
 						System.out.println(productBean.getProductid());
 						session.setAttribute("itemid", productBean.getProductid());
 					}
@@ -142,7 +151,7 @@ public class AccountController {
 		//取的複數ID
 		String[] split = CKBX.split(",", -1);
 		for (int i = 0; i < split.length; i++) {
-			System.out.println(split[i]);
+			System.out.println("我是SP"+split[i]);
 		}
 
 		System.out.println("我是CB" + CB.getMemberId());

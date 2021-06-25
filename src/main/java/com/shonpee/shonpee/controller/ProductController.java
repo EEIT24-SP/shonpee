@@ -156,7 +156,6 @@ public class ProductController {
 			 	for (String fruit : filepathlist) {
 					filepathstr += fruit+",";
 				}				
-			 
 			 	bean.setProductPhoto(filepathstr);
 			 	
 			 	
@@ -172,7 +171,10 @@ public class ProductController {
 		 		 }
 		 		 
 		 	 }
-//		 bean.setMemberBean();
+	//預設使用者	 	 
+		 	MemberBean mb= new MemberBean();
+		 	mb.setUserAccount("bsenger123");
+		 bean.setMemberBean(mb);
 		 
 		 ProductBean newbean = productService.insert(bean);
 		 Integer newid = newbean.getProductid();
@@ -183,11 +185,11 @@ public class ProductController {
 		 propertyBeanSecond.setProductid2(newid);
 		 propertyBeanSecond.setPropertyName(propertySecondName);
 		 propertyBeanSecond.setPropertyValue(propertySecondValue);
-		 
+		 productRepository.save(bean);
 		 productService.insertFirstProperty(propertyBean);
 		 productService.insertSecondProperty(propertyBeanSecond);
 		 
-	    return "bear_item";
+	    return "redirect:/main-page";
 	    }
 	
 	@GetMapping("/cat/{categoryId}")

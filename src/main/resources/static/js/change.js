@@ -1,8 +1,12 @@
 
 var cot = 0;
+    var obj = document.getElementById("view-img-0");
+			 var imgSrc = obj.getAttribute("src");
+			document.getElementById("main-img").src=imgSrc;	
 
-    function nex() {
-        if (cot <= 3) {
+    function nex() {		  
+		var photolength =parseInt(document.getElementById("photolength").value);
+        if (photolength >= 5) {
             $('.item-container-left-b img').eq(cot).animate({ 'margin-left': '-89px' }, 100);
             cot++;
         }

@@ -63,7 +63,9 @@ body {
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content:flex-start;
     margin-top: 15px;
+    background-color: rgb(235,235,235);
 }
 
 .item-container-left-b>img {
@@ -262,14 +264,11 @@ body {
 
 .item-container-right-j-b {
     margin-right: 10px;
-<<<<<<< HEAD
     font-size: 10px;
     width: 100px;
     display: flex;
     align-items: center;
-=======
     font-size: 12px;
->>>>>>> origin/feat/showoneproduct
 }
 
 .item-container-right-k {
@@ -442,8 +441,7 @@ body {
 .arrow-left {
     width: 20px;
     height: 20px;
-    /* background-color: transparent; */
-    /* 璅∪��銝粹��� */
+  
     border-color: #ffffff;
     border-style: solid;
     border-width: 5px 5px 0px 0px;
@@ -451,29 +449,20 @@ body {
     transform: rotate(225deg);
     cursor: pointer;
     margin-left: 8px;
-<<<<<<< HEAD
-    /*蝞剖仍���隞亥���閫漲*/
-=======
->>>>>>> origin/feat/showoneproduct
+
+
 }
 
 .arrow-right {
     width: 20px;
     height: 20px;
     background-color: transparent;
-<<<<<<< HEAD
-    /* 璅∪��銝粹��� */
-=======
->>>>>>> origin/feat/showoneproduct
+
     border-color: #ffffff;
     border-style: solid;
     border-width: 4px 4px 0 0;
     margin: auto;
     transform: rotate(45deg);
-<<<<<<< HEAD
-    /*蝞剖仍���隞亥���閫漲*/
-=======
->>>>>>> origin/feat/showoneproduct
     cursor: pointer;
     margin-right: 8px;
 }
@@ -482,18 +471,12 @@ body {
     width: 10px;
     height: 10px;
     background-color: transparent;
-<<<<<<< HEAD
-    /* 璅∪��銝粹��� */
-=======
->>>>>>> origin/feat/showoneproduct
+
+
     border-color: #ffffff;
     border-style: solid;
     border-width: 3px 3px 0 0;
     transform: rotate(135deg);
-<<<<<<< HEAD
-    /*蝞剖仍���隞亥���閫漲*/
-=======
->>>>>>> origin/feat/showoneproduct
     margin-left: 10px;
     margin-top: 1px;
 }

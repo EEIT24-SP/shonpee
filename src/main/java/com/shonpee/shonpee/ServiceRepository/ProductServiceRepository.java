@@ -39,6 +39,7 @@ public class ProductServiceRepository {
 	public ProductBean insert(ProductBean bean) {
 		ProductBean productBeanresult = null;
 		productBeanresult = productDao.save(bean);
+		System.out.println("我是insert"+ bean.getMemberBean().getUserAccount());
 		return productBeanresult;
 	}
 
