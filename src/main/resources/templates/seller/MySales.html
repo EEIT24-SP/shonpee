@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/MyCategoriesPage1.css}">
     <link rel="stylesheet" th:href="@{/css/Seller.css}">
+    <link rel="stylesheet" th:href="@{/css/MySalesList.css}">
 
 </head>
 
@@ -25,42 +26,42 @@
             <div class="logout"><span>登出</span></div>
         </div>
     </div>
-    <div class="myProduct">
-        <div class="myProduct-right">
-            <div class="myProduct-right-b">
-                <div class="myProduct-right-b-z">
-
-                    <div class="myProduct-right-ItemList">
-                        <div class="insert-div">
-                            <span class="title-span">賣家銷售</span>
+    <div class="sellerorder-page">
+        <div class=" sellerorder-container">
+            <div class="sellerorder-content">
+                <div class="sellerorder-content-container">
+                    <div class="orderlist">
+                        <div class="orderlist-title">
+                            賣家銷售
                         </div>
-                        <div class="myProduct-right-ItemList-bar">
-                            <div class="myProduct-right-ItemList-bar-title">
-                                <div class="myProduct-right-ItemList-bar-list"> 商品名稱</div>
-                                <div class="myProduct-right-ItemList-bar-list-b">規格</div>
-                                <div class="myProduct-right-ItemList-bar-list-b">買家應付金額</div>
-                                <div class="myProduct-right-ItemList-bar-list-b">狀態</div>
-                                <div class="myProduct-right-ItemList-bar-list-b">操作</div>
+                        <div class="orderlist-table">
+                            <div class="orderlist-bar ">
+                                <div class="orderlist-bar-title ">
+                                    <div class="orderlist-bar-list "> 商品名稱</div>
+                                    <div class="orderlist-bar-list-b ">規格</div>
+                                    <div class="orderlist-bar-list-b ">買家應付金額</div>
+                                    <div class="orderlist-bar-list-b ">狀態</div>
+                                    <div class="orderlist-bar-list-b ">操作</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="myProduct-right-ItemList-container">
-                            <div class="myProduct-right-ItemList-container-body">
-                                <div class="myProduct-right-ItemList-container-body-list" th:each="status1Order : ${status1Orders}">
-                                    <div class="myProduct-right-ItemList-bar-list">
-                                        <div class="myProduct-right-ItemList-item-prodpic">
-                                            <img src="/pic/apple.svg" alt="">
+                            <div class="orderlist-container ">
+                                <div class="orderlist-container-body ">
+                                    <div class="orderlist-container-body-list " th:each="status1Order : ${status1Orders} ">
+                                        <div class="orderlist-bar-list ">
+                                            <div class="orderlist-item-prodpic ">
+                                                <img src="/pic/apple.svg " alt=" ">
+                                            </div>
+                                            <div class="orderlist-item-prodname ">[[${status1Order.productBean.productName}]]</div>
                                         </div>
-                                        <div class="myProduct-right-ItemList-item-prodname">[[${status1Order.productBean.productName}]]</div>
-                                    </div>
-                                    <div class="myProduct-right-ItemList-bar-list-a itemList-item-prodtype">
-                                        <div class="myProduct-right-ItemList-item-prodtype-1">[[${status1Order.shonpeeOrderBean.type_value1}]]<span>,&nbsp;</span></div>
-                                        <div class="myProduct-right-ItemList-item-prodtype-2">[[${status1Order.shonpeeOrderBean.type_value2}]]</div>
-                                    </div>
-                                    <div class="myProduct-right-ItemList-bar-list-a">[[${status1Order.shonpeeOrderBean.total}]]</div>
-
-                                    <div class="myProduct-right-ItemList-bar-list-a">[[${status1Order.shonpeeOrderBean.status}]]</div>
-                                    <div class="myProduct-right-ItemList-bar-list-b">
-                                        <div class="button-container"><button class="modify-button">出貨</button> <button class="delete-button">取消</button> </div>
+                                        <div class="orderlist-bar-list-a itemList-item-prodtype ">
+                                            <div class="orderlist-item-prodtype-1 ">[[${status1Order.shonpeeOrderBean.type_value1}]]<span>,&nbsp;</span></div>
+                                            <div class="orderlist-item-prodtype-2 ">[[${status1Order.shonpeeOrderBean.type_value2}]]</div>
+                                        </div>
+                                        <div class="orderlist-bar-list-a ">[[${status1Order.shonpeeOrderBean.total}]]</div>
+                                        <div class="orderlist-bar-list-a ">[[${status1Order.shonpeeOrderBean.status}]]</div>
+                                        <div class="orderlist-bar-list-b ">
+                                            <div class="button-container "><button class="modify-button ">出貨</button> <button class="delete-button ">取消</button> </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,334 @@
+.sellerorder-page {
+    margin-top: 80px;
+    display: flex;
+    width: 100%;
+}
+
+.sellerorder-container {
+    /* width: 100%; */
+    min-width: 1000px;
+    margin: auto;
+}
+
+.sellerorder-left {
+    width: 15%;
+    height: 100%;
+    min-width: 100px;
+    position: fixed;
+    background-color: rgb(10, 71, 202);
+}
+
+.sellerorder-container-a {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    min-width: 1000px;
+    position: fixed;
+}
+
+.sellerorder-content {
+    justify-content: center;
+    display: flex;
+    margin-top: 10px;
+}
+
+.sellerorder-content-container {
+    background-color: white;
+    width: 85%;
+    padding: 15px;
+}
+
+.sellerorder-container-bar {
+    height: 59px;
+    width: 85%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid rgb(187, 187, 187);
+}
+
+.sellerorder-container-bar-title {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 57px;
+    /* width: 25%; */
+    border-bottom: 3px solid transparent;
+}
+
+.sellerorder-container-bar-title:hover {
+    border-bottom: 3px solid rgb(255, 181, 44);
+}
+
+.sellerorder-container-bar-list {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 57px;
+    width: 250px;
+    border-bottom: 3px solid transparent;
+}
+
+.sellerorder-container-b-a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.sellerorder-container-b-a-a {
+    width: 85%;
+    display: flex;
+}
+
+.sellerorder-container-b-a-a-a {
+    width: 50%;
+}
+
+.sellerorder-container-b-a-a-b {
+    width: 50%;
+    display: flex;
+}
+
+.sellerorder-container-b-a-a-b-a {
+    width: 10%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+input {
+    outline: none;
+}
+
+.sellerorder-container-b-a-a-b-b {
+    width: 85%;
+}
+
+.sellerorder-container-c {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.sellerorder-container-c-a {
+    width: 85%;
+    display: flex;
+}
+
+.sellerorder-container-c-a-a {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.sellerorder-container-c-a-a-a {
+    display: flex;
+}
+
+.sellerorder-container-c-a-a-b {
+    display: flex;
+    margin-left: 10px;
+    width: 25%;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid green;
+    align-items: center;
+}
+
+.sellerorder-container-c-a-b {
+    width: 50%;
+    display: flex;
+}
+
+.orderlist {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.orderlist-title {
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.orderlist-table {
+    width: 85%;
+}
+
+.orderlist-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.orderlist-bar-title {
+    border: 2px solid rgb(225, 225, 225);
+    border-bottom: none;
+    height: 59px;
+    background-color: rgb(245, 245, 245);
+    display: grid;
+    grid-template-columns: 6fr 3fr 3fr 2fr 4fr;
+    column-gap: 2%;
+    align-items: center;
+}
+
+.orderlist-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 0 50px 0;
+}
+
+.orderlist-container-body {
+    border: 2px solid rgb(225, 225, 225);
+    border-bottom: none;
+    width: 85%;
+    overflow-y: auto;
+    height: 500px;
+}
+
+.orderlist-container-body-list {
+    width: 100%;
+    height: 104px;
+    display: grid;
+    grid-template-columns: 6fr 3fr 3fr 2fr 4fr;
+    column-gap: 2%;
+    align-items: center;
+    border-bottom: 2px solid rgb(225, 225, 225);
+}
+
+.orderlist-bar-list {
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 10px;
+    height: 57px;
+    border-bottom: 3px solid transparent;
+}
+
+.orderlist-item-prodpic {
+    width: 20%;
+}
+
+.orderlist-item-prodpic img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.orderlist-item-prodname {
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.orderlist-bar-list-a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 0 0 10px;
+    height: 57px;
+    border-bottom: 3px solid transparent;
+}
+
+.orderlist-bar-list-b {
+    align-items: center;
+    padding: 0 0 0 10px;
+    height: 57px;
+    border-bottom: 3px solid transparent;
+    display: flex;
+}
+
+.orderlist-page-sel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.orderlist-page-sel-a {
+    height: 59px;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 2px solid rgb(225, 225, 225);
+}
+
+.orderlist-page-sel-a-a {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 57px;
+    width: 90px;
+    border-bottom: 3px solid transparent;
+}
+
+.orderlist-page-sel-a-b {
+    align-items: center;
+    width: 60px;
+    border-bottom: 3px solid transparent;
+    display: flex;
+    border: 1px solid black;
+    margin-right: 20px;
+    justify-content: center;
+}
+
+.orderlist-page-sel-a-b>div>input {
+    border: none;
+    background-color: white;
+}
+
+.orderlist-page-sel-sel {
+    position: absolute;
+    width: 60px;
+    visibility: hidden;
+    margin-top: 50px;
+}
+
+.insert-button {
+    width: 80px;
+    height: 40px;
+    margin: 30px 120px 10px 0;
+    background-color: #ffd86e;
+    border: rgb(155, 155, 155) 1px solid;
+    border-radius: 3px;
+    color: black;
+}
+
+.insert-button:hover {
+    background-color: #ffe291;
+    cursor: pointer;
+}
+
+.modify-button {
+    padding: 5px 10px;
+    background-color: rgb(255, 226, 172);
+    border-radius: 3px;
+    border: gray 1px solid;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.modify-button:hover {
+    background-color: rgb(255, 238, 208);
+}
+
+.delete-button {
+    padding: 5px 10px;
+    background-color: rgb(206, 122, 89);
+    border-radius: 3px;
+    border: gray 1px solid;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.delete-button:hover {
+    background-color: rgb(255, 165, 130);
+}
