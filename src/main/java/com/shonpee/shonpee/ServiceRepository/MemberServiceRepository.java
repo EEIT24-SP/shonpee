@@ -56,7 +56,7 @@ public class MemberServiceRepository {
 //			System.out.println("password="+psword);
 			if (psword == null) {
 				MemberBean bean = new MemberBean();
-				bean.setUser_account(account);
+				bean.setUser_Account(account);
 				bean.setPassword(password);
 				bean = MemberDao.save(bean);
 //				System.out.println("申請成功");

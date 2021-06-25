@@ -1,12 +1,16 @@
 package com.shonpee.shonpee.domain;
 
 
-import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import javax.persistence.Id;
 
 import lombok.Data;
 
@@ -14,16 +18,27 @@ import lombok.Data;
 @Table(name = "member")
 @Data
 public class MemberBean {
-	
-	
 	@Id
-	private String User_account;
-	private String Password;
-	private int Member_id;
-	private String Real_name;
-	private	String Email;
-	private String Tel;
-	private Date Birthday;
-	private int Gender;
-	private String Address;
+	private String user_Account;
+	private String password;
+	private Integer member_Id;                   
+	private String real_Name;
+	private String email;
+	private String tel;
+	private String gender;
+	private String year;
+	private String month;
+	private String day;
+	private String address;
+	
+	
+	@OneToMany(mappedBy = "memberBean")
+	private List<ProductBean>  productlist;	
+	
+//	@OneToMany(mappedBy = "customerBean",fetch = FetchType.EAGER)
+//	private List<Teproduct> list;
+//	
+//	@OneToMany(mappedBy = "customerBean",fetch = FetchType.EAGER)
+//	private List<Profile> plist;
+//	
 }

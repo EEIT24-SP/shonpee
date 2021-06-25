@@ -1,99 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/checkout.css">
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="../css/checkout.css">
+<script src="../js/jquery-3.4.1.js"></script>
+<script src="../js/checkout.js"></script>
 </head>
 
 <body>
-    <nav class="checkout-nav-bar">
-        <div></div>
-    </nav>
-    <div class="checkout-header-title">
-        <div class="checkout-header-title-name"><img src="/pic/counter_pics/bear.png" alt="">熊皮購物
-            <div class="checkout-header-title-checkout">結帳</div>
-        </div>
-    </div>
-    <div class="checkout-order-detail-title">
-        <div class="checkout-order-detail-title-container">
-            <div class="detail-title-container-name">訂單商品</div>
-            <div class="detail-title-container-unitprice">單價</div>
-            <div class="detail-title-container-quantity">數量</div>
-            <div class="detail-title-container-totalprice">總價</div>
-        </div>
-    </div>
-    <div class="checkout-order-detail-title-contanier">
-        <img src="/pic/counter_pics/shop.png" alt=""><p>賣家商店名</p>
-        <div class="checkout-order-detail-title-contanier-talk">
-            <img src="/pic/counter_pics/chat.png" alt="">聊聊
-        </div>
-    </div>
-    <div class="checkout-order-detail-title-contanier-content">
-        <div class="checkout-order-detail-title-contanier-content-a">
-            <img src="/pic/counter_pics/bear.png" alt="">
-            <div class="checkout-order-detail-title-contanier-content-a-ordername">
-                正版秋雄超香上衣(純天然無添加物) </div>
-        </div>
-        <div class="checkout-order-detail-title-contanier-content-a-select">
-            <span>選項:黃秋雄(M)</span>
-            <div class="checkout-order-detail-title-contanier-content-a-unitprice">$1,500</div>
-        </div>
-        <div class="checkout-order-detail-title-contanier-content-a-quantity">
-            <span>1</span>
-        </div>
-        <div class="checkout-order-detail-title-contanier-content-a-totalprice">
-            <span>$1,500</span>
-        </div>
-    </div>
-    <div class="checkout-order-detail-title-contanier-content-discount">
-        <div class="content-discount-seller">
-            <div class="content-discount-sellercoupon"><img src="/pic/counter_pics/checkcoupon.png" alt=""></div>
-            <div class="content-discount-sellercoupon-name">賣場折價券</div>
-        </div>
-        <div class="content-discount-other">
-            <div class="content-discount-other-img"><img src="/pic/counter_pics/discountcoupon.png" alt=""></div>
-            <div class="content-discount-changecoupon">更換折價券</div>
-        </div>
+	<nav class="checkout-nav-bar">
+		<div></div>
+	</nav>
+	<div class="checkout-page">
+		<div class="checkout-header-title">
+			<div class="checkout-header-title-name">
+				<div class="checkout-header-title-name-img">
+					<img src="/pic/Bear.svg" alt="">
+				</div>
+				熊皮購物
+				<div class="checkout-header-title-checkout">結帳</div>
+			</div>
+		</div>
+		<div class="checkout-main">
 
-    </div>
-    <div class="checkout-order-detail-title-contanier-content-information">
-        <div class="content-information-message">
-            <span>留言:</span>
-            <input type="text" placeholder="統一編號/管理室代收/電話聯絡時間...">
-        </div>
-        <div class="content-information-address">
-            <div class="information-address-sending-container">
-                <div class="information-address-sendinfo">寄送資訊</div>
-                <div class="information-address-sendingways">蝦皮海外-宅配</div>
-            </div>
-            <div class="information-address-personal-container">
-                <div class="information-address-personal">
-                    <div class="information-address-username">林乘委</div>
-                    <div class="information-address-telephone">(+886) 912345678</div>
-                    <div class="information-address-useraddress">台北市信義區信義路五段7號</div>
-                </div>
-                <div class="information-address-expireddate">預計到貨時間:6月5日-6月15日</div>
-            </div>
-            <div class="information-address-shipping-container">
-                <div class="information-address-shipping">$60</div>
-                <div class="information-address-changesendingways">變更</div>
-            </div>
-        </div>
-    </div>
-    <div class="checkout-order-detail-title-contanier-content-totalprice">
-        <div class="content-totalprice-title">訂單金額(1商品):</div>
-        <div class="content-totalprice-title-endprice">$1,500</div>
-    </div>
-
-    <br>
-    <br>
-    <div class="checkout-order-discount-allshop-ticket">
-        <div class="allshop-ticket-title"><img src="/pic/counter_pics/coupon.png">全站折價券</div>
-        <div class="allshop-ticket-select">選擇折價券</div>
-
-    </div>
+			<div th:each="cartlist:${cartlist}" class="checkout-order">
+				<div class="checkout-order-detail-title">
+					<div class="checkout-order-detail-title-container">
+						<div  class="detail-title-container-name">訂單商品</div>
+						<div  class="detail-title-container-unitprice">單價</div>
+						<div  class="detail-title-container-quantity">數量</div>
+						<div  class="detail-title-container-totalprice">總價</div>
+					</div>
+				</div>
+				<div th:each="sellerlist:${sellerlist}">
+					<div class="checkout-order-detail-title-contanier">
+						<img src="/pic/shop.png" alt="">
+						<p th:text="${seller}">賣家商店名</p>
+					</div>
+					<div th:each="productlist:${product}" class="checkout-order-detail-title-contanier-content">
+						<div class="checkout-order-detail-title-contanier-content-a">
+							<img th:src="@{${img}}" alt="">
+							<div th:text="${product}"
+								class="checkout-order-detail-title-contanier-content-a-ordername">
+								正版秋雄超香上衣(純天然無添加物)</div>
+						</div>
+						<div
+							class="checkout-order-detail-title-contanier-content-a-select">
+							<span th:text="${type}">選項:黃秋雄(M)</span>
+							<div th:text="${unitprice}"
+								class="checkout-order-detail-title-contanier-content-a-unitprice">$1,500</div>
+						</div>
+						<div
+							class="checkout-order-detail-title-contanier-content-a-quantity">
+							<span th:text="${quantity}">1</span>
+						</div>
+						<div
+							class="checkout-order-detail-title-contanier-content-a-totalprice">
+							<span th:text="${totalprice}">$1,500</span>
+						</div>
+					</div>
+				</div>
+				<div
+					class="checkout-order-detail-title-contanier-content-information">
+					<div
+						class="checkout-order-detail-title-contanier-content-totalprice">
+						<div class="content-totalprice-title">訂單金額(1商品):</div>
+						<div class="content-totalprice-title-endprice">$1,500</div>
+					</div>
+				</div>
+			</div>
+			<div class="checkout-payment">
+				<div class="checkout-payment-paymentmethod">
+					<div class="checkout-payment-paymentmethod-choosingmethod">
+						<div class="paymentmethod-choosingmethod-title">付款方式</div>
+						<div class="paymentmethod-choosingmethod-options">
+							<button
+								class="paymentmethod-choosingmethod-option paymentmethod-option--selected option-cod">貨到付款</button>
+							<button
+								class="paymentmethod-choosingmethod-option option-creditcard">信用卡/金融卡</button>
+						</div>
+					</div>
+					<div class="checkout-payment-paymentmethod-methodcontent">
+						<div class="paymentmethod-cashondelivery">
+							<div class="paymentmethod-cashondelivery-title">貨到付款</div>
+							<div class="paymentmethod-cashondelivery-content">現金付款</div>
+						</div>
+						<div
+							class="paymentmethod-creditcard paymentmethod-content--unselected">
+							<div class="paymentmethod-creditcard-title">選擇付款帳戶</div>
+							<div class="paymentmethod-creditcard-inputwrap">
+								<input class="creditcard-inputwrap-input" type="text"
+									placeholder="請輸入您的卡號">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="checkout-payment-paymentamount">
+					<div
+						class="paymentamount-producttotaltitle paymentamount-griditem paymentamount-row-1 paymentamount-column-1">商品總金額：</div>
+					<div
+						class="paymentamount-producttotalprice paymentamount-griditem paymentamount-row-1 paymentamount-column-2">$3</div>
+					<div
+						class="paymentamount-amountofpaymenttitle paymentamount-griditem paymentamount-row-2 paymentamount-column-1">總付款金額</div>
+					<div
+						class="paymentamount-amountofpaymentprice paymentamount-griditem paymentamount-row-2 paymentamount-column-2">$3</div>
+					<div class="checkout-orderingblock">
+						<button class="ordering">確認訂單並送出</button>
+					</div>
+				</div>
+			</div>
+		</div>
 </body>
 
 </html>
