@@ -1,4 +1,4 @@
-package com.shonpee.shonpee.Repository;
+package com.shonpee.shonpee.repository;
 
 
 import java.util.List;
@@ -17,3 +17,4 @@ public interface MemberRepository extends JpaRepository<MemberBean, String>,JpaS
 	@Query(nativeQuery = true,value = "select password from member where password = :xxx")
 	String QueryAnnotationParams(@Param("xxx") String password);
 }
+

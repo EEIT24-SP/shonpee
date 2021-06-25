@@ -34,7 +34,7 @@ public class LoginController {
 				return "login";
 			} else {
 //				System.out.println(session.getAttribute("user"));
-				session.setAttribute("UserName", beanLogin.getUser_Account());
+				session.setAttribute("UserName", beanLogin.getUserAccount());
 				return "redirect:/main-page";
 			}
 		} else if ((registered_account != null) && (registered_password != null)) {

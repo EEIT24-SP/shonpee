@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.shonpee.shonpee.Repository.MemberRepository;
+import com.shonpee.shonpee.repository.MemberRepository;
 import com.shonpee.shonpee.domain.MemberBean;
 
 @Service
@@ -56,7 +56,7 @@ public class MemberServiceRepository {
 //            System.out.println("password="+psword);
             if (psword == null) {
                 MemberBean bean = new MemberBean();
-                bean.setUser_Account(account);
+                bean.setUserAccount(account);
                 bean.setPassword(password);
                 bean = MemberDao.save(bean);
 //                System.out.println("申請成功");
@@ -76,3 +76,4 @@ public class MemberServiceRepository {
         return null;
     }
 }
+

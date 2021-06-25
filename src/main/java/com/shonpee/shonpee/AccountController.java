@@ -1,3 +1,4 @@
+
 package com.shonpee.shonpee;
 
 import java.util.Iterator;
@@ -13,9 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.shonpee.shonpee.Repository.CartRepository;
-import com.shonpee.shonpee.Repository.MemberRepository;
-import com.shonpee.shonpee.Repository.ProductRepository;
+import com.shonpee.shonpee.repository.CartRepository;
+import com.shonpee.shonpee.repository.MemberRepository;
+import com.shonpee.shonpee.repository.ProductRepository;
 import com.shonpee.shonpee.domain.CartBean;
 import com.shonpee.shonpee.domain.MemberBean;
 import com.shonpee.shonpee.domain.ProductBean;
@@ -40,9 +41,9 @@ public class AccountController {
 
 			List<MemberBean> list = MR.findAll();
 			for (MemberBean memberBean : list) {
-				if (memberBean.getUser_Account().equals(session.getAttribute("UserName"))) {
+				if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
 					model.addAttribute("acc", memberBean);
-					session.setAttribute("accid", memberBean.getMember_Id());
+					session.setAttribute("accid", memberBean.getMemberId());
 				}
 			}
 			return "account/profile";
@@ -53,8 +54,8 @@ public class AccountController {
 	public String test2(@ModelAttribute MemberBean MB, HttpSession session, Model model) {
 		List<MemberBean> list = MR.findAll();
 		for (MemberBean memberBean : list) {
-			if (memberBean.getUser_Account().equals(session.getAttribute("UserName"))) {
-				MB.setMember_Id(memberBean.getMember_Id());
+			if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
+				MB.setMemberId(memberBean.getMemberId());
 				MB.setPassword(memberBean.getPassword());
 				MR.save(MB);
 			}
@@ -67,10 +68,10 @@ public class AccountController {
 		Object Name = session.getAttribute("UserName");
 		List<MemberBean> list = MR.findAll();
 		for (MemberBean memberBean : list) {
-			if (memberBean.getUser_Account().equals(Name)) {
+			if (memberBean.getUserAccount().equals(Name)) {
 				List<ProductBean> list1 = PR.findAll();
 				for (ProductBean productBean : list1) {
-					if (productBean.getMemberBean().getUser_Account().equals(Name)) {
+					if (productBean.getMemberBean().getUserAccount().equals(Name)) {
 						model.addAttribute("item", productBean);
 						// 預設z
 						System.out.println(productBean.getProductid());
@@ -96,25 +97,25 @@ public class AccountController {
 			for (CartBean cartBean : list2) {
 				// 如果有商品,則判別商品ID是否重複,重複則自行遞增
 				if (cartBean.getProductBean().getProductid().equals(Id)) {
-					System.out.println(cartBean.getMember_Id());
-					cartBean.setTotal_Price(Integer.toString(
-							Integer.parseInt(cartBean.getTotal_Price()) / Integer.parseInt(cartBean.getQuantity())));
+					System.out.println(cartBean.getMemberId());
+					cartBean.setTotalPrice(Integer.toString(
+							Integer.parseInt(cartBean.getTotalPrice()) / Integer.parseInt(cartBean.getQuantity())));
 					cartBean.setQuantity(
-							Integer.toString(PB.getProduct_Stock() + Integer.parseInt(cartBean.getQuantity())));
-					cartBean.setTotal_Price(Integer.toString(
-							Integer.parseInt(cartBean.getTotal_Price()) * Integer.parseInt(cartBean.getQuantity())));
+							Integer.toString(PB.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
+					cartBean.setTotalPrice(Integer.toString(
+							Integer.parseInt(cartBean.getTotalPrice()) * Integer.parseInt(cartBean.getQuantity())));
 					CR.save(cartBean);
 					return "redirect:/main-page/item";
 				}
 			}
 			for (ProductBean productBean : list1) {
 				if (productBean.getProductid().equals(Id)
-						&& productBean.getMemberBean().getUser_Account().equals(Name)) {
+						&& productBean.getMemberBean().getUserAccount().equals(Name)) {
 //					 System.out.println(productBean.getMemberBean().getUser_Account().equals("bee567"));
-					CB.setQuantity(Integer.toString(PB.getProduct_Stock()));
-					CB.setTotal_Price(Integer.toString(PB.getProduct_Stock() * productBean.getProduct_Price()));
+					CB.setQuantity(Integer.toString(PB.getProductStock()));
+					CB.setTotalPrice(Integer.toString(PB.getProductStock() * productBean.getProductPrice()));
 					CB.setProductBean(productBean);
-					CB.setMember_Id(productBean.getMemberBean().getUser_Account());
+					CB.setMemberId(productBean.getMemberBean().getUserAccount());
 					CR.save(CB);
 				}
 			}
@@ -144,24 +145,24 @@ public class AccountController {
 			System.out.println(split[i]);
 		}
 
-		System.out.println("我是CB" + CB.getMember_Id());
-		System.out.println("我是CBstock" + CB.getProductBean().getProduct_Stock());
+		System.out.println("我是CB" + CB.getMemberId());
+		System.out.println("我是CBstock" + CB.getProductBean().getProductStock());
 		System.out.println("我是QY" + CB.getQuantity());
-		System.out.println("我是CBstock" + Integer.toString(CB.getProductBean().getProduct_Price()));
-		System.out.println("我是CBstock" + CB.getProductBean().getProduct_Photo());
-		System.out.println("我是CBstock" + CB.getTotal_Price());
-		System.out.println("我是ID" + CB.getCart_Id());
+		System.out.println("我是CBstock" + Integer.toString(CB.getProductBean().getProductPrice()));
+		System.out.println("我是CBstock" + CB.getProductBean().getProductPhoto());
+		System.out.println("我是CBstock" + CB.getTotalPrice());
+		System.out.println("我是ID" + CB.getCartId());
 		// DELETE方法
 		if (delete != null && checkout == null) {
 			List<CartBean> list = CR.findAll();
 			for (CartBean cartBean : list) {
-				if (cartBean.getCart_Id().equals(Integer.parseInt(delete))) {
-					System.out.println("成功刪除CB=" + cartBean.getCart_Id() + "DELETE=" + delete);
+				if (cartBean.getCartId().equals(Integer.parseInt(delete))) {
+					System.out.println("成功刪除CB=" + cartBean.getCartId() + "DELETE=" + delete);
 					CR.deleteById(Integer.parseInt(delete));
 					return "redirect:/main-page/cart";
 				}
-				if (cartBean.getCart_Id().equals(97)) {
-					System.out.println("我是這裡的" + cartBean.getCart_Id());
+				if (cartBean.getCartId().equals(97)) {
+					System.out.println("我是這裡的" + cartBean.getCartId());
 					return "redirect:/main-page/cart";
 
 				}
@@ -176,3 +177,4 @@ public class AccountController {
 	}
 
 }
+
