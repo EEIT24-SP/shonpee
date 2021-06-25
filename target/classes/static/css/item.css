@@ -1,0 +1,14 @@
+.seller{
+margin-top: 15px;
+    height: 80px;
+    padding: 25px;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+}
+a{
+    text-decoration: none;
+    color: orange;
+}
+body{
+    background-color:  rgb(245, 245, 245);
+}

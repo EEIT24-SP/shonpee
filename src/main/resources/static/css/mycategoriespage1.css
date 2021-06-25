@@ -1,0 +1,340 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+.Category-container {
+    width: 100%;
+    height: 900px;
+    margin: 20px 0 0 0;
+}
+
+.Category-container-all {
+    box-shadow: 1px 1px 5px 0.2px rgb(83, 83, 83);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    width: 95%;
+    height: 85%;
+    margin: auto;
+}
+
+.Category-header {
+    height: 80px;
+    width: 90%;
+    padding: 15px 0 5px 0;
+    margin: 100px auto 0 auto;
+    border-bottom: 1px solid lightgrey;
+}
+
+p {
+    color: rgb(133, 133, 133);
+    margin: 10px 0 0 13px;
+}
+
+h2 {
+    margin: 0 0 0 10px;
+}
+
+.Category-Product-Search {
+    height: 90px;
+    width: 90%;
+    margin: 22px auto 0 auto;
+}
+
+.ProductName {
+    height: 60px;
+    width: 90px;
+    font-size: 16px;
+    padding: 30px 0 0 14px;
+    display: inline;
+}
+
+.ProductName-input {
+    height: 60px;
+    width: 1100px;
+    display: inline-block;
+    margin: 4px 0 0 5px;
+}
+
+.ProductName-input input {
+    height: 38px;
+    width: 980px;
+    margin: 7px 0px 0 10px;
+    border: 1px solid #B7B7B7;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.input-distinct {
+    height: 40px;
+    width: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin: 8px 0 0 -50px;
+    border-left: lightslategray 1px solid;
+}
+
+.msg {
+    display: flex;
+    background-color: #ff4e4e;
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+    display: none;
+    width: 110px;
+    height: 15px;
+    font-size: 12px;
+    margin:0 0 0 10px ;
+}
+.border-red{
+   outline: 1px solid #ff4e4e;
+   border-radius: 5px;
+}
+
+.input-text {
+    float: left;
+}
+
+.Category-selector {
+    height: 420px;
+    width: 1096px;
+    margin: 20px auto;
+    border: 1px #EEF0F2 solid;
+    box-shadow: 0.1px 0.1px 2px 0.1px rgb(180, 176, 176);
+    border-radius: 2px;
+}
+
+.Category-selector-wrap {
+    display: flex;
+    position: relative;
+    height: 310px;
+    width: 1070px;
+    margin: 30px 0 0 13px;
+    padding: 10px 0 0 0;
+    background-color: #EEF0F2;
+    border: 1px #EEF0F2 solid;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px 0.2px rgb(221, 221, 221);
+}
+
+.Category-selector-list {
+    height: 290px;
+    width: 300px;
+    margin: 0px 45px 0 10px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.Category-scroll-item {
+    height: 260px;
+    width: 250px;
+    border-left: 1px solid #FFFFFF;
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 9px 0px 0 4px;
+}
+
+.Category-scroll-item-second {
+    height: 260px;
+    width: 250px;
+    border-left: 1px solid #FFFFFF;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.Category-scroll-item-third {
+    height: 260px;
+    width: 250px;
+    border-left: 1px solid #FFFFFF;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.Category-item {
+    list-style-type: none;
+    height: 32px;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0px 0 -20px;
+    padding: 6px 0 0 0;
+    border-radius: 5px;
+}
+
+.Category-item p {
+    color: rgb(122, 115, 115);
+    margin: 0px 0 0 13px;
+}
+
+.Category-item img {
+    width: 13px;
+    height: 13px;
+    margin: 5px 0 0 0;
+}
+
+.background-grey {
+    transition: 0.5s;
+    background-color: #E5E5E5;
+}
+
+.Category-item-second {
+    list-style-type: none;
+    display: flex;
+    height: 32px;
+    width: 250px;
+    justify-content: space-between;
+    margin: 15px 0px 0 -20px;
+    border-radius: 5px;
+    padding: 6px 0 0 0;
+}
+
+.Category-item-third {
+    list-style-type: none;
+    display: flex;
+    height: 32px;
+    width: 250px;
+    justify-content: space-between;
+    margin: 15px 0px 0 -20px;
+    border-radius: 5px;
+    padding: 6px 0 0 0;
+}
+
+.Category-second-container {
+    position: absolute;
+    left: 370px;
+    top: 20px;
+}
+
+.Category-third-container {
+    position: absolute;
+    left: 355px;
+    top: 0px;
+    display: none;
+}
+
+.category-selected {
+    margin: 20px 0 0 50px;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+a:link {
+    color: gray;
+    text-decoration: none;
+}
+
+a:visited {
+    color: gray;
+}
+
+.header-navbar-container {
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    box-shadow: 1px 0px 6px 0.1px rgb(116, 116, 116);
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    color: gray;
+    z-index: 1;
+}
+
+.header-navbar-left {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 20px;
+}
+
+.header-navbar-left div {
+    display: flex;
+    margin: 0 5px;
+}
+
+.header-navbar-left :nth-child(1) img {
+    width: 50px;
+    height: 50px;
+}
+
+.header-navbar-left :nth-child(2) img {
+    width: 15px;
+    height: 15px;
+    margin: auto;
+}
+
+.header-navbar-right {
+    display: flex;
+    align-items: center;
+    margin: 0 20px 0 0;
+}
+
+.head-account {
+    background-color: rgb(235, 235, 235);
+    border-radius: 25px;
+    padding: 2px 8px;
+}
+
+.logout {
+    font-weight: 600;
+    background-color: rgb(235, 235, 235);
+    border-radius: 25px;
+    margin: auto 15px;
+    padding: 2px 8px;
+}
+
+.head-account span {
+    margin: auto 10px;
+}
+
+.header-navbar-right div {
+    display: flex;
+    margin: 0 5px;
+    color: black;
+}
+
+.header-navbar-right img {
+    height: 40px;
+    width: 40px;
+    border-radius: 60px;
+}
+
+.font-color {
+    color: red
+}
+
+.span1 {
+    display: none;
+}
+
+.btn {
+    width: 95px;
+    height: 45px;
+    background-color: #a06464;
+    border-radius: 15px;
+    margin: 40px 0 0 50px;
+    box-shadow: 1px 1px 5px 0.2px rgb(83, 83, 83);
+}
+
+.btn:hover {
+    background-color: #8f5858;
+}
+
+.btn p {
+    padding: 10px 0 0 10px;
+    color: white;
+}

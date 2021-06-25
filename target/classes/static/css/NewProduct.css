@@ -1,0 +1,482 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: lightgray;
+    height: 100%;
+}
+
+a:link{
+    color: gray;
+    text-decoration:none;
+}
+
+a:visited {
+    color: gray;
+}
+
+
+.header-navbar-container{
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    box-shadow: 1px 0px 6px 0.1px rgb(116, 116, 116);
+    display: flex;
+    justify-content:space-between;
+    font-size: 18px;
+    color: gray;
+}
+
+.header-navbar-left{
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 20px;
+}
+
+.header-navbar-left div{
+    display: flex;
+    margin: 0 5px;
+}
+
+.header-navbar-left :nth-child(1) img{
+    width: 50px;
+    height: 50px;
+}
+
+
+
+.header-navbar-left :nth-child(2) img{
+    width: 15px;
+    height: 15px;
+    margin: auto;
+}
+
+.header-navbar-right{
+    display: flex;
+    align-items: center;
+    margin: 0 20px 0 0 ;
+}
+
+.head-account{
+    background-color: rgb(235, 235, 235);
+    border-radius: 25px;
+    padding: 2px 8px;
+}
+
+.logout{
+    font-weight: 600;
+    background-color: rgb(235, 235, 235);
+    border-radius: 25px;
+    margin: auto 15px ;
+    padding: 2px 8px;
+}
+
+.head-account span{
+    margin: auto 10px;
+}
+
+.header-navbar-right div{
+    display: flex;
+    margin: 0 5px;
+    color: black;
+    
+}
+
+.header-navbar-right img{
+    height: 40px;
+    width: 40px;
+    border-radius: 60px;
+}
+
+.basic-information-container{
+    width: 80%;
+    background-color: white;
+    margin: 100px auto auto auto;
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 5px 0.2px rgb(83, 83, 83);
+    border-radius: 3px;
+    padding: 0 0 40px 0;
+}
+
+.basic-information-title{
+    font-size: 18px;
+    font-weight: 600;
+    display: block;
+    width: 90%;
+    margin: auto;
+    padding: 35px 0 15px 0 ;
+}
+
+.basic-information-container-middle{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    
+}
+
+.picture-number{
+    color: gray;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.basic-information-container-picture{
+    display: flex;
+}
+
+.imgPreview {
+    width: 80px;
+    height: 80px;
+    border: 1px grey dashed;
+    margin: 0 0 0 20px;   
+}
+
+.basic-information{
+    margin: 10px -10px 0 30px;
+    width: 10%;
+    text-align: center;
+    font-size: 15px;
+}
+
+.imgPreview :hover{
+    cursor: pointer;
+}
+
+.prompt:hover {
+    cursor: pointer;
+    background-color: #ffefe47c;
+}
+
+.prompt {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.plusicon img{
+    height: 8px;
+    width: 8px;
+    padding: 10px;
+    border: lightgray 1px solid;
+    border-radius: 60px;
+}
+
+.plusicon {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+.filepath {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.img-place {
+    height: 90%;
+    width: 100%;
+    display: none;
+    margin: 5px auto;
+    position: absolute;
+    top: 0px;
+}
+
+.img-delete-container{
+    position: absolute;
+    bottom: -1px;
+    height: 20px;
+    width: 100%;
+    background-color: rgba(175, 175, 175,0.9);
+    display: none;
+}
+
+.img-delete{
+    margin: 2px auto;
+    height: 15px;
+    width: 15px;
+}
+
+
+.basic-information-name-container{
+    display: flex;
+    height: 60px;
+    margin: 30px  0 0 0;
+    width: 100%;
+}
+
+.basic-information-sale-container{
+    display: flex;
+    height: 60px;
+    width: 100%;
+}
+
+.basic-information-name{
+    width: 10%;
+    margin: auto 0 auto 30px;
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.basic-information-name-container input{
+    width: 80%;
+    height: 30px;
+    margin: 12px 0 0 15px ;
+    border: lightgray 1px solid;
+    border-radius: 3px;
+    padding: 3px 10px;
+    
+}
+
+.basic-information-sale-container input{
+    width: 70%;
+    height: 30px;
+    margin: 12px 0 0 15px ;
+    border: lightgray 1px solid;
+    border-radius: 3px;
+    padding: 3px 10px;
+    
+}
+
+.input-container {
+    width: 100%;
+}
+
+.category-flow{
+    width: 100%;
+    font-size: 13px;
+    margin: auto 0 auto 15px;
+    color: gray;
+}
+
+.category-flow img{
+    width: 15px;
+    height: 15px;
+    margin: auto 0 auto 10px;
+    cursor: pointer;
+}
+
+.basic-information-name-container input:focus{
+    outline: none;
+}
+
+.basic-information-name-container input:hover{
+    border: grey solid 1px;
+    transition: 0.5s;
+}
+.basic-information-sale-container input:focus{
+    outline: none;
+}
+
+.basic-information-sale-container input:hover{
+    border: grey solid 1px;
+    transition: 0.5s;
+}
+
+.basic-information-category-container {
+    display: flex;
+    height: 60px;
+    width: 100%;
+}
+
+.basic-information-description-container{
+    display: flex;
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+
+#product-description{
+    height: 50px;
+}
+
+
+#product-description{
+    width: 81.5%;
+    height: 100px;
+    border: lightgray 1px solid;
+    border-radius: 3px;
+    resize : none;
+    margin: 0 0 0 16px;
+    
+}
+
+#product-description:focus{
+    outline: none;
+} 
+
+.basic-information-specification-container{
+    display: flex;
+    margin: 30px  0 0 0;
+    width: 100%;
+    padding: 0 0 20px 0;
+   
+}
+
+.basic-information-specification-container input{
+    width: 200px;
+    height: 30px;
+    margin: 12px 0 0 15px ;
+    border: lightgray 1px solid;
+    border-radius: 3px;
+    padding: 3px 10px;
+    
+}
+
+.basic-information-specification-container input:focus{
+    outline: none;
+}
+
+.basic-information-specification-container input:hover{
+    border: grey solid 1px;
+    transition: 0.5s;
+}
+
+.specification-container{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    border:  grey 1px solid;
+    border-radius: 3px;
+    margin: 0 0 0 15px;
+    padding: 0 0 20px 0;
+}
+
+.basic-information-specification-title{
+    width: 10%;
+    margin: auto 0  auto 30px;
+    text-align: center;
+    font-size: 15px;
+    
+}
+
+.specification-container-middle-name{
+    display: flex;
+    align-items: center;
+    margin: 5px 0 0 20px;
+}
+
+.specification-container-middle-options{
+    display: flex;
+    margin: 5px 0 0 20px;
+}
+
+.basic-information-specification{
+    width: 100px;
+    margin: 16px 0 0 0;
+    text-align: right;
+    
+}
+
+.input-container-specification{
+    width:80%;
+    display: flex;
+}
+
+.input-container-specification div{
+    margin: 17px 0 0 10px ;
+    padding: 5px;
+    display: flex;
+    cursor: pointer;
+}
+
+
+.specification-plus-first ,.specification-plus-second{
+    font-size: 13px;
+    color: grey;
+    cursor: pointer;
+    border: dashed 1px brown;
+    text-align: center;
+    width: 250px;
+    margin: 15px 0 0 120px;
+    padding: 5px 10px;
+}
+
+.specification-plus-first:hover{
+    background-color: #ffefe47c;
+}
+.specification-plus-second:hover{
+    background-color: #ffefe47c;
+}
+
+.input-move{
+    margin: auto;
+}
+
+.basic-information-specification-middle-first{
+    width: 400px;
+}
+.basic-information-specification-middle-second{
+    width: 400px;
+}
+
+.input-container-specification img{
+    width: 18px;
+    height: 18px;
+}
+
+.submit-container{
+    width: 80%;
+    height: 80px;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+    left: 10%;
+    transition: 0.5s;
+    margin: auto;
+}
+
+.submit-container div{
+    margin: 20px 40px 0 0;
+}
+
+.cancle-submit{
+    padding: 10px 60px;
+    border-radius: 3px;
+    border: rgb(165, 165, 165) 1px solid;
+    background-color: white;
+    margin: 0 20px;
+    box-shadow: 1px 1px 5px 0.2px rgb(83, 83, 83);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.onsale-submit{
+    padding: 10px 60px;
+    border-radius: 3px;
+    border: #7e4e4e 1px solid;
+    background-color: #a06464;
+    color: white;
+    box-shadow: 1px 1px 5px 0.2px rgb(83, 83, 83);
+    cursor: pointer;
+    font-size: 16px;
+
+}
+
+.cancle-submit:hover{
+    background-color: rgb(235, 235, 235);
+}
+.onsale-submit:hover{
+    background-color: #8f5858
+}
+
+.fixbottom{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    box-shadow: 1px 1px 5px 0.2px rgb(83, 83, 83);
+}
+
+.fixholder{
+    height: 80px;
+    width: 100%;
+}
+
+.display-none{
+    display: none;
+}
+

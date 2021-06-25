@@ -1,0 +1,276 @@
+body {
+    justify-content: center;
+}
+
+.checkout-nav-bar {
+    height: 25px;
+    width: 100%;
+    background-color: orangered;
+}
+
+.checkout-header-title {
+    height: 100px;
+    width: 1248px;
+    border-bottom: 1px solid rgb(219, 217, 217);
+    margin: 0 0 12px 0;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 1px 0px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.checkout-header-title-name {
+    height: 50px;
+    width: 100%;
+    font-size: 24px;
+    margin: 20px 0 0px 32px;
+    margin: auto;
+}
+
+.checkout-header-title-name img {
+    width: 50px;
+    height: 50px;
+    margin: 0 5px 0 32px;
+}
+.checkout-header-title-name-img{
+    width: 50px;
+    height: 50px;
+    display: inline;
+}
+
+.checkout-header-title-checkout {
+    font-size: 18px;
+    height: 30px;
+    width: 40px;
+    border-left: 1px solid #EE4D2D;
+    margin: 0 0 2px 15px;
+    padding: 0 0 0 15px;
+    display: inline;
+}
+
+
+
+.checkout-order-detail-title {
+    height: 50px;
+    width: 1140px;
+    padding: 24px 30px 0 30px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.09) 1px 1px 1px 0px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-left: lightgrey 1px solid;
+    border-right: lightgrey 1px solid;
+    border-top: lightgrey 1px solid;
+}
+
+.checkout-order-detail-title-container {
+    height: 30px;
+    width: 1140px;
+    display: flex;
+}
+
+.detail-title-container-name {
+    font-size: 18px;
+    height: 21.3333px;
+    width: 456px;
+    display: flex;
+    margin: 4px 0 0 10px;
+}
+
+.detail-title-container-unitprice {
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+    text-align: center;
+    height: 16.6667px;
+    width: 114px;
+    display: block;
+    margin: 6px 0 0 105px;
+}
+
+.detail-title-container-quantity {
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+    text-align: center;
+    height: 16.6667px;
+    width: 114px;
+    display: block;
+    margin: 6px 0px;
+}
+
+.detail-title-container-totalprice {
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+    text-align: right;
+    height: 16.6667px;
+    width: 228px;
+    display: block;
+    margin: 6px 2px 0 110px;
+}
+
+.checkout-order-detail-title-contanier {
+    height: 50px;
+    width: 1152px;
+    padding: 0 30px 0 18px;
+    display: flex;
+    margin: auto;
+    border-left: lightgrey 1px solid;
+    border-right: lightgrey 1px solid;
+}
+
+.checkout-order-detail-title-contanier img {
+    width: 15px;
+    height: 15px;
+    margin: 16px;
+    cursor: pointer;
+}
+
+.checkout-order-detail-title-contanier p {
+    font-size: 14px;
+    height: 16.6667px;
+    width: 70px;
+    margin: 14px 0 0 -11px;
+    cursor: pointer;
+}
+
+.checkout-order-detail-title-contanier-content {
+    height: 55px;
+    width: 1200px;
+    border-bottom: 1px dashed lightgrey;
+    padding: 0 0 20px 0;
+    display: block;
+    margin: auto;
+    display: flex;
+    border-left: lightgrey 1px solid;
+    border-right: lightgrey 1px solid;
+}
+
+.checkout-order-detail-title-contanier-content-a {
+    height: 55px;
+    width: 456px;
+    display: flex;
+    margin: 0 0 0 30px;
+}
+
+.checkout-order-detail-title-contanier-content-a img {
+    height: 40px;
+    width: 36.6667px;
+    margin: 8px 5px;
+}
+
+.checkout-order-detail-title-contanier-content-a-ordername {
+    font-size: 14px;
+    height: 16.6667px;
+    width: 389.333px;
+    margin: 20px 0 0 2px;
+    display: flex;
+}
+
+.checkout-order-detail-title-contanier-content-a-select {
+    height: 55px;
+    width: 230px;
+    display: flex;
+}
+
+.checkout-order-detail-title-contanier-content-a-select span {
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+    height: 18px;
+    width: 123px;
+    padding: 19px 0 0 16px;
+}
+
+.checkout-order-detail-title-contanier-content-a-unitprice {
+    height: 20px;
+    width: 65px;
+    margin: 20px 0px 0px 11px;
+}
+
+.checkout-order-detail-title-contanier-content-a-unitprice span {
+    width: 50px;
+    height: 50px;
+}
+
+.checkout-order-detail-title-contanier-content-a-quantity {
+    height: 55px;
+    width: 116px;
+    display: flex;
+    justify-content: center;
+}
+
+.checkout-order-detail-title-contanier-content-a-quantity span {
+    display: flex;
+    align-items: center;
+}
+
+.checkout-order-detail-title-contanier-content-a-totalprice {
+    height: 55px;
+    width: 230px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 0 108px;
+}
+
+.checkout-order-detail-title-contanier-content-a-totalprice span {
+    display: flex;
+    align-self: center;
+}
+
+.checkout-order-detail-title-contanier-content-discount {
+    height: 22.9479px;
+    width: 1140px;
+    border-bottom: 1px dashed lightgrey;
+    padding: 18px 30px 18px 30px;
+    display: flex;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 1px 0px;
+    border-bottom-left-radius: 3px;
+    border-left: lightgrey 1px solid;
+    border-right: lightgrey 1px solid;
+}
+
+.checkout-order-detail-title-contanier-content-information {
+    width: 1200px;
+    display: flex;
+    margin: auto;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.checkout-order-detail-title-contanier-content-totalprice {
+    height: 73px;
+    width: 1140px;
+    padding: 0 30px 0 30px;
+    display: flex;
+    margin: auto;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid rgb(219, 217, 217);
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 1px 0px;
+    border-left: lightgrey 1px solid;
+    border-right: lightgrey 1px solid;
+}
+
+.content-totalprice-title {
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+    height: 16.6667px;
+    width: 112.781px;
+    display: flex;
+}
+
+.content-totalprice-title-endprice {
+    font-size: 20px;
+    color: rgb(209, 96, 55);
+    height: 24px;
+    width: 61.1771px;
+    display: flex;
+    margin: 0 0 0 35px;
+    justify-content: inherit;
+}
