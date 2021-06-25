@@ -1,4 +1,4 @@
-package com.shonpee.shonpee.repository;
+package com.shonpee.shonpee.Repository;
 
 
 import java.util.List;

@@ -21,7 +21,7 @@ public class MemberBean {
 	@Id
 	private String user_Account;
 	private String password;
-	private Integer member_Id;                   
+	private String member_Id;                   
 	private String real_Name;
 	private String email;
 	private String tel;
