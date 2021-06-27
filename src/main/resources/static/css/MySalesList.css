@@ -21,6 +21,7 @@ div {
     background-color: white;
     width: 85%;
     padding: 15px 15px 35px;
+    margin: 0 auto;
 }
 
 
@@ -151,6 +152,7 @@ input {
     padding: 0 0 0 10px;
     height: 57px;
     border-bottom: 3px solid transparent;
+    min-width: 80px;
 }
 
 .orderlist-item {
