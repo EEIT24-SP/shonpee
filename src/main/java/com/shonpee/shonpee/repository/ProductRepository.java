@@ -12,8 +12,12 @@ import com.shonpee.shonpee.domain.Productcategory;
 @EnableJpaRepositories
 public interface ProductRepository extends JpaRepository<ProductBean, Integer> {
 
-//	@Query("Select max(productid) from ProductBean")
-//	Integer findmaxproductid();
+	
+	@Query("Select max(Productid) from ProductBean")
+	public Integer findmaxproductid();
+	
+	@Query(value="Select p from ProductBean p where p.Productid = ?1")
+	public ProductBean findProductBeanbyID(Integer data);
 
 	List<ProductBean> findByProductFirstCategoryId(Integer productFirstCategoryId);
 

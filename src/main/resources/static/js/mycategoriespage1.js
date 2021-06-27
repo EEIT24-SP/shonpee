@@ -1,4 +1,5 @@
 
+
 $(document).ready(function () {
     $('.Category-item').click(function () {
         $('.Category-item').removeClass('background-grey');
@@ -410,7 +411,9 @@ $(document).ready(function () {
         } else {
             $("#span2").css('display', 'none');
         }
-
+		
+		
+		
     })
 
     $('.Category-item-second').click(function () {
@@ -451,6 +454,53 @@ $(document).ready(function () {
         } else {
 
         }
+    })
+    
+    
+   $(".btn").on("click", function () {
+        console.log($('.input-text').val());
+        if ($('#category-first').text() != '' && $('#category-second').text() != '' && $(".input-text").val() !=''){
+        if ($('#category-second').text() == '教科參考書' || $('#category-second').text() == '雜誌期刊' || $('#category-second').text() == '文學小說'
+            || $('#category-second').text() == '旅遊相關書籍' || $('#category-second').text() == '語言學習相關書籍') {
+            $.ajax({
+                url: "/NewProduct.page",
+                data: {
+                    "first": $('#category-first').text(),
+                    "second": $('#category-second').text(),
+                    "third": $('#category-third').text(),
+                    "name": $('.input-text').val()
+                },
+                success: function (data) {
+                    window.location.href = "http://localhost:8081/NewProduct";
+                },
+                error: function (e) {
+                    alert("資料尚未完成!!!")
+                }
+            })
+        } else {
+            if ($('#category-third').text() != '') {
+                $.ajax({
+                    url: "/NewProduct.page",
+                    data: {
+                        "first": $('#category-first').text(),
+                        "second": $('#category-second').text(),
+                        "third": $('#category-third').text(),
+                        "name": $('.input-text').val()
+                    },
+                    success: function (data) {
+                        window.location.href = "http://localhost:8080/NewProduct";
+                    },
+                    error: function (e) {
+                        alert("資料尚未完成!!!")
+                    }
+                })
+            } else {
+                alert("資料尚未完成!!!")
+            }
+        }
+    }else {
+        alert("資料尚未完成!!!")
+    }
     })
 })
 

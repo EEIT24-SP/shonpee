@@ -26,7 +26,7 @@
             <div class="logout"><span>登出</span></div>
         </div>
     </div>
-      <form th:action="@{/addProduct}" th:object="${product}" method="Post" enctype="multipart/form-data">
+      <form th:action="@{/addProduct}" name="form1" th:object="${product}" method="Post"  enctype="multipart/form-data">
     <div class="basic-information-container">
             <div class="basic-information-title">基本資訊</div>
             <div class="basic-information-container-middle">
@@ -125,22 +125,25 @@
                 <div class="basic-information-name-container">
                     <div class="basic-information-name">商品名稱</div>
                     <div class="input-container">
-                        <input type="text" placeholder="請輸入" maxlength="50" id="product-name" name="productName" size="large">
-                        <div class="input-distinct"><span class="input-length">0</span>/50</div>
+                        <input type="text" placeholder="請輸入" maxlength="50" th:value="${session.name}" id="product-name" name="productName" size="large">
                     </div>
                 </div>
                 <span class="msg">商品名稱不能為空白</span>
                 <div class="basic-information-description-container">
                     <div class="basic-information-name">商品描述</div>
                     <div class="input-container">
-                        <textarea  placeholder=" 請輸入" id="product-description" name="productDetail" rows="40"></textarea>
+                        <textarea  placeholder=" 請輸入" maxlength="1500" id="product-description" name="productDetail" rows="40"></textarea>
                         
                     </div>
                 </div>
-                <div class="basic-information-category-container">
+         		<div class="basic-information-category-container">
                     <div class="basic-information-name">類別</div>
                     <div class="category-flow">
-                        <span th:text="${first}"></span> <img src="/pic/pencil.png" alt="">
+                        <span id="first-span" th:text="${session.first}"></span>
+                        <span class="span1" id="span1">></span>
+                        <span id="second-span" th:text="${session.second}"></span>
+                        <span class="span1" id="span2">></span>
+                        <span id="third-span" th:text="${session.third}"></span> <a th:href="@{/MyCategoriesPage1}"><img src="/pic/pencil.png" alt=""></a>
                     </div>
                 </div>
                 
@@ -150,13 +153,13 @@
             <div class="basic-information-sale-container">
                 <div class="basic-information-name">商品價格</div>
                 <div class="input-container">
-                    <input type="text"  placeholder="NT$ 請輸入" name="productPrice" id="product-price" size="large">
+                    <input type="number"  placeholder="NT$ 請輸入" maxlength="10" name="productPrice" id="product-price" size="large">
                 </div>
             </div>
             <div class="basic-information-sale-container">
                 <div class="basic-information-name">數量</div>
                 <div class="input-container">
-                    <input type="text" placeholder="請輸入" name="productStock" id="product-count" size="large">
+                    <input type="number" placeholder="請輸入" maxlength="10" name="productStock" id="product-count" size="large">
                 </div>
             </div>
             <div class="basic-information-specification-container">
@@ -208,7 +211,7 @@
     <div class="submit-container fixbottom">
         <div>
             <button class="cancle-submit">取消</button>
-            <button class="onsale-submit" type="submit">上架</button>
+            <button class="onsale-submit"  onclick="return false" type="submit">上架</button>
         </div>
     </div>
     </form>

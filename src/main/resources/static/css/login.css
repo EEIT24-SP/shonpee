@@ -471,7 +471,6 @@ a {
 .footer {
     width: 1200px;
     height: 490px;
-    /* background-color: rgb(204, 204, 204); */
     margin: auto;
 }
 
@@ -493,10 +492,6 @@ a {
     width: 60%;
 }
 
-
-/* td{
-    border: 2px solid rgb(255, 135, 135);
-  } */
 
 .main-footer-hr {
     height: 5px;
