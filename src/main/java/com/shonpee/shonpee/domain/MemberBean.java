@@ -31,6 +31,7 @@ public class MemberBean {
 	private String month;
 	private String day;
 	private String address;
+	private String memberPhoto;
 	
 	
 	@OneToMany(mappedBy = "memberBean")

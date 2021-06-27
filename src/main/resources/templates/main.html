@@ -137,7 +137,7 @@
 
     <div class="mainpage-sort-container">
         <div class="category-wrapper" th:each="category : ${categories}">
-            <a th:href="@{/cat/__${category.categoryId}__}">
+            <a th:href="@{/main-page/__${category.categoryId}__}">
                 <div class="sort-item">
                     <div class="sort-item-image"><img th:src="@{__${category.categoryIcon}__}" alt=""></div>
                     <div class="sort-item-title">[[${category.categoryName}]]</div>

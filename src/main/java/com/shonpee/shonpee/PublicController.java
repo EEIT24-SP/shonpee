@@ -1,5 +1,6 @@
 package com.shonpee.shonpee;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -16,40 +17,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.shonpee.shonpee.domain.CartBean;
+import com.shonpee.shonpee.domain.Productcategory;
+import com.shonpee.shonpee.repository.CartRepository;
+
 
 
 
 @Controller
 public class PublicController {
 	
+	@Autowired
+	CartRepository CR;
 	
-	@RequestMapping("/main-page")
-	public String test(HttpSession session) {
-	return "main";
-}
-
-	@RequestMapping("/main/card")
+	@RequestMapping("/main-page/card")
 	public String card() {
 		return "account/credit_card";
 	}
 
-	@RequestMapping("/main/address")
+	@RequestMapping("/main-page/address")
 	public String address() {
 		return "account/address";
 	}
 
-	@RequestMapping("/main/password")
+	@RequestMapping("/main-page/password")
 	public String password() {
 		return "account/password";
 	}
-	@RequestMapping("/main/profile")
+	@RequestMapping("/main-page/profile")
 	public String profile() {
 		return "account/profile";
 	}
 	
-//	@RequestMapping("/main-page/item")
-//	public String item() {
-//		return "Bear-item";
-//	}
 	
 }

@@ -14,7 +14,7 @@ body {
   transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-/*隱藏選單方法一*/
+/*�����瘜�*/
 
 /* .acc-list{
   position: absolute;
@@ -405,7 +405,7 @@ select {
 }
 .main-right-profile-right-container-img-2 {
   height: 30px;
-  width: 100px;
+  width: 70px;
 }
 
 .main-right-password-list-neme
@@ -528,37 +528,37 @@ select {
 
 
 .pop-up-window {
-  /*整个弹窗的页面*/
-  /*透明度*/
+  /*�銝芸撕蝒�△�*/
+  /*��漲*/
   width: 100%;
-  /*宽度*/
-  /*高度，不能百分百*/
+  /*摰賢漲*/
+  /*擃漲嚗����*/
   background: rgb(39, 38, 38, 0.5);
-  /*背景色*/
+  /*���*/
   position: absolute;
   top: 0;
   left: 0;
-  /*定位*/
+  /*摰��*/
   display: none;
-  /*隐藏*/
+  /*����*/
   z-index: 2;
-  /*覆盖*/
+  /*閬��*/
 }
 
 .pop-up-window-content {
-  /* 弹框的页面*/
+  /* 撘寞��△�*/
   width: 500px;
-  /*宽度*/
+  /*摰賢漲*/
   height: 550px;
-  /*高度*/
+  /*擃漲*/
   background: rgb(255, 255, 255);
-  /*背景色*/
+  /*���*/
   display: none;
-  /*隐藏*/
+  /*����*/
   z-index: 3;
-  /*覆盖*/
+  /*閬��*/
 
-  /* 定位*/
+  /* 摰��*/
 }
 
 .new_credit_card_input {

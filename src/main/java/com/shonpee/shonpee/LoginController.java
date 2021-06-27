@@ -15,7 +15,7 @@ import com.shonpee.shonpee.domain.MemberBean;
 public class LoginController {
 	@Autowired
 	private MemberServiceRepository memberService;
-
+ 
 	@RequestMapping(value = "/login-page")
 	public String login() {
 

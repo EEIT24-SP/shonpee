@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,9 +22,7 @@ public class PropertyBeanSecond {
 	private String PropertyName;
 	private String PropertyValue;
 
-//	@OneToOne
-//	@JoinColumn(name="Productid2" ,
-//	referencedColumnName="Productid")
-	private Integer Productid2;
-
+	@ManyToOne
+	@JoinColumn(name = "Productid2")
+	private ProductBean productBean;
 }

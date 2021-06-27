@@ -67,4 +67,88 @@ function add_address() {
 
 }
 
+ var ccount = document.getElementById("ccount"); //显示商品总数量的标签节点对象 
+
+ /*下面是使用者主頁面標題*/
+  window.onload = function () {
+      var profile_p_list_ctl = parseInt(window.sessionStorage.getItem('acc-profile'));
+      var notice_p_list_ctl = parseInt(window.sessionStorage.getItem('acc-notice'));
+      //設置列表載入初始值
+      if (profile_p_list_ctl == 2) {
+          profile_list.style.visibility = 'visible';
+          profile_list.style.maxHeight = '150px';
+          cnt_profile_list = 1;
+      }
+      if (notice_p_list_ctl == 2) {
+          notice_list.style.visibility = 'visible';
+          notice_list.style.maxHeight = '150px';
+          cnt_notice_list = 1;
+      }
+      if (ccount.innerText != 0) {
+		ccount.style.visibility='visible';
+	}
+	else if(ccount.innerText == 0){
+		ccount.style.visibility='hidden';
+	}
+      //設置主頁標題隱藏及顯示
+  };   
+  
+    /*控制者選單*/
+    var cnt_profile_list = 0;
+    var profile_list = document.getElementById('acc-profile');
+    var notice_list = document.getElementById('acc-notice');
+    function btn_list_profile() {
+        //     var profile_list = document.getElementById('acc-profile');
+        // var notice_list= document.getElementById('acc-notice');
+        var notice_p_list = parseInt(window.sessionStorage.getItem('acc-notice'));
+        window.sessionStorage.setItem('acc-profile', '1');
+        if (cnt_profile_list < 2) {
+            profile_list.style.visibility = 'visible';
+            profile_list.style.maxHeight = '150px';
+            // asd.style.visibility = 'visible';
+            // asd.style.maxHeight = '20px';
+            cnt_profile_list = cnt_profile_list + 1;
+            window.sessionStorage.setItem('acc-profile', '2');
+        }
+        if (cnt_profile_list == 2) {
+            console.log(cnt_profile_list);
+            profile_list.style.overflowY = 'hidden';
+            profile_list.style.maxHeight = '0px';
+            cnt_profile_list = 0;
+            window.sessionStorage.setItem('acc-profile', '1');
+        }
+        //當點擊profile, sessionStorage 的value=2 時 隱藏 notice列表,且重置cnt,及 sessionStorage value
+        if (notice_p_list == 2) {
+            notice_list.style.overflowY = 'hidden';
+            notice_list.style.maxHeight = '0px';
+            cnt_notice_list = 0;
+            window.sessionStorage.setItem('acc-notice', '1');
+        }
+    }
+    var cnt_notice_list = 0;
+    function btn_list_notice() {
+        // var notice_list = document.getElementById('acc-notice');    
+        // var profile_list= document.getElementById('acc-profile');
+        var profile_p_list = parseInt(window.sessionStorage.getItem('acc-profile'));
+        window.sessionStorage.setItem('acc-notice', '1');
+        if (cnt_notice_list < 2) {
+            notice_list.style.visibility = 'visible';
+            notice_list.style.maxHeight = '150px';
+            cnt_notice_list = cnt_notice_list + 1;
+            window.sessionStorage.setItem('acc-notice', '2');
+        }
+        if (cnt_notice_list == 2) {
+            notice_list.style.overflowY = 'hidden';
+            notice_list.style.maxHeight = '0px';
+            cnt_notice_list = 0;
+            window.sessionStorage.setItem('acc-notice', '1');
+        } //同上
+        if (profile_p_list == 2) {
+            profile_list.style.overflowY = 'hidden';
+            profile_list.style.maxHeight = '0px';
+            cnt_profile_list = 0;
+            window.sessionStorage.setItem('acc-profile', '1');
+        }
+    }
+    
 

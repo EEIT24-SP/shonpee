@@ -35,7 +35,7 @@
 			<li><a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
 					alt=""><strong>幫助中心</strong> </a></li>
 			<li><a href="/main/acc"><img src="../pic/Account.svg" style="width: 20px"
-					alt=""><strong id="ssaa">會員帳戶</strong> </a></li>
+					alt=""><strong id="ssaa"  th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}">會員帳戶</strong> </a></li>
 		</ul>
 
 	</nav>
@@ -85,7 +85,7 @@
 		</div>
 		
 		
-			<form action=""  th:action="@{/main-page/cart}"  method="post">
+	<form action=""  th:action="@{/main-page/cart}"  method="post">
 		
 		<div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
 		 <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden"> 
@@ -94,7 +94,7 @@
 					<input  class="cart-page-checkbox">
 					<div>
 						<img src="../pic/store.svg" class="cart-page-shop-header-icon">
-						 <input th:name="|memberId|" th:value="${userto.memberId}" readonly="readonly"> 
+						 <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly"> 
 						 
 					</div>
 				</div>
@@ -108,7 +108,7 @@
 					<div class="cart-page-product-allitems">
 						<div>
 							<input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97"> <img 
- th:name="|productBean.productPhoto|" th:src="${userto.productBean.productPhoto}"
+ th:name="|cartPhoto|" th:src="${userto.cartPhoto}"
 								alt="" class="product-img">
 							<div class="product-description-box">
 								<div>
@@ -120,7 +120,10 @@
 									規格
 									<div class="product-size-button-icon"></div>
 								</div>
-								<div>藍色XL</div>
+								<div >
+								<input th:name="typeValue1" th:value="${userto.typeValue1}">
+								<div th:text="${userto.typeValue2}"></div>
+								</div>
 							</div>
 							<div class="product-unit-price">
 							<input type="text" class="unit-price"  th:name="|productBean.productPrice|" 

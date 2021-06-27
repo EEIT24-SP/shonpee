@@ -65,7 +65,6 @@ body {
     align-items: center;
     justify-content:flex-start;
     margin-top: 15px;
-    background-color: rgb(235,235,235);
 }
 
 .item-container-left-b>img {
@@ -441,8 +440,7 @@ body {
 .arrow-left {
     width: 20px;
     height: 20px;
-  
-    border-color: #ffffff;
+    border-color: #ff8040;
     border-style: solid;
     border-width: 5px 5px 0px 0px;
     margin: auto;
@@ -458,7 +456,7 @@ body {
     height: 20px;
     background-color: transparent;
 
-    border-color: #ffffff;
+    border-color: #ff8040;
     border-style: solid;
     border-width: 4px 4px 0 0;
     margin: auto;
@@ -548,6 +546,7 @@ body {
     background-color: white;
     border-radius: 3px;
     cursor: pointer;
+    text-align: center;
 }
 
 .property-value-second{
@@ -558,6 +557,7 @@ body {
     background-color: white;
     border-radius: 3px;
     cursor: pointer;
+    text-align: center;
 }
 
 
@@ -603,4 +603,8 @@ body {
     border-radius: 3px;
     cursor: pointer;
     line-height: 15px;
+}
+
+.item-container-left-img >img:hover {
+	border: 2px solid orange;
 }

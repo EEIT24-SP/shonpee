@@ -22,6 +22,11 @@ public class CartBean {
 	private String quantity;
 	private String 	memberId;
 	private String 	totalPrice;
+	private String typeValue1; 
+	private String typeValue2;
+	private String cartPhoto;
+
+	
 	@ManyToOne
 	@JoinColumn(name = "product_Id")
 	private ProductBean productBean;
