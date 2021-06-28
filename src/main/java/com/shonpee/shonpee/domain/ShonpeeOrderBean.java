@@ -28,7 +28,7 @@ public class ShonpeeOrderBean {
 	private Integer quantity;
 	private Integer total;
 	private Integer payment;
-	private Integer status;
+	private String status;
 	private Timestamp shippedDate;
 	private Timestamp requiredDate;
 	private String type_value1;

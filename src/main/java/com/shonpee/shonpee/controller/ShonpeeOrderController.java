@@ -11,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,17 +26,12 @@ import com.shonpee.shonpee.repository.ShonpeeOrderRepository;
 @Controller
 public class ShonpeeOrderController {
 
-	// 待出貨
-	Integer statusReadyToShip = new Integer(1);
-	// 待收貨
-	Integer statusReadyToPick = new Integer(2);
-	
 	@Autowired
 	private ShonpeeOrderRepository shonpeeOrderRepository;
 
 	@Autowired
 	private ProductRepository productRepository;
-	
+
 	// 賣家銷售頁
 	@GetMapping("/mysales")
 	public String showSellerOrders(Model model) {
@@ -44,32 +41,53 @@ public class ShonpeeOrderController {
 		model.addAttribute("ordersWithProduct", ordersWithProduct);
 		return "seller/MySales";
 	}
-	
+
 	// 更新訂單狀態: 出貨(待出貨->待收貨)
-	@PutMapping("/orderStatus/update")
-//	@ResponseBody
-	public ResponseEntity<Map<String,Object>> updateTheOrder(@RequestBody ShonpeeOrderBean order) {
+	@PutMapping("/order/{id}")
+	public ResponseEntity<Map<String, Object>> shipoutOrder(@RequestBody ShonpeeOrderBean order) {
 		Integer updatingOrderId = order.getOrderId();
-		Integer currentStatus = order.getStatus();
+		String currentStatus = order.getStatus();
 		Optional<ShonpeeOrderBean> OptOrder = shonpeeOrderRepository.findById(updatingOrderId);
-		
+
 		// 更新為"待收貨"
-		if(OptOrder.isPresent() && currentStatus.equals(statusReadyToShip)) {
+		if (OptOrder.isPresent() && currentStatus.equals("待出貨")) {
 			// 以JPA存入資料庫
 			ShonpeeOrderBean updatingOrder = OptOrder.get();
-			updatingOrder.setStatus(statusReadyToPick);
+			updatingOrder.setStatus("待收貨");
 			ShonpeeOrderBean updatedOrder = shonpeeOrderRepository.save(updatingOrder);
 			// 產生ResponseEntity，內裝Map，傳回Response和更新後資料
-			Map<String,Object> updatedOrderDataMap = new HashMap<String,Object>();
+			Map<String, Object> updatedOrderDataMap = new HashMap<String, Object>();
 			updatedOrderDataMap.put("orderId", updatedOrder.getOrderId());
 			updatedOrderDataMap.put("status", updatedOrder.getStatus());
-			System.out.println("----------------------");
-			System.out.println("updatedID => " + updatedOrder.getOrderId());
-			System.out.println("updatedStatus => " + updatedOrder.getStatus());
-			System.out.println("----------------------");
-	        
+
 			return new ResponseEntity(updatedOrderDataMap, HttpStatus.OK);
-		}else {
+		} else {
+			// 可能要用@Transaction綁所有更新完成的動作，驗證是否有更新成功
+		}
+
+		return null;
+	}
+
+	// 更新訂單狀態: 取消(待出貨->取消)
+	@DeleteMapping("/order/{orderId}")
+	public ResponseEntity<Map<String, Object>> cancelOrder(@PathVariable("orderId") Integer cancelingOrderId) {
+		Optional<ShonpeeOrderBean> OptOrder = shonpeeOrderRepository.findById(cancelingOrderId);
+		if (OptOrder.isPresent() && OptOrder.get().getStatus().equals("待出貨")) {
+			// 以JPA存入資料庫
+			ShonpeeOrderBean cancelingOrder = OptOrder.get();
+			cancelingOrder.setStatus("取消");
+			ShonpeeOrderBean canceledOrder = shonpeeOrderRepository.save(cancelingOrder);
+			// 產生ResponseEntity，內裝Map，傳回Response和更新後資料
+			Map<String, Object> canceledOrderDataMap = new HashMap<String, Object>();
+			canceledOrderDataMap.put("orderId", canceledOrder.getOrderId());
+			canceledOrderDataMap.put("status", canceledOrder.getStatus());
+			System.out.println("----------------------");
+			System.out.println("canceledID => " + canceledOrder.getOrderId());
+			System.out.println("canceledStatus => " + canceledOrder.getStatus());
+			System.out.println("----------------------");
+//
+			return new ResponseEntity(canceledOrderDataMap, HttpStatus.OK);
+		} else {
 			// 可能要用@Transaction綁所有更新完成的動作，驗證是否有更新成功
 			System.out.println("----------------------");
 			System.out.println("...ELSE...");
@@ -79,6 +97,6 @@ public class ShonpeeOrderController {
 		System.out.println("RETURN NULL!!!");
 		System.out.println("----------------------");
 		return null;
+
 	}
-	
 }

@@ -11,7 +11,7 @@ import com.shonpee.shonpee.domain.OrderAndProductData;
 import com.shonpee.shonpee.domain.ShonpeeOrderBean;
 
 public interface ShonpeeOrderRepository extends JpaRepository<ShonpeeOrderBean, Integer> {
-	List<ShonpeeOrderBean> findByStatus(Integer status);
+	List<ShonpeeOrderBean> findByStatus(String status);
 	
 	// 查詢訂單狀態為?的產品
 	// 一對一查詢，用constructor寫入
