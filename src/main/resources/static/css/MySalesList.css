@@ -20,6 +20,7 @@ div {
 .sellerorder-content-container {
     background-color: white;
     width: 85%;
+    min-width: 600px;
     padding: 15px 15px 35px;
     margin: 0 auto;
 }
@@ -136,9 +137,10 @@ input {
     border: 2px solid rgb(225, 225, 225);
     border-bottom: none;
     display: grid;
-    grid-template-columns: 6fr 3fr 3fr 2fr 4fr;
-    column-gap: 2%;
+    grid-template-columns: 6fr 3fr 3fr 2fr 2fr 4fr;
+    column-gap: 1%;
     align-items: center;
+    min-width: 530px;
 }
 
 .orderlist-head {
@@ -151,7 +153,6 @@ input {
     align-items: center;
     padding: 0 0 0 10px;
     height: 57px;
-    border-bottom: 3px solid transparent;
     min-width: 80px;
 }
 
@@ -250,7 +251,6 @@ input {
     background-color: rgb(255, 226, 172);
     border-radius: 3px;
     border: gray 1px solid;
-    cursor: pointer;
     font-size: 13px;
 }
 
@@ -263,7 +263,6 @@ input {
     background-color: rgb(206, 122, 89);
     border-radius: 3px;
     border: gray 1px solid;
-    cursor: pointer;
     font-size: 13px;
 }
 

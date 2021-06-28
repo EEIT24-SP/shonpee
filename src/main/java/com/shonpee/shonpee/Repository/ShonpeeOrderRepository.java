@@ -17,8 +17,7 @@ public interface ShonpeeOrderRepository extends JpaRepository<ShonpeeOrderBean, 
 	// 一對一查詢，用constructor寫入
 	@Query("SELECT new com.shonpee.shonpee.domain.OrderAndProductData(so, p) "
 			+ "FROM ShonpeeOrderBean so, ProductBean p "
-			+ "WHERE so.productId = p.productid "
-			+ "AND so.status = :statusNum")
-	List<OrderAndProductData> findOrderAndProductDatas(@Param("statusNum") Integer statusNum);
+			+ "WHERE so.productId = p.productid")
+	List<OrderAndProductData> findOrderAndProductDatas();
 	
 }
