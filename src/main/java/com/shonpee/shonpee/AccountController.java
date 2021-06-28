@@ -42,7 +42,8 @@ public class AccountController {
 			List<MemberBean> list = MR.findAll();
 			for (MemberBean memberBean : list) {
 				if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
-					model.addAttribute("acc", memberBean);
+					model.addAttribute("acc", memberBean); 
+					session.setAttribute("accphoto", memberBean.getMemberPhoto());
 					session.setAttribute("accid", memberBean.getMemberId());
 				}
 			}
@@ -93,6 +94,7 @@ public class AccountController {
 //		System.out.println(delete);
 		System.out.println(CKBX);
 		System.out.println(CB.getTypeValue1());
+		System.out.println(CB.getProductBean().getProductName());
 //		System.out.println(checkout);
 //		//取的複數ID,再依照符合ID加入結帳選單
 //		String[] split = CKBX.split(",", -1);

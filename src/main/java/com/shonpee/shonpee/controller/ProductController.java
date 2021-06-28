@@ -133,11 +133,7 @@ public class ProductController {
 		}
 		List<MemberBean> list = MR.findAll();
 		List<ProductBean> list1 = productRepository.findAll();
-		List<CartBean> list2 = CR.findAll();
-		List<PropertyBean> list3 = propertyRepository.findAll();
-		List<PropertyBeanSecond> list4 = propertySecondRepository.findAll();
-        ArrayList<CartBean> cartcnt = new ArrayList<CartBean>();
-
+		List<CartBean> list2 = CR.findAll(); 
 		System.out.println("post");
 		for (MemberBean memberBean : list) {
 			// 會員底下搜尋 如過購物車數量為0,則執行productBean新增置購物車
@@ -287,7 +283,7 @@ public class ProductController {
 	@GetMapping("/main-page/{categoryId}")
 	public String showOneCategoryProducts(@PathVariable("categoryId") Integer categoryId, Model model) {
 		// 找出第一層的全部類別，放入頁面
-		List aaaList = listFirstCategories();
+		List aaaList = listFirstCategories(); 
 		model.addAttribute("categories", listFirstCategories());
 		// 找出該分類的產品，放入頁面
 		List<ProductBean> productsOfTheCategory = productRepository.findByProductFirstCategoryId(categoryId);

@@ -8,7 +8,7 @@
 <div  th:fragment="leftBar" >
       <div class="main-user-head">
         <div class="main-user-head-border">
-          <img th:src="${acc.memberPhoto}" class="main-user-head-border-img" src="../../pic/Bear.svg" alt="" />
+          <img th:src="@{${session.accphoto}}" class="main-user-head-border-img" src="../../pic/Bear.svg" alt="" />
         </div>
         <div class="main-user-head-text">
           <div class="main-user-head-text-a">
@@ -46,7 +46,7 @@
         <tr>
           <td>
             <img class="main-table-acc-img" src="../../pic/List.svg" alt="" />
-            <span class="main-left-list-name"><a href="../shop_list/shop_list.html">購買清單</a> </span>
+            <span class="main-left-list-name"><a href="/main-page/shop-list">購買清單</a> </span>
           </td>
         </tr>
       </table>

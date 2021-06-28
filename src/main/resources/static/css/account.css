@@ -757,3 +757,152 @@ padding: 0px 10px 0px 0px
   width:27%;
   height: 38px;
 }
+
+
+#shop_list_serch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.shop_list_serch-bar {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(225, 225, 225);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop_list_serch-bar-input {
+  background-color: rgb(225, 225, 225);
+  width: 100%;
+  height: 50px;
+}
+
+.main-right-list-2 {
+  display: flex;
+  justify-content: center;
+}
+
+.main-right-list-border {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px 0px 5px 5px;
+  margin-top: 15px;
+}
+
+.main-right-list-border-1 {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+}
+
+.main-right-list-border-2 {
+  width: 100%;
+  display: flex
+}
+
+.main-right-list-border-3 {
+  width: 90%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-right: 1px solid rgb(225, 225, 225);
+  margin: 15px 0px 15px 0px;
+}
+
+.main-right-list-border-4 {
+
+  display: flex;
+  width: 85%;
+}
+
+.main-right-list-border-3-1 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main-right-list-border-2-1 {
+  display: flex;
+  justify-content: center;
+  width: 10%;
+}
+
+.main-right-list-border-2-2 {
+  display: flex;
+  align-items: center;
+}
+
+.main-right-list-border-1-1 {
+  display: flex;
+  justify-content: left;
+  border-top: 1px solid rgb(225, 225, 225);
+}
+
+.main-right-list-border-1-2 {
+  width: 90%;
+  margin: 10px 0px;
+}
+
+.main-right-list-border-1-3 {
+  width: 80px;
+  float: left;
+  padding: 0px 10px 0px 0px
+}
+
+.main-right-list-border-1-4 {
+  text-align: left
+}
+
+.main-right-list-border-1-5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+}
+
+.main-right-list-3 {
+
+  display: flex;
+  justify-content: center;
+}
+
+.main-right-list-3-1 {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+  border-top: 1px solid rgb(225, 225, 225);
+}
+
+.main-right-list-3-2 {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+}
+
+.main-right-list-3-2-1 {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0px;
+}
+
+.main-right-list-3-2-2 {
+  padding: 0 0 0 10px;
+}
+
+.main-right-list-3-2-3 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main-right-list-3-2-3-1 {
+  width: 150px;
+  margin-right: 10px;
+}
+
+.main-right-list-3-2-3-2 {
+  width: 150px;
+  margin-right: 10px;
+}
