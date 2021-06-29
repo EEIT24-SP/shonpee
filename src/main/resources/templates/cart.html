@@ -35,7 +35,7 @@
 			<li><a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
 					alt=""><strong>幫助中心</strong> </a></li>
 			<li><a href="/main/acc"><img src="../pic/Account.svg" style="width: 20px"
-					alt=""><strong id="ssaa">會員帳戶</strong> </a></li>
+					alt=""><strong id="ssaa"  th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}">會員帳戶</strong> </a></li>
 		</ul>
 
 	</nav>
@@ -85,16 +85,16 @@
 		</div>
 		
 		
-			<form action=""  th:action="@{/main-page/cart}"  method="post">
+	<form action=""  th:action="@{/main-page/cart}"  method="post">
 		
 		<div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
-		 <input th:name="|cart_Id|" th:value="${userto.cart_Id}" class="Cart_id" readonly="readonly" type="hidden"> 
+		 <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden"> 
 			<div class="cart-page-shop-header">
 				<div>
 					<input  class="cart-page-checkbox">
 					<div>
 						<img src="../pic/store.svg" class="cart-page-shop-header-icon">
-						 <input th:name="|member_Id|" th:value="${userto.member_Id}" readonly="readonly"> 
+						 <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly"> 
 						 
 					</div>
 				</div>
@@ -107,12 +107,14 @@
 				<div class="cart-page-product">
 					<div class="cart-page-product-allitems">
 						<div>
-							<input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97"> <img 
- th:name="|productBean.product_Photo|" th:src="${userto.productBean.product_Photo}"
+							<input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97"> 
+						<div>	<img 
+                     th:name="|cartPhoto|" th:src="${userto.cartPhoto}"
 								alt="" class="product-img">
+								</div>
 							<div class="product-description-box">
 								<div>
-								<input type="text"  th:name="|productBean.product_Name|" th:value="${userto.productBean.product_Name}">
+								<input type="text"  th:name="|productBean.productName|" th:value="${userto.productBean.productName}">
 								</div>
 							</div>
 							<div class="product-size">
@@ -120,11 +122,14 @@
 									規格
 									<div class="product-size-button-icon"></div>
 								</div>
-								<div>藍色XL</div>
+								<div >
+								<input th:name="typeValue1" th:value="${userto.typeValue1}">
+								<div th:text="${userto.typeValue2}"></div>
+								</div>
 							</div>
 							<div class="product-unit-price">
-							<input type="text" class="unit-price"  th:name="|productBean.product_Price|" 
-							th:value="${userto.productBean.product_Price}" readonly="readonly" >
+							<input type="text" class="unit-price"  th:name="|productBean.productPrice|" 
+							th:value="${userto.productBean.productPrice}" readonly="readonly" >
 							</div>
 							<div class="product-quanftity">
 								<div>
@@ -135,7 +140,7 @@
 								<div>剩下10000件</div>
 							</div>
 							<div class="product-total-price-box">
-								<input readonly="readonly" class="product-total-price" type="text" th:name="|total_Price|" th:value="${userto.Total_Price}">
+								<input readonly="readonly" class="product-total-price" type="text" th:name="|totalPrice|" th:value="${userto.TotalPrice}">
 							</div>
 							<div class="product-action">
 								<button type="submit"  name="delete" class="product-action-delet" value="GG">刪除</button>
@@ -149,43 +154,17 @@
 		</div>
 	</div>
 	<div id="cart-page-flex-fixed-footer">
-		<div>
-			<div id="cart-page-flex-fixed-footer-fristroll">
-				<img src="../pic/ticket.png" id="cart-page-flex-fixed-footer-ticket" alt="">
-				<div id="cart-page-flex-fixed-footer-div1">全站折價券</div>
-				<div id="cart-page-flex-fixed-footer-div2">
-					<a href="">選擇折價券或輸入全站折扣碼</a>
-				</div>
-			</div>
-		</div>
-		<div id="cart-page-flex-fixed-footer-secondroll">
-			<div>
-				<input type="checkbox" name="" id="cart-page-flex-fixed-footer-secondroll-checkbox">
-			</div>
-			<div id="cart-page-flex-fixed-footer-secondroll-coin">
-				<img src="../pic/money.png" alt="">
-				<div>蝦幣</div>
-				<div>蝦幣餘額不足</div>
-				<img src="../pic/information.svg" id="coin-information" alt="">
-			</div>
-			<div id="cart-page-flex-fixed-footer-secondroll-coin-discount">-$0</div>
-		</div>
 		<div id="cart-page-flex-fixed-footer-thredroll">
 			<div id="cart-page-flex-fixed-footer-thredroll-checkbox">
 				<input type="checkbox" name="" id="">
-				<button>全選(20)</button>
+				<button>全選</button>
 			</div>
 			<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts">
 				<button name="checkout"  value="checkout">去買單</button>
 				<div>
 					<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total">
-						<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total-price">$0</div>
-						<div>總金額 (0 個商品):</div>
-					</div>
-					<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-discount">
-						<div>+226 蝦幣</div>
-						<div>$7,397,</div>
-						<div>已省下</div>
+						<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total-price" class="totals">$0</div>
+						<div>總金額<span class="txts"></span>個商品:</div>
 					</div>
 				</div>
 			</div>
@@ -311,7 +290,6 @@
 
 
 	<!--操作购物车页面的cart.js-->
-	<script src="../js/cart.js"></script>
 	<script type="text/javascript" th:inline="javascript">
 
 	$('.cart-page-checkbox').on('click',function(){
@@ -320,16 +298,13 @@
 		console.log( "我是CKBX"+$(this).val());	
 	})
 	
-	
-	
-	
 	$('.product-action-delet').on('click',function(){
 		var Cid =  $(this).parents().children('.Cart_id').val();
 		$(this).prop('value',Cid);
 		console.log( $(this).parents().children('.Cart_id').val());
 		console.log( $(this).val());		
 	})
-	
+
 	$('.plus').on('click', function () {
 			var temp = $(this).parent().children('.numcount').prop('value');
 			var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').val();
@@ -337,7 +312,15 @@
 			var price = $(this).parents().children('.product-unit-price').children('.unit-price').val();
 			$(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(total) + parseInt(price)));
 			console.log($(this).parents().children('.product-total-price-box').children('.product-total-price').val());
-			console.log($(this).parents().children('.product-unit-price').children('.unit-price').children());
+			console.log($(this).parents().children('.cart-page-checkbox').prop("checked"));
+            var isChecked = $(this).parents().children('.cart-page-checkbox').prop("checked");
+            if(isChecked == true){
+            	var plustotal =parseInt($(".totals").text());
+    			var Ptotal = plustotal+parseInt(price);
+    			$(".totals").text(Ptotal)
+            }
+			
+			
 		})
 		$('.minus').on('click', function () {
 			var temp = $(this).parent().children('.numcount').val();
@@ -346,13 +329,66 @@
 			if (temp > 1) {
 				$(this).parents().children('.numcount').prop('value', parseInt(temp) - 1);
 				$(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(total) - parseInt(price)));
+				  var isChecked = $(this).parents().children('.cart-page-checkbox').prop("checked");
+		            if(isChecked == true){
+				var minustotal =parseInt($(".totals").text());
+				var Mtotal = minustotal-parseInt(price);
+				$(".totals").text(Mtotal)
+				}
 			}
 			// var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value');
 
 		})
-		
-		
 	</script>
+<!-- 	<#-- 計算總價 S --> -->
+<script>
+    $(function() {
+        // 載入完頁面時,計算總計
+        showTotal();
+        $('.cart-page-checkbox').on('click', function () {
+            // 選擇多選框後,再重新計算
+            showTotal();
+        });
+
+    });
+
+    // 計算總計
+    function showTotal() {
+
+        var  total = 0;
+        var  number = 0;
+        // 1. 獲取所有的被勾選的條目複選框！迴圈遍歷
+        $(".cart-page-checkbox").each(function () {
+            var isChecked = $(this).prop("checked");
+            // 如果多選框被選中
+            if(isChecked == true) {
+                // 2. 獲取複選框的值，即其他元素的字首
+                var id = parseInt( $(this).parents().children('.product-total-price-box').children('.product-total-price').val());
+                console.log(id);
+                // alert("id" + id);
+                //3. 再通過字首找到小計元素，獲取其文字
+                var text = $("#" + id + "Subtotal").text();
+                // alert(text);
+                //4. 累加計算
+                total += Number(id);
+                console.log(total);
+                number += 1;
+                // alert(total);
+            }
+        });
+        // 5. 把總計顯示在總計元素上
+        $(".txts").text(number);//toFixed(2)函式的作用是把total保留2位
+        $(".totals").text(total);
+    }
+</script>
+<!-- <#-- 計算總價 E --> -->
+	
+	
+	
+	
+	
+	
+	
 </body>
 
 </html>

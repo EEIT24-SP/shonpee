@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
 
-import com.shonpee.shonpee.Repository.CartRepository;
-import com.shonpee.shonpee.Repository.MemberRepository;
+import com.shonpee.shonpee.repository.CartRepository;
+import com.shonpee.shonpee.repository.MemberRepository;
 import com.shonpee.shonpee.domain.CartBean;
 import com.shonpee.shonpee.domain.MemberBean;
 

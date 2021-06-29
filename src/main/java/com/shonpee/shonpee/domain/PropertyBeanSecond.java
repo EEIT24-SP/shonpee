@@ -6,29 +6,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 
 import lombok.Data;
 
 @Entity
-@Table(name = "Cart")
+@Table(name = "productTypeDetailSecond")
 @Data
-public class CartBean {
+public class PropertyBeanSecond {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cartId;
-	private String quantity;
-	private String 	memberId;
-	private String 	totalPrice;
-	private String typeValue1; 
-	private String typeValue2;
-	private String cartPhoto;
+	private Integer Propertyid;
+	private String PropertyName;
+	private String PropertyValue;
 
-	
 	@ManyToOne
-	@JoinColumn(name = "product_Id")
+	@JoinColumn(name = "Productid2")
 	private ProductBean productBean;
-
 }

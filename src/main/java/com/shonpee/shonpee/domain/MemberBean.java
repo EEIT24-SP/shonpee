@@ -1,3 +1,4 @@
+
 package com.shonpee.shonpee.domain;
 
 
@@ -19,10 +20,10 @@ import lombok.Data;
 @Data
 public class MemberBean {
 	@Id
-	private String user_Account;
+	private String userAccount;
 	private String password;
-	private String member_Id;                   
-	private String real_Name;
+	private Integer memberId;                   
+	private String realName;
 	private String email;
 	private String tel;
 	private String gender;
@@ -30,15 +31,10 @@ public class MemberBean {
 	private String month;
 	private String day;
 	private String address;
+	private String memberPhoto;
 	
 	
-	@OneToMany(mappedBy = "memberBean")
-	private List<ProductBean>  productlist;	
+//	@OneToMany(mappedBy = "memberBean")
+//	private List<ProductBean>  productlist;	
 	
-//	@OneToMany(mappedBy = "customerBean",fetch = FetchType.EAGER)
-//	private List<Teproduct> list;
-//	
-//	@OneToMany(mappedBy = "customerBean",fetch = FetchType.EAGER)
-//	private List<Profile> plist;
-//	
 }

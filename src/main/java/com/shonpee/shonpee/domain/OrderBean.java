@@ -3,7 +3,11 @@ package com.shonpee.shonpee.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -14,14 +18,20 @@ import lombok.Data;
 public class OrderBean {
 	
 	@Id
-	private int Order_id;
-	private String Member_id;
-	private int Product_id;
-	private Date Order_date;
-	private	int Quantity;
-	private int Total;
-	private int Payment;
-	private int Status;
-	private Date Shipped_date;
-	private Date Required_date;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer orderId;
+	private String memberId;
+	private Integer productId;
+	private String orderImg;
+	private Date orderDate;
+	private	Integer quantity;
+	private Integer total;
+	private Integer payment;
+	private Integer status;
+	private Date shippedDate;
+	private Date requiredDate;
+	
+//	@ManyToOne
+//	@JoinColumn(name = "product_Id")
+//	private ProductBean productBean;
 }

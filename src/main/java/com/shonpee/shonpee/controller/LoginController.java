@@ -1,4 +1,6 @@
-package com.shonpee.shonpee;
+package com.shonpee.shonpee.controller;
+
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,12 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.shonpee.shonpee.ServiceRepository.MemberServiceRepository;
 import com.shonpee.shonpee.domain.MemberBean;
+import com.shonpee.shonpee.repository.MemberRepository;
 
 @Controller
 public class LoginController {
 	@Autowired
 	private MemberServiceRepository memberService;
-
+	
+	@Autowired
+	MemberRepository MR;
 	@RequestMapping(value = "/login-page")
 	public String login() {
 
@@ -31,10 +36,12 @@ public class LoginController {
 			MemberBean beanLogin = memberService.login(loginaccount, loginpassword);
 			if (beanLogin == null) {
 				System.out.println("gg");
+				Optional<MemberBean> ooo = MR.findById("bsenger123");
+				System.out.println(ooo);
 				return "login";
 			} else {
 //				System.out.println(session.getAttribute("user"));
-				session.setAttribute("UserName", beanLogin.getUser_Account());
+				session.setAttribute("UserName", beanLogin.getUserAccount());
 				return "redirect:/main-page";
 			}
 		} else if ((registered_account != null) && (registered_password != null)) {

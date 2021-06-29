@@ -23,51 +23,57 @@
 				<div class="checkout-header-title-checkout">結帳</div>
 			</div>
 		</div>
-		<div class="checkout-main">
+		<form action="">
+			<div class="checkout-main">
+				<div class="checkout-order">
+					<div class="checkout-order-detail-title">
+						<div class="checkout-order-detail-title-container">
+							<div class="detail-title-container-name">訂單商品</div>
+							<div class="detail-title-container-unitprice">單價</div>
+							<div class="detail-title-container-quantity">數量</div>
+							<div class="detail-title-container-totalprice">總價</div>
+						</div>
+					</div>
+					<!-- <div th:each="sellerlist:${sellerlist}"> -->
+					<div th:each="cartlist:${cartlist}">
 
-			<div th:each="cartlist:${cartlist}" class="checkout-order">
-				<div class="checkout-order-detail-title">
-					<div class="checkout-order-detail-title-container">
-						<div  class="detail-title-container-name">訂單商品</div>
-						<div  class="detail-title-container-unitprice">單價</div>
-						<div  class="detail-title-container-quantity">數量</div>
-						<div  class="detail-title-container-totalprice">總價</div>
-					</div>
-				</div>
-				<div th:each="sellerlist:${sellerlist}">
-					<div class="checkout-order-detail-title-contanier">
-						<img src="/pic/shop.png" alt="">
-						<p th:text="${seller}">賣家商店名</p>
-					</div>
-					<div th:each="productlist:${product}" class="checkout-order-detail-title-contanier-content">
-						<div class="checkout-order-detail-title-contanier-content-a">
-							<img th:src="@{${img}}" alt="">
-							<div th:text="${product}"
-								class="checkout-order-detail-title-contanier-content-a-ordername">
-								正版秋雄超香上衣(純天然無添加物)</div>
+						<div class="checkout-order-detail-title-contanier">
+							<img src="/pic/shop.png" alt="">
+							<p th:text="${cartlist.productBean.memberBean.userAccount}">賣家商店名</p>
 						</div>
-						<div
-							class="checkout-order-detail-title-contanier-content-a-select">
-							<span th:text="${type}">選項:黃秋雄(M)</span>
-							<div th:text="${unitprice}"
-								class="checkout-order-detail-title-contanier-content-a-unitprice">$1,500</div>
-						</div>
-						<div
-							class="checkout-order-detail-title-contanier-content-a-quantity">
-							<span th:text="${quantity}">1</span>
-						</div>
-						<div
-							class="checkout-order-detail-title-contanier-content-a-totalprice">
-							<span th:text="${totalprice}">$1,500</span>
+						<div class="checkout-order-detail-title-contanier-content">
+							<div class="checkout-order-detail-title-contanier-content-a">
+								<img th:src="@{${cartlist.cartPhoto}}" alt="">
+								<div th:text="${cartlist.productBean.productName}"
+									class="checkout-order-detail-title-contanier-content-a-ordername">
+									正版秋雄超香上衣(純天然無添加物)</div>
+							</div>
+							<div
+								class="checkout-order-detail-title-contanier-content-a-select">
+								<span
+									th:text="${cartlist.productBean.ProductThirdCategoryId}">選項:黃秋雄(M)</span>
+								<div th:text="${cartlist.productBean.productPrice}"
+									class="checkout-order-detail-title-contanier-content-a-unitprice">$1,500</div>
+							</div>
+							<div
+								class="checkout-order-detail-title-contanier-content-a-quantity">
+								<span th:text="${cartlist.quantity}">1</span>
+							</div>
+							<div
+								class="checkout-order-detail-title-contanier-content-a-totalprice">
+								<span th:text="${cartlist.totalPrice}">$1,500</span>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div
-					class="checkout-order-detail-title-contanier-content-information">
 					<div
-						class="checkout-order-detail-title-contanier-content-totalprice">
-						<div class="content-totalprice-title">訂單金額(1商品):</div>
-						<div class="content-totalprice-title-endprice">$1,500</div>
+						class="checkout-order-detail-title-contanier-content-information">
+						<div
+							class="checkout-order-detail-title-contanier-content-totalprice">
+							<div class="content-totalprice-title"
+								th:text="|訂單金額(${allquantity}商品):|"></div>
+							<div class="content-totalprice-title-endprice"
+								th:text="${alltotal}">$1,500</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -76,10 +82,12 @@
 					<div class="checkout-payment-paymentmethod-choosingmethod">
 						<div class="paymentmethod-choosingmethod-title">付款方式</div>
 						<div class="paymentmethod-choosingmethod-options">
-							<button
-								class="paymentmethod-choosingmethod-option paymentmethod-option--selected option-cod">貨到付款</button>
-							<button
-								class="paymentmethod-choosingmethod-option option-creditcard">信用卡/金融卡</button>
+							<button type="button"
+								class="paymentmethod-choosingmethod-option paymentmethod-option--selected option-cod"
+								name="payment" value="0">貨到付款</button>
+							<button type="button"
+								class="paymentmethod-choosingmethod-option option-creditcard"
+								name="payment" value="1">信用卡/金融卡</button>
 						</div>
 					</div>
 					<div class="checkout-payment-paymentmethod-methodcontent">
@@ -101,17 +109,20 @@
 					<div
 						class="paymentamount-producttotaltitle paymentamount-griditem paymentamount-row-1 paymentamount-column-1">商品總金額：</div>
 					<div
-						class="paymentamount-producttotalprice paymentamount-griditem paymentamount-row-1 paymentamount-column-2">$3</div>
+						class="paymentamount-producttotalprice paymentamount-griditem paymentamount-row-1 paymentamount-column-2"
+						th:text="${alltotal}">$3</div>
 					<div
 						class="paymentamount-amountofpaymenttitle paymentamount-griditem paymentamount-row-2 paymentamount-column-1">總付款金額</div>
 					<div
-						class="paymentamount-amountofpaymentprice paymentamount-griditem paymentamount-row-2 paymentamount-column-2">$3</div>
+						class="paymentamount-amountofpaymentprice paymentamount-griditem paymentamount-row-2 paymentamount-column-2"
+						th:text="${alltotal}">$3</div>
 					<div class="checkout-orderingblock">
-						<button class="ordering">確認訂單並送出</button>
+						<input type="submit" name="ordering" class="ordering">確認訂單並送出</input>
 					</div>
 				</div>
 			</div>
-		</div>
+		</form>
+	</div>
 </body>
 
 </html>
