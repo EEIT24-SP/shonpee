@@ -38,13 +38,13 @@ public class AccountController {
 		if (session.getAttribute("UserName") == null) {
 			return "redirect:/login-page";
 		} else {
-
 			List<MemberBean> list = MR.findAll();
 			for (MemberBean memberBean : list) {
 				if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
 					model.addAttribute("acc", memberBean); 
 					session.setAttribute("accphoto", memberBean.getMemberPhoto());
 					session.setAttribute("accid", memberBean.getMemberId());
+
 				}
 			}
 			return "account/profile";

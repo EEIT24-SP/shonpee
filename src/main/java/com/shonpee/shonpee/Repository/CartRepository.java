@@ -15,5 +15,5 @@ import com.shonpee.shonpee.domain.MemberBean;
 
 public interface CartRepository extends JpaRepository<CartBean, Integer>,JpaSpecificationExecutor<CartBean> {
 
-
+List<CartBean> findByCartId(Integer cartId);
 }

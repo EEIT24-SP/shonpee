@@ -6,31 +6,18 @@
 </head>
 <body>
 
-<div th:fragment="bar" style="display: flex; justify-content: center;">
-				<div class="main-right">
-					<div class="titles-list">
-						<a th:href="@{/main-page/shop-list-type1}"> 全部 </a>
-					</div>
-					<div class="titles-list" >
-						<a th:href="@{/main-page/shop-list-type2}"> 待付款 </a> 
-					</div>
-					<div class="titles-list" >
-						<a th:href="@{/main-page/shop-list-type3}"> 未出貨 </a>
-					</div>
+	<div th:fragment="bar" style="display: flex; justify-content: center;">
+		<div class="main-right" th:each="abcd,iterStat : ${abc}">
+			<a th:href="@{/main-page/shop-list-type__${iterStat.index}__}">
+				<div class="titles-list" th:text="${abcd}" th:id="${iterStat.index}"></div>
+			</a>
+		</div>
+	</div>
+<!-- 	<div th:each="abcd,iterStat : ${abc}"> -->
 
-					<div class="titles-list" >
-						<a th:href="@{/main-page/shop-list-type4}"> 待收貨 </a>
-					</div>
-
-					<div class="titles-list">
-						<a th:href="@{/main-page/shop-list-type5}"> 完成 </a>
-
-					</div>
-					<div class="titles-list" >
-						<a th:href="@{/main-page/shop-list-type6}"> 取消 </a>
-					</div>
-				</div>
-			</div>
+<!-- 		<a th:href="@{/main-page/shop-list-type__${iterStat.index}__}"><div th:text="${abcd}" -->
+<!-- 				th:id="${iterStat.index}"></div></a> -->
+<!-- 	</div> -->
 
 </body>
 </html>

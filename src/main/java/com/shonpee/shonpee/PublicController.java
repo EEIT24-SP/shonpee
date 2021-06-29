@@ -51,38 +51,14 @@ public class PublicController {
 	}
 	
 	@RequestMapping("main-page/shop-list")
-	public String shoplist() {
+	public String shoplist(Model model) {
+		String[] abc ={"全部","待付款","待出貨","待收貨","完成","不成立"};
+		model.addAttribute("abc",abc);
 		return "shop_list/shop_list";
 	}
-	@RequestMapping("main-page/shop-list-type1") 
-	public String shoplist_type1() {
-		System.out.println("123");
-		return "shop_list/shop_list_type1";
-	}
-	@RequestMapping("main-page/shop-list-type2") 
-	public String shoplist_type2() {
-		System.out.println("123");
-		return "shop_list/shop_list_type2";
-	}
-	@RequestMapping("main-page/shop-list-type3") 
-	public String shoplist_type3() {
-		System.out.println("123");
-		return "shop_list/shop_list_type3";
-	}
-	@RequestMapping("main-page/shop-list-type4") 
-	public String shoplist_type4() {
-		System.out.println("123");
-		return "shop_list/shop_list_type4";
-	}
-	@RequestMapping("main-page/shop-list-type5") 
-	public String shoplist_type5() {
-		System.out.println("123");
-		return "shop_list/shop_list_type5";
-	}
-	@RequestMapping("main-page/shop-list-type6") 
-	public String shoplist_type6() {
-		System.out.println("6");
-		return "shop_list/shop_list_type6";
-	}
-	
+	@GetMapping("main-page/shop-list-type{index}")
+	public String ddd(@PathVariable("index") String index) {
+		System.out.println(index);
+		return "shop_list/shop_list";
+	}	
 }

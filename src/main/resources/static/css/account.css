@@ -85,11 +85,12 @@ a:active {
 .main-right {
   display: flex;
   text-align: center;
-  width: 100%;
+  width: 950px;
   background-color: rgb(255, 255, 255);
   height: 50px;
   border-radius: 5px;
   border-bottom: 3px solid rgb(225, 225, 225);
+  justify-content: center;
 }
 
 .main-right-table {
@@ -112,15 +113,16 @@ a:active {
   float: left;
   flex-direction: column-reverse;
   height: 40px;
-  width: 166px;
+/*   width: 166px; */
   padding: 10px 0px 0px 0px;
   list-style: none;
 }
 
-.titles-list:hover {
+.main-right:hover {
   cursor: pointer;
   color: orange;
   border-bottom: 3px solid orange;
+  width: 100%;
 }
 
 .titles-list:first-child:hover {

@@ -23,5 +23,4 @@ public interface ProductRepository extends JpaRepository<ProductBean, Integer>,J
     public List<ProductBean> findProductBeanbyMember(String data);
 
     List<ProductBean> findByProductFirstCategoryId(Integer productFirstCategoryId);
-	
 }

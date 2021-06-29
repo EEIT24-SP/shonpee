@@ -19,7 +19,7 @@
 				<div class="main-user" th:insert="model/leftBar::leftBar"></div>
 		
 
-		<div style="width: 950px;">
+		<div style="width: 950px; display: flex;flex-direction: column;justify-content: center;">
 			    <div th:insert="model/shop_list_bar::bar"></div>
 			
 
@@ -96,6 +96,13 @@
 	<br />
 
 	    <div th:insert="model/footer::footer"></div>
+<!-- 	    用switc判斷 -->
+	    <div th:switch="${session.accid}"> 
+  <p th:case="${session.accid}">User is an administrator</p>
+  <p th:case="#{roles.manager}">User is a manager</p>
+  <p th:case="*">User is some other thing</p> 
+</div>
+
 	
 	<script src="../../js/cookie.js" type="text/javascript" charset="utf-8" defer></script>
 
