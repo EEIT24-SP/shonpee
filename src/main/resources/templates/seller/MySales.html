@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/MyCategoriesPage1.css}">
+    <link rel="stylesheet" th:href="@{/css/Seller.css}">
+    <link rel="stylesheet" th:href="@{/css/MySalesList.css}">
+    <script th:src="@{/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/js/mysales.js}"></script>
+</head>
+
+<body>
+    <div class="header-navbar-container">
+        <div class="header-navbar-left">
+            <div>
+                <a href=""><img src="/pic/Bear.svg" alt=""></a>
+            </div>
+            <div>
+                <div><a th:href="@{/}">首頁</a></div>
+                <div><a th:href="@{/}">賣家商品</a></div>
+                <div><a th:href="@{/mysales}">賣家銷售</a></div>
+            </div>
+        </div>
+        <div class="header-navbar-right">
+            <div class="head-account"><img src="/pic/bear.png" alt=""><span>account1234</span></div>
+            <div class="logout"><span>登出</span></div>
+        </div>
+    </div>
+    <div class="sellerorder-page">
+        <div class="sellerorder-container">
+            <div class="sellerorder-content">
+                <div class="sellerorder-content-container">
+                    <div class="orderlist">
+                        <div class="orderlist-title">
+                            賣家銷售
+                        </div>
+                        <div class="orderlist-table">
+                            <div class="orderlist-row orderlist-head">
+                                <div class="orderlist-row-column "> 商品名稱</div>
+                                <div class="orderlist-row-column ">規格</div>
+                                <div class="orderlist-row-column ">售出金額</div>
+                                <div class="orderlist-row-column ">數量</div>
+                                <div class="orderlist-row-column ">狀態</div>
+                                <div class="orderlist-row-column ">操作</div>
+                            </div>
+                            <div class="orderlist-row orderlist-item" th:each="orderWithProduct : ${ordersWithProduct}">
+                                <div class="orderlist-row-column ">
+                                    <div class="orderlist-item-prodpic ">
+                                        <img th:src="@{__${orderWithProduct.productBean.productPhoto}__}" alt=" ">
+                                    </div>
+                                    <div class="orderlist-item-prodname ">[[${orderWithProduct.productBean.productName}]]</div>
+                                </div>
+                                <div class="orderlist-row-column">
+                                    <div class="orderlist-item-prodtype-1 ">[[${orderWithProduct.shonpeeOrderBean.type_value1}]]<span>,&nbsp;</span></div>
+                                    <div class="orderlist-item-prodtype-2 ">[[${orderWithProduct.shonpeeOrderBean.type_value2}]]</div>
+                                </div>
+                                <div class="orderlist-row-column ">[[${orderWithProduct.shonpeeOrderBean.total}]]</div>
+                                <div class="orderlist-row-column ">[[${orderWithProduct.shonpeeOrderBean.quantity}]]</div>
+                                <div class="orderlist-row-column order-status">[[${orderWithProduct.shonpeeOrderBean.status}]]</div>
+                                <div class="orderlist-row-column operatebtn">
+                                    <div class="button-container">
+                                        <button class="modify-button status-shipout-btn">出貨</button>
+                                        <button class="delete-button status-cancel-btn">取消</button>
+                                        <input type="hidden" name="order-id" class="order-id" th:value="${orderWithProduct.shonpeeOrderBean.orderId}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var contextPath = "[[@{/}]]";
+    </script>
+</body>
+
+
+</html>

@@ -1,4 +1,4 @@
-package com.shonpee.shonpee.ServiceRepository;
+package com.shonpee.shonpee.servicerepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

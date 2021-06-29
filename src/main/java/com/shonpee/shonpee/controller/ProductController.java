@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.shonpee.shonpee.ServiceRepository.ProductServiceRepository;
 import com.shonpee.shonpee.domain.CartBean;
 import com.shonpee.shonpee.domain.MemberBean;
 import com.shonpee.shonpee.domain.ProductBean;
@@ -37,6 +36,7 @@ import com.shonpee.shonpee.repository.ProductRepository;
 import com.shonpee.shonpee.repository.ProductcategoryRepository;
 import com.shonpee.shonpee.repository.PropertyRepository;
 import com.shonpee.shonpee.repository.PropertySecondRepository;
+import com.shonpee.shonpee.servicerepository.ProductServiceRepository;
 
 
 @Controller

@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.shonpee.shonpee.ServiceRepository.MemberServiceRepository;
 import com.shonpee.shonpee.domain.MemberBean;
+import com.shonpee.shonpee.servicerepository.MemberServiceRepository;
 
 @Controller
 public class LoginController {
