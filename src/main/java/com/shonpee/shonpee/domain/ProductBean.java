@@ -27,7 +27,7 @@ public class ProductBean {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Productid;
+	private Integer productid;
 	private String productName;
 	private Integer productPrice;
 	private Integer productStock;
@@ -42,13 +42,13 @@ public class ProductBean {
 	private MemberBean memberBean;
 	
 	@OneToMany(mappedBy = "productBean")
-	private List<CartBean>  Cartlist;	
+	private List<CartBean>  cartlist;	
 	
 	@OneToMany(mappedBy = "productBean")
-	private List<PropertyBean>  PrpBean;	
+	private List<PropertyBean>  prpBean;	
 	
 	@OneToMany(mappedBy = "productBean")
-	private List<PropertyBeanSecond>  PrpBeanSecond;	
+	private List<PropertyBeanSecond>  prpBeanSecond;
 
 	
 //	@OneToMany(mappedBy = "productBean",fetch = FetchType.EAGER)

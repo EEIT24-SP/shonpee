@@ -29,7 +29,7 @@ import com.shonpee.shonpee.repository.CartRepository;
 public class PublicController {
 	
 	@Autowired
-	CartRepository CR;
+	CartRepository cr;
 	
 	@RequestMapping("/main-page/card")
 	public String card() {
