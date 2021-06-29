@@ -1,4 +1,5 @@
 package com.shonpee.shonpee;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import com.shonpee.shonpee.repository.ProductRepository;
 import com.shonpee.shonpee.domain.CartBean;
 import com.shonpee.shonpee.domain.MemberBean;
 import com.shonpee.shonpee.domain.ProductBean;
+
 @Controller
 public class AccountController {
 
@@ -41,7 +43,7 @@ public class AccountController {
 			List<MemberBean> list = MR.findAll();
 			for (MemberBean memberBean : list) {
 				if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
-					model.addAttribute("acc", memberBean); 
+					model.addAttribute("acc", memberBean);
 					session.setAttribute("accphoto", memberBean.getMemberPhoto());
 					session.setAttribute("accid", memberBean.getMemberId());
 
@@ -52,41 +54,56 @@ public class AccountController {
 	}
 
 	@PostMapping(value = ("/main-page/acc"))
-	public String test2(@ModelAttribute MemberBean MB, HttpSession session, Model model,@RequestParam(value = "file") MultipartFile file) {
+	public String test2(@ModelAttribute MemberBean MB, HttpSession session, Model model,
+			@RequestParam(value = "file") MultipartFile file) {
 		String fileName = file.getOriginalFilename();
-		String filepath =uploadpath+"/"+fileName;
-		try {
-			file.transferTo(new File(filepath));
-		} catch (IllegalStateException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String filepath = uploadpath + "/" + fileName;
+		System.out.println("我是檔案名"+fileName);
+		//檔案不是空才寫入
+		if (!fileName.isEmpty()) {
+			try {
+				file.transferTo(new File(filepath));
+				List<MemberBean> list = MR.findAll();
+				for (MemberBean memberBean : list) {
+					if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
+						MB.setMemberId(memberBean.getMemberId());
+						MB.setPassword(memberBean.getPassword());
+						MB.setMemberPhoto("/pic/upload/" + fileName);
+						MR.save(MB);
+					}
+				}
+				return "redirect:/main-page/acc";
+			} catch (IllegalStateException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		//如果照片空值,寫入自有照片路徑
 		List<MemberBean> list = MR.findAll();
 		for (MemberBean memberBean : list) {
 			if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
 				MB.setMemberId(memberBean.getMemberId());
 				MB.setPassword(memberBean.getPassword());
-				MB.setMemberPhoto("/pic/upload/"+fileName);
-				MR.save(MB); 
+				MB.setMemberPhoto(memberBean.getMemberPhoto());
+				MR.save(MB);
 			}
 		}
 		return "redirect:/main-page/acc";
 	}
 
-
 	@RequestMapping("/main-page/cart")
 	public String cart(HttpSession session, Model model, CartBean CB) {
 		Object Name = session.getAttribute("UserName");
 		List<CartBean> list = CR.findAll();
-        ArrayList<CartBean> arrL = new ArrayList<CartBean>();
-		//搜尋會員,顯示符合當前帳號的購物車資料
+		ArrayList<CartBean> arrL = new ArrayList<CartBean>();
+		// 搜尋會員,顯示符合當前帳號的購物車資料
 		for (CartBean cartBean : list) {
 			if (cartBean.getMemberId().equals(Name)) {
-		        arrL.add(cartBean);
-				model.addAttribute("cartitem", arrL); 
-			}	
+				arrL.add(cartBean);
+				model.addAttribute("cartitem", arrL);
+			}
 		}
-		return "cart";  
+		return "cart";
 	}
 
 	@PostMapping(value = ("/main-page/cart"))
@@ -94,13 +111,14 @@ public class AccountController {
 //		System.out.println(delete);
 		System.out.println(CKBX);
 		System.out.println(CB.getTypeValue1());
-		System.out.println(CB.getProductBean().getProductName());
+		System.out.println(CB.getTotalPrice());
 //		System.out.println(checkout);
 //		//取的複數ID,再依照符合ID加入結帳選單
-//		String[] split = CKBX.split(",", -1);
-//		for (int i = 0; i < split.length; i++) {
-//			System.out.println("我是SP"+split[i]);
-//		}  
+		String[] split = CKBX.split(",", -1);
+		String[] splitTotalPrice = CB.getTotalPrice().split(",", -1);
+		String[] splitQuantity = CB.getQuantity().split(",", -1);
+		String[] splittypeValue1 = CB.getTypeValue1().split(",",-1);
+		String[] splittypeValue2 = CB.getTypeValue2().split(",",-1);
 		// DELETE方法
 		if (delete != null && checkout == null) {
 			List<CartBean> list = CR.findAll();
@@ -108,37 +126,43 @@ public class AccountController {
 				if (cartBean.getCartId().equals(Integer.parseInt(delete))) {
 					System.out.println("成功刪除CB=" + cartBean.getCartId() + "DELETE=" + delete);
 					CR.deleteById(Integer.parseInt(delete));
-					int a = (Integer)session.getAttribute("cartsize");
-					int cartsize =a-1;
-					session.setAttribute("cartsize",cartsize);
+					int a = (Integer) session.getAttribute("cartsize");
+					int cartsize = a - 1;
+					session.setAttribute("cartsize", cartsize);
 					return "redirect:/main-page/cart";
 				}
 			}
 
-		} else if(checkout!=null) {
+		} else if (checkout != null) {
 			System.out.println("送出表單");
-			return "redirect:/main-page/cart";
+			String Name = session.getAttribute("UserName").toString();
+			List<CartBean> list = CR.findAll();
+			ArrayList<CartBean> CBlist = new ArrayList<CartBean>();
+			String[] splitid = CKBX.split(",", -1);
+			for (int i = 0; i < splitid.length; i++) {
+				for (CartBean cartBean : list) {
+					if (cartBean.getCartId().equals(Integer.parseInt(splitid[i]))) {
+						cartBean.setQuantity(splitQuantity[i]);
+						cartBean.setTotalPrice(splitTotalPrice[i]);
+						cartBean.setTypeValue1(splittypeValue1[i]);
+						cartBean.setTypeValue2(splittypeValue2[i]);
+						System.out.println("VALUE的值"+splittypeValue2[i]);
+						CR.save(cartBean);
+						CBlist.add(cartBean);
+						System.out.println("wwwwwwwwhhhhhhhhaaaaatttttttt");
+					}
+				}
+			}	
+			// 搜尋會員,顯示符合當前帳號的購物車資料
+			System.out.println(CBlist);
+			session.setAttribute("checkoutCB", CBlist);
+			return "redirect:/checkout";
 
 		}
 
 		return "redirect:/main-page/cart";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 //程式範本暫存區	
 //進入商品面	
 //	@RequestMapping(value = ("/main-page/item"))
@@ -208,12 +232,5 @@ public class AccountController {
 //		}
 //		return "redirect:/main-page/item";
 //	}
-	
-	
-	
-	
-	
-	
-	
 
 }

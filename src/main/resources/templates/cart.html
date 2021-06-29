@@ -123,8 +123,8 @@
 									<div class="product-size-button-icon"></div>
 								</div>
 								<div >
-								<input th:name="typeValue1" th:value="${userto.typeValue1}">
-								<div th:text="${userto.typeValue2}"></div>
+								<input class="typevalue1" th:value="${userto.typeValue1}" readonly="readonly">
+								<input class="typevalue2" th:value="${userto.typeValue2}" readonly="readonly">
 								</div>
 							</div>
 							<div class="product-unit-price">
@@ -134,13 +134,13 @@
 							<div class="product-quanftity">
 								<div>
 									<button class="minus"  type="button">-</button>
-							<input type="text"  class="numcount" th:name="|Quantity|" th:value="${userto.Quantity}"  value="1" readonly="readonly">
+							<input type="text"  class="numcount"  th:value="${userto.Quantity}"  value="1" readonly="readonly">
 									<button  class="plus"  type="button">+</button>
 								</div>
 								<div>剩下10000件</div>
 							</div>
 							<div class="product-total-price-box">
-								<input readonly="readonly" class="product-total-price" type="text" th:name="|totalPrice|" th:value="${userto.TotalPrice}">
+								<input readonly="readonly" class="product-total-price" type="text"  th:value="${userto.TotalPrice}">
 							</div>
 							<div class="product-action">
 								<button type="submit"  name="delete" class="product-action-delet" value="GG">刪除</button>
@@ -295,7 +295,12 @@
 	$('.cart-page-checkbox').on('click',function(){
 		var Cid =  $(this).parents().children('.Cart_id').val();
 		$(this).prop('value',Cid);
-		console.log( "我是CKBX"+$(this).val());	
+		$(this).parents().children('.product-total-price-box').children('.product-total-price').prop('name','totalPrice');
+		$(this).parents().children('.product-quanftity').children('div').children('.numcount').prop('name','Quantity');
+		$(this).parents().children('.product-size').children('div').children('.typevalue1').prop('name','typeValue1');
+		$(this).parents().children('.product-size').children('div').children('.typevalue2').prop('name','typeValue2');
+		console.log($(this).parents().children('.product-size').children('div').children('.typevalue1').val());
+	
 	})
 	
 	$('.product-action-delet').on('click',function(){

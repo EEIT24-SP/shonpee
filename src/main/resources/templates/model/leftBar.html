@@ -13,9 +13,9 @@
         <div class="main-user-head-text">
           <div class="main-user-head-text-a">
             <div class="main-user-head-text-b">
-              <div>使用者名稱</div>
+              <div th:text="${session.UserName}"></div>
               <div>
-                <a href="./profile.html">編輯個人檔案</a>
+                <a href="/main-page/acc">編輯個人檔案</a>
               </div>
             </div>
           </div>

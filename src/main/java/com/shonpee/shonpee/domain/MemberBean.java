@@ -34,7 +34,7 @@ public class MemberBean {
 	private String memberPhoto;
 	
 	
-	@OneToMany(mappedBy = "memberBean")
-	private List<ProductBean>  productlist;	
+//	@OneToMany(mappedBy = "memberBean")
+//	private List<ProductBean>  productlist;	
 	
 }
