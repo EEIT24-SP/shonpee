@@ -23,15 +23,14 @@ public class ShonpeeOrderBean {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer orderId;
 	private String memberId;
-	private Integer productId;
+	private String orderImg;
 	private Timestamp orderDate;
-	private Integer quantity;
+	private Integer quantity; 
 	private Integer total;
 	private Integer payment;
-	private String status;
+	private Integer status; 
 	private Timestamp shippedDate;
 	private Timestamp requiredDate;
-	private String type_value1;
-	private String type_value2;
-
+	private String typeValue; 
+	private Integer productId;
 }
