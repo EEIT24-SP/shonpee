@@ -66,7 +66,7 @@ OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())*(Integer.parseI
 				OB.setStatus(0);
 				OB.setShippedDate(null);
 				OB.setRequiredDate(null);
-				orderDao.save(OB);
+//				orderDao.save(OB);
 //				System.out.println("OOOOOOBBBBBBBBB");
 			}
 			
@@ -84,7 +84,7 @@ OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())*(Integer.parseI
 		
 		 
 	}
-	
+}
 	
 		
 		
@@ -151,7 +151,4 @@ OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())*(Integer.parseI
 //			sellerlist.add(product);
 //		}
 //	}
-public class OrderController {
 
-
-}

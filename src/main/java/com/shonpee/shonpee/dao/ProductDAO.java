@@ -1,6 +1,6 @@
 package com.shonpee.shonpee.dao;
 
-<<<<<<< HEAD
+
 
 
 import java.util.List;
@@ -18,12 +18,4 @@ public interface ProductDAO {
 	
 
 	public abstract boolean delete(Integer productid);
-=======
-import com.shonpee.shonpee.domain.ProductBean;
-
-public interface ProductDAO {
-
-	public abstract ProductBean insert(ProductBean bean);
-
->>>>>>> origin/dev
 }

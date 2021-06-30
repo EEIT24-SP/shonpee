@@ -30,7 +30,7 @@ public class OrderBean {
 	private Integer status;
 	private Date shippedDate;
 	private Date requiredDate;
-	
+}
 //	@ManyToOne
 //	@JoinColumn(name = "product_Id")
 //	private ProductBean productBean;

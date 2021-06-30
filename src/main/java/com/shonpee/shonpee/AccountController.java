@@ -41,9 +41,9 @@ public class AccountController {
 
 			List<MemberBean> list = MR.findAll();
 			for (MemberBean memberBean : list) {
-				if (memberBean.getUser_Account().equals(session.getAttribute("UserName"))) {
+				if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
 					model.addAttribute("acc", memberBean);
-					session.setAttribute("accid", memberBean.getMember_Id());
+					session.setAttribute("accid", memberBean.getMemberId());
 				}
 			}
 			return "account/profile";
@@ -55,8 +55,8 @@ public class AccountController {
 		List<MemberBean> list = MR.findAll();
 //		System.out.println(MR.findAll());
 		for (MemberBean memberBean : list) {
-			if (memberBean.getUser_Account().equals(session.getAttribute("UserName"))) {
-				MB.setMember_Id(memberBean.getMember_Id());
+			if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
+				MB.setMemberId(memberBean.getMemberId());
 				MB.setPassword(memberBean.getPassword());
 				MR.save(MB);
 			}
@@ -69,10 +69,10 @@ public class AccountController {
 		Object Name = session.getAttribute("UserName");
 		List<MemberBean> list = MR.findAll();
 		for (MemberBean memberBean : list) {
-			if (memberBean.getUser_Account().equals(Name)) {
+			if (memberBean.getUserAccount().equals(Name)) {
 				List<ProductBean> list1 = PR.findAll();
 				for (ProductBean productBean : list1) {
-					if (productBean.getMemberBean().getUser_Account().equals(Name)) {
+					if (productBean.getMemberBean().getUserAccount().equals(Name)) {
 						model.addAttribute("item", productBean);
 						// 預設z
 						System.out.println("product = "+productBean.getProductid());
@@ -99,13 +99,13 @@ public class AccountController {
 			for (CartBean cartBean : list2) {   //購買重複商品
 				// 如果有商品,則判別商品ID是否重複,重複則自行遞增
 				if (cartBean.getProductBean().getProductid().equals(Id)) {
-					System.out.println("iiidddd"+cartBean.getMember_Id());
-					cartBean.setTotal_Price(Integer.toString(
-							Integer.parseInt(cartBean.getTotal_Price()) / Integer.parseInt(cartBean.getQuantity())));
+					System.out.println("iiidddd"+cartBean.getMemberId());
+					cartBean.setTotalPrice(Integer.toString(
+							Integer.parseInt(cartBean.getTotalPrice()) / Integer.parseInt(cartBean.getQuantity())));
 					cartBean.setQuantity(
-							Integer.toString(PB.getProduct_Stock() + Integer.parseInt(cartBean.getQuantity())));
-					cartBean.setTotal_Price(Integer.toString(
-							Integer.parseInt(cartBean.getTotal_Price()) * Integer.parseInt(cartBean.getQuantity())));
+							Integer.toString(PB.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
+					cartBean.setTotalPrice(Integer.toString(
+							Integer.parseInt(cartBean.getTotalPrice()) * Integer.parseInt(cartBean.getQuantity())));
 					CR.save(cartBean);
 					System.out.println("tooooooooooooop = "+CR.findAll());
 					return "redirect:/main-page/item";
@@ -113,13 +113,13 @@ public class AccountController {
 			}
 			for (ProductBean productBean : list1) {  //購買新的˙商品
 				if (productBean.getProductid().equals(Id)
-						&& productBean.getMemberBean().getUser_Account().equals(Name)) {
+						&& productBean.getMemberBean().getUserAccount().equals(Name)) {
 //					 System.out.println(productBean.getMemberBean().getUser_Account().equals("bee567"));
 //					System.out.println("productBean = "+productBean);
-					CB.setQuantity(Integer.toString(PB.getProduct_Stock()));
-					CB.setTotal_Price(Integer.toString(PB.getProduct_Stock() * productBean.getProduct_Price()));
+					CB.setQuantity(Integer.toString(PB.getProductStock()));
+					CB.setTotalPrice(Integer.toString(PB.getProductStock() * productBean.getProductPrice()));
 					CB.setProductBean(productBean);
-					CB.setMember_Id(productBean.getMemberBean().getUser_Account());
+					CB.setMemberId(productBean.getMemberBean().getUserAccount());
 					CR.save(CB);
 					System.out.println("bbbotommmm"+CR);
 				}
@@ -135,7 +135,7 @@ public class AccountController {
 //			System.out.println(session);
 //			System.out.println(CB);
 			CartBean result = null;
-			if(CB!=null&&CB.getCart_Id()!=null) {
+			if(CB!=null&&CB.getCartId()!=null) {
 				System.out.println("進來了1");
 //				CB.setQuantity(Integer.toString(PB.getProduct_Stock()));
 //				CB.setTotal_Price(Integer.toString(PB.getProduct_Stock() * productBean.getProduct_Price()));

@@ -28,7 +28,7 @@ public class ProductServiceRepositoryTests {
 		bean.setProductStock(2);;
 		bean.setProductPhoto("testpic");
 		bean.setProductDetail("cry");
-		bean.setMemberId("anna38");
+//		bean.setMemberId("anna38");
 		bean.setProductFirstCategoryId(1);;
 		bean.setProductSecondCategoryId(2);
 		bean.setProductThirdCategoryId(3);
