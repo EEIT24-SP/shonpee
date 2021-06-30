@@ -190,7 +190,6 @@ function add_address() {
     
 }
 
-<<<<<<< HEAD
  var ccount = document.getElementById("ccount"); //显示商品总数量的标签节点对象 
 
  /*下面是使用者主頁面標題*/
@@ -276,5 +275,3 @@ function add_address() {
     }
     
 
-=======
->>>>>>> dev
