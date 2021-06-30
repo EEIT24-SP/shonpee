@@ -12,7 +12,6 @@ body {
     background: #9999FF;
     text-align: center;
     line-height: 50px;
-    
 }
 
 .Bear-header-top {
@@ -20,7 +19,6 @@ body {
     white-space: nowrap;
     height: 25px;
     width: 100%;
-    min-width: 1400px;
     /* list-style-type: none; */
     text-align: center;
     background-color: #a06464;
@@ -46,7 +44,6 @@ body {
 .Bear-header-bottom {
     height: 100px;
     width: 100%;
-    min-width: 1400px;
     text-align: center;
     background-color: #ffbb55;
 }
@@ -164,8 +161,6 @@ td {
     margin: auto;
 }
 
-
-
 .footer-footer {
     display: flex;
     height: 40px;
@@ -177,6 +172,7 @@ td {
     width: 60%;
 }
 
+
 /* td{
     border: 2px solid rgb(255, 135, 135);
   } */
@@ -185,13 +181,11 @@ td {
     height: 5px;
     background-color: sandybrown;
     border: 0px;
-
- width: 100%;
-     margin: auto;
+    width: 100%;
+    margin: auto;
 }
 
-
-.footer-a{
+.footer-a {
     width: 240px;
     line-height: 35px;
     font-size: 13px;
@@ -217,8 +211,6 @@ td {
     font-size: x-small;
 }
 
-
-
 .Bear-header-bottom-container {
     width: 100%;
     height: 100px;
@@ -226,10 +218,10 @@ td {
     display: flex;
     justify-content: center;
 }
-.Bear-header-bottom-container  a{
+
+.Bear-header-bottom-container a {
     text-decoration: none;
     color: white;
-
 }
 
 .Bear-header-bottom-container-left {
@@ -260,7 +252,8 @@ td {
     align-items: center;
     justify-content: center;
 }
-.Bear-header-bottom-container-right a{
+
+.Bear-header-bottom-container-right a {
     text-decoration: none;
 }
 
@@ -290,6 +283,7 @@ td {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 0 0 30px;
 }
 
 .main-page-container-outside {
@@ -359,13 +353,15 @@ td {
     background-color: sandybrown;
     border: 0px;
     width: 100%;
-
-    min-width: 1400px;
     margin: auto;
 }
+
+
 /* /輪播css/ */
 
-#slider, .slieder-item-container, .img-animate {
+#slider,
+.slieder-item-container,
+.img-animate {
     width: 1200px;
     height: 250px;
 }
@@ -481,6 +477,6 @@ td {
     background: red;
 }
 
-.footer-b{
+.footer-b {
     display: flex;
 }

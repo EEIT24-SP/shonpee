@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/login.css">
+    
     <script src="../js/login.js"></script>
 </head>
 
@@ -36,10 +37,12 @@
         </div>
 
         <div id=login_mid_right>
-            <form action="/login" method="post">
+         <form action="/login-page" method="post">
                 <div id=login_mid_right_login class="login_registered">
                     <div class="login_mid_right_title_box">
-                        <div class="login_mid_right_title_login" id="login_mid_right_title_login" onclick="change_login()">
+                        <div class="login_mid_right_title_login" id="login_mid_right_title_login"
+                            onclick="change_login()">
+
                             登入</div>
                         <div class="login_mid_right_title_registered" onclick="change_registered()">註冊</div>
                     </div>
@@ -52,8 +55,14 @@
                         <div class=login_mid_right_APE id="password">
                             <input type="password" placeholder="密碼" id="password_input" name="loginpassword">
                             <div class="password_hide_password">
-                                <img src="../pic//visibility.png" alt="" class="login_mid_right_APE_eye" id="login_mid_right_APE_eye_loginopen" style="visibility: hidden;" onclick="login_eyes_visible(event)">
-                                <img src="../pic/invisible.png" alt="" class="login_mid_right_APE_eye" id="login_mid_right_APE_eye_loginclose" style="visibility: visible;" onclick="login_eyes_hidden(event)">
+
+                                <img src="../pic//visibility.png" alt="" class="login_mid_right_APE_eye"
+                                    id="login_mid_right_APE_eye_loginopen" style="visibility: hidden;"
+                                    onclick="login_eyes_visible(event)">
+                                <img src="../pic/invisible.png" alt="" class="login_mid_right_APE_eye"
+                                    id="login_mid_right_APE_eye_loginclose" style="visibility: visible;"
+                                    onclick="login_eyes_hidden(event)">
+
                             </div>
 
                         </div>
@@ -103,20 +112,26 @@
                 <div id="login_mid_right_registered" class="login_registered">
                     <div class="login_mid_right_title_box">
                         <div class="login_mid_right_title_login" onclick="change_login()">登入</div>
-                        <div class="login_mid_right_title_registered" id="login_mid_right_title_registered" onclick="change_registered()">註冊</div>
+                        <div class="login_mid_right_title_registered" id="login_mid_right_title_registered"
+                            onclick="change_registered()">註冊</div>
                     </div>
                     <div class=login_mid_right_box>
                         <div class=login_mid_right_APE id="login_mid_right_APE_erro_registered">
                             <!-- <span th:text="${erro}">註冊新會員</span> -->
                             <span>註冊新會員</span>
                         </div>
-                        <input type="text" placeholder="電話號碼/使用者名稱/Email" class=login_mid_right_APE id="account_registered" name="registered_account">
+                        <input type="text" placeholder="電話號碼/使用者名稱/Email" class=login_mid_right_APE
+                            id="account_registered" name="registered_account">
                         <div id="registered_mid_right_box_accountremind">欲申請帳號</div>
                         <div class=login_mid_right_APE id="password_registered">
                             <input type="password" placeholder="密碼" id="password_input_registered" name="registered_password">
                             <div class="password_hide_password">
-                                <img src="../pic//visibility.png" alt="" class="login_mid_right_APE_eye" id="login_mid_right_APE_eye_registeredopen" style="visibility: hidden;" onclick="registered_eyes_visible()">
-                                <img src="../pic/invisible.png" alt="" class="login_mid_right_APE_eye" id="login_mid_right_APE_eye_registeredclose" style="visibility: visible;" onclick="registered_eyes_hidden()">
+                                <img src="../pic//visibility.png" alt="" class="login_mid_right_APE_eye"
+                                    id="login_mid_right_APE_eye_registeredopen" style="visibility: hidden;"
+                                    onclick="registered_eyes_visible()">
+                                <img src="../pic/invisible.png" alt="" class="login_mid_right_APE_eye"
+                                    id="login_mid_right_APE_eye_registeredclose" style="visibility: visible;"
+                                    onclick="registered_eyes_hidden()">
                             </div>
                         </div>
                         <div id="registered_mid_right_box_passwordremind">欲申請密碼</div>
@@ -169,10 +184,11 @@
         <table class="footer-table">
             <tr>
                 <td><b> 客服中心 </b>
-                    <td><strong> 關於蝦皮 </strong> </td>
-                    <td><strong> 付款 </strong> </td>
-                    <td><strong> 關注我們 </strong> </td>
-                    <td><strong> 下載熊熊 </strong> </td>
+                <td><strong> 關於蝦皮 </strong> </td>
+                <td><strong> 付款 </strong> </td>
+                <td><strong> 關注我們 </strong> </td>
+                <td><strong> 下載熊熊 </strong> </td>
+
             </tr>
 
             <tr>
@@ -259,7 +275,16 @@
         <div class="footer-footer">
             <div class="footer-footer-copyright">© 2021 Bear. 版權所有。</div>
             <div>
-                國家和地區: 新加坡 印尼 台灣 泰國 馬來西亞 越南 菲律賓 巴西
+                國家和地區:
+                新加坡
+                印尼
+                台灣
+                泰國
+                馬來西亞
+                越南
+                菲律賓
+                巴西
+
             </div>
         </div>
     </div>
