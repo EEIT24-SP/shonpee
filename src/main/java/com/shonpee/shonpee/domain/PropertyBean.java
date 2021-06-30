@@ -17,13 +17,15 @@ public class  PropertyBean {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Propertyid;
-	private String PropertyName;
-	private String PropertyValue;
+	private Integer propertyid;
+	private String propertyName;
+	private String propertyValue;
 	
-//	@OneToOne
-//	@JoinColumn(name="Productid1" ,
-//	referencedColumnName="Productid")
-	private Integer Productid1;
+
+	private Integer productid1;
+
+
+
+	
 	
 }

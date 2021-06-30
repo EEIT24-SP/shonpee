@@ -1,4 +1,5 @@
 
+
 $(document).ready(function () {
     $('.Category-item').click(function () {
         $('.Category-item').removeClass('background-grey');
@@ -199,7 +200,7 @@ $(document).ready(function () {
                 break;
             case '書籍及文創相關商品':
                 switch ($('#category-second').text()) {
-                    case ' 教科參考書':
+                    case '教科參考書':
                         break;
                     case '雜誌期刊':
                         break;
@@ -410,7 +411,9 @@ $(document).ready(function () {
         } else {
             $("#span2").css('display', 'none');
         }
-
+		
+		
+		
     })
 
     $('.Category-item-second').click(function () {
@@ -441,10 +444,10 @@ $(document).ready(function () {
 
     $(".input-text").blur(function () {
         if ($(this).val() == null || $(this).val() == "") {
-            // console.log("aaa")
+        
             $(".msg").css("display", "block");
             $(this).addClass("border-red");
-            //    console.log("bbb")
+   
         } else if ($(this) != null || $(this).change == "") {
             $(".msg").css("display", "none");
             $(this).removeClass("border-red");
@@ -452,27 +455,34 @@ $(document).ready(function () {
 
         }
     })
-     $(".btn").on("click",function set() {
-      
-       $.ajax({
-           url:"/NewProduct",
-           method:"POST",
-           async:"false",
-           data:{"first":$('#category-first').text(),
-           "second":$('#category-second').text(),
-           "third":$('#category-third').text()
-           
-        },
-           
-           success:function(data){
-            alert("ok");
-           },
-           error :function(e){
-           alert("failed");
-           }
-        })
-   })  
-   var data = $("#input-text").val();
+    
+    $(".btn").on("click", function () {
+       
+        if ($('#category-first').text() != '' && $('#category-second').text() != '' && $(".input-text").val() !=''){
+	        if ($('#category-second').text() == '教科參考書' || $('#category-second').text() == '雜誌期刊' || $('#category-second').text() == '文學小說'
+	            || $('#category-second').text() == '旅遊相關書籍' || $('#category-second').text() == '語言學習相關書籍') {
+	          
+	          $('#btn').attr('value',$('#category-first').text()+","+$('#category-second').text());
+	          console.log( $('#btn').attr('value'));
+	   
+
+	          
+	        } else {
+	            if ($('#category-third').text() != '') {
+	                
+	           		$('#btn').attr('value',$('#category-first').text()+","+$('#category-second').text()+","+$('#category-third').text()); 
+	           		 console.log( $('#btn').attr('value'));
+	               
+       			} else {
+                alert("資料尚未完成!!!")
+                 return false;
+            }
+        }
+    }else {
+        alert("資料尚未完成!!!")
+        return false;
+    }
+    })
 })
 
 

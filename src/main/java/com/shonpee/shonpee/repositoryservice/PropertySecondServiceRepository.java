@@ -36,7 +36,7 @@ public class PropertySecondServiceRepository {
 		public PropertyBeanSecond update(PropertyBeanSecond bean) {
 			PropertyBeanSecond result = null;
 			if(bean!=null && bean.getProductid2()!=null) {
-				 if(secondRepository.existsById(bean.getProductid2())) {
+				 if(secondRepository.existsById(bean.getPropertyid())) {
 					  result = secondRepository.save(bean);
 				  }
 			}
@@ -45,7 +45,7 @@ public class PropertySecondServiceRepository {
 		public boolean delete(PropertyBeanSecond bean) {
 			boolean result = false;
 			if(bean!=null && bean.getProductid2()!=null) {
-				if(secondRepository.existsById(bean.getProductid2())) {
+				if(secondRepository.existsById(bean.getPropertyid())) {
 					  secondRepository.delete(bean); 
 					  result = true;
 				  }

@@ -25,18 +25,15 @@ import lombok.Data;
 public class ProductBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Productid;
-	private String  ProductName;
-	private Integer ProductPrice;
-	private Integer ProductStock;
-	private String  ProductPhoto;
-	private String  ProductDetail;
-	private Integer ProductFirstCategoryId;
-	private Integer ProductSecondCategoryId;
-	private Integer ProductThirdCategoryId;
-	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name="MemberId")	
-	private String  MemberId;
-//	
+	private Integer productid;
+	private String  productName;
+	private Integer productPrice;
+	private Integer productStock;
+	private String  productPhoto;
+	private String  productDetail;
+	private Integer productFirstCategoryId;
+	private Integer productSecondCategoryId;
+	private Integer productThirdCategoryId;
+	private String  memberId;
+
 }

@@ -5,6 +5,8 @@ body{
     height: 100%;
 }
 
+input:-webkit-autofill { box-shadow: 0 0 0px 1000px white inset !important;}
+
 a:link{
     color: gray;
     text-decoration:none;
@@ -26,6 +28,7 @@ a:visited {
     justify-content:space-between;
     font-size: 18px;
     color: gray;
+    z-index: 1;
 }
 
 .header-navbar-left{
@@ -202,6 +205,7 @@ a:visited {
 
 
 .basic-information-name-container{
+    position: relative;
     display: flex;
     height: 60px;
     margin: 30px  0 0 0;
@@ -222,8 +226,18 @@ a:visited {
     padding: 5px;
 }
 
-.basic-information-name-container input{
+.input-container input{
     width: 80%;
+    height: 30px;
+    margin: 12px 0 0 15px ;
+    border: lightgray 1px solid;
+    border-radius: 3px 0 0 3px;
+    padding: 3px 10px;
+    
+}
+
+.basic-information-sale-container input{
+    width: 70%;
     height: 30px;
     margin: 12px 0 0 15px ;
     border: lightgray 1px solid;
@@ -244,6 +258,21 @@ a:visited {
 
 .input-container {
     width: 100%;
+    display: flex;
+}
+
+.category-flow{
+    width: 100%;
+    font-size: 13px;
+    margin: auto 0 auto 15px;
+    color: gray;
+}
+
+.category-flow img{
+    width: 15px;
+    height: 15px;
+    margin: auto 0 auto 10px;
+    cursor: pointer;
 }
 
 .category-flow{
@@ -276,6 +305,7 @@ a:visited {
     border: grey solid 1px;
     transition: 0.5s;
 }
+
 
 .basic-information-category-container {
     display: flex;
@@ -313,7 +343,7 @@ a:visited {
     margin: 30px  0 0 0;
     width: 100%;
     padding: 0 0 20px 0;
-   
+
 }
 
 .basic-information-specification-container input{
@@ -374,6 +404,7 @@ a:visited {
 .input-container-specification{
     width:80%;
     display: flex;
+
 }
 
 .input-container-specification div{
@@ -442,6 +473,7 @@ a:visited {
     box-shadow: 1px 1px 5px 0.2px rgb(83, 83, 83);
     cursor: pointer;
     font-size: 16px;
+    display:inline-block;
 }
 
 
@@ -480,3 +512,53 @@ a:visited {
     display: none;
 }
 
+
+.msg {
+    background-color: #ff4e4e;
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+    display: none;
+    width: 110px;
+    height: 15px;
+    font-size: 12px;
+    margin:0 0 0 10px ;
+}
+.border-red{
+    outline: 1px solid #ff4e4e;
+    border-radius: 5px;
+}
+
+.input-text {
+    float: left;
+}
+
+.input-distinct{
+    padding: 9px;
+    margin: 2px 0 0 0;
+    align-self: center;
+    display: flex;
+    align-self: center;
+    border: 1px solid lightgrey;
+    border-radius: 0 3px 3px 0;
+    border-left: none;
+}
+
+.msg {
+    background-color: #ff4e4e;
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+    display: none;
+    width: 110px;
+    height: 15px;
+    font-size: 12px;
+    margin: -8px 0 0 150px;
+}
+.border-red{
+    outline: 1px solid #ff4e4e;
+}
+
+.input-text {
+    float: left;
+}

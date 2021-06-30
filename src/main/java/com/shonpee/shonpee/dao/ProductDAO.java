@@ -11,10 +11,10 @@ public interface ProductDAO {
 	
 	public abstract ProductBean insert(ProductBean bean);
 	public abstract List<ProductBean> select();
-	public abstract ProductBean update(String ProductPhoto,String ProductName, Integer ProductPrice,
-			Integer ProductStock);
+	public abstract ProductBean update(String productPhoto,String productName, Integer productPrice,
+			Integer productStock);
 	
 	
 
-	public abstract boolean delete(Integer Productid);
+	public abstract boolean delete(Integer productid);
 }

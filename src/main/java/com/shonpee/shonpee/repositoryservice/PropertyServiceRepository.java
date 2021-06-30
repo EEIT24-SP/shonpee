@@ -37,7 +37,7 @@ public class PropertyServiceRepository  {
 	public PropertyBean update(PropertyBean bean) {
 		PropertyBean result = null;
 		if(bean!=null && bean.getProductid1()!=null) {
-			 if(property.existsById(bean.getProductid1())) {
+			 if(property.existsById(bean.getPropertyid())) {
 				  result = property.save(bean);
 			  }
 		}
@@ -46,7 +46,7 @@ public class PropertyServiceRepository  {
 	public boolean delete(PropertyBean bean) {
 		boolean result = false;
 		if(bean!=null && bean.getProductid1()!=null) {
-			if(property.existsById(bean.getProductid1())) {
+			if(property.existsById(bean.getPropertyid())) {
 				  property.delete(bean); 
 				  result = true;
 			  }

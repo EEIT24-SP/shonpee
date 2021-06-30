@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.shonpee.shonpee.domain.PropertyBean;
 import com.shonpee.shonpee.domain.PropertyBeanSecond;
-import com.shonpee.shonpee.repository.PropertySecondRepository;
 import com.shonpee.shonpee.repositoryservice.PropertySecondServiceRepository;
 import com.shonpee.shonpee.repositoryservice.PropertyServiceRepository;
 

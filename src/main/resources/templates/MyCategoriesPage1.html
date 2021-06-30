@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/mycategoriespage1.css}">
-    <script th:src="@{/js/jquery-3.4.1.js}" defer  type="text/javascript" th:inline="javascript"></script>
-    <script th:src="@{/js/mycategoriespage1.js}" defer  type="text/javascript" th:inline="javascript"></script>
+    <script th:src="@{/js/jquery-3.4.1.js}" defer></script>
+    <script th:src="@{/js/mycategoriespage1.js}" defer></script>
 </head>
 
 <body>
@@ -27,37 +27,36 @@
     </div>
     <div class="Category-container">
         <div class="Category-container-all">
-            <div class="Category-header">
+            <div class="Category-header"  >
                 <h2>新增商品</h2>
                 <p>請在下方填入您的商品所屬分類</p>
             </div>
-            <from th:action="@{Addproductname}" th:method="post" enctype="multipart/form-data" >
+            <form th:action="@{/UpdateProduct}"  method="Get">
             <div class="Category-Product-Search">
                 <div class="ProductName">商品名稱:
                     <div class="ProductName-input">
                         <div class="input-hint">
                             <span class="msg">商品名稱不能為空白</span>
-                            <input type="text" th:text="{#request.getAttribute('request')}" class="input-text"  maxlength="50" placeholder="請輸入相關資訊">
+                            <input type="text"  name="productname" th:value="${productname}!=null?${productname}:''" class="input-text"  maxlength="50" placeholder="請輸入相關資訊">
                         </div>
                         <div class="input-distinct"><span class="input-length">0</span>/50</div>
                     </div>
                 </div>
             </div>
-            </from>
         <div class="Category-selector">
             <div class="Category-selector-wrap">
-                <div  class="Category-selector-list">
+                <div class="Category-selector-list">
                     <ul class="Category-scroll-item">
-                        <li   class="Category-item">
+                        <li class="Category-item">
                             <p>女生衣著</p>
                             <img src="/pic/right-arrow-gray.png" alt="">
                             <div class="Category-second-container display-none">
-                                <ul    class="Category-scroll-item-second">
+                                <ul class="Category-scroll-item-second">
                                     <li class="Category-item-second">
                                         <p>T恤/T-Shirt</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul   class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>其他T恤/T-Shirt</p>
                                                 </li>
@@ -80,7 +79,7 @@
                                         <p>襯衫</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul   class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>其他襯衫</p>
                                                 </li>
@@ -103,7 +102,7 @@
                                         <p>洋裝</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul   class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>其他洋裝</p>
                                                 </li>
@@ -126,7 +125,7 @@
                                         <p>短褲</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul   class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>其他短褲</p>
                                                 </li>
@@ -149,7 +148,7 @@
                                         <p>長褲</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul   class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>其他長褲</p>
                                                 </li>
@@ -171,16 +170,16 @@
                                 </ul>
                             </div>
                         </li>
-                        <li  class="Category-item">
-                            <p >男生衣著</p>
+                        <li class="Category-item">
+                            <p>男生衣著</p>
                             <img src="/pic/right-arrow-gray.png" alt="">
                             <div class="Category-second-container display-none">
-                                <ul   class="Category-scroll-item-second">
+                                <ul class="Category-scroll-item-second">
                                     <li class="Category-item-second">
                                         <p>T恤/T-Shirt</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>其他T恤/T-Shirt</p>
                                                 </li>
@@ -202,7 +201,7 @@
                                         <p>長褲</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul   class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>其他長褲</p>
                                                 </li>
@@ -225,7 +224,7 @@
                                         <p>外套</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul   class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>其他外套</p>
                                                 </li>
@@ -248,7 +247,7 @@
                                         <p>運動服飾</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>其他運動服飾</p>
                                                 </li>
@@ -268,7 +267,7 @@
                                         <p>短褲</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>其他短褲</p>
                                                 </li>
@@ -290,10 +289,10 @@
                                 </ul>
                             </div>
                         <li class="Category-item">
-                            <p >書籍及文創相關商品</p>
+                            <p>書籍及文創相關商品</p>
                             <img src="/pic/right-arrow-gray.png" alt="">
                             <div class="Category-second-container display-none">
-                                <ul  class="Category-scroll-item-second">
+                                <ul class="Category-scroll-item-second">
                                     <li class="Category-item-second">
                                         <p>教科參考書</p>
                                     </li>
@@ -313,15 +312,15 @@
                             </div>
                         </li>
                         <li class="Category-item">
-                            <p >居家生活用品</p>
+                            <p>居家生活用品</p>
                             <img src="/pic/right-arrow-gray.png" alt="">
                             <div class="Category-second-container display-none">
-                                <ul   class="Category-scroll-item-second">
+                                <ul class="Category-scroll-item-second">
                                     <li class="Category-item-second">
                                         <p>餐廚用品</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>刀具/砧板</p>
                                                 </li>
@@ -344,7 +343,7 @@
                                         <p>收納用品</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>收納袋/壓縮袋</p>
                                                 </li>
@@ -367,7 +366,7 @@
                                         <p>傢具/家具用品</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>沙發/沙發床</p>
                                                 </li>
@@ -390,7 +389,7 @@
                                         <p>寢具用品</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>床包/床罩</p>
                                                 </li>
@@ -413,7 +412,7 @@
                                         <p>五金用品</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>油漆顏料</p>
                                                 </li>
@@ -436,7 +435,7 @@
                             </div>
                         </li>
                         <li class="Category-item">
-                            <p >手機平板相關商品</p>
+                            <p>手機平板相關商品</p>
                             <img src="/pic/right-arrow-gray.png" alt="">
                             <div class="Category-second-container display-none">
                                 <ul class="Category-scroll-item-second">
@@ -444,7 +443,7 @@
                                         <p>Apple空機</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>IPHONE 12 系列</p>
                                                 </li>
@@ -467,7 +466,7 @@
                                         <p>Android空機</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>Samsung系列</p>
                                                 </li>
@@ -490,7 +489,7 @@
                                         <p>平板電腦</p>
                                         <img src="/pic/right-arrow-gray.png" alt="">
                                         <div class="Category-third-container">
-                                            <ul  class="Category-scroll-item-third">
+                                            <ul class="Category-scroll-item-third">
                                                 <li class="Category-item-third">
                                                     <p>IPad系列</p>
                                                 </li>
@@ -558,24 +557,29 @@
                 </div>
                 <div class="Category-selector-list">
                 </div>
-            </div> 
+            </div>
             <div class="category-selected"> 目前已選擇:
-                <span id="category-first" name="first" ></span>
-                <span class="span1" id="span1">></span>
-                <span id="category-second" name="second"></span>
+                <span  id="category-first"></span>
+                <span  class="span1" id="span1">></span>
+                <span  id="category-second"></span>
                 <span class="span1" id="span2">></span>
-                <span id="category-third" name="third"></span>
+                <span  id="category-third"></span>
             </div>
         </div>
-        <div class="btn">
-            <a th:href="@{/NewProduct}">
-                <p>下一步</p>
-            </a>
+        <input type="number" name="productid" th:value="${productid}" style="display: none;">
+        <input type="number" name="changecategorys" th:value="${changecategorys}" style="display: none;">
+        
+        <div class="btn-div">
+                <button type="submit" id="btn" name="category" class="btn"  >下一步</button>
+            </div>
+</form>
         </div>
     </div>
+    
     </div>
-<script type="text/javascript">
-</script>
+
+
+
 </body>
 
 </html>
