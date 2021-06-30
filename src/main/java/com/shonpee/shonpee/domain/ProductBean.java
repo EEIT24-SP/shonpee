@@ -41,19 +41,6 @@ public class ProductBean {
 	@JoinColumn(name = "member_id")
 	private MemberBean memberBean;
 	
-//	@OneToMany(mappedBy = "productBean")
-//	private List<CartBean>  Cartlist;	
-//	
-//	@OneToMany(mappedBy = "productBean")
-//	private List<PropertyBean>  PrpBean;	
-//	
-//	@OneToMany(mappedBy = "productBean")
-//	private List<PropertyBeanSecond>  PrpBeanSecond;	
-
-//	@OneToMany(mappedBy = "productBean")
-//	private List<OrderBean>  Orderlist;	
-	
-//	@OneToMany(mappedBy = "productBean",fetch = FetchType.EAGER)
-//	private List<CartBean>  cartlist;	
 
 }
+

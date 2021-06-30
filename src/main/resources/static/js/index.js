@@ -13,6 +13,8 @@ var item_input_qty = document.getElementById('item-input-qty');//控制輸入數
 var ccount = document.getElementById("ccount"); //显示商品总数量的标签节点对象
 var btns = document.querySelectorAll(".item-cart-btn-join"); //所有的购物车按钮
 
+//约定好用名称为datas的cookie来存放购物车里的数据信息  datas里所存放的就是一个json字符串
+var listStr = cookieObj.get("datas");
 /*判断一下本地是否有一个购物车（datas），没有的话，创建一个空的购物车，有的话就直接拿来使用*/
 
 if (!listStr) { //没有购物车     datas  json
@@ -33,10 +35,11 @@ for (var i = 0, len = listObj.length; i < len; i++) {
 // ccount.innerHTML = totalCount ;
 // console.log(listObj.length);
 window.onload=function(){
-	if (ccount.innerText != 0) {
+	if (listObj.length > 0) {
 		ccount.style.visibility='visible';
+		ccount.innerHTML = listObj.length;
 	}
-	else if(ccount.innerText == 0){
+	else{
 		ccount.style.visibility='hidden';
 	}
 	// console.log(listObj.length);

@@ -27,7 +27,7 @@
           <strong>通知總覽</strong></a> </li>
       <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
             alt=""><strong>幫助中心</strong> </a></li>
-      <li> <a  href="/main-page/acc"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
+      <li> <a  href="/main/acc"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
             id="ssaa" th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}"></strong></a></li>
     </ul>
 
@@ -38,7 +38,7 @@
         <a href="/main-page">
           <div class="Bear-header-bottom-container-left-container">
             <div style="width: 40%;">
-              <img class="icon_Bear" th:src="@{../pic/Bear.svg}" alt="">
+              <img class="icon_Bear" src="../pic/Bear.svg" alt="">
             </div>
             <div style="font-size: 30px;">熊熊商城</div>
           </div>
@@ -58,7 +58,7 @@
         <a href="/main-page/cart">
           <div class="Bear-header-bottom-container-right-container">
             <img class="icon-Shop-Car" src="../pic/Shop_Car.svg" alt="">
-            <div class="cart-ccount-manger" id="ccount" th:text="${session.cartsize}"></div>
+            <div class="cart-ccount-manger" id="ccount"></div>
           </div>
         </a>
       </div>

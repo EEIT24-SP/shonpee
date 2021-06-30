@@ -1,4 +1,3 @@
-
 package com.shonpee.shonpee.domain;
 
 

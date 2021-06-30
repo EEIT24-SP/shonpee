@@ -35,33 +35,32 @@ public class OrderController {
 	@RequestMapping(value = "/checkout")
 	public String checkout(HttpSession session, Model model,String ordering,OrderBean OB) {
 		System.out.println("------------checkout----------");
-		System.out.println(session.getAttribute("checkoutCB"));
+				System.out.println(session.getAttribute("checkoutCB"));
 //		System.out.println("session資料="+session.getAttribute("checkoutCB"));
 		ArrayList<CartBean> cartlist = (ArrayList<CartBean>)(session.getAttribute("checkoutCB"));
-//		System.out.println(cartlist);
+		//		System.out.println(cartlist);
 		model.addAttribute("cartlist",cartlist);
 		int total=0;
 		for(int i=0;i<cartlist.size();i++) { //總金額
 			total += Integer.parseInt(cartlist.get(i).getTotalPrice());
 		}
 		int allquantity =  cartlist.size();
-//		System.out.println(allquantity);
 		model.addAttribute("allquantity", allquantity);
 		model.addAttribute("alltotal", total);
-		System.out.println(allquantity);
+//		System.out.println(payment);
 		if(ordering!=null) {
 			System.out.println("----------order---------");
 			for(int j=0;j<cartlist.size();j++){//尋訪cart
 				System.out.println("fffoorrrrrrrrrrrr");
 				OB = new OrderBean();
-				OB.setMemberId(session.getAttribute("UserName").toString());
+			OB.setMemberId(session.getAttribute("UserName").toString());
 				OB.setProductId(cartlist.get(j).getProductBean().getProductid());
 				OB.setOrderImg(cartlist.get(j).getProductBean().getProductPhoto());
 			      Date OBtime = new Date( );
 //			      SimpleDateFormat OBtime = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
 				OB.setOrderDate(OBtime);
 				OB.setQuantity(Integer.parseInt(cartlist.get(j).getQuantity()));
-				OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())*(Integer.parseInt(cartlist.get(j).getQuantity())));
+OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())*(Integer.parseInt(cartlist.get(j).getQuantity())));
 //				System.out.println((cartlist.get(j).getProductBean().getProduct_Price())*(Integer.parseInt(cartlist.get(j).getQuantity())));
 				OB.setPayment(0);
 				OB.setStatus(0);
