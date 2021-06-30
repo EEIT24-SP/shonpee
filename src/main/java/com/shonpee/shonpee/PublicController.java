@@ -61,7 +61,7 @@ public class PublicController {
 	public String shoplist(Model model) {
 		String[] abc = { "待付款", "待出貨", "待收貨", "完成", "不成立", "全部" };
 		model.addAttribute("abc", abc);
-		return "shop_list/shop_list";
+		return "redirect:/main-page/shop-list5";
 	}
 
 	@GetMapping("main-page/shop-list{index}")
