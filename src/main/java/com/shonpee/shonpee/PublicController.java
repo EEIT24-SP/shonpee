@@ -65,8 +65,9 @@ public class PublicController {
 	}
 
 	@GetMapping("main-page/shop-list{index}")
-	public String ddd(@PathVariable("index") int index, Model model) {
+	public String ddd(@PathVariable("index") int index, Model model,HttpSession session) {
 		String[] abc = { "待付款", "待出貨", "待收貨", "完成", "不成立", "全部" };
+		Object Name = session.getAttribute("UserName");
 		model.addAttribute("abc", abc);
 		model.addAttribute("Index", index);
 		ArrayList<OrderBean> arrOrder = new ArrayList<OrderBean>();
@@ -74,16 +75,19 @@ public class PublicController {
 		List<OrderBean> listAll = OR.findAll();
 		if (index == 5) {
 			for (OrderBean orderBean : listAll) {
+				if(orderBean.getMemberId().equals(Name)) {
 				arrOrder.add(orderBean);
 				model.addAttribute("arrOrder", arrOrder);
-				System.out.println("全部頁面成功");
+				System.out.println("全部頁面成功");}
 			}
 			return "shop_list/shop_list";
 		}
 		for (OrderBean orderBean : list) {
+			if(orderBean.getMemberId().equals(Name)) {
 			arrOrder.add(orderBean);
 			model.addAttribute("arrOrder", arrOrder);
 			System.out.println("成功");
+			}
 		}
 		System.out.println(index);
 		return "shop_list/shop_list";
@@ -111,11 +115,13 @@ public class PublicController {
 						CB.setMemberId(Name.toString());
 						CB.setQuantity(Integer.toString(orderBean.getQuantity()));
 						CB.setProductBean(productBean);
+					if(splitTypeValue.length>1) {	
 						CB.setTypeValue1(splitTypeValue[0]);
 						CB.setTypeValue2(splitTypeValue[1]);
+					}
 						CR.save(CB);
 						System.out.println("準備再次購買"+productBean.getProductid());
-						return "redirect:/main-page/shop-list" + index;
+						return "redirect:/main-page/cart";
 					}
 				}
 			}

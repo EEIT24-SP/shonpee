@@ -50,8 +50,8 @@ public class ProductBean {
 //	@OneToMany(mappedBy = "productBean")
 //	private List<PropertyBeanSecond>  PrpBeanSecond;
 //	
-	@OneToMany(mappedBy = "productBean")
-	private List<OrderBean> orderBeans; 	
+//	@OneToMany(mappedBy = "productBean")
+//	private List<OrderBean> orderBeans; 	
 
 	
 //	@OneToMany(mappedBy = "productBean",fetch = FetchType.EAGER)

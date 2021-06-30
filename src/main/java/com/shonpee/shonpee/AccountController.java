@@ -108,17 +108,7 @@ public class AccountController {
 
 	@PostMapping(value = ("/main-page/cart"))
 	public String cartview(CartBean CB, HttpSession session, Model model, String checkout, String delete, String CKBX) {
-//		System.out.println(delete);
-		System.out.println(CKBX);
-		System.out.println(CB.getTypeValue1());
-		System.out.println(CB.getTotalPrice());
-//		System.out.println(checkout);
-//		//取的複數ID,再依照符合ID加入結帳選單
-		String[] split = CKBX.split(",", -1);
-		String[] splitTotalPrice = CB.getTotalPrice().split(",", -1);
-		String[] splitQuantity = CB.getQuantity().split(",", -1);
-		String[] splittypeValue1 = CB.getTypeValue1().split(",",-1);
-		String[] splittypeValue2 = CB.getTypeValue2().split(",",-1);
+		//取的複數ID,再依照符合ID加入結帳選單
 		// DELETE方法
 		if (delete != null && checkout == null) {
 			List<CartBean> list = CR.findAll();
@@ -133,11 +123,20 @@ public class AccountController {
 				}
 			}
 
+		} else if(checkout == null) {
+			return "redirect:/main-page/cart";			
 		} else if (checkout != null) {
+//			String[] split = CKBX.split(",", -1);
+			String[] splitTotalPrice = CB.getTotalPrice().split(",", -1);
+			String[] splitQuantity = CB.getQuantity().split(",", -1);
+			String[] splittypeValue1 = CB.getTypeValue1().split(",",-1);
+			String[] splittypeValue2 = CB.getTypeValue2().split(",",-1);
 			System.out.println("送出表單");
 			String Name = session.getAttribute("UserName").toString();
 			List<CartBean> list = CR.findAll();
 			ArrayList<CartBean> CBlist = new ArrayList<CartBean>();
+			//session要清空
+			session.setAttribute("checkoutCB","");
 			String[] splitid = CKBX.split(",", -1);
 			for (int i = 0; i < splitid.length; i++) {
 				for (CartBean cartBean : list) {
@@ -157,7 +156,6 @@ public class AccountController {
 			System.out.println(CBlist);
 			session.setAttribute("checkoutCB", CBlist);
 			return "redirect:/checkout";
-
 		}
 
 		return "redirect:/main-page/cart";

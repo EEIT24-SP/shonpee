@@ -57,8 +57,7 @@ public class OrderController {
 				if(cartlist.get(j).getProductBean().getProductid().equals(productBean.getProductid())) {
 				System.out.println("fffoorrrrrrrrrrrr");
 				System.out.println(cartlist.get(j).getCartId());
-				OB = new OrderBean();
-				OB.setMemberId(cartlist.get(j).getProductBean().getMemberBean().getUserAccount());
+				OB.setMemberId(cartlist.get(j).getMemberId());
 				OB.setProductBean(productBean);
 				OB.setOrderImg(cartlist.get(j).getCartPhoto());
 				OB.setTypeValue(cartlist.get(j).getTypeValue1()+cartlist.get(j).getTypeValue2());
@@ -69,7 +68,7 @@ public class OrderController {
 				OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())*(Integer.parseInt(cartlist.get(j).getQuantity())));
 //				System.out.println((cartlist.get(j).getProductBean().getProduct_Price())*(Integer.parseInt(cartlist.get(j).getQuantity())));
 				OB.setPayment(0);
-				OB.setStatus(0); 
+				OB.setStatus(1); 
 				OB.setShippedDate(null);
 				OB.setRequiredDate(null);
 				orderDao.save(OB);
