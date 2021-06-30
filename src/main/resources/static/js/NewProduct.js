@@ -11,6 +11,7 @@ $(document).ready(function(){
             $("#span2").css('display', 'none');
         }
 
+<<<<<<< HEAD
 
 })
 
@@ -25,6 +26,22 @@ $(document).ready(function(){
         $(this).find('.img-delete-container').css('display' , 'none');
 
     })
+=======
+})
+
+	$('.prompt').mouseenter(function(){
+	    console.log(this)
+	    if($(this).find('.img-place').attr('src') != '#'){
+	        $(this).find('.img-delete-container').css('display' , 'block');
+	    }
+	
+	})
+	
+	$('.prompt').mouseleave(function(){
+	    $(this).find('.img-delete-container').css('display' , 'none');
+	
+	})
+>>>>>>> origin/dev
 	
 	$('.specification-plus-first').click(function(){
 	    $('.basic-information-specification-middle-first').append(`
@@ -96,6 +113,7 @@ $(document).ready(function(){
 	})
 	
 	
+<<<<<<< HEAD
 	$("#submitbtn").on('click',function(){
 	   var allsrc='';
 	   var imgs='';
@@ -133,6 +151,24 @@ $(document).ready(function(){
         }else{
             $('#oldPhoto').attr('value',imgs.split(",").filter(item => item));
         	$('#submitbtn').attr('value',$('#first-span').text()+","+$('#second-span').text()+","+$('#third-span').text())
+=======
+	
+
+	
+	$(".onsale-submit").on('click',function(){
+		if($("#product-name").val()==""){
+            alert("你尚未填商品名稱");
+        }else if($(".filepath").val()==""){
+            alert("你尚未放入圖片");
+        }else if($("#product-description").val()==""){
+            alert("你尚未填商品描述");
+        }else if($("#product-price").val()==""){
+            alert("你尚未填寫商品價格");
+        }else if($("#product-count").val()==""){
+            alert("你尚未填寫商品數量");
+        }else{
+            document.form1.submit();
+>>>>>>> origin/dev
         }
 	})
 	
@@ -154,6 +190,7 @@ $(document).ready(function(){
 	
 	function deletePic(num){
 	
+<<<<<<< HEAD
 	    document.getElementById('img'+num).src='';
 	    $('#img'+num).css("display", "none");
 	    $('#file'+num).val('');
@@ -167,3 +204,10 @@ $(document).ready(function(){
 	}
 	
 	
+=======
+	    document.getElementById('img'+num).src='#';
+	    $('#img'+num).css("display", "none");
+	    $('#file'+num).val('');
+	    document.querySelectorAll('.imgPreview')[num].style = 'border : grey dashed 1px';
+	}
+>>>>>>> origin/dev

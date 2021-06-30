@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="../../css/Bear_Shop.css">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:fragment="header">
+  <nav class="Bear-header-top">
+    <ul>
+      <li> <a href="https://www.w3schools.com/html/default.asp"> <strong>賣家中心</strong> </a> </li>
+      <li style="user-select: none;">|</li>
+      <li> <a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong> </a> </li>
+      <li style="user-select: none;"> |</li>
+      <li> <a href="https://www.w3schools.com/html/default.asp"> <strong>追蹤我們</strong></a> </li>
+      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/FB.svg"
+          alt=""></a>
+      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/Line.svg"
+          alt=""></a>
+      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/IG.svg"
+          alt=""></a>
+      <li style="user-select: none; visibility: hidden;">
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+      </li>
+      <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Bell.svg" style="width: 18px;" alt="">
+          <strong>通知總覽</strong></a> </li>
+      <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
+            alt=""><strong>幫助中心</strong> </a></li>
+      <li> <a  href="/main/acc"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
+
+            id="ssaa" th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}"></strong></a></li>
+    </ul>
+
+  </nav>
+  <nav class="Bear-header-bottom">
+    <div class="Bear-header-bottom-container">
+      <div class="Bear-header-bottom-container-left">
+        <a href="/main-page">
+
+          <div class="Bear-header-bottom-container-left-container">
+            <div style="width: 40%;">
+              <img class="icon_Bear" src="../pic/Bear.svg" alt="">
+            </div>
+            <div style="font-size: 30px;">熊熊商城</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="Bear-header-bottom-container-middle">
+        <div class="Bear-header-bottom-search">
+          <input type="text" class="Bear-header-input" placeholder="輸入搜尋文字" value="">
+          <button onclick="btn_Bgc()" class="Bear-header-btn">
+            <img src="../pic/Search.svg" alt="">
+          </button>
+        </div>
+      </div>
+
+      <div class="Bear-header-bottom-container-right">
+        <a href="/main-page/cart">
+
+          <div class="Bear-header-bottom-container-right-container">
+            <img class="icon-Shop-Car" src="../pic/Shop_Car.svg" alt="">
+            <div class="cart-ccount-manger" id="ccount"></div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+</div>
+</body>
+</html>

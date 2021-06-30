@@ -200,7 +200,11 @@ $(document).ready(function () {
                 break;
             case '書籍及文創相關商品':
                 switch ($('#category-second').text()) {
+<<<<<<< HEAD
                     case '教科參考書':
+=======
+                    case ' 教科參考書':
+>>>>>>> origin/dev
                         break;
                     case '雜誌期刊':
                         break;
@@ -444,10 +448,17 @@ $(document).ready(function () {
 
     $(".input-text").blur(function () {
         if ($(this).val() == null || $(this).val() == "") {
+<<<<<<< HEAD
         
             $(".msg").css("display", "block");
             $(this).addClass("border-red");
    
+=======
+            // console.log("aaa")
+            $(".msg").css("display", "block");
+            $(this).addClass("border-red");
+            //    console.log("bbb")
+>>>>>>> origin/dev
         } else if ($(this) != null || $(this).change == "") {
             $(".msg").css("display", "none");
             $(this).removeClass("border-red");
@@ -456,6 +467,7 @@ $(document).ready(function () {
         }
     })
     
+<<<<<<< HEAD
     $(".btn").on("click", function () {
        
         if ($('#category-first').text() != '' && $('#category-second').text() != '' && $(".input-text").val() !=''){
@@ -476,11 +488,56 @@ $(document).ready(function () {
        			} else {
                 alert("資料尚未完成!!!")
                  return false;
+=======
+    
+   $(".btn").on("click", function () {
+        console.log($('.input-text').val());
+        if ($('#category-first').text() != '' && $('#category-second').text() != '' && $(".input-text").val() !=''){
+        if ($('#category-second').text() == '教科參考書' || $('#category-second').text() == '雜誌期刊' || $('#category-second').text() == '文學小說'
+            || $('#category-second').text() == '旅遊相關書籍' || $('#category-second').text() == '語言學習相關書籍') {
+            $.ajax({
+                url: "/NewProduct.page",
+                data: {
+                    "first": $('#category-first').text(),
+                    "second": $('#category-second').text(),
+                    "third": $('#category-third').text(),
+                    "name": $('.input-text').val()
+                },
+                success: function (data) {
+                    window.location.href = "http://localhost:8081/NewProduct";
+                },
+                error: function (e) {
+                    alert("資料尚未完成!!!")
+                }
+            })
+        } else {
+            if ($('#category-third').text() != '') {
+                $.ajax({
+                    url: "/NewProduct.page",
+                    data: {
+                        "first": $('#category-first').text(),
+                        "second": $('#category-second').text(),
+                        "third": $('#category-third').text(),
+                        "name": $('.input-text').val()
+                    },
+                    success: function (data) {
+                        window.location.href = "http://localhost:8080/NewProduct";
+                    },
+                    error: function (e) {
+                        alert("資料尚未完成!!!")
+                    }
+                })
+            } else {
+                alert("資料尚未完成!!!")
+>>>>>>> origin/dev
             }
         }
     }else {
         alert("資料尚未完成!!!")
+<<<<<<< HEAD
         return false;
+=======
+>>>>>>> origin/dev
     }
     })
 })
