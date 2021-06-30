@@ -105,7 +105,6 @@ public class AccountController {
 		}
 		return "cart";
 	}
-
 	@PostMapping(value = ("/main-page/cart"))
 	public String cartview(CartBean CB, HttpSession session, Model model, String checkout, String delete, String CKBX) {
 		//取的複數ID,再依照符合ID加入結帳選單
