@@ -9,11 +9,7 @@
     "name": "demo.setting.key",
     "type": "java.lang.String",
     "description": "A description for 'demo.setting.key'"
-  }
-]}
-
-{
-    "properties": [{
+  },{
             "name": "multipart.enabled",
             "type": "java.lang.String",
             "description": "A description for 'multipart.enabled'"
@@ -23,5 +19,6 @@
             "type": "java.lang.String",
             "description": "A description for 'spring.http.multipart.max-file-size'"
         }
-    ]
-}
+]}
+
+
