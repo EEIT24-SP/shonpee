@@ -21,8 +21,6 @@ public class  PropertyBean {
 	private Integer propertyid;
 	private String propertyName;
 	private String propertyValue;
-	
-
 	private Integer productid1;
 
 

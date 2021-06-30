@@ -26,16 +26,13 @@
             <div class="logout"><span>登出</span></div>
         </div>
     </div>
-<<<<<<< HEAD
+
       <form th:action="@{/addProduct}" id="form1"  name="form1" method="Post"  enctype="multipart/form-data">
-=======
-      <form th:action="@{/addProduct}" name="form1" th:object="${product}" method="Post"  enctype="multipart/form-data">
->>>>>>> origin/dev
+
     <div class="basic-information-container">
             <div class="basic-information-title">基本資訊</div>
             <div class="basic-information-container-middle">
                 <div class="basic-information-container-picture">
-<<<<<<< HEAD
                     <div class="basic-information">商品圖片</div>       
                     <div class="imgPreview">
                         <div class="prompt" >
@@ -43,21 +40,12 @@
                             <input type="file"  id="file0" class="filepath" name="productphoto" onchange="changepic(0)" accept="image/jpg,image/jpeg,image/png,image/PNG">
                             <img id="img0" th:src="${photo}"  th:each="photo,iterStat : ${photos}" th:if="${iterStat.first}" class="img-place" style="display:block" />
                             <img id="img0" th:unless="${photos}"  class="img-place"/> 
-=======
-                    <div class="basic-information">商品圖片</div>               
-                    <div class="imgPreview">
-                        <div class="prompt">
-                            <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
-                            <input type="file" id="file0" class="filepath" name="productphoto" onchange="changepic(0)" accept="image/jpg,image/jpeg,image/png,image/PNG">
-                            <img src="#" id="img0" class="img-place" />
->>>>>>> origin/dev
                             <div class="img-delete-container" onclick="deletePic(0)">
                                 <img src="/pic/delete.png" class="img-delete" alt="">
                             </div>
                         </div>
                         <div class="picture-number">封面照片</div>
                     </div>
-<<<<<<< HEAD
 					<div class="imgPreview" >
                         <div class="prompt">
                             <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
@@ -65,20 +53,13 @@
                             <img id="img1" th:src="${photo}" th:each="photo,iterStat : ${photos}" th:if="${iterStat.index==1}" class="img-place" style="display:block"/>
                             <img id="img1" th:each="photo,iterStat : ${photos}" th:if="${iterStat.size}lt'2'" class="img-place"/>                          
                             <img id="img1" th:unless="${photos}"  class="img-place" /> 
-=======
-					<div class="imgPreview">
-                        <div class="prompt">
-                            <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
-                            <input type="file" id="file1" class="filepath" name="productphoto" onchange="changepic(1)" accept="image/jpg,image/jpeg,image/png,image/PNG">
-                            <img src="#" id="img1" class="img-place" />
->>>>>>> origin/dev
+
                             <div class="img-delete-container" onclick="deletePic(1)">
                                 <img src="/pic/delete.png" class="img-delete" alt="">
                             </div>
                         </div>
                         <div class="picture-number">圖片 1</div>
                     </div>
-<<<<<<< HEAD
                     <div class="imgPreview" >
                         <div class="prompt">
                             <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
@@ -86,20 +67,12 @@
                             <img id="img2" th:src="${photo}" th:each="photo,iterStat : ${photos}" th:if="${iterStat.index} == 2" class="img-place" style="display:block" />
                             <img id="img2" th:each="photo,iterStat : ${photos}" th:if="${iterStat.size}lt'3'and${iterStat.count==1}" class="img-place"/>                                                      
                             <img id="img2" th:unless="${photos}"  class="img-place" />                            
-=======
-                    <div class="imgPreview">
-                        <div class="prompt">
-                            <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
-                            <input type="file" id="file2" class="filepath" name="productphoto"  onchange="changepic(2)" accept="image/jpg,image/jpeg,image/png,image/PNG">
-                            <img src="#" id="img2" class="img-place" />
->>>>>>> origin/dev
                             <div class="img-delete-container" onclick="deletePic(2)">
                                 <img src="/pic/delete.png" class="img-delete" alt="">
                             </div>
                         </div>
                         <div class="picture-number">圖片 2</div>
                     </div>
-<<<<<<< HEAD
                     <div class="imgPreview" >
                         <div class="prompt">
                             <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
@@ -107,20 +80,14 @@
                             <img id="img3" th:src="${photo}" th:each="photo,iterStat : ${photos}" th:if="${iterStat.index} == 3" class="img-place" style="display:block" />
                             <img id="img3" th:each="photo,iterStat : ${photos}" th:if="${iterStat.size}lt'4'and${iterStat.count==1}" class="img-place"/>                                                                                  
                             <img id="img3" th:unless="${photos}"  class="img-place" />                                                        
-=======
-                    <div class="imgPreview">
-                        <div class="prompt">
-                            <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
-                            <input type="file" id="file3" class="filepath" name="productphoto" onchange="changepic(3)" accept="image/jpg,image/jpeg,image/png,image/PNG">
-                            <img src="#" id="img3" class="img-place" />
->>>>>>> origin/dev
+
                             <div class="img-delete-container" onclick="deletePic(3)">
                                 <img src="/pic/delete.png" class="img-delete" alt="">
                             </div>
                         </div>
                         <div class="picture-number">圖片 3</div>
                     </div>
-<<<<<<< HEAD
+
                     <div class="imgPreview ">
                         <div class="prompt">
                             <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
@@ -128,20 +95,12 @@
                             <img id="img4" th:src="${photo}" th:each="photo,iterStat : ${photos}" th:if="${iterStat.index} == 4" class="img-place" style="display:block" />
                             <img id="img4" th:each="photo,iterStat : ${photos}" th:if="${iterStat.size}lt'5'and${iterStat.count==1}" class="img-place"/>
                             <img id="img4" th:unless="${photos}"  class="img-place"/>
-=======
-                    <div class="imgPreview">
-                        <div class="prompt">
-                            <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
-                            <input type="file" id="file4" class="filepath" name="productphoto" onchange="changepic(4)" accept="image/jpg,image/jpeg,image/png,image/PNG">
-                            <img src="#" id="img4" class="img-place" />
->>>>>>> origin/dev
                             <div class="img-delete-container" onclick="deletePic(4)">
                                 <img src="/pic/delete.png" class="img-delete" alt="">
                             </div>
                         </div>
                         <div class="picture-number">圖片 4</div>
                     </div>
-<<<<<<< HEAD
                     <div class="imgPreview" >
                         <div class="prompt">
                             <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
@@ -149,20 +108,14 @@
                             <img id="img5" th:src="${photo}" th:each="photo,iterStat : ${photos}" th:if="${iterStat.index} == 5" class="img-place" style="display:block" />
                             <img id="img5"  th:each="photo,iterStat : ${photos}" th:if="${iterStat.size}lt'6'and${iterStat.count==1}" class="img-place"/>                 
                             <img id="img5" th:unless="${photos}"  class="img-place" />
-=======
-                    <div class="imgPreview">
-                        <div class="prompt">
-                            <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
-                            <input type="file" id="file5" class="filepath" name="productphoto" onchange="changepic(5)" accept="image/jpg,image/jpeg,image/png,image/PNG">
-                            <img src="#" id="img5" class="img-place" />
->>>>>>> origin/dev
+
                             <div class="img-delete-container" onclick="deletePic(5)">
                                 <img src="/pic/delete.png" class="img-delete" alt="">
                             </div>
                         </div>
                         <div class="picture-number">圖片 5</div>
                     </div>
-<<<<<<< HEAD
+
                     <div class="imgPreview" >
                         <div class="prompt">
                             <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
@@ -170,20 +123,14 @@
                             <img id="img6" th:src="${photo}" th:each="photo,iterStat : ${photos}" th:if="${iterStat.index} == 6" class="img-place" style="display:block" />
                             <img id="img6" th:each="photo,iterStat : ${photos}" th:if="${iterStat.size}lt'7'and${iterStat.count==1}" class="img-place"/>
                             <img id="img6" th:unless="${photos}" class="img-place" />
-=======
-                    <div class="imgPreview">
-                        <div class="prompt">
-                            <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
-                            <input type="file" id="file6" class="filepath" name="productphoto" onchange="changepic(6)" accept="image/jpg,image/jpeg,image/png,image/PNG">
-                            <img src="#" id="img6" class="img-place" />
->>>>>>> origin/dev
+
                             <div class="img-delete-container" onclick="deletePic(6)">
                                 <img src="/pic/delete.png" class="img-delete" alt="">
                             </div>
                         </div>
                         <div class="picture-number">圖片 6</div>
                     </div>
-<<<<<<< HEAD
+
                     <div class="imgPreview" >
                         <div class="prompt">
                             <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
@@ -191,13 +138,7 @@
                             <img id="img7" th:src="${photo}" th:each="photo,iterStat : ${photos}" th:if="${iterStat.index} == 7" class="img-place" style="display:block" />
                             <img id="img7"  th:each="photo,iterStat : ${photos}" th:if="${iterStat.size}lt'8'and${iterStat.count==1}" class="img-place"/>                            
                             <img id="img7" th:unless="${photos}"  class="img-place" />
-=======
-                    <div class="imgPreview">
-                        <div class="prompt">
-                            <span class="plusicon"><img src="/pic/plus.png" alt=""></span>
-                            <input type="file" id="file7" class="filepath" name="productphoto" onchange="changepic(7)" accept="image/jpg,image/jpeg,image/png,image/PNG">
-                            <img src="#" id="img7" class="img-place" />
->>>>>>> origin/dev
+
                             <div class="img-delete-container" onclick="deletePic(7)">
                                 <img src="/pic/delete.png" class="img-delete" alt="">
                             </div>
@@ -209,41 +150,30 @@
                 <div class="basic-information-name-container">
                     <div class="basic-information-name">商品名稱</div>
                     <div class="input-container">
-<<<<<<< HEAD
+
                         <input type="text" placeholder="請輸入" maxlength="50" th:value="${name!=null? name :newname }" id="product-name" name="productname" size="large">
-=======
-                        <input type="text" placeholder="請輸入" maxlength="50" th:value="${session.name}" id="product-name" name="productName" size="large">
->>>>>>> origin/dev
+
                     </div>
                 </div>
                 <span class="msg">商品名稱不能為空白</span>
                 <div class="basic-information-description-container">
                     <div class="basic-information-name">商品描述</div>
                     <div class="input-container">
-<<<<<<< HEAD
+
                         <textarea  placeholder=" 請輸入" maxlength="1500" id="product-description" th:text="${ProductDetail!=null?ProductDetail:''}"  name="productDetail" rows="40"></textarea>
-=======
-                        <textarea  placeholder=" 請輸入" maxlength="1500" id="product-description" name="productDetail" rows="40"></textarea>
->>>>>>> origin/dev
+
                         
                     </div>
                 </div>
          		<div class="basic-information-category-container">
                     <div class="basic-information-name">類別</div>
                     <div class="category-flow">
-<<<<<<< HEAD
                         <span id="first-span" th:text="${firstCategoryName!=null?firstCategoryName:firstCategory}" ></span>
                         <span class="span1" id="span1">></span>
                         <span id="second-span" th:text="${secondCategoryName!=null?secondCategoryName:secondCategory}"></span>
                         <span class="span1" id="span2">></span>
                         <span id="third-span" th:text="${thirdCategoryName!=null?thirdCategoryName:thirdCategory}"></span> <a href="javascript:form2.submit();"><img src="/pic/pencil.png" alt=""></a>
-=======
-                        <span id="first-span" th:text="${session.first}"></span>
-                        <span class="span1" id="span1">></span>
-                        <span id="second-span" th:text="${session.second}"></span>
-                        <span class="span1" id="span2">></span>
-                        <span id="third-span" th:text="${session.third}"></span> <a th:href="@{/MyCategoriesPage1}"><img src="/pic/pencil.png" alt=""></a>
->>>>>>> origin/dev
+
                     </div>
                 </div>
                 
@@ -253,7 +183,7 @@
             <div class="basic-information-sale-container">
                 <div class="basic-information-name">商品價格</div>
                 <div class="input-container">
-<<<<<<< HEAD
+
                     <input type="text"  placeholder="NT$ 請輸入" maxlength="10" th:value="${ProductPrice!=null?ProductPrice:''}" name="productPrice" id="product-price" size="large">
                 </div>
             </div>
@@ -261,15 +191,7 @@
                 <div class="basic-information-name">數量</div>	
                 <div class="input-container">
                     <input type="text" placeholder="請輸入" maxlength="10" th:value="${ProductStock!=null?ProductStock:''}" name="productStock" id="product-count" size="large">
-=======
-                    <input type="number"  placeholder="NT$ 請輸入" maxlength="10" name="productPrice" id="product-price" size="large">
-                </div>
-            </div>
-            <div class="basic-information-sale-container">
-                <div class="basic-information-name">數量</div>
-                <div class="input-container">
-                    <input type="number" placeholder="請輸入" maxlength="10" name="productStock" id="product-count" size="large">
->>>>>>> origin/dev
+
                 </div>
             </div>
             <div class="basic-information-specification-container">
@@ -278,7 +200,6 @@
                     <div class="specification-container-middle-name">
                         <div class="basic-information-specification">商品規格名稱</div>
                         <div class="input-container-specification">
-<<<<<<< HEAD
                             <input type="text"  maxlength="14" placeholder="請輸入規格名稱" name="propertyName" th:value="${firstPropertyName}" id="product-specification-first-name" >
                         </div>
                     </div>
@@ -294,16 +215,7 @@
                             <div class="input-container-specification" th:each="firstPropertyValue,userStat : ${firstPropertyValue}">
                                 <input type="text"  maxlength="20" placeholder="請輸入選項" name="propertyValue" th:value="${firstPropertyValue}" th:if="${userStat.index} != 0" class="product-specification-first-type">
                                	<div class="delete-options" th:if="${userStat.index} != 0"><img src="/pic/delete.png"  alt=""></div>                            
-=======
-                            <input type="text"  maxlength="14" placeholder="請輸入規格名稱" name="propertyName" id="product-specification-first-name" >
-                        </div>
-                    </div>
-                    <div class="specification-container-middle-options">
-                        <div class="basic-information-specification">選項</div>
-                        <div class="basic-information-specification-middle-first">
-                            <div class="input-container-specification">
-                                <input type="text"  maxlength="20" placeholder="請輸入選項" name="propertyValue" class="product-specification-first-type">                            
->>>>>>> origin/dev
+
                             </div>                        
                         </div>
                     </div>
@@ -313,24 +225,18 @@
             <div class="basic-information-specification-container">
                 <div class="basic-information-specification-title">規格二</div>
                 <div class="specification-container">
-<<<<<<< HEAD
+
                     <div class="specification-container-middle-name" >
                         <div class="basic-information-specification">商品規格名稱</div>
                         <div class="input-container-specification">
                             <input type="text" maxlength="14" placeholder="請輸入規格名稱" name="propertySecondName" th:value="${secondPropertyName}" id="product-specification-second-name">
-=======
-                    <div class="specification-container-middle-name">
-                        <div class="basic-information-specification">商品規格名稱</div>
-                        <div class="input-container-specification">
-                            <input type="text" maxlength="14" placeholder="請輸入規格名稱" name="propertySecondName"  id="product-specification-second-name">
->>>>>>> origin/dev
+
                         </div>
                     </div>
                     <div class="specification-container-middle-options">
                         <div class="basic-information-specification">選項</div>
                         <div class="basic-information-specification-middle-second">
                             <div class="input-container-specification">
-<<<<<<< HEAD
                                 <input type="text"  maxlength="20"  placeholder="請輸入選項" name="propertySecondValue" th:unless="${secondPropertyValue}" th:value="${secondPropertyValue!=null?secondPropertyValue:''}" value=''  class="product-specification-first-type">                    
                             </div>      
                             <div class="input-container-specification">
@@ -340,10 +246,6 @@
                                 <input type="text"  maxlength="20" placeholder="請輸入選項" name="propertySecondValue" th:value="${secondPropertyValue}" th:if="${userStat.index} != 0" class="product-specification-second-type">
                                	<div class="delete-options" th:if="${userStat.index} != 0"><img src="/pic/delete.png"  alt=""></div>                            
                             </div>                             
-=======
-                                <input type="text" maxlength="20" placeholder="請輸入選項" name="propertySecondValue" class="product-specification-second-type">
-                            </div>                        
->>>>>>> origin/dev
                         </div>
                     </div>
                     <div class="specification-plus-second">增加選項 +</div>
@@ -356,7 +258,6 @@
         
     </div>
     <div class="submit-container fixbottom">
-<<<<<<< HEAD
        <input type="text" id="oldPhoto"  name="oldPhoto"  style="display:none">
         <div>
             <div class="cancle-submit" ><a th:href="@{/MyProduct}">取消</a></div>
@@ -371,17 +272,7 @@
            <input type="number" name="changecategorys" value="1" style="display:none">
              
 	</form>	
-=======
-        <div>
-            <button class="cancle-submit">取消</button>
-            <button class="onsale-submit"  onclick="return false" type="submit">上架</button>
-        </div>
-    </div>
-    </form>
-    
-    
-    
->>>>>>> origin/dev
+
     
 </body>
 </html>

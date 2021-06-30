@@ -5,11 +5,10 @@ body{
     height: 100%;
 }
 
-<<<<<<< HEAD
+
 input:-webkit-autofill { box-shadow: 0 0 0px 1000px white inset !important;}
 
-=======
->>>>>>> origin/dev
+
 a:link{
     color: gray;
     text-decoration:none;
@@ -476,10 +475,8 @@ a:visited {
     box-shadow: 1px 1px 5px 0.2px rgb(83, 83, 83);
     cursor: pointer;
     font-size: 16px;
-<<<<<<< HEAD
     display:inline-block;
-=======
->>>>>>> origin/dev
+
 }
 
 

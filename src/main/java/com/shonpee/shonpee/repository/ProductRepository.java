@@ -16,7 +16,8 @@ public interface ProductRepository extends JpaRepository<ProductBean, Integer> {
 
 	@Query(value="Select * from product where Member_id = ?1",nativeQuery = true)
     public List<ProductBean> findProductBeanbyMember(String data);
-
+	
+	public List<ProductBean> findByProductFirstCategoryId(Integer productFirstCategoryId);
 
 
 

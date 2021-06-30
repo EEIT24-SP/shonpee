@@ -1,4 +1,4 @@
-package com.shonpee.shonpee.repositoryservice;
+package com.shonpee.shonpee.ServiceRepository;
 
 import java.util.ArrayList;
 import java.util.List;
