@@ -1,4 +1,7 @@
+
 var cot = 0;//設置一個計數器，初始值為0；作用是用來監聽點擊切換的時候哪一個圖片應該隱藏或者顯示
+var cot = 0;
+
     function nex() {
         if (cot <= 3) {
             $('.item-container-left-b img').eq(cot).animate({ 'margin-left': '-89px' }, 100);
@@ -25,6 +28,7 @@ var cot = 0;//設置一個計數器，初始值為0；作用是用來監聽點�
             //向li中添加内容
             input_sel_list_option.innerHTML = i;
             //向ul追加元素li
+
             input_sel_list.appendChild(input_sel_list_option);
         }
         if (input_cnt < 2) {
@@ -61,6 +65,7 @@ var cot = 0;//設置一個計數器，初始值為0；作用是用來監聽點�
             //向li中添加内容
             input_sel_list_option.innerHTML = i;
             //向ul追加元素li
+
             input_month_sel_list.appendChild(input_sel_list_option);
         }
         if (input_month_cnt < 2) {
@@ -145,3 +150,27 @@ var cot = 0;//設置一個計數器，初始值為0；作用是用來監聽點�
     //         input_month_cnt = 0;
     //     }
     // }
+
+    function waithide() {
+        var obj = document.getElementById("success-msg");
+        obj.style.opacity = '1';
+        window.setTimeout(
+            function removethis() {
+                obj.style.opacity = '0';
+            }, 1000);
+    }
+
+$('.property-value-first').on("click",function(){
+    $('.property-value-first').removeClass('property-select');
+    $('.property-value-first').attr("name","");
+  	$(this).attr("name","selectfirst");
+    $(this).addClass('property-select');
+})
+
+$('.property-value-second').on("click",function(){
+    $('.property-value-second').removeClass('property-select');
+    $('.property-value-second').attr("name","");
+  	$(this).attr("name","selectsecond");
+    $(this).addClass('property-select');
+})
+

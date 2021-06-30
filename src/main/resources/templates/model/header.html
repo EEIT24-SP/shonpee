@@ -28,6 +28,7 @@
       <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
             alt=""><strong>幫助中心</strong> </a></li>
       <li> <a  href="/main/acc"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
+
             id="ssaa" th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}"></strong></a></li>
     </ul>
 
@@ -36,6 +37,7 @@
     <div class="Bear-header-bottom-container">
       <div class="Bear-header-bottom-container-left">
         <a href="/main-page">
+
           <div class="Bear-header-bottom-container-left-container">
             <div style="width: 40%;">
               <img class="icon_Bear" src="../pic/Bear.svg" alt="">
@@ -56,6 +58,7 @@
 
       <div class="Bear-header-bottom-container-right">
         <a href="/main-page/cart">
+
           <div class="Bear-header-bottom-container-right-container">
             <img class="icon-Shop-Car" src="../pic/Shop_Car.svg" alt="">
             <div class="cart-ccount-manger" id="ccount"></div>

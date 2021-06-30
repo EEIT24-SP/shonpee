@@ -151,5 +151,7 @@ OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())*(Integer.parseI
 //			sellerlist.add(product);
 //		}
 //	}
+public class OrderController {
+
 
 }

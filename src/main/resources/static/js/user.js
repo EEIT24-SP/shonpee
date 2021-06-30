@@ -1,3 +1,4 @@
+
 /*下面是使用者主頁面標題*/
 window.onload = function () {
     var profile_p_list_ctl = parseInt(window.sessionStorage.getItem('acc-profile'));
@@ -15,7 +16,6 @@ window.onload = function () {
     }
     //設置主頁標題隱藏及顯示
 };
-
 
 
 //數量加減 
@@ -140,6 +140,12 @@ function type_b_price() {
 }
 
 
+$('#item-input-qty').on('keyup',function(e){
+    this.value=this.value.replace(/[^0-9]/g,'')
+    e.preventDefault();
+
+})
+
 
 
 function view_img(myid) {
@@ -181,6 +187,6 @@ function add_address() {
     document.getElementById('all_light-address').style.display = 'block';
     document.getElementById('content-address').style.display = 'block';
     document.getElementById('body').style.overflow="hidden";
-
     
 }
+

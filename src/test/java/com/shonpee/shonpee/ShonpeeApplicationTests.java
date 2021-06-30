@@ -1,3 +1,4 @@
+
 package com.shonpee.shonpee;
 
 import java.util.List;
@@ -29,6 +30,7 @@ class ShonpeeApplicationTests {
 //	@Test
 //	public void profile1() {
 //		List<MemberBean> list2 = MR.findAll();
+
 //		for (MemberBean customerBean : list2) {
 //			System.out.println(customerBean);
 //		}

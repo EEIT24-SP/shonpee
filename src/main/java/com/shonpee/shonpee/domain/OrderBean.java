@@ -34,4 +34,4 @@ public class OrderBean {
 //	@ManyToOne
 //	@JoinColumn(name = "product_Id")
 //	private ProductBean productBean;
-}
+
