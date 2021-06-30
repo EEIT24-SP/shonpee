@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ShonpeeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ShonpeeApplication.class, args);
+		SpringApplication.run(ShonpeeApplication.class, args); 
 	}
 
 }

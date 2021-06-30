@@ -1,5 +1,4 @@
-
- var cot = 0;
+var cot = 0;
     var obj = document.getElementById("view-img-0");
 			 var imgSrc = obj.getAttribute("src");
 			document.getElementById("main-img").src=imgSrc;	
@@ -152,4 +151,3 @@ if(value2==0){
     
    }
 })
-

@@ -1,6 +1,4 @@
 src/main/resources/static/pic/*
-target/*
-
 
 HELP.md
 target/
@@ -12,6 +10,7 @@ target/*
 
 =======
 >>>>>>> origin/feat/showoneproduct
+
 
 ### STS ###
 .apt_generated

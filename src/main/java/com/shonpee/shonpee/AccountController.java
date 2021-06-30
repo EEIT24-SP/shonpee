@@ -1,5 +1,4 @@
 package com.shonpee.shonpee;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -187,47 +186,5 @@ public class AccountController {
 //			}
 //
 //		}
-//
-//		return "Bear-item";
-//	}
-
-//送出商品參數	
-//	@PostMapping(value = ("/main-page/item"))
-//	public String item(HttpSession session, Model model, MemberBean MB, CartBean CB, ProductBean PB) {
-//		Object Name = session.getAttribute("UserName");
-//		Object Id = session.getAttribute("itemid");
-//		List<MemberBean> list = MR.findAll();
-//		List<ProductBean> list1 = PR.findAll();
-//		List<CartBean> list2 = CR.findAll();
-//		for (MemberBean memberBean : list) {
-//			// 會員底下搜尋 如過購物車數量為0,則執行productBean新增置購物車
-//			for (CartBean cartBean : list2) {
-//				// 如果有商品,則判別商品ID是否重複,重複則自行遞增
-//				if (cartBean.getProductBean().getProductid().equals(Id)) {
-//					System.out.println(cartBean.getMemberId());
-//					cartBean.setTotalPrice(Integer.toString(
-//							Integer.parseInt(cartBean.getTotalPrice()) / Integer.parseInt(cartBean.getQuantity())));
-//					cartBean.setQuantity(
-//							Integer.toString(PB.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
-//					cartBean.setTotalPrice(Integer.toString(
-//							Integer.parseInt(cartBean.getTotalPrice()) * Integer.parseInt(cartBean.getQuantity())));
-//					CR.save(cartBean);
-//					return "redirect:/main-page/item";
-//				}
-//			}
-//			for (ProductBean productBean : list1) {
-//				if (productBean.getProductid().equals(Id)) {
-////					 System.out.println(productBean.getMemberBean().getUser_Account().equals("bee567"));
-//					CB.setQuantity(Integer.toString(PB.getProductStock()));
-//					CB.setTotalPrice(Integer.toString(PB.getProductStock() * productBean.getProductPrice()));
-//					CB.setProductBean(productBean);
-//					CB.setMemberId((String) Name);
-//					System.out.println("我是OBJ" + (String) Name);
-//					CR.save(CB);
-//				}
-//			}
-//		}
-//		return "redirect:/main-page/item";
-//	}
-
 }
+

@@ -44,6 +44,7 @@ public class ProductServiceRepositoryTests {
 		bean.setProductDetail("cry");
 		mb.setUserAccount("anna38");
 		bean.setMemberBean(mb);
+//		bean.setMemberId("anna38");
 		bean.setProductFirstCategoryId(1);;
 		bean.setProductSecondCategoryId(2);
 		bean.setProductThirdCategoryId(3);

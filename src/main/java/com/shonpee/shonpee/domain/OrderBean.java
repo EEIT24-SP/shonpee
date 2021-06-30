@@ -35,3 +35,4 @@ public class OrderBean {
 	@JoinColumn(name = "product_Id")
 	private ProductBean productBean;
 }
+

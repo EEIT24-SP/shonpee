@@ -1,3 +1,4 @@
+
 package com.shonpee.shonpee.ServiceRepository;
 
 import java.util.List;
@@ -19,7 +20,6 @@ public class MemberServiceRepository {
 
     public MemberBean login(String account, String password) {
         Optional<MemberBean> optional = MemberDao.findById(account);
-//    System.out.println(optional);
         if (!optional.isEmpty()) {// 判斷帳號，存在的話
             MemberBean bean = optional.get();// 獲取帳號的物件 MemberBean(Memberid=3, Useraccount=catcatcat,
                                                 // Password=cat8887,...

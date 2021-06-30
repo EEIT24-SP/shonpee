@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/myProduct.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script th:src="@{/js/jquery-3.4.1.js}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js" defer></script>
+    <script th:src="@{/js/MyProduct.js}" defer></script>
+    
+</head>
+
+<body>
+<div th:insert="model/sellerhead::sellerhead"></div>
+    <div class="myProduct">
+        <div class="myProduct-right">
+            <div class="myProduct-right-b">
+                <div class="myProduct-right-b-z">
+                    <div class="myProduct-right-ItemList">
+                        <div class="insert-div">
+                            <span class="title-span">賣家商品</span> 
+                           <a th:href="@{/MyCategoriesPage1}" class="insert-button">新增商品</a>
+                        </div> 
+                        <div class="myProduct-right-ItemList-bar" >
+                            <div class="myProduct-right-ItemList-bar-title">
+                                <div class="myProduct-right-ItemList-bar-list"> 商品名稱</div>
+                                <div class="myProduct-right-ItemList-bar-list-b">規格</div>
+                                <div class="myProduct-right-ItemList-bar-list-b">價格</div>
+                                <div class="myProduct-right-ItemList-bar-list-b">庫存</div>
+                                <div class="myProduct-right-ItemList-bar-list-b">售出</div>
+                                <div class="myProduct-right-ItemList-bar-list-b">操作</div>
+                            </div>
+                        </div>
+                           <form th:action="@{/UpdateProduct}"  method="get">                    
+                        <div class="myProduct-right-ItemList-container">
+                            <div class="myProduct-right-ItemList-container-body">
+                                <div class="myProduct-right-ItemList-container-body-list" th:each="MemberProduct,memberstatus :${MemberProduct}">
+                                    <div class="myProduct-right-ItemList-bar-list">                                        
+                                        <div class="product-photo-container"><img th:each="allphotos,photostatus :${allphotos}" th:if="${photostatus.count}==${memberstatus.count}" th:src="${allphotos}" alt=""></div>
+                                        <div th:text="${MemberProduct.productName}"   >品名</div>                                            
+                                    </div>    
+                                    <div class="myProduct-right-ItemList-bar-list-property">
+                                    	<div class="property-container" th:each="PropertyFirstList,firststatus:${PropertyFirstList}" th:if="${firststatus.count}==${memberstatus.count}">
+	                                        <span class="name-first"  th:text="${PropertyFirstList.propertyName} ">規格一</span>
+	                                        <span class="value" th:text="${PropertyFirstList.propertyValue}">規格一</span>
+                                    	</div>
+                                    	<div class="property-container"  th:each="PropertySecondList,secondstatus:${PropertySecondList}" th:if="${secondstatus.count}==${memberstatus.count}">
+	                                        <span class="name-second" th:text="${PropertySecondList.propertyName} ">規格二</span>
+	                                        <span class="value" th:text="${PropertySecondList.propertyValue}">規格二</span>                                    	
+                                    	</div>
+                                    </div>
+                                    <div class="myProduct-right-ItemList-bar-list-price" th:text="${MemberProduct.productPrice}">價格</div>
+                                    <div class="myProduct-right-ItemList-bar-list-stock" th:text="${MemberProduct.productStock}">庫存</div>
+                                    <div class="myProduct-right-ItemList-bar-list-soldcount" th:text="${MemberProduct.productStock}-${MemberProduct.productStock}">售出</div>
+                                    <div class="operating-container">
+                                        <div class="button-container">        
+                                                                 
+                                            <button type="submit" class="modify-button" name="productid" th:value="${MemberProduct.productid}">修改</button> 
+                                            <button class="delete-button" name="delete" type="button"  th:value="${MemberProduct.productid}" >刪除</button>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>       
+                        </div>
+                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

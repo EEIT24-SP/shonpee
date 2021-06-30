@@ -31,8 +31,6 @@ body {
     display: inline-block;
 }
 
-/* � inline��ist霈����� */
-
 .Bear-header-top li:hover {
     background-color: #656565;
 }
@@ -154,7 +152,7 @@ td {
     color: lightgoldenrodyellow;
 }
 
-/*����*/
+
 
 .footer {
     width: 1200px;
@@ -361,8 +359,7 @@ td {
     min-width: 1400px;
     margin: auto;
 }
-
-/* /頛芣css/ */
+/* /輪播css/ */
 
 #slider, .slieder-item-container, .img-animate {
     width: 1200px;

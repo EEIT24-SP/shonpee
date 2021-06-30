@@ -65,7 +65,7 @@ public class PublicController {
 	}
 
 	@GetMapping("main-page/shop-list{index}")
-	public String ddd(@PathVariable("index") int index, Model model,HttpSession session) {
+	public String ddd(@PathVariable("index") int index, Model model, HttpSession session) {
 		String[] abc = { "待付款", "待出貨", "待收貨", "完成", "不成立", "全部" };
 		Object Name = session.getAttribute("UserName");
 		model.addAttribute("abc", abc);
@@ -75,18 +75,19 @@ public class PublicController {
 		List<OrderBean> listAll = OR.findAll();
 		if (index == 5) {
 			for (OrderBean orderBean : listAll) {
-				if(orderBean.getMemberId().equals(Name)) {
-				arrOrder.add(orderBean);
-				model.addAttribute("arrOrder", arrOrder);
-				System.out.println("全部頁面成功");}
+				if (orderBean.getMemberId().equals(Name)) {
+					arrOrder.add(orderBean);
+					model.addAttribute("arrOrder", arrOrder);
+					System.out.println("全部頁面成功");
+				}
 			}
 			return "shop_list/shop_list";
 		}
 		for (OrderBean orderBean : list) {
-			if(orderBean.getMemberId().equals(Name)) {
-			arrOrder.add(orderBean);
-			model.addAttribute("arrOrder", arrOrder);
-			System.out.println("成功");
+			if (orderBean.getMemberId().equals(Name)) {
+				arrOrder.add(orderBean);
+				model.addAttribute("arrOrder", arrOrder);
+				System.out.println("成功");
 			}
 		}
 		System.out.println(index);
@@ -95,15 +96,15 @@ public class PublicController {
 
 	@PostMapping(value = ("main-page/shop-list{index}"))
 	public String changeType(@PathVariable("index") int index, @RequestParam(value = "changeType") Integer changeType,
-			OrderBean OB,CartBean CB,HttpSession session) {
+			OrderBean OB, CartBean CB, HttpSession session) {
 		Object Name = session.getAttribute("UserName");
 		System.out.println("我是" + index);
 		System.out.println("轉向成功");
 		System.out.println(changeType);
-		List<OrderBean> list = OR.findByOrderId(OB.getOrderId()); 
-		List<OrderBean>listBA = OR.findAll();
+		List<OrderBean> list = OR.findByOrderId(OB.getOrderId());
+		List<OrderBean> listBA = OR.findAll();
 		List<ProductBean> PDlist = PR.findAll();
-		//99代表再次購買代碼
+		// 99代表再次購買代碼
 		if (changeType == 99) {
 			for (OrderBean orderBean : listBA) {
 				for (ProductBean productBean : PDlist) {
@@ -115,12 +116,12 @@ public class PublicController {
 						CB.setMemberId(Name.toString());
 						CB.setQuantity(Integer.toString(orderBean.getQuantity()));
 						CB.setProductBean(productBean);
-					if(splitTypeValue.length>1) {	
-						CB.setTypeValue1(splitTypeValue[0]);
-						CB.setTypeValue2(splitTypeValue[1]);
-					}
+						if (splitTypeValue.length > 1) { 
+							CB.setTypeValue1(splitTypeValue[0]);
+							CB.setTypeValue2(splitTypeValue[1]);
+						}
 						CR.save(CB);
-						System.out.println("準備再次購買"+productBean.getProductid());
+						System.out.println("準備再次購買" + productBean.getProductid());
 						return "redirect:/main-page/cart";
 					}
 				}

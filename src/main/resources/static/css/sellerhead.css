@@ -1,0 +1,95 @@
+body,html{
+padding: 0;
+margin: 0;
+}
+
+
+a :link{
+    color: gray;
+    text-decoration:none;
+}
+a :visited {
+    color: gray;
+}
+
+a{
+	color: gray;
+	text-decoration:none
+}
+
+.header-navbar-left a{
+    font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
+    text-decoration:none;    
+}
+
+.header-navbar-container {
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    box-shadow: 1px 0px 6px 0.1px rgb(116, 116, 116);
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    color: gray;
+    z-index: 1;
+}
+
+.header-navbar-right {
+    display: flex;
+    align-items: center;
+    margin: 0 20px 0 0;
+}
+
+.header-navbar-left {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 20px;
+}
+
+.header-navbar-left div {
+    display: flex;
+    margin: 0 5px;
+}
+
+.header-navbar-left :nth-child(1) img {
+    width: 50px;
+    height: 50px;
+}
+
+.header-navbar-left :nth-child(2) img {
+    width: 15px;
+    height: 15px;
+    margin: auto;
+}
+
+.head-account {
+    background-color: rgb(235, 235, 235);
+    border-radius: 25px;
+    padding: 2px 8px;
+}
+
+.logout {
+    font-weight: 600;
+    background-color: rgb(235, 235, 235);
+    border-radius: 25px;
+    margin: auto 15px;
+    padding: 2px 8px;
+}
+
+.head-account span {
+    margin: auto 10px;
+}
+
+.header-navbar-right div {
+    display: flex;
+    margin: 0 5px;
+    color: black;
+}
+
+.header-navbar-right img {
+    height: 40px;
+    width: 40px;
+    border-radius: 60px;
+}

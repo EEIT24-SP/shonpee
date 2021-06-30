@@ -9,8 +9,8 @@ import org.springframework.data.repository.query.Param;
 import com.shonpee.shonpee.domain.OrderBean;
 
 public interface OrderRepository extends JpaRepository<OrderBean, Integer>{
-//	@Query(nativeQuery = true,value = "select password from member where password = :xxx")
-//	String QueryAnnotationParams(@Param("xxx") String password);
-	List<OrderBean> findByStatus(Integer status);
-	List<OrderBean> findByOrderId(Integer orderId);
+//    @Query(nativeQuery = true,value = "select password from member where password = :xxx")
+//    String QueryAnnotationParams(@Param("xxx") String password);
+    List<OrderBean> findByStatus(Integer status);
+    List<OrderBean> findByOrderId(Integer orderId);
 }

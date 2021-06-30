@@ -1,0 +1,328 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
+    font-size: 14px;
+    line-height: 16.8px;
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+a :link{
+    color: gray;
+    text-decoration:none;
+}
+a :visited {
+    color: gray;
+}
+
+a{
+	color: gray;
+	text-decoration:none
+}
+
+
+
+.header-navbar-container {
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    box-shadow: 1px 0px 6px 0.1px rgb(116, 116, 116);
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    color: gray;
+    z-index: 1;
+}
+
+.header-navbar-right {
+    display: flex;
+    align-items: center;
+    margin: 0 20px 0 0;
+}
+
+.header-navbar-left {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 20px;
+}
+
+.header-navbar-left div {
+    display: flex;
+    margin: 0 5px;
+}
+
+.header-navbar-left :nth-child(1) img {
+    width: 50px;
+    height: 50px;
+}
+
+.header-navbar-left :nth-child(2) img {
+    width: 15px;
+    height: 15px;
+    margin: auto;
+}
+
+.head-account {
+    background-color: rgb(235, 235, 235);
+    border-radius: 25px;
+    padding: 2px 8px;
+}
+
+.logout {
+    font-weight: 600;
+    background-color: rgb(235, 235, 235);
+    border-radius: 25px;
+    margin: auto 15px;
+    padding: 2px 8px;
+}
+
+.head-account span {
+    margin: auto 10px;
+}
+
+.header-navbar-right div {
+    display: flex;
+    margin: 0 5px;
+    color: black;
+}
+
+.header-navbar-right img {
+    height: 40px;
+    width: 40px;
+    border-radius: 60px;
+}
+
+.myProduct {
+    margin-top: 60px;
+    display: flex;
+    width: 100%;
+}
+
+.myProduct-right {
+    width: 100%;
+    min-width: 1000px;
+    margin: auto;
+}
+
+.myProduct-right-b {
+    justify-content: center;
+    display: flex;
+    margin-top: 10px;
+}
+
+.myProduct-right-b-z {
+    background-color: white;
+    width: 85%;
+}
+
+.myProduct-right-ItemList {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.insert-div{
+    justify-content: space-between;
+    display: flex;
+}
+
+.title-span{
+    margin: 10px 0 15px 30px;
+    font-size: 18px;
+    font-weight: 700;
+    display:flex;
+    width: 200px;
+}
+
+.insert-button{
+    padding:10px 20px;
+    margin: 30px 80px 10px 0;
+    background-color: #ffd86e;
+    border: rgb(155, 155, 155) 1px solid;
+    border-radius: 3px;
+    color: black;
+    text-align:center;
+}
+
+.insert-button:hover{
+    background-color: #ffe291;
+    cursor: pointer;
+}
+
+.myProduct-right-ItemList-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.myProduct-right-ItemList-bar-title {
+    border: 2px solid rgb(225, 225, 225);
+    border-bottom: none;
+    height: 59px;
+    width: 90%;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.myProduct-right-ItemList-bar-list {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 57px;
+    width: 250px;
+    border-bottom: 3px solid transparent;
+}
+
+.myProduct-right-ItemList-bar-list-b {
+    align-items: center;
+    padding: 0 20px;
+    height: 57px;
+    width: 110px;
+    border-bottom: 3px solid transparent;
+    display: flex;
+    
+}
+
+.myProduct-right-ItemList-bar-list-a {
+    display: flex;
+    padding: 0 20px;
+    height: 57px;
+    width: 90px;
+    border-bottom: 3px solid transparent;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.myProduct-right-ItemList-bar-list-price{
+	display: flex;
+    padding: 0 20px;
+    height: 57px;
+    width: 90px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.myProduct-right-ItemList-bar-list-stock{
+	display: flex;
+    padding: 0 20px;
+    height: 57px;
+    width: 90px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.myProduct-right-ItemList-bar-list-soldcount{
+	display: flex;
+    padding: 0 20px;
+    height: 57px;
+    width: 90px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.myProduct-right-ItemList-bar-list-property{
+	display: flex;
+    padding: 0 20px;
+    height: 57px;
+    width: 90px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.myProduct-right-ItemList-bar-list-property div{
+	display:flex;
+}
+
+.product-photo-container img{
+    width: 56px;
+    height: 56px;
+    float: left;
+}
+
+.operating-container{
+    align-items: center;
+    padding: 0 20px;
+    height: 57px;
+    width: 100px;
+    display: flex;
+    
+}
+
+.myProduct-right-ItemList-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 0 50px 0;
+}
+
+.myProduct-right-ItemList-container-body {
+    border: 2px solid rgb(225, 225, 225);
+    width: 90%;
+    overflow-y: auto;
+    height: 420px;
+}
+
+.myProduct-right-ItemList-container-body-list {
+    width: 100%;
+    display: flex;
+    height: 104px;
+    align-items: center;
+    border-bottom: 2px solid rgb(225,225,225);
+    justify-content:space-between ;
+}
+
+
+.modify-button{
+    padding: 5px 10px;
+    background-color: rgb(255, 226, 172);
+    border-radius: 3px;
+    border: gray 1px solid;
+    cursor: pointer;
+    font-size: 13px;
+
+}
+
+.modify-button:hover{
+    background-color:rgb(255, 238, 208); 
+}
+
+.delete-button{
+    padding: 5px 10px;
+    background-color: rgb(206, 122, 89);
+    border-radius: 3px;
+    border: gray 1px solid;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.delete-button:hover{
+    background-color: rgb(255, 165, 130);
+}
+
+.property-container{
+	width:120px;
+	margin:0 0 0 -35px;
+}
+
+.name-first,.name-second{
+	width:50px;
+	margin-bottom:5px;
+}
+
+.value{
+	width:100%;
+}

@@ -1,3 +1,4 @@
+
 package com.shonpee.shonpee.domain;
 
 import javax.persistence.Entity;
@@ -32,3 +33,4 @@ public class CartBean {
 	private ProductBean productBean;
 
 }
+
