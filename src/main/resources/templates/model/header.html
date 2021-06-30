@@ -8,7 +8,8 @@
 <body>
 <div th:fragment="header">
   <nav class="Bear-header-top">
-    <ul>
+    <ul style="
+    margin-top: 0px;">
       <li> <a href="https://www.w3schools.com/html/default.asp"> <strong>賣家中心</strong> </a> </li>
       <li style="user-select: none;">|</li>
       <li> <a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong> </a> </li>
@@ -29,6 +30,10 @@
             alt=""><strong>幫助中心</strong> </a></li>
       <li> <a  href="/main-page/acc"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
             id="ssaa" th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}"></strong></a></li>
+          
+            <li >
+             <a  href="/login-page" th:text="${#strings.isEmpty(session.UserName)?'':'登出'}"></a>
+             </li>
     </ul>
 
   </nav>

@@ -13,32 +13,8 @@
 </head>
 
 <body style="background-color: rgb(235, 235, 235);">
-	<nav class="Bear-header-top">
-		<ul style="margin: 0px;">
-			<li><a href="https://www.w3schools.com/html/default.asp"> <strong>賣家中心</strong>
-			</a></li>
-			<li style="user-select: none;">|</li>
-			<li><a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong> </a></li>
-			<li style="user-select: none;">|</li>
-			<li><a href="https://www.w3schools.com/html/default.asp"> <strong>追蹤我們</strong></a></li>
-			<a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon"
-				src="../pic/FB.svg" alt=""></a>
-			<a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon"
-				src="../pic/Line.svg" alt=""></a>
-			<a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon"
-				src="../pic/IG.svg" alt=""></a>
-			<li style="user-select: none; visibility: hidden;">
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			</li>
-			<li><a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Bell.svg"
-					style="width: 18px;" alt=""> <strong>通知總覽</strong></a></li>
-			<li><a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
-					alt=""><strong>幫助中心</strong> </a></li>
-			<li><a href="/main-page/acc"><img src="../pic/Account.svg" style="width: 20px"
-					alt=""><strong id="ssaa"  th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}">會員帳戶</strong> </a></li>
-		</ul>
-
-	</nav>
+	    <div th:insert="model/header::header"></div>
+	
 	<nav
 		style="height: 100px; width: 100vw; min-width: 100%; text-align: center; background-color: #ffffff; border-bottom: 1px solid rgba(121, 121, 121, 0.3);">
 

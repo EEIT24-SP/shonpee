@@ -16,15 +16,16 @@ public class LoginController {
 	@Autowired
 	private MemberServiceRepository memberService;
  
-	@RequestMapping(value = "/login-page")
-	public String login() {
-
+	@RequestMapping(value = "/login-page") 
+	public String login(HttpSession session) {
+		session.setAttribute("UserName","");
 		return "login";
 	}
 
 	@PostMapping(value = ("/login-page"))
 	public String control(String loginaccount, String loginpassword, String registered_account,
 			String registered_password, HttpSession session, Model model) {
+		
 		if ((loginaccount != null) && (loginpassword != null)) {
 			// 呼叫model
 			MemberBean beanLogin = memberService.login(loginaccount, loginpassword);
