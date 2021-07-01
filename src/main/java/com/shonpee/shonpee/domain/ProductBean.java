@@ -36,22 +36,9 @@ public class ProductBean {
 	private Integer productFirstCategoryId;
 	private Integer productSecondCategoryId;
 	private Integer productThirdCategoryId;	
+	private Integer productStatus;
 	
 	@ManyToOne 
 	@JoinColumn(name = "member_id")
 	private MemberBean memberBean;
-	
-	@OneToMany(mappedBy = "productBean")
-	private List<CartBean>  cartlist;	
-	
-	@OneToMany(mappedBy = "productBean")
-	private List<PropertyBean>  prpBean;	
-	
-	@OneToMany(mappedBy = "productBean")
-	private List<PropertyBeanSecond>  prpBeanSecond;
-
-	
-//	@OneToMany(mappedBy = "productBean",fetch = FetchType.EAGER)
-//	private List<CartBean>  cartlist;	
-
 }

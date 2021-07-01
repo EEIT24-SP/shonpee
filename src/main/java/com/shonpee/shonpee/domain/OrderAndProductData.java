@@ -5,12 +5,12 @@ import lombok.Data;
 @Data
 public class OrderAndProductData {
 	
-	private ShonpeeOrderBean shonpeeOrderBean;
+	private OrderBean orderBean;
 	private ProductBean productBean;
 
 	// 一對一查詢，用constructor寫入
-	public OrderAndProductData(ShonpeeOrderBean shonpeeOrderBean, ProductBean productBean) {
-	    this.shonpeeOrderBean = shonpeeOrderBean;
+	public OrderAndProductData(OrderBean shonpeeOrderBean, ProductBean productBean) {
+	    this.orderBean = orderBean;
 	    this.productBean = productBean;
 	}
 

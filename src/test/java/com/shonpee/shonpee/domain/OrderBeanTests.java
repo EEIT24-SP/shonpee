@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ShonpeeOrderBeanTests {
+public class OrderBeanTests {
 
 	@Test
 	void contextLoads() {
@@ -19,7 +19,7 @@ public class ShonpeeOrderBeanTests {
 	
 	@Test
 	public void selectTest() {
-		ShonpeeOrderBean aOrder = session.get(ShonpeeOrderBean.class, 1);
+		OrderBean aOrder = session.get(OrderBean.class, 1);
 		System.out.println("此訂單為 : " + aOrder);
 	}
 	

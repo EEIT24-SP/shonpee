@@ -1,23 +1,21 @@
-package com.shonpee.shonpee.domain;
+		package com.shonpee.shonpee.domain;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Type;
 
 import lombok.Data;
 
 @Entity
 @Data
 @Table(name = "shonpee_order")
-public class ShonpeeOrderBean {
+public class OrderBean {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +26,12 @@ public class ShonpeeOrderBean {
 	private Integer quantity; 
 	private Integer total;
 	private Integer payment;
-	private Integer status; 
+	private Integer status;
 	private Timestamp shippedDate;
 	private Timestamp requiredDate;
-	private String typeValue; 
-	private Integer productId;
+	private String typeValue;
+	
+	@ManyToOne
+	@JoinColumn(name = "product_Id")
+	private ProductBean productBean;
 }

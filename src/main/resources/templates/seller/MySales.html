@@ -17,8 +17,8 @@
                 <a href=""><img src="/pic/Bear.svg" alt=""></a>
             </div>
             <div>
-                <div><a th:href="@{/}">首頁</a></div>
-                <div><a th:href="@{/}">賣家商品</a></div>
+                <div><a th:href="@{/main-page}">首頁</a></div>
+                <div><a th:href="@{/MyProduct}">賣家商品</a></div>
                 <div><a th:href="@{/mysales}">賣家銷售</a></div>
             </div>
         </div>
@@ -37,31 +37,31 @@
                         </div>
                         <div class="orderlist-table">
                             <div class="orderlist-row orderlist-head">
-                                <div class="orderlist-row-column "> 商品名稱</div>
+                                <div class="orderlist-row-column ">商品名稱</div>
                                 <div class="orderlist-row-column ">規格</div>
                                 <div class="orderlist-row-column ">售出金額</div>
                                 <div class="orderlist-row-column ">數量</div>
                                 <div class="orderlist-row-column ">狀態</div>
                                 <div class="orderlist-row-column ">操作</div>
                             </div>
-                            <div class="orderlist-row orderlist-item" th:each="orderWithProduct : ${ordersWithProductList}">
+                            <div class="orderlist-row orderlist-item" th:each="order : ${orderList}">
                                 <div class="orderlist-row-column ">
                                     <div class="orderlist-item-prodpic ">
-                                        <img th:src="asas" >
+                                        <img th:src="@{__${order.productBean.productPhoto}__}" alt="">
                                     </div>
-                                    <div class="orderlist-item-prodname "></div>
+                                    <div class="orderlist-item-prodname">[[${order.productBean.productName}]]</div>
                                 </div>
-                                   <div class="orderlist-row-column">
-                                    <div class="orderlist-item-prodtype-1 ">[[${orderWithProduct.typeValue}]]</div>
+                                <div class="orderlist-row-column ">
+                                    <div class="orderlist-item-prodtype-1 ">[[${order.orderId}]]</div>
                                 </div>
-                                <div class="orderlist-row-column ">[[${orderWithProduct.total}]]</div>
-                                <div class="orderlist-row-column ">[[${orderWithProduct.quantity}]]</div>
-                                <div class="orderlist-row-column order-status">[[${orderWithProduct.status}]]</div>
-                                <div class="orderlist-row-column operatebtn">
-                                    <div class="button-container">
-                                        <button class="modify-button status-shipout-btn">出貨</button>
-                                        <button class="delete-button status-cancel-btn">取消</button>
-                                        <input type="hidden" name="order-id" class="order-id" th:value="${orderWithProduct.orderId}">
+                                <div class="orderlist-row-column ">[[${order.total}]]</div>
+                                <div class="orderlist-row-column ">[[${order.quantity}]]</div>
+                                <div class="orderlist-row-column order-status ">[[${order.status}]]</div>
+                                <div class="orderlist-row-column operatebtn ">
+                                    <div class="button-container ">
+                                        <button class="modify-button status-shipout-btn ">出貨</button>
+                                        <button class="delete-button status-cancel-btn ">取消</button>
+                                        <input type="hidden" name="order-id " class="order-id " th:value="${order.orderId} ">
                                     </div>
                                 </div>
                             </div>
@@ -71,8 +71,8 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        var contextPath = "[[@{/}]]";
+    <script type="text/javascript ">
+        var contextPath = "[[@{/}]] ";
     </script>
 </body>
 

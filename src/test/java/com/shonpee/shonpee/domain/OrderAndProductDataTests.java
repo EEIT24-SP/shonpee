@@ -5,11 +5,11 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.shonpee.shonpee.repository.ShonpeeOrderRepository;
+import com.shonpee.shonpee.repository.OrderRepository;
 
 public class OrderAndProductDataTests {
 	@Autowired
-	private ShonpeeOrderRepository shonpeeOrderRepository;
+	private OrderRepository shonpeeOrderRepository;
 	
 	@Test
 	void contextLoads() {

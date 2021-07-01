@@ -38,7 +38,7 @@ function refreshOperatorBtn(statusItem) {
 
             $(statusItem).next('.operatebtn').find('button').prop('disabled', true).fadeTo("fast", 0.6).css('cursor', 'not-allowed');
             break;
-        case "取消":
+        case "不成立":
             // 將"出貨"、"取消"按鈕失效
             // $shipoutBtn.off('click', changeStatus);
             // $cancelBtn.off('click', changeStatus);
@@ -71,22 +71,11 @@ function ajaxChangeStatusShipped(updatingOrderId, statusNumBeforeChanging) {
 
     $.ajax({
         type: "PUT",
-        url: `/order/${updatingOrderId}`,
+        url: `/seller-order/${updatingOrderId}`,
         data: JSON.stringify(jsonData),
         contentType: "application/json"
     }).done(function(updatedOrderDataMap) {
         // 將畫面上指定訂單的狀態欄位內容更新
-        console.log("AJAX -> DONE");
-        // console.log("---------------------------");
-        // console.log("updatedOrderDataMap 如下:");
-        // console.log(updatedOrderDataMap);
-        // console.log("updatedOrderDataMap.orderId 如下:");
-        // console.log(updatedOrderDataMap.orderId);
-        // console.log("updatedOrderDataMap.status 如下:");
-        // console.log(updatedOrderDataMap.status);
-        // console.log("type of updatedOrderDataMap.status ==> " + typeof(updatedOrderDataMap.status));
-        // console.log("---------------------------");
-
         refreshClickedOrderItem(updatedOrderDataMap.orderId, updatedOrderDataMap.status);
     }).fail(function() {
         ////////// 可以在畫面塞入錯誤訊息提示，可以請使用者重新整理再操作，或是其他補救措施
@@ -101,22 +90,11 @@ function ajaxChangeStatusCanceled(cancelingOrderId) {
 
     $.ajax({
         type: "DELETE",
-        url: `/order/${cancelingOrderId}`,
+        url: `/seller-order/${cancelingOrderId}`,
         // data: JSON.stringify(jsonData),
         contentType: "application/json"
     }).done(function(newOrderDataMap) {
         // 將畫面上指定訂單的狀態欄位內容更新
-        console.log("AJAX -> DONE");
-        // console.log("---------------------------");
-        // console.log("updatedOrderDataMap 如下:");
-        // console.log(updatedOrderDataMap);
-        // console.log("updatedOrderDataMap.orderId 如下:");
-        // console.log(updatedOrderDataMap.orderId);
-        // console.log("updatedOrderDataMap.status 如下:");
-        // console.log(updatedOrderDataMap.status);
-        // console.log("type of updatedOrderDataMap.status ==> " + typeof(updatedOrderDataMap.status));
-        // console.log("---------------------------");
-
         refreshClickedOrderItem(newOrderDataMap.orderId, newOrderDataMap.status);
     }).fail(function() {
         ////////// 可以在畫面塞入錯誤訊息提示，可以請使用者重新整理再操作，或是其他補救措施
@@ -150,15 +128,15 @@ function refreshClickedOrderItem(itemId, newStatusNum) {
 
 // 替換Thymeleaf帶入頁面的狀態數字，轉為邏輯意義中文文字
 function replaceStatusNumToWord(statusItem) {
-    console.log("replaceStatusNumToWord()");
+    // console.log("replaceStatusNumToWord()");
 
-    // var statusNum = parseInt($(statusItem).text());
-    $(statusItem).text(changeStatusNumToWord($(statusItem).text()));
+    var statusNum = parseInt($(statusItem).text());
+    $(statusItem).text(changeStatusNumToWord(statusNum));
 }
 
 // 將訂單狀態數字轉為有邏輯意義的中文字，並傳回文字字串
 function changeStatusNumToWord(statusNum) {
-    console.log("changeStatusNumToWord()");
+    // console.log("changeStatusNumToWord()");
     switch (statusNum) {
         case 0:
             // 待付款
@@ -173,10 +151,8 @@ function changeStatusNumToWord(statusNum) {
             // 完成
             return "完成";
         case 4:
-            // 取消
-            return "取消";
-        default:
-            // console.log("int -> 中文");
+            // 不成立
+            return "不成立";
     }
 }
 
@@ -195,8 +171,8 @@ function changeStatusWordToNum(statusWord) {
         case "完成":
             // 完成
             return 3;
-        case "取消":
-            // 取消
+        case "不成立":
+            // 不成立
             return 4;
         default:
             // console.log("int <- 中文");
