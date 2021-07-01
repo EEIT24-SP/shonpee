@@ -68,7 +68,7 @@
 											<img th:src="${ODD.orderImg}" class="main-right-list-border-1-3" alt="" />
 											<div class="main-right-list-border-1-4">
 												<div th:text="${ODD.productBean.productName}">白人白漱口水</div>
-												<div th:text="${ODD.typeValue}">規格</div>
+												<input class="typeValue" th:value="${ODD.typeValue}" readonly="readonly">
 												<div><span>x</span>
 												<input type="text" th:value="${ODD.Quantity}">
 												</div>
@@ -164,8 +164,11 @@
 					}else if($(this).parents().children('.seller-Item-Status').val()== ""){
 						$(this).parent().children('.CTP1').prop('name', 'orderId');
 						$(this).parent().children('.CTP2').prop('name','ProductBean.Productid');
+						console.log($(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('.typeValue').prop('name','typeValue'));
 						$(this).parents().children('.main-right-list-3').find('.main-right-list-3-2-1').find('input').prop('name','total');
 						$(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('input').prop('name','Quantity');
+						$(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('.typeValue').prop('name','typeValue');
+
 					}
 
 					
