@@ -42,14 +42,17 @@
                                         <div th:text="${MemberProduct.productName}"   >品名</div>                                            
                                     </div>    
                                     <div class="myProduct-right-ItemList-bar-list-property">
+                                    	 <div class="myProduct-right-ItemList-bar-list-property">
                                     	<div class="property-container" th:each="PropertyFirstList,firststatus:${PropertyFirstList}" th:if="${firststatus.count}==${memberstatus.count}">
-	                                        <span class="name-first"  th:text="${PropertyFirstList.propertyName} ">規格一</span>
-	                                        <span class="value" th:text="${PropertyFirstList.propertyValue}">規格一</span>
+	                                        <span class="name-first"  th:text="${PropertyFirstList.propertyName!=null?PropertyFirstList.propertyName:''}">規格一</span>
+	                                        <span class="value" th:text="${PropertyFirstList.propertyValue!=null?PropertyFirstList.propertyValue:''}">規格一</span>
                                     	</div>
                                     	<div class="property-container"  th:each="PropertySecondList,secondstatus:${PropertySecondList}" th:if="${secondstatus.count}==${memberstatus.count}">
-	                                        <span class="name-second" th:text="${PropertySecondList.propertyName} ">規格二</span>
-	                                        <span class="value" th:text="${PropertySecondList.propertyValue}">規格二</span>                                    	
+	                                        <span class="name-second" th:text="${PropertySecondList.propertyName!=null?PropertySecondList.propertyName:''}">規格二</span>
+	                                        <span class="value" th:text="${PropertySecondList.propertyValue!=null?PropertySecondList.propertyValue:''}">規格二</span>                                    	
                                     	</div>
+                                    </div>
+                                    	
                                     </div>
                                     <div class="myProduct-right-ItemList-bar-list-price" th:text="${MemberProduct.productPrice}">價格</div>
                                     <div class="myProduct-right-ItemList-bar-list-stock" th:text="${MemberProduct.productStock}">庫存</div>

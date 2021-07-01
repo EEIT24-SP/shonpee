@@ -100,7 +100,7 @@ public class PublicController {
 		Object Name = session.getAttribute("UserName");
 		System.out.println("我是" + index);
 		System.out.println("轉向成功");
-		System.out.println(changeType);
+		System.out.println(OB.getProductBean().getProductid());
 		List<OrderBean> list = OR.findByOrderId(OB.getOrderId());
 		List<OrderBean> listBA = OR.findAll();
 		List<ProductBean> PDlist = PR.findAll();
@@ -108,10 +108,12 @@ public class PublicController {
 		if (changeType == 99) {
 			for (OrderBean orderBean : listBA) {
 				for (ProductBean productBean : PDlist) {
-					if (productBean.getProductid().equals(OB.getProductBean().getProductid())) {
+					System.out.println("進來了");
+					if (productBean.getProductid().equals(OB.getProductBean().getProductid()) && productBean.getProductStatus()==null) {
+						System.out.println("進來了1");
 						String[] split = productBean.getProductPhoto().split(",");
 						String[] splitTypeValue = orderBean.getTypeValue().split(",");
-						CB.setCartPhoto(split[0]);
+						CB.setCartPhoto(split[0]); 
 						CB.setTotalPrice(Integer.toString(orderBean.getTotal()));
 						CB.setMemberId(Name.toString());
 						CB.setQuantity(Integer.toString(orderBean.getQuantity()));
@@ -124,6 +126,9 @@ public class PublicController {
 						System.out.println("準備再次購買" + productBean.getProductid());
 						return "redirect:/main-page/cart";
 					}
+				}if(OB.getProductBean().getProductStatus() == null) {
+					System.out.println("商品已下架");
+					return "redirect:/main-page/shop-list" + index;
 				}
 			}
 

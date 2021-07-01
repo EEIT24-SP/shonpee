@@ -31,6 +31,7 @@ public class ProductBean {
 	private Integer productFirstCategoryId;
 	private Integer productSecondCategoryId;
 	private Integer productThirdCategoryId;
+	private Integer productStatus;
 
 	@ManyToOne
 	@JoinColumn(name = "member_id")

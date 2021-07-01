@@ -28,7 +28,7 @@ public class AccountController {
 	@Value("${upload-path}")
 	private String uploadpath;
 	@Autowired
-	MemberRepository MR;
+	MemberRepository MR; 
 	@Autowired
 	CartRepository CR;
 	@Autowired
@@ -36,7 +36,7 @@ public class AccountController {
 
 	@RequestMapping(value = ("/main-page/acc"))
 	public String profile1(HttpSession session, Model model, MemberBean MB) {
-		if (session.getAttribute("UserName") == "") {
+		if (session.getAttribute("UserName") == null) {
 			return "redirect:/login-page";
 		} else {
 			List<MemberBean> list = MR.findAll();

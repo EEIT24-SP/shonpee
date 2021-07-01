@@ -6,9 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.Id;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,6 @@ import com.shonpee.shonpee.repository.ProductcategoryRepository;
 import com.shonpee.shonpee.repository.PropertyRepository;
 import com.shonpee.shonpee.repository.PropertySecondRepository;
 
-
 @Controller
 public class ProductController {
 
@@ -63,31 +64,33 @@ public class ProductController {
 	private ProductcategoryRepository productCategoryRepository;
 	@Autowired
 	private MemberRepository memberRepository;
+	@Autowired
+	ProductRepository PR;
 
 	@Value("${upload-path}")
 	private String uploadpath;
 
 	@GetMapping("/main-page")
-	public String mainPage(Model model,HttpSession session) {
+	public String mainPage(Model model, HttpSession session) {
 		model.addAttribute("categories", listFirstCategories());
 		Object Name = session.getAttribute("UserName");
 		List<CartBean> list = CR.findAll();
-        ArrayList<CartBean> cartcnt = new ArrayList<CartBean>();
-		//搜尋會員,顯示符合當前帳號的購物車資料
-		for (CartBean cartBean : list) { 
+		ArrayList<CartBean> cartcnt = new ArrayList<CartBean>();
+		// 搜尋會員,顯示符合當前帳號的購物車資料
+		for (CartBean cartBean : list) {
 			if (cartBean.getMemberId().equals(Name)) {
-		        cartcnt.add(cartBean);
-		        int cartsize = cartcnt.size();
-		        session.setAttribute("cartsize",cartsize);
+				cartcnt.add(cartBean);
+				int cartsize = cartcnt.size();
+				session.setAttribute("cartsize", cartsize);
 			}
-			System.out.println("選擇成功arr size"+cartcnt.size());
+			System.out.println("選擇成功arr size" + cartcnt.size());
 		}
-		if(cartcnt.size()==0) {
-	        session.setAttribute("cartsize",0);
+		if (cartcnt.size() == 0) {
+			session.setAttribute("cartsize", 0);
 		}
 		return "main";
 	}
-	
+
 	@GetMapping("/product/{productid}")
 	public String bearitem(@PathVariable("productid") Integer productid, Model model, HttpSession session) {
 		System.out.println("我是" + productid);
@@ -125,22 +128,19 @@ public class ProductController {
 		}
 		return "bear_item";
 	}
-	
-	
-	
-	
 
 	@PostMapping(value = ("/product/{productid}"))
-	public String item(HttpSession session, Model model, CartBean CB, ProductBean PB, String typeValue1,String typeValue2) {
+	public String item(HttpSession session, Model model, CartBean CB, ProductBean PB, String typeValue1,
+			String typeValue2) {
 		Object Name = session.getAttribute("UserName");
 		Object PDid = session.getAttribute("PDid");
-		System.out.println("我是PbSRC"+PB.getProductPhoto());
-		if(Name == null) { 
+		System.out.println("我是PbSRC" + PB.getProductPhoto());
+		if (Name == null) {
 			return "redirect:/login-page";
 		}
 		List<MemberBean> list = memberRepository.findAll();
 		List<ProductBean> list1 = productRepository.findAll();
-		List<CartBean> list2 = CR.findAll(); 
+		List<CartBean> list2 = CR.findAll();
 		System.out.println("post");
 		for (MemberBean memberBean : list) {
 			// 會員底下搜尋 如過購物車數量為0,則執行productBean新增置購物車
@@ -160,7 +160,7 @@ public class ProductController {
 					CR.save(cartBean);
 					return "redirect:/product/" + PDid;
 				}
-			} 
+			}
 			System.out.println("post4");
 
 			for (ProductBean productBean : list1) {
@@ -175,36 +175,31 @@ public class ProductController {
 					System.out.println("我是OBJ" + (String) Name);
 					CR.save(CB);
 					session.getAttribute("cartsize");
-					int a = (Integer)session.getAttribute("cartsize");
-					int cartsize =a+1;
-					session.setAttribute("cartsize",cartsize);
+					int a = (Integer) session.getAttribute("cartsize");
+					int cartsize = a + 1;
+					session.setAttribute("cartsize", cartsize);
 					return "redirect:/product/" + PDid;
 				}
 			}
 		}
 		return "redirect:/product/" + PDid;
 	}
-	
-	
 
-
-		@RequestMapping("/MyCategoriesPage1")
-		public String MyCategoriesPage1(Model model,Integer productid,Integer changecategorys) {
-			if(productid!=null) {
-				Optional<ProductBean> bean = productRepository.findById(productid);
-				if(bean.isPresent()) {
-					ProductBean productBean	= bean.get();
-					model.addAttribute("productname",productBean.getProductName());
-					model.addAttribute("productid",productid);
-					model.addAttribute("changecategorys",changecategorys);
-				}			
+	@RequestMapping("/MyCategoriesPage1")
+	public String MyCategoriesPage1(Model model, Integer productid, Integer changecategorys) {
+		if (productid != null) {
+			Optional<ProductBean> bean = productRepository.findById(productid);
+			if (bean.isPresent()) {
+				ProductBean productBean = bean.get();
+				model.addAttribute("productname", productBean.getProductName());
+				model.addAttribute("productid", productid);
+				model.addAttribute("changecategorys", changecategorys);
 			}
-					
-			System.out.println("APPLE");
-			return "MyCategoriesPage1";
 		}
 
- 
+		System.out.println("APPLE");
+		return "MyCategoriesPage1";
+	}
 
 	@RequestMapping("/NewProduct")
 	public String NewProductpage() {
@@ -301,10 +296,11 @@ public class ProductController {
 //	}
 
 	@RequestMapping("/UpdateProduct")
-	public String NewProductpage(Model model, String productid,String productname, String category,Integer changecategorys) {
+	public String NewProductpage(Model model, String productid, String productname, String category,
+			Integer changecategorys) {
 
 		// 新增時 顯示分類和名字
-		if (productid == null||productid=="") {
+		if (productid == null || productid == "") {
 			System.out.println("Hippo===");
 			String[] categorys = category.split(",");
 			model.addAttribute("firstCategory", categorys[0]);
@@ -325,14 +321,13 @@ public class ProductController {
 			List<ProductBean> memberPD = productRepository.findProductBeanbyMember("anna38");
 			for (ProductBean product : memberPD) {
 				if (product.getProductid() == Pid) {
-					if(changecategorys == null ) {
-						model.addAttribute("name", product.getProductName());						
+					if (changecategorys == null) {
+						model.addAttribute("name", product.getProductName());
 					}
-					
+
 					model.addAttribute("ProductDetail", product.getProductDetail());
 					model.addAttribute("ProductPrice", product.getProductPrice());
 					model.addAttribute("ProductStock", product.getProductStock());
-
 
 					// 照片
 					String[] photos = product.getProductPhoto().split(",");
@@ -340,7 +335,7 @@ public class ProductController {
 					System.out.println(photos[0]);
 
 					// 類別
-					if(changecategorys != null) {
+					if (changecategorys != null) {
 						String[] categorys = category.split(",");
 						model.addAttribute("firstCategory", categorys[0]);
 						model.addAttribute("secondCategory", categorys[1]);
@@ -348,7 +343,7 @@ public class ProductController {
 							model.addAttribute("thirdCategory", categorys[2]);
 						}
 						model.addAttribute("newname", productname);
-					}else {
+					} else {
 						String firstCategoryName = productCategoryRepository
 								.findCategoryNameByCategoryID(product.getProductFirstCategoryId());
 						String secondCategoryName = productCategoryRepository
@@ -357,9 +352,9 @@ public class ProductController {
 								.findCategoryNameByCategoryID(product.getProductThirdCategoryId());
 						model.addAttribute("firstCategoryName", firstCategoryName);
 						model.addAttribute("secondCategoryName", secondCategoryName);
-						model.addAttribute("thirdCategoryName", thirdCategoryName);						
+						model.addAttribute("thirdCategoryName", thirdCategoryName);
 					}
-					
+
 					// 規格
 					PropertyBean propertyfirst = propertyRepository.findPropertyBeanByProdcutID(Pid);
 					if (propertyfirst != null) {
@@ -448,9 +443,9 @@ public class ProductController {
 					}
 				}
 			}
-			
-			Optional<MemberBean> memberbean= memberRepository.findById("anna38");
-			
+
+			Optional<MemberBean> memberbean = memberRepository.findById("anna38");
+
 			bean.setMemberBean(memberbean.get());
 			model.addAttribute("name", productname);
 			model.addAttribute("productid", productid);
@@ -506,7 +501,7 @@ public class ProductController {
 				// 刪除舊圖檔
 				System.out.println("productphoto delete old photo");
 				String[] oldPhotoArr = oldPhoto.split(",");
-				System.out.println("oldPhoto==="+oldPhoto);
+				System.out.println("oldPhoto===" + oldPhoto);
 				String[] databasePhoto = productBean.getProductPhoto().split(",");
 				String[] newPhoto = filepathstr.split(",");
 				List<String> deleteList = new ArrayList<>(Arrays.asList(databasePhoto));
@@ -528,7 +523,7 @@ public class ProductController {
 					}
 				}
 				// 排序新舊圖片順序
-				for(String arr:oldPhotoArr) {
+				for (String arr : oldPhotoArr) {
 				}
 				for (int i = 0; i < newPhoto.length; i++) {
 					for (int j = 0; j < oldPhotoArr.length; j++) {
@@ -546,7 +541,7 @@ public class ProductController {
 						newPhotoPath = oldpic;
 					}
 				}
-				
+
 				productBean.setProductPhoto(newPhotoPath);
 				productBean.setProductName(productname);
 				productBean.setProductPrice(productPrice);
@@ -562,7 +557,7 @@ public class ProductController {
 					} else if (productCategoryBean.getCategoryName().equals(category[1])) {
 						productBean.setProductSecondCategoryId(productCategoryBean.getCategoryId());
 						productBean.setProductThirdCategoryId(null);
-					} else if (category.length > 2) {						
+					} else if (category.length > 2) {
 						if (productCategoryBean.getCategoryName().equals(category[2])) {
 							productBean.setProductThirdCategoryId(productCategoryBean.getCategoryId());
 						}
@@ -570,20 +565,20 @@ public class ProductController {
 				}
 
 				PropertyBean updatePropertyBean = propertyRepository.findPropertyBeanByProdcutID(productid);
-				if (updatePropertyBean!=null) {
+				if (updatePropertyBean != null) {
 					updatePropertyBean.setPropertyName(propertyName);
 					updatePropertyBean.setPropertyValue(propertyValue);
 					propertyServiceRepository.update(updatePropertyBean);
 				}
 
-				PropertyBeanSecond updatePropertyBeanSecond = propertySecondRepository.findPropertyBeanByProdcutID(productid);
-				if (updatePropertyBeanSecond!=null) {
+				PropertyBeanSecond updatePropertyBeanSecond = propertySecondRepository
+						.findPropertyBeanByProdcutID(productid);
+				if (updatePropertyBeanSecond != null) {
 					updatePropertyBeanSecond.setPropertyName(propertySecondName);
 					updatePropertyBeanSecond.setPropertyValue(propertySecondValue);
 					propertySecondServiceRepository.update(updatePropertyBeanSecond);
 				}
 				productService.update(productBean);
-			
 
 			}
 
@@ -596,24 +591,27 @@ public class ProductController {
 	public String MyProduct(Model model) {
 		// 搜索所有的資料
 		// 將會員資料新增的商品巡訪找出來
+		List<ProductBean> list= new ArrayList<>();
 		List<String> allphotos = new ArrayList<String>();
 		List<PropertyBean> PropertyFirstList = new ArrayList<PropertyBean>();
 		List<PropertyBeanSecond> PropertySecondList = new ArrayList<PropertyBeanSecond>();
 		List<ProductBean> MemberProduct = productRepository.findProductBeanbyMember("anna38");
 		for (ProductBean Product : MemberProduct) {
-			String[] photos = Product.getProductPhoto().split(",");
-			allphotos.add(photos[0]);
-			Integer PID = Product.getProductid();
-			System.out.println("PID=" + PID);
-
-			PropertyBean PropertyProduct = propertyRepository.findPropertyBeanByProdcutID(PID);
-			PropertyFirstList.add(PropertyProduct);
-			PropertyBeanSecond propertyProductSecond = propertySecondRepository.findPropertyBeanByProdcutID(PID);
-			PropertySecondList.add(propertyProductSecond);
+			if (Product.getProductStatus()==null) {
+				System.out.println(Product.getProductStatus());
+				String[] photos = Product.getProductPhoto().split(",");
+				allphotos.add(photos[0]);
+				Integer PID = Product.getProductid();
+				System.out.println("PID=" + PID);
+				PropertyBean PropertyProduct = propertyRepository.findPropertyBeanByProdcutID(PID);
+				PropertyFirstList.add(PropertyProduct);
+				PropertyBeanSecond propertyProductSecond = propertySecondRepository.findPropertyBeanByProdcutID(PID);
+				PropertySecondList.add(propertyProductSecond);
+				list.add(Product);
+			}
 		}
-
+		model.addAttribute("MemberProduct", list);	
 		model.addAttribute("allphotos", allphotos);
-		model.addAttribute("MemberProduct", MemberProduct);
 		model.addAttribute("PropertyFirstList", PropertyFirstList);
 		model.addAttribute("PropertySecondList", PropertySecondList);
 
@@ -622,41 +620,33 @@ public class ProductController {
 
 	@RequestMapping("/DeleteProduct")
 	@ResponseBody
-	public String deleteProduct(@RequestParam("productid")Integer prodcutid) {
-		Optional<ProductBean> deleteProductBean=productRepository.findById(prodcutid);
-		if(deleteProductBean.isPresent()) {
-			 PropertyBean deletePropertyBean= propertyRepository.findPropertyBeanByProdcutID(prodcutid);
-		    PropertyBeanSecond deletePropertySecondBean=propertySecondRepository.findPropertyBeanByProdcutID(prodcutid);
-       		System.out.println("deletePropertyBean="+deletePropertyBean);
-
-		            boolean first = propertyServiceRepository.delete(deletePropertyBean);
-		       		System.out.println("first="+first);
-
-		            boolean second = propertySecondServiceRepository.delete(deletePropertySecondBean);
-		            System.out.println("second="+second);
-		           if(first&&second) {
-		        	   ProductBean pbean= deleteProductBean.get();
-			           productService.delete(pbean);  
-		           }
-		          
+	public String deleteProduct(@RequestParam("productid") Integer prodcutid) {
+		System.out.println("我是回傳ID" + prodcutid);
+		Optional<ProductBean> deleteProductBean = productRepository.findById(prodcutid);
+		List<CartBean> cartBeans = CR.findAll();
+		if (deleteProductBean.isPresent()) {
+			for (CartBean cartBean : cartBeans) {
+				if (cartBean.getProductBean().getProductid().equals(prodcutid)) {
+					CR.deleteById(cartBean.getCartId());
+				}
+			}
+			ProductBean prbean = deleteProductBean.get();
+			prbean.setProductStatus(0);
+			PR.save(prbean);
 		}
-       
 		return "success";
 	}
 
-	
 	@GetMapping("/main-page/{categoryId}")
-	public String showOneCategoryProducts(@PathVariable("categoryId") Integer categoryId, 
-											Model model) {
+	public String showOneCategoryProducts(@PathVariable("categoryId") Integer categoryId, Model model) {
 		// 找出第一層的全部類別，放入頁面
-		List aaaList = listFirstCategories(); 
+		List aaaList = listFirstCategories();
 		model.addAttribute("categories", listFirstCategories());
 		// 找出該分類的產品，放入頁面
 		List<ProductBean> productsOfTheCategory = productRepository.findByProductFirstCategoryId(categoryId);
 		model.addAttribute("products", productsOfTheCategory);
 		return "main";
 	}
-
 
 	// 以下是抽離的重複程式，沒有設定RequestMapping路徑
 	public List<Productcategory> listFirstCategories() {
