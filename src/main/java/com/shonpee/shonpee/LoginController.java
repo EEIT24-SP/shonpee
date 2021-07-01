@@ -17,7 +17,7 @@ public class LoginController {
 	private MemberServiceRepository memberService;
  
 	@RequestMapping(value = "/login-page") 
-	public String login(HttpSession session) {
+	public String login(HttpSession session) { 
 		session.setAttribute("UserName","");
 		return "login";
 	}

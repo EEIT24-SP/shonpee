@@ -42,17 +42,21 @@
 							</div>
 							<div class="main-right-profile-list-email">
 								<div class="main-right-profile-list-email-a">Email</div>
-								<input th:name="|email|" th:value="*{email}" readonly="readonly">
-								<div style="padding: 0px 10px;">
-									<button type="submit">變更</button>
+								<div class="main-right-profile-list-neme-b">
+									<div class="main-right-profile-list-neme-c">
+										<input th:name="|email|" th:value="*{email}">
+									</div>
 								</div>
+
 							</div>
 							<div class="main-right-profile-list-phone">
 								<div class="main-right-profile-list-phone-a">手機號碼</div>
-								<input th:name="|tel|" th:value="*{tel}" readonly="readonly">
-								<div style="padding: 0px 10px;">
-									<a href="">變更</a>
+								<div class="main-right-profile-list-neme-b">
+									<div class="main-right-profile-list-neme-c">
+								<input type="text" th:name="|tel|" th:value="*{tel}">
 								</div>
+								</div>
+
 							</div>
 
 							<div class="main-right-profile-list-store">
@@ -155,9 +159,9 @@
 						<div class="main-right-profile-right-container">
 							<img class="main-right-profile-right-container-img" th:src="*{memberPhoto}" alt="">
 							<div class="main-right-profile-right-container-a">
-							<label for="file">
-					<input type="file" id="FileTypeIcon"  class="main-right-profile-right-container-img-2" th:name="file">
-							</label>
+								<label for="file"> <input type="file" id="FileTypeIcon"
+									class="main-right-profile-right-container-img-2" th:name="file">
+								</label>
 							</div>
 							<div>檔案大小:最大1MB</div>
 							<div>檔案限制: .JPEG, .PNG</div>
@@ -177,21 +181,10 @@
 	<br>
 
 	<div th:insert="model/footer::footer"></div>
-	
+	<script src="../../js/profile.js"></script>
 	<script src="../../js/user.js" defer></script>
 	<script type="text/javascript">
-	$("#FileTypeIcon").change(function () {
-		var file = this.files[0];
-		if (window.FileReader) {
-			var reader = new FileReader();
-			reader.readAsDataURL(file);
-			reader.onloadend = function (e) {
-				$(".main-right-profile-right-container-img").attr("src", e.target.result);
-			}
-		}
-	})
-	
-	
+		
 	</script>
 
 </body>

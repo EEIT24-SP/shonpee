@@ -36,7 +36,8 @@ public class AccountController {
 
 	@RequestMapping(value = ("/main-page/acc"))
 	public String profile1(HttpSession session, Model model, MemberBean MB) {
-		if (session.getAttribute("UserName") == null) {
+		String UserName = String.valueOf(session.getAttribute("UserName"));
+        if (UserName.isEmpty()) {
 			return "redirect:/login-page";
 		} else {
 			List<MemberBean> list = MR.findAll();
@@ -108,7 +109,7 @@ public class AccountController {
 	public String cartview(CartBean CB, HttpSession session, Model model, String checkout, String delete, String CKBX) {
 		//取的複數ID,再依照符合ID加入結帳選單
 		// DELETE方法
-		if (delete != null && checkout == null) {
+		if (delete != null && checkout == null) { 
 			List<CartBean> list = CR.findAll();
 			for (CartBean cartBean : list) {
 				if (cartBean.getCartId().equals(Integer.parseInt(delete))) {
