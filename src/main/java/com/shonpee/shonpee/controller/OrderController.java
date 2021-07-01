@@ -81,7 +81,7 @@ public class OrderController {
 				}
 			}
 
-			return "redirect:/main-page/shop-list0";
+			return "redirect:/main-page/shop-list";
 		}
 
 		return "checkout";

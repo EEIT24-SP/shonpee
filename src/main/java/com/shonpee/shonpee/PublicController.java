@@ -114,9 +114,9 @@ public class PublicController {
 						String[] split = productBean.getProductPhoto().split(",");
 						String[] splitTypeValue = orderBean.getTypeValue().split(",");
 						CB.setCartPhoto(split[0]); 
-						CB.setTotalPrice(Integer.toString(orderBean.getTotal()));
+						CB.setTotalPrice(Integer.toString(OB.getTotal()));
 						CB.setMemberId(Name.toString());
-						CB.setQuantity(Integer.toString(orderBean.getQuantity()));
+						CB.setQuantity(Integer.toString(OB.getQuantity()));
 						CB.setProductBean(productBean);
 						if (splitTypeValue.length > 1) { 
 							CB.setTypeValue1(splitTypeValue[0]);

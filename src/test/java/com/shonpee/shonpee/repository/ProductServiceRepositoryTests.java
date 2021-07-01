@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.shonpee.shonpee.ServiceRepository.ProductServiceRepository;
 import com.shonpee.shonpee.domain.ProductBean;
+import com.shonpee.shonpee.servicerepository.ProductServiceRepository;
 
 @SpringBootTest
 public class ProductServiceRepositoryTests {

@@ -79,7 +79,7 @@
 										</div>
 										<div class="main-right-list-border-1-5">
 											$
-											<div th:text=" ${ODD.total / ODD.Quantity}">$299</div>
+											<input name="unitprice" type="text" readonly="readonly" th:value=" ${ODD.total / ODD.Quantity}">$299</div>
 										</div>
 									</div>
 								</div>
@@ -90,7 +90,7 @@
 								<div class="main-right-list-3-2">
 									<div class="main-right-list-3-2-1">
 										<div>訂單金額:</div>
-										<div th:text="${ODD.total}" class="main-right-list-3-2-2">$9999</div>
+										<input  type="text" name="total" readonly="readonly" th:value="${ODD.total}" class="main-right-list-3-2-2">$9999</div>
 									</div>
 
 									<div class="main-right-list-3-2-3">
@@ -167,6 +167,8 @@
 					}else if($(this).parents().children('.seller-Item-Status').val()== ""){
 						$(this).parent().children('.CTP1').prop('name', 'orderId');
 						$(this).parent().children('.CTP2').prop('name','ProductBean.Productid');
+						
+						
 					}
 
 					
