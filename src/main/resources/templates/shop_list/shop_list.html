@@ -27,12 +27,7 @@
 						</a>
 					</div>
 				</div>
-				<div id="shop_list_serch">
-					<div class="shop_list_serch-bar">
-						<img style="width: 30px" src="../../pic/Search.svg" alt="" />
-					</div>
-					<input class="shop_list_serch-bar-input" type="text" placeholder="您可以透過賣家名稱,訂單編號或商品名稱查詢" />
-				</div>
+				
 
 				<div class="main-right-list" style="flex-direction: column;">
 					<div th:if="${arrOrder == null}" class="main-right-content">
@@ -45,7 +40,7 @@
 					<div th:if="${arrOrder != null}" id="main-right-list-1" style="width: 100%;"
 						th:each="ODD:${arrOrder}">
 
-					<input class="seller-Item-Status" th:name="ProductBean.ProductStatus" th:value="${ODD.ProductBean.ProductStatus}" >
+					<input class="seller-Item-Status" type="hidden" th:name="ProductBean.ProductStatus" th:value="${ODD.ProductBean.ProductStatus}" >
 
 
 						<div class="main-right-list-2">
@@ -74,12 +69,14 @@
 											<div class="main-right-list-border-1-4">
 												<div th:text="${ODD.productBean.productName}">白人白漱口水</div>
 												<div th:text="${ODD.typeValue}">規格</div>
-												<div th:text="x+ ${ODD.Quantity}">數量</div>
+												<div><span>x</span>
+												<input type="text" th:value="${ODD.Quantity}">
+												</div>
 											</div>
 										</div>
 										<div class="main-right-list-border-1-5">
 											$
-											<input name="unitprice" type="text" readonly="readonly" th:value=" ${ODD.total / ODD.Quantity}">$299</div>
+											<div th:text=" ${ODD.total / ODD.Quantity}"></div>
 										</div>
 									</div>
 								</div>
@@ -90,9 +87,8 @@
 								<div class="main-right-list-3-2">
 									<div class="main-right-list-3-2-1">
 										<div>訂單金額:</div>
-										<input  type="text" name="total" readonly="readonly" th:value="${ODD.total}" class="main-right-list-3-2-2">$9999</div>
+										<input type="text" th:value="${ODD.total}" class="main-right-list-3-2-2">
 									</div>
-
 									<div class="main-right-list-3-2-3">
 										<div>
 											<div th:switch="${ODD.status}">
@@ -121,7 +117,6 @@
 														class="main-right-list-3-2-3-1"></button>
 													<input class="CTP2" type="hidden" th:value="${ODD.ProductBean.Productid}" />
 												</div>
-
 											</div>
 										</div>
 									</div>
@@ -167,8 +162,8 @@
 					}else if($(this).parents().children('.seller-Item-Status').val()== ""){
 						$(this).parent().children('.CTP1').prop('name', 'orderId');
 						$(this).parent().children('.CTP2').prop('name','ProductBean.Productid');
-						
-						
+						$(this).parents().children('.main-right-list-3').find('.main-right-list-3-2-1').find('input').prop('name','total');
+						$(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('input').prop('name','Quantity');
 					}
 
 					

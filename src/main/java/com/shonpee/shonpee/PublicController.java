@@ -100,7 +100,7 @@ public class PublicController {
 		Object Name = session.getAttribute("UserName");
 		System.out.println("我是" + index);
 		System.out.println("轉向成功");
-		System.out.println(OB.getProductBean().getProductid());
+		System.out.println(OB.getQuantity());
 		List<OrderBean> list = OR.findByOrderId(OB.getOrderId());
 		List<OrderBean> listBA = OR.findAll();
 		List<ProductBean> PDlist = PR.findAll();
@@ -123,6 +123,9 @@ public class PublicController {
 							CB.setTypeValue2(splitTypeValue[1]);
 						}
 						CR.save(CB);
+						int a = (Integer) session.getAttribute("cartsize");
+						int cartsize = a +1;
+						session.setAttribute("cartsize", cartsize);
 						System.out.println("準備再次購買" + productBean.getProductid());
 						return "redirect:/main-page/cart";
 					}
