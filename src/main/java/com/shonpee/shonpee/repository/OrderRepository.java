@@ -11,7 +11,12 @@ import com.shonpee.shonpee.domain.OrderAndProductData;
 import com.shonpee.shonpee.domain.OrderBean;
 
 public interface OrderRepository extends JpaRepository<OrderBean, Integer> {
-	List<OrderBean> findByStatus(String status);
+	//    @Query(nativeQuery = true,value = "select password from member where password = :xxx")
+	//    String QueryAnnotationParams(@Param("xxx") String password);
+
+	List<OrderBean> findByStatus(Integer status);
+	
+	List<OrderBean> findByOrderId(Integer orderId);
 	
 	// 從賣家(登入者)帳號取得的該賣家order清單
 	@Query

@@ -12,81 +12,130 @@
 
 
 	<div th:insert="model/header::header"></div>
-	
 
-	<!-- ------------------------------------------------主頁面------------------------------------------------------------- -->
+
 	<div class="main">
-				<div class="main-user" th:insert="model/leftBar::leftBar"></div>
-		
+		<div class="main-user" th:insert="model/leftBar::leftBar"></div>
 
-		<div style="width: 950px; display: flex;flex-direction: column;justify-content: center;">
-			    <div th:insert="model/shop_list_bar::bar"></div>
-			
 
-			<div id="shop_list_serch">
-				<div class="shop_list_serch-bar">
-					<img style="width: 30px" src="../../pic/Search.svg" alt="" />
+		<form action="" th:action="@{/main-page/shop-list__${index}__}" method="post">
+			<div style="width: 950px; display: flex; flex-direction: column; justify-content: center;">
+				<div style="display: flex; justify-content: center;">
+					<div class="main-right" th:each="abcd,iterStat : ${abc}">
+						<a th:href="@{/main-page/shop-list__${iterStat.index}__}">
+							<div class="titles-list" th:text="${abcd}" th:id="${iterStat.index}"></div>
+						</a>
+					</div>
 				</div>
-				<input class="shop_list_serch-bar-input" type="text" placeholder="您可以透過賣家名稱,訂單編號或商品名稱查詢" />
-			</div>
+				
 
-			<div class="main-right-list">
-				<div id="main-right-list-1" style="width: 100%;">
-					<!-- <div class="main-right-content">
-                <img src="../../img/List.svg" alt="" />
-                <h2>尚未有訂單</h2>
-              </div> -->
+				<div class="main-right-list" style="flex-direction: column;">
+					<div th:if="${arrOrder == null}" class="main-right-content">
+						<img src="../../pic/List.svg" alt="" />
+						<h2>尚未有訂單</h2>
+					</div>
+				</div>
 
-					<div class="main-right-list-2">
-						<div class="main-right-list-border">
-							<div class="main-right-list-border-1">
-								<div class="main-right-list-border-2">
-									<div class="main-right-list-border-3">
-										<div class="main-right-list-border-4">
-											<div>賣家名稱</div>
+
+					<div th:if="${arrOrder != null}" id="main-right-list-1" style="width: 100%;"
+						th:each="ODD:${arrOrder}">
+
+					<input class="seller-Item-Status" type="hidden" th:name="ProductBean.ProductStatus" th:value="${ODD.ProductBean.ProductStatus}" >
+
+
+						<div class="main-right-list-2">
+							<div class="main-right-list-border">
+								<div class="main-right-list-border-1">
+									<div class="main-right-list-border-2">
+										<div class="main-right-list-border-3">
+											<div class="main-right-list-border-4">
+												<div th:text="${ODD.ProductBean.MemberBean.UserAccount}">賣家名稱</div>
+											</div>
+											<div class="main-right-list-border-3-1">
+												<div th:switch="${ODD.status}">
+													<div th:case="0">等待付款</div>
+													<div th:case="1">待出貨</div>
+													<div th:case="2">待收貨</div>
+													<div th:case="3">訂單已完成</div>
+													<div th:case="4">交易不成立</div>
+												</div>
+											</div>
 										</div>
-										<div class="main-right-list-border-3-1">
-											<div>買家取貨成功</div>
-										</div>
+
 									</div>
-									
-								</div>
-								<div class="main-right-list-border-1-1">
-									<div class="main-right-list-border-1-2">
-										<img class="main-right-list-border-1-3" src="../../pic/bear-b.png" alt="" />
-										<div class="main-right-list-border-1-4">
-											<div>白人白漱口水</div>
-											<div>規格</div>
-											<div>數量</div>
+									<div class="main-right-list-border-1-1">
+										<div class="main-right-list-border-1-2">
+											<img th:src="${ODD.orderImg}" class="main-right-list-border-1-3" alt="" />
+											<div class="main-right-list-border-1-4">
+												<div th:text="${ODD.productBean.productName}">白人白漱口水</div>
+												<div th:text="${ODD.typeValue}">規格</div>
+												<div><span>x</span>
+												<input type="text" th:value="${ODD.Quantity}">
+												</div>
+											</div>
 										</div>
-									</div>
-									<div class="main-right-list-border-1-5">
-										<div>$299 $199</div>
+										<div class="main-right-list-border-1-5">
+											$
+											<div th:text=" ${ODD.total / ODD.Quantity}"></div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="main-right-list-3">
-						<div class="main-right-list-3-1">
-							<div class="main-right-list-3-2">
-								<div class="main-right-list-3-2-1">
-									<div>訂單金額:</div>
-									<div class="main-right-list-3-2-2">$9999</div>
-								</div>
-
-								<div class="main-right-list-3-2-3">
-									<div>
-										<button class="main-right-list-3-2-3-1">再買一次</button>
+						<div class="main-right-list-3">
+							<div class="main-right-list-3-1">
+								<div class="main-right-list-3-2">
+									<div class="main-right-list-3-2-1">
+										<div>訂單金額:</div>
+										<input type="text" th:value="${ODD.total}" class="main-right-list-3-2-2">
+									</div>
+									<div class="main-right-list-3-2-3">
+										<div>
+											<div th:switch="${ODD.status}">
+												<div th:case="0">
+													<button type="submit" name="changeType" th:value="1" th:text="確認付款"
+														class="main-right-list-3-2-3-1"></button>
+													<input class="CTP1" type="hidden" th:value="${ODD.orderId}">
+												</div>
+												<div th:case="1">
+													<button type="submit" name="changeType" th:value="4" th:text="取消訂單"
+														class="main-right-list-3-2-3-1"></button>
+													<input class="CTP1" type="hidden" th:value="${ODD.orderId}">
+												</div>
+												<div th:case="2">
+													<button type="submit" name="changeType" th:value="3" th:text="完成訂單"
+														class="main-right-list-3-2-3-1"></button>
+													<input class="CTP1" type="hidden" th:value="${ODD.orderId}">
+												</div>
+												<div th:case="3">
+													<button type="submit" name="changeType" th:value="99" th:text="在買一次"
+														class="main-right-list-3-2-3-1"></button>
+													<input class="CTP2" type="hidden" th:value="${ODD.productBean.productId}">
+												</div>
+												<div th:case="4">
+													<button type="submit" name="changeType" th:value="99" th:text="在買一次"
+														class="main-right-list-3-2-3-1"></button>
+													<input class="CTP2" type="hidden" th:value="${ODD.ProductBean.Productid}" />
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
+
+
+
+
+
 					</div>
 				</div>
 			</div>
-		</div>
+		</form>
+
+
+
 	</div>
 
 	<br />
@@ -95,20 +144,35 @@
 	<br />
 	<br />
 
-	    <div th:insert="model/footer::footer"></div>
-<!-- 	    用switc判斷 -->
-	    <div th:switch="${session.accid}"> 
-  <p th:case="${session.accid}">User is an administrator</p>
-  <p th:case="#{roles.manager}">User is a manager</p>
-  <p th:case="*">User is some other thing</p> 
-</div>
+	<div th:insert="model/footer::footer"></div>
 
-	
-	<script src="../../js/cookie.js" type="text/javascript" charset="utf-8" defer></script>
 
-	<script type="text/javascript" src="../../js/index.js" defer></script>
-	<script type="text/javascript" src="../../js/server.js"></script>
+
+	<SCRIPT SRC="../../JS/COOKIE.JS" TYPE="TEXT/JAVASCRIPT" CHARSET="UTF-8" DEFER></SCRIPT>
+	<SCRIPT TYPE="TEXT/JAVASCRIPT" SRC="../../JS/INDEX.JS" DEFER></SCRIPT>
 	<script src="../../js/user.js" defer></script>
+	<script type="text/javascript">
+		$('.main-right-list-3-2-3-1').on(
+				'click',
+				function() {
+					console.log($(this).parents().children('.seller-Item-Status').val());
+					if($(this).parents().children('.seller-Item-Status').val() == 0 
+							&& $(this).parents().children('.seller-Item-Status').val()!="" ){
+						alert('商品已下架');
+					}else if($(this).parents().children('.seller-Item-Status').val()== ""){
+						$(this).parent().children('.CTP1').prop('name', 'orderId');
+						$(this).parent().children('.CTP2').prop('name','ProductBean.Productid');
+						$(this).parents().children('.main-right-list-3').find('.main-right-list-3-2-1').find('input').prop('name','total');
+						$(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('input').prop('name','Quantity');
+					}
+
+					
+				})
+				
+		
+				
+	</script>
+
 </body>
 
 </html>

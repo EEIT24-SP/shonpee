@@ -11,20 +11,21 @@ $(document).ready(function(){
             $("#span2").css('display', 'none');
         }
 
+
 })
 
 	$('.prompt').mouseenter(function(){
-	    console.log(this)
-	    if($(this).find('.img-place').attr('src') != '#'){
-	        $(this).find('.img-delete-container').css('display' , 'block');
-	    }
-	
-	})
-	
-	$('.prompt').mouseleave(function(){
-	    $(this).find('.img-delete-container').css('display' , 'none');
-	
-	})
+        if($(this).find('.img-place').attr('src')!=null){
+            $(this).find('.img-delete-container').css('display' , 'block');
+        }
+
+    })
+
+    $('.prompt').mouseleave(function(){
+        $(this).find('.img-delete-container').css('display' , 'none');
+
+    })
+
 	
 	$('.specification-plus-first').click(function(){
 	    $('.basic-information-specification-middle-first').append(`
@@ -96,22 +97,45 @@ $(document).ready(function(){
 	})
 	
 	
-	
 
-	
-	$(".onsale-submit").on('click',function(){
+	$("#submitbtn").on('click',function(){
+	   var allsrc='';
+	   var imgs='';
+	   $('.img-place').each(function(){
+	      if(typeof($(this).attr('src'))!="undefined"){
+	     allsrc=$(this).attr('src')+allsrc;
+	   }
+	   });
+	   $('.img-place').each(function(){
+	      if(typeof($(this).attr('src'))!="undefined"){
+	        if($(this).attr('src').length<500){
+	         imgs=imgs+","+$(this).attr('src');
+	      }else{
+	         imgs=imgs+","+"newpic";
+	      }
+	   }
+	   });
+	   var photoarr=imgs.split(",").filter(item => item);
+	   console.log(photoarr);
 		if($("#product-name").val()==""){
             alert("你尚未填商品名稱");
-        }else if($(".filepath").val()==""){
+			return false;
+        }else if(allsrc.length<10){
             alert("你尚未放入圖片");
+        	return false;
         }else if($("#product-description").val()==""){
             alert("你尚未填商品描述");
+        	return false;
         }else if($("#product-price").val()==""){
             alert("你尚未填寫商品價格");
+        	return false;
         }else if($("#product-count").val()==""){
             alert("你尚未填寫商品數量");
+        	return false;
         }else{
-            document.form1.submit();
+            $('#oldPhoto').attr('value',imgs.split(",").filter(item => item));
+        	$('#submitbtn').attr('value',$('#first-span').text()+","+$('#second-span').text()+","+$('#third-span').text())
+
         }
 	})
 	
@@ -133,8 +157,17 @@ $(document).ready(function(){
 	
 	function deletePic(num){
 	
-	    document.getElementById('img'+num).src='#';
+
+	    document.getElementById('img'+num).src='';
 	    $('#img'+num).css("display", "none");
 	    $('#file'+num).val('');
 	    document.querySelectorAll('.imgPreview')[num].style = 'border : grey dashed 1px';
 	}
+	
+	
+	function submitMyFrom(path){
+		 $('form1').action=path;
+		 $('form1').submit();
+	}
+	
+

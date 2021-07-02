@@ -18,7 +18,7 @@
 				<div class="item-container-left">
 					<div>
 						<div class="item-container-left-a">
-						<input id="main-img-value" type="text" th:name="|productPhoto|">
+						<input id="main-img-value" type="hidden" th:name="|productPhoto|">
 							<img id="main-img"  class="item-container-left-a-img" th:src="${item1.productPhoto}" th:value="${item1.productPhoto}" alt="">
 						</div>
 						<div class="item-container-left-b">
@@ -91,7 +91,6 @@
 					<div class="item-container-right-k">
 						<button type="submit" id="item-cart-count-check" onclick="item_cart_count_check()"
 							class="item-cart-btn-join">加入購物車</button>
-						<!-- 						<button class="item-cart-btn-buy">直接購買</button> -->
 					</div>
 				</div>
 			</div>
@@ -190,7 +189,6 @@
 				obj.style.opacity = '0';
 			}, 1000);
 		}
-		
 	</script>
 </body>
 

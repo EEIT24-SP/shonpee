@@ -12,17 +12,18 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "productTypeDetailSecond")
+@Table(name="productTypeDetailSecond")
 @Data
-public class PropertyBeanSecond {
-
+public class  PropertyBeanSecond {	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Integer Propertyid;
 	private String PropertyName;
 	private String PropertyValue;
-
+//	private Integer propertyId2;
 	@ManyToOne
 	@JoinColumn(name = "Productid2")
 	private ProductBean productBean;
+
 }

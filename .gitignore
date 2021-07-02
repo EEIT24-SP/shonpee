@@ -1,6 +1,4 @@
 src/main/resources/static/pic/*
-target/*
-
 
 HELP.md
 target/
@@ -8,10 +6,7 @@ target/*
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/feat/showoneproduct
 
 ### STS ###
 .apt_generated

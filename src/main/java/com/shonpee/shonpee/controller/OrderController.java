@@ -1,14 +1,16 @@
 package com.shonpee.shonpee.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,23 +21,28 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.shonpee.shonpee.domain.OrderAndProductData;
-import com.shonpee.shonpee.domain.ProductBean;
-import com.shonpee.shonpee.domain.OrderBean;
-import com.shonpee.shonpee.repository.ProductRepository;
+import com.shonpee.shonpee.repository.CartRepository;
 import com.shonpee.shonpee.repository.OrderRepository;
+import com.shonpee.shonpee.repository.ProductRepository;
+import com.shonpee.shonpee.domain.CartBean;
+import com.shonpee.shonpee.domain.OrderBean;
+import com.shonpee.shonpee.domain.ProductBean;
 
 @Controller
 public class OrderController {
 
 	@Autowired
-	private OrderRepository orderRepository;
+	private ProductRepository productDao;
 
 	@Autowired
-	private ProductRepository productRepository;
+	private CartRepository cartDao;
 
+	@Autowired
+	private OrderRepository orderDao;
+
+	
 	// 賣家銷售頁
 	@GetMapping("/seller-orders")
 	public String showSellerOrders(Model model,HttpSession session) {
@@ -45,7 +52,7 @@ public class OrderController {
 		}else{
 			// 找出該賣家(此時登入者)的全部訂單
 			///////// 未排序
-			List<OrderBean> orderList = orderRepository.findSellerOrderList(userName);
+			List<OrderBean> orderList = orderDao.findSellerOrderList(userName);
 			model.addAttribute("orderList", orderList);
 		}
 		return "seller/MySales";
@@ -57,14 +64,14 @@ public class OrderController {
 	public ResponseEntity<Map<String, Object>> shipoutOrder(@RequestBody OrderBean order) {
 		Integer updatingOrderId = order.getOrderId();
 		Integer currentStatus = order.getStatus();
-		Optional<OrderBean> OptOrder = orderRepository.findById(updatingOrderId);
+		Optional<OrderBean> OptOrder = orderDao.findById(updatingOrderId);
 
 		// 更新為"待收貨"
 		if (OptOrder.isPresent() && currentStatus.equals(1)) {
 			// 更新狀態為2(待收貨)，並以JPA存入資料庫
 			OrderBean updatingOrder = OptOrder.get();
 			updatingOrder.setStatus(2);
-			OrderBean updatedOrder = orderRepository.save(updatingOrder);
+			OrderBean updatedOrder = orderDao.save(updatingOrder);
 			// 產生ResponseEntity，內裝Map，傳回Response和更新後資料
 			Map<String, Object> updatedOrderDataMap = new HashMap<String, Object>();
 			updatedOrderDataMap.put("orderId", updatedOrder.getOrderId());
@@ -82,15 +89,12 @@ public class OrderController {
 	// 更新訂單狀態: 取消(待出貨->不成立)
 	@DeleteMapping("/seller-order/{orderId}")
 	public ResponseEntity<Map<String, Object>> cancelOrder(@PathVariable("orderId") Integer cancelingOrderId) {
-		System.out.println("------------");
-		System.out.println("cancelingOrderId" + cancelingOrderId);
-		System.out.println("------------");
-		Optional<OrderBean> OptOrder = orderRepository.findById(cancelingOrderId);
+		Optional<OrderBean> OptOrder = orderDao.findById(cancelingOrderId);
 		if (OptOrder.isPresent() && OptOrder.get().getStatus().equals(1)) {
 			// 更新狀態為4(不成立)，並以JPA存入資料庫
 			OrderBean cancelingOrder = OptOrder.get();
 			cancelingOrder.setStatus(4);
-			OrderBean canceledOrder = orderRepository.save(cancelingOrder);
+			OrderBean canceledOrder = orderDao.save(cancelingOrder);
 			// 產生ResponseEntity，內裝Map，傳回Response和更新後資料
 			Map<String, Object> canceledOrderDataMap = new HashMap<String, Object>();
 			canceledOrderDataMap.put("orderId", canceledOrder.getOrderId());
@@ -103,4 +107,63 @@ public class OrderController {
 		
 		return null;
 	}
+	
+
+	@RequestMapping(value = "/checkout")
+	public String checkout(HttpSession session, Model model, String ordering, OrderBean OB) {
+		System.out.println("------------checkout----------");
+		System.out.println(session.getAttribute("checkoutCB"));
+//		System.out.println("session資料="+session.getAttribute("checkoutCB"));
+		ArrayList<CartBean> cartlist = (ArrayList<CartBean>) (session.getAttribute("checkoutCB"));
+		List<ProductBean> Plist = productDao.findAll();
+//		System.out.println(cartlist);
+		model.addAttribute("cartlist", cartlist);
+		int total = 0;
+		for (int i = 0; i < cartlist.size(); i++) { // 總金額
+			total += Integer.parseInt(cartlist.get(i).getTotalPrice());
+		}
+		int allquantity = cartlist.size();
+//		System.out.println(allquantity);
+		model.addAttribute("allquantity", allquantity);
+		model.addAttribute("alltotal", total);
+		System.out.println(allquantity);
+		if (ordering != null) {
+			System.out.println("----------order---------");
+			// 增加productlist 判斷
+			for (ProductBean productBean : Plist) {
+				for (int j = 0; j < cartlist.size(); j++) {// 尋訪cart
+					if (cartlist.get(j).getProductBean().getProductid().equals(productBean.getProductid())) {
+						System.out.println("fffoorrrrrrrrrrrr");
+						System.out.println(cartlist.get(j).getCartId());
+						OB.setMemberId(cartlist.get(j).getMemberId());
+						OB.setProductBean(productBean);
+						OB.setOrderImg(cartlist.get(j).getCartPhoto());
+						OB.setTypeValue(cartlist.get(j).getTypeValue1() + cartlist.get(j).getTypeValue2());
+						Date OBtime = new Date();
+//			      SimpleDateFormat OBtime = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
+						OB.setOrderDate(OBtime);
+						OB.setQuantity(Integer.parseInt(cartlist.get(j).getQuantity()));
+						OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())
+								* (Integer.parseInt(cartlist.get(j).getQuantity())));
+//				System.out.println((cartlist.get(j).getProductBean().getProduct_Price())*(Integer.parseInt(cartlist.get(j).getQuantity())));
+						OB.setPayment(0);
+						OB.setStatus(1);
+						OB.setShippedDate(null);
+						OB.setRequiredDate(null);
+						orderDao.save(OB);
+						cartDao.deleteById(cartlist.get(j).getCartId());
+						int a = (Integer) session.getAttribute("cartsize");
+						int cartsize = a - 1;
+						session.setAttribute("cartsize", cartsize);
+					}
+				}
+			}
+
+			return "redirect:/main-page/shop-list";
+		}
+
+		return "checkout";
+
+	}
+
 }

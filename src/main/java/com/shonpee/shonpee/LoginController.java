@@ -16,9 +16,9 @@ public class LoginController {
 	@Autowired
 	private MemberServiceRepository memberService;
  
-	@RequestMapping(value = "/login-page")
-	public String login() {
-
+	@RequestMapping(value = "/login-page") 
+	public String login(HttpSession session) { 
+		session.setAttribute("UserName","");
 		return "login";
 	}
 
@@ -40,7 +40,7 @@ public class LoginController {
 			MemberBean beanRegistered = memberService.registered_member(registered_account, registered_password);
 			if (beanRegistered == null) {
 //				model.addAttribute("erro","帳號或密碼已被註冊");
-				return "login";
+				return "login"; 
 			} else {
 				session.setAttribute("user", beanRegistered);
 				return "login";

@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/sellerhead.css}">
+
+    <title>Document</title>
+</head>
+<body>
+    <div th:fragment="sellerhead" class="header-navbar-container">
+        <div class="header-navbar-left">
+            <div><a href=""><img src="/pic/Bear.svg" alt=""></a></div>
+            <div>
+                <div><a href="/main-page">首頁</a></div>
+                <div><a href="">賣家商品</a></div>
+                <div><a href="">賣家銷售</a></div>
+            </div>
+        </div>
+        <div class="header-navbar-right">
+            <div class="head-account"><img src="/pic/bear.png" alt=""><span th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}">account</span></div>
+            <div class="logout"><span>登出</span></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,6 +1,6 @@
-		package com.shonpee.shonpee.domain;
+package com.shonpee.shonpee.domain;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +13,8 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Data
 @Table(name = "shonpee_order")
+@Data
 public class OrderBean {
 
 	@Id
@@ -22,15 +22,15 @@ public class OrderBean {
 	private Integer orderId;
 	private String memberId;
 	private String orderImg;
-	private Timestamp orderDate;
-	private Integer quantity; 
+	private Date orderDate;
+	private Integer quantity;
 	private Integer total;
 	private Integer payment;
 	private Integer status;
-	private Timestamp shippedDate;
-	private Timestamp requiredDate;
+	private Date shippedDate;
+	private Date requiredDate;
 	private String typeValue;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "product_Id")
 	private ProductBean productBean;
