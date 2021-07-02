@@ -40,6 +40,7 @@ public class AccountController {
 
 		String UserName1 = String.valueOf(session.getAttribute("UserName"));
         if (UserName1==""||UserName1==null||UserName1.isEmpty()||UserName1=="null") {
+
 			return "redirect:/login-page";
 		} else {
 			List<MemberBean> list = MR.findAll();
