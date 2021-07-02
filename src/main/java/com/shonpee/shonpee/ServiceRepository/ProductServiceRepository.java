@@ -45,9 +45,11 @@ public class ProductServiceRepository {
 
 	
 	public ProductBean insert(ProductBean bean) {
-		ProductBean ProductBeanresult = null;
-		ProductBeanresult = productDao.save(bean);
-		return ProductBeanresult;
+		ProductBean productBeanresult = null;
+		productBeanresult = productDao.save(bean);
+		System.out.println("我是insert"+ bean.getMemberBean().getUserAccount());
+		return productBeanresult;
+
 	}
 	
 	 @Transactional(readOnly = true)
@@ -86,5 +88,6 @@ public class ProductServiceRepository {
 			  }
 		}
 		return result;
+
 	}
 }

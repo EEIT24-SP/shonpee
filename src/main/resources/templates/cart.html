@@ -13,44 +13,46 @@
 </head>
 
 <body style="background-color: rgb(235, 235, 235);">
-	<nav class="Bear-header-top">
-		<ul style="margin: 0px;">
-			<li><a href="https://www.w3schools.com/html/default.asp"> <strong>賣家中心</strong>
-			</a></li>
-			<li style="user-select: none;">|</li>
-			<li><a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong>
-			</a></li>
-			<li style="user-select: none;">|</li>
-			<li><a href="https://www.w3schools.com/html/default.asp"> <strong>追蹤我們</strong></a></li>
-			<a href="https://www.w3schools.com/html/default.asp"><img
-				class="Bear-header-top-icon" src="../pic/FB.svg" alt=""></a>
-			<a href="https://www.w3schools.com/html/default.asp"><img
-				class="Bear-header-top-icon" src="../pic/Line.svg" alt=""></a>
-			<a href="https://www.w3schools.com/html/default.asp"><img
-				class="Bear-header-top-icon" src="../pic/IG.svg" alt=""></a>
-			<li style="user-select: none; visibility: hidden;">
-				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			</li>
-			<li><a href="https://www.w3schools.com/html/default.asp"><img
-					src="../pic/Bell.svg" style="width: 18px;" alt=""> <strong>通知總覽</strong></a></li>
-			<li><a href="https://www.w3schools.com/html/default.asp"><img
-					src="../pic/Help_icon.svg" alt=""><strong>幫助中心</strong> </a></li>
-			<li><a href="/main/acc"><img src="../pic/Account.svg"
-					style="width: 20px" alt=""><strong id="ssaa">會員帳戶</strong> </a></li>
-		</ul>
+	 <nav class="Bear-header-top">
+    <ul style="
+    margin-top: 0px;">
+      <li> <a href="https://www.w3schools.com/html/default.asp"> <strong>賣家中心</strong> </a> </li>
+      <li style="user-select: none;">|</li>
+      <li> <a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong> </a> </li>
+      <li style="user-select: none;"> |</li>
+      <li> <a href="https://www.w3schools.com/html/default.asp"> <strong>追蹤我們</strong></a> </li>
+      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/FB.svg"
+          alt=""></a>
+      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/Line.svg"
+          alt=""></a>
+      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/IG.svg"
+          alt=""></a>
+      <li style="user-select: none; visibility: hidden;">
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+      </li>
+      <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Bell.svg" style="width: 18px;" alt="">
+          <strong>通知總覽</strong></a> </li>
+      <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
+            alt=""><strong>幫助中心</strong> </a></li>
+      <li> <a  href="/main-page/acc"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
+            id="ssaa" th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}"></strong></a></li>
+          
+            <li >
+             <a  href="/login-page" th:text="${#strings.isEmpty(session.UserName)?'':'登出'}"></a>
+             </li>
+    </ul>
 
-	</nav>
+  </nav>    
+	
 	<nav
-		style="height: 100px; width: 100vw; min-width: 100%; text-align: center; background-color: #ffffff; border-bottom: 1px solid rgba(121, 121, 121, 0.3);">
+		style="height: 100px; width: 100%; min-width: 1400px; text-align: center; background-color: #ffffff; border-bottom: 1px solid rgba(121, 121, 121, 0.3);">
 
 		<div class="Bear-header-bottom-container">
-			<div
-				style="width: 30%; height: 100px; display: flex; align-items: center;">
+			<div style="width: 30%; height: 100px; display: flex; align-items: center;">
 				<a href="/main-page">
 					<div style="display: flex; align-items: center; width: 340px;">
 						<div>
-							<img style="width: 100px; height: 80px;" src="../pic/Bear.svg"
-								alt="">
+							<img style="width: 100px; height: 80px;" src="../pic/Bear.svg" alt="">
 						</div>
 						<div
 							style="font-size: 25px; border-right: 1px solid orange; padding: 10px; height: 20px; display: flex; align-items: center; color: tomato;">
@@ -63,8 +65,7 @@
 
 			<div
 				style="height: 100px; display: flex; align-items: center; justify-content: flex-end; width: 55%;">
-				<div
-					style="background-color: tomato; width: 600px; height: 37px; border-radius: 5px;">
+				<div style="background-color: tomato; width: 600px; height: 37px; border-radius: 5px;">
 					<input type="text"
 						style="width: 550px; height: 30px; margin-left: -40px; margin-top: 3px; border-radius: 5px;"
 						placeholder="輸入搜尋文字" value="">
@@ -77,9 +78,9 @@
 	</nav>
 
 	<div class="cart-mid" id="cart-mid-id">
-		<div class="cart-mid" id="cart-page-product-header">
+				<div class="cart-mid" id="cart-page-product-header">
 			<div>
-				<input type="checkbox" class="cart-page-checkbox">
+				<input type="checkbox" class="cart-page-checkboxTotal">
 				<div class="cart-page-product-header__product">商品</div>
 				<div class="cart-page-product-header__unit-price">單價</div>
 				<div class="cart-page-product-header__quantity">數量</div>
@@ -87,134 +88,95 @@
 				<div class="cart-page-product-header__action">操作</div>
 			</div>
 		</div>
-
-
-		<form action="/main-page/cart" method="post" id="formoutput">
-
-			<div class="cart-page-shop-section" style="margin-top: 20px;"
-				th:each="userto,iterStat : ${cartitem}">
-				<input th:name="|cart_Id|" th:value="${userto.cart_Id}"
-					class="Cart_id" readonly="readonly" type="hidden">
-				<div class="cart-page-shop-header">
+		
+		
+	<form action=""  th:action="@{/main-page/cart}"  method="post">
+		
+		<div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
+		 <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden"> 
+			<div class="cart-page-shop-header">
+				<div>
+					<input  class="cart-page-checkbox">
 					<div>
-						<input class="cart-page-checkbox">
-						<div>
-							<img src="../pic/store.svg" class="cart-page-shop-header-icon">
-							<input th:name="|member_Id|" th:value="${userto.member_Id}"
-								readonly="readonly">
-
-						</div>
+						<img src="../pic/store.svg" class="cart-page-shop-header-icon">
+						 <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly"> 
+						 
 					</div>
 				</div>
+			</div>
+			
 
-
-
+						
 
 
 				<div class="cart-page-product">
 					<div class="cart-page-product-allitems">
 						<div>
-							<input type="checkbox" class="cart-page-checkbox" name="CKBX"
-								value="97"> <img th:name="|productBean.product_Photo|"
-								th:src="${userto.productBean.product_Photo}" alt=""
-								class="product-img">
+							<input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97"> 
+						<div>	<img 
+                     th:name="|cartPhoto|" th:src="${userto.cartPhoto}"
+								alt="" class="product-img">
+								</div>
 							<div class="product-description-box">
 								<div>
-									<input type="text" th:name="|productBean.product_Name|"
-										th:value="${userto.productBean.product_Name}">
+								<input type="text"  th:name="|productBean.productName|" th:value="${userto.productBean.productName}">
 								</div>
 							</div>
 							<div class="product-size">
-								<div class="product-size-button">
+								<div class="product-size-button" >
 									規格
 									<div class="product-size-button-icon"></div>
 								</div>
-								<div>藍色XL</div>
+								<div >
+								<input class="typevalue1" th:value="${userto.typeValue1}" readonly="readonly">
+								<input class="typevalue2" th:value="${userto.typeValue2}" readonly="readonly">
+								</div>
 							</div>
 							<div class="product-unit-price">
-								<input type="text" class="unit-price"
-									th:name="|productBean.product_Price|"
-									th:value="${userto.productBean.product_Price}"
-									readonly="readonly">
+							<input type="text" class="unit-price"  th:name="|productBean.productPrice|" 
+							th:value="${userto.productBean.productPrice}" readonly="readonly" >
 							</div>
 							<div class="product-quanftity">
 								<div>
-									<button class="minus" type="button">-</button>
-									<input type="text" class="numcount" th:name="|Quantity|"
-										th:value="${userto.Quantity}" value="1" readonly="readonly">
-									<button class="plus" type="button">+</button>
+									<button class="minus"  type="button">-</button>
+							<input type="text"  class="numcount"  th:value="${userto.Quantity}"  value="1" readonly="readonly">
+									<button  class="plus"  type="button">+</button>
 								</div>
 								<div>剩下10000件</div>
 							</div>
 							<div class="product-total-price-box">
-								<input readonly="readonly" class="product-total-price"
-									type="text" th:name="|total_Price|"
-									th:value="${userto.Total_Price}">
+								<input readonly="readonly" class="product-total-price" type="text"  th:value="${userto.TotalPrice}">
 							</div>
 							<div class="product-action">
-								<button type="submit" name="delete" class="product-action-delet"
-									value="GG">刪除</button>
+								<button type="submit"  name="delete" class="product-action-delet" value="GG">刪除</button>
 								<button class="product-action-like">
-									<div>
-										找相似<img src="../pic/triangle.svg" alt="">
-									</div>
+									<div>找相似<img src="../pic/triangle.svg" alt=""></div>
 								</button>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+		</div>
 	</div>
 	<div id="cart-page-flex-fixed-footer">
-		<div>
-			<div id="cart-page-flex-fixed-footer-fristroll">
-				<img src="../pic/ticket.png" id="cart-page-flex-fixed-footer-ticket"
-					alt="">
-				<div id="cart-page-flex-fixed-footer-div1">全站折價券</div>
-				<div id="cart-page-flex-fixed-footer-div2">
-					<a href="">選擇折價券或輸入全站折扣碼</a>
-				</div>
-			</div>
-		</div>
-		<div id="cart-page-flex-fixed-footer-secondroll">
-			<div>
-				<input type="checkbox" name=""
-					id="cart-page-flex-fixed-footer-secondroll-checkbox">
-			</div>
-			<div id="cart-page-flex-fixed-footer-secondroll-coin">
-				<img src="../pic/money.png" alt="">
-				<div>蝦幣</div>
-				<div>蝦幣餘額不足</div>
-				<img src="../pic/information.svg" id="coin-information" alt="">
-			</div>
-			<div id="cart-page-flex-fixed-footer-secondroll-coin-discount">-$0</div>
-		</div>
 		<div id="cart-page-flex-fixed-footer-thredroll">
 			<div id="cart-page-flex-fixed-footer-thredroll-checkbox">
 				<input type="checkbox" name="" id="">
-				<button>全選(20)</button>
+				<button>全選</button>
 			</div>
 			<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts">
-				<input type="button" name="checkout" id="checkout" value="去買單" onclick="tocheckout()"></input>
+				<button  id="cart-checkout-type" disabled="disabled" name="checkout"  value="checkout">去買單</button>
 				<div>
-					<div
-						id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total">
-						<div
-							id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total-price">$0</div>
-						<div>總金額 (0 個商品):</div>
-					</div>
-					<div
-						id="cart-page-flex-fixed-footer-thredroll-settleaccounts-discount">
-						<div>+226 蝦幣</div>
-						<div>$7,397,</div>
-						<div>已省下</div>
+					<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total">
+						<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total-price" class="totals">$0</div>
+						<div>總金額<span class="txts"></span>個商品:</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	</form>
+</form>
 
 
 
@@ -226,183 +188,133 @@
 	<br>
 	<br>
 
-	<div class="footer">
-		<table class="footer-table">
-			<tr>
-				<td><b> 客服中心 </b>
-				<td><strong> 關於蝦皮 </strong></td>
-				<td><strong> 付款 </strong></td>
-				<td><strong> 關注我們 </strong></td>
-				<td><strong> 下載熊熊 </strong></td>
-			</tr>
-
-			<tr>
-				<td>幫助中心</td>
-				<td>關於蝦皮</td>
-				<td>客服中心</td>
-				<td><img src="../pic/fb-b.png" class="footer-table-img" alt="">
-					Facebook</td>
-				<td rowspan="3">
-					<div>
-						<img src="../pic/FB.svg" class="footer-table-QRcode" alt="">
-
-						<div>
-							<p>
-								<img src="../pic/apple.svg" class="footer-table-img" alt="">
-								Apple Store
-							</p>
-						</div>
-						<div>
-							<p>
-								<img src="../pic/googleplay.svg" class="footer-table-img" alt="">
-								Google Play
-							</p>
-						</div>
-
-
-
-					</div>
-				</td>
-			</tr>
-
-			<tr>
-				<td>蝦皮商城</td>
-				<td>加入我們</td>
-				<td>客服中心</td>
-				<td><img src="../pic/ig-b.png" class="footer-table-img" alt="">
-					Instagram</td>
-
-			</tr>
-
-			<tr>
-				<td>付款方式</td>
-				<td>蝦皮條款</td>
-				<td>客服中心</td>
-				<td><img src="../pic/line-b.png" class="footer-table-img"
-					alt=""> Line</td>
-			</tr>
-
-			<tr>
-				<td>蝦皮錢包</td>
-				<td>隱私權政策</td>
-				<td>客服中心</td>
-				<td><img src="../pic/in-b.png" class="footer-table-img" alt="">
-					LinkedIn</td>
-			</tr>
-
-			<tr>
-				<td>蝦幣</td>
-				<td>蝦皮商城</td>
-				<td>客服中心</td>
-				<td><img src="../pic/bear-b.png" class="footer-table-img"
-					alt=""> 熊熊輯部落格</td>
-			</tr>
-
-			<tr>
-				<td>運費補助</td>
-				<td>賣家中心</td>
-				<td>客服中心</td>
-				<td rowspan="5"></td>
-			</tr>
-
-			<tr>
-				<td>退貨退款</td>
-				<td>限時特賣</td>
-				<td>客服中心</td>
-			</tr>
-
-			<tr>
-				<td>蝦皮承諾</td>
-				<td>聯絡媒體</td>
-				<td>客服中心</td>
-			</tr>
-
-			<tr>
-				<td>聯絡客服</td>
-				<td rowspan="2"></td>
-				<td>客服中心</td>
-			</tr>
-			<tr>
-				<td>防詐騙宣導</td>
-				<td>客服中心</td>
-			</tr>
-		</table>
-		<hr>
-		<div class="footer-footer">
-			<div class="footer-footer-copyright">© 2021 Bear. 版權所有。</div>
-			<div>國家和地區: 新加坡 印尼 台灣 泰國 馬來西亞 越南 菲律賓 巴西</div>
-
-		</div>
-	</div>
+	
+    <div th:insert="model/footer::footer"></div>
 
 
 
 
 
 	<!--操作购物车页面的cart.js-->
-	<script src="../js/cart.js"></script>
 	<script type="text/javascript" th:inline="javascript">
-		$('.cart-page-checkbox').on('click', function() {
-			var Cid = $(this).parents().children('.Cart_id').val();
-			$(this).prop('value', Cid);
-			console.log("我是CKBX" + $(this).val());
-		})
-
-		$('.product-action-delet').on('click', function() {
-			var Cid = $(this).parents().children('.Cart_id').val();
-			$(this).prop('value', Cid);
-			console.log($(this).parents().children('.Cart_id').val());
-			console.log($(this).val());
-		})
-
-		$('.plus').on(
-				'click',
-				function() {
-					var temp = $(this).parent().children('.numcount').prop(
-							'value');
-					var total = $(this).parents().children(
-							'.product-total-price-box').children(
-							'.product-total-price').val();
-					$(this).parents().children('.numcount').prop('value',
-							parseInt(temp) + 1);
-					var price = $(this).parents().children(
-							'.product-unit-price').children('.unit-price')
-							.val();
-					$(this).parents().children('.product-total-price-box')
-							.children('.product-total-price').prop('value',
-									(parseInt(total) + parseInt(price)));
-					console.log($(this).parents().children(
-							'.product-total-price-box').children(
-							'.product-total-price').val());
-					console.log($(this).parents().children(
-							'.product-unit-price').children('.unit-price')
-							.children());
-				})
-		$('.minus').on(
-				'click',
-				function() {
-					var temp = $(this).parent().children('.numcount').val();
-					var total = $(this).parents().children(
-							'.product-total-price-box').children(
-							'.product-total-price').val();
-					var price = $(this).parents().children(
-							'.product-unit-price').children('.unit-price')
-							.val();
-					if (temp > 1) {
-						$(this).parents().children('.numcount').prop('value',
-								parseInt(temp) - 1);
-						$(this).parents().children('.product-total-price-box')
-								.children('.product-total-price').prop('value',
-										(parseInt(total) - parseInt(price)));
-					}
-					// var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value');
-
-				})
-
-		function tocheckout(){
-			document.getElementById('checkout').type = "submit";	
+	$('.cart-page-checkboxTotal').on('click',function(){
+		if($('.cart-page-checkbox').prop('checked')==false){
+		$('.cart-page-checkbox').prop('checked','checked');
+		}else{
+			$('.cart-page-checkbox').prop('checked','');
 		}
+	});
+	
+	$(function(){
+		$('.cart-page-checkbox').prop("checked","");
+		$('.product-action-delet').prop('disabled','disabled');
+	});
+
+	$('.cart-page-checkbox').on('click',function(){
+        var CKBXChecked = $(this).prop("checked");
+    	console.log($('.cart-page-checkbox').length);
+        if(CKBXChecked == true){
+		var Cid =  $(this).parents().children('.Cart_id').val();
+		$(this).parents().children().children('.product-action-delet').removeAttr('disabled')
+		$(this).prop('value',Cid);
+		$(this).parents().children('.product-total-price-box').children('.product-total-price').prop('name','totalPrice');
+		$(this).parents().children('.product-quanftity').children('div').children('.numcount').prop('name','Quantity');
+		$(this).parents().children('.product-size').children('div').children('.typevalue1').prop('name','typeValue1');
+		$(this).parents().children('.product-size').children('div').children('.typevalue2').prop('name','typeValue2');
+        }else if(CKBXChecked == false){
+        	$(this).parents().children().children('.product-action-delet').prop('disabled','disabled')
+    		$(this).removeAttr('value');
+    		$(this).parents().children('.product-total-price-box').children('.product-total-price').removeAttr('name');
+    		$(this).parents().children('.product-quanftity').children('div').children('.numcount').removeAttr('name');
+    		$(this).parents().children('.product-size').children('div').children('.typevalue1').removeAttr('name');
+    		$(this).parents().children('.product-size').children('div').children('.typevalue2').removeAttr('name');
+        }
+		
+	
+	});
+	
+	$('.product-action-delet').on('click',function(){		
+			var Cid =  $(this).parents().children('.Cart_id').val();
+			$(this).prop('value',Cid);
+	});
+
+	$('.plus').on('click', function () {
+			var temp = $(this).parent().children('.numcount').prop('value');
+			var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').val();
+			$(this).parents().children('.numcount').prop('value', parseInt(temp) + 1);
+			var price = $(this).parents().children('.product-unit-price').children('.unit-price').val();
+			$(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(total) + parseInt(price)));
+            var isChecked = $(this).parents().children('.cart-page-checkbox').prop("checked");
+            if(isChecked == true){
+            	var plustotal =parseInt($(".totals").text());
+    			var Ptotal = plustotal+parseInt(price);
+    			$(".totals").text(Ptotal)
+            }
+			
+			
+		});
+		$('.minus').on('click', function () {
+			var temp = $(this).parent().children('.numcount').val();
+			var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').val();
+			var price = $(this).parents().children('.product-unit-price').children('.unit-price').val();
+			if (temp > 1) {
+				$(this).parents().children('.numcount').prop('value', parseInt(temp) - 1);
+				$(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(total) - parseInt(price)));
+				  var isChecked = $(this).parents().children('.cart-page-checkbox').prop("checked");
+		            if(isChecked == true){
+				var minustotal =parseInt($(".totals").text());
+				var Mtotal = minustotal-parseInt(price);
+				$(".totals").text(Mtotal)
+				}
+			}
+			// var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value');
+
+		});
 	</script>
+<!-- 	<#-- 計算總價 S --> -->
+<script>
+    $(function() {
+        // 載入完頁面時,計算總計
+        showTotal();
+        console.log( showTotal());
+        $('.cart-page-checkbox').on('click', function () {
+            // 選擇多選框後,再重新計算
+            showTotal();
+        });
+
+    });
+
+    // 計算總計
+    function showTotal() {
+
+        var  total = 0;
+        var  number = 0;
+        // 1. 獲取所有的被勾選的條目複選框！迴圈遍歷
+        $(".cart-page-checkbox").each(function () {
+            var isChecked = $(this).prop("checked");
+            // 如果多選框被選中
+            if(isChecked == true) {
+                // 2. 獲取複選框的值，即其他元素的字首
+                var id = parseInt( $(this).parents().children('.product-total-price-box').children('.product-total-price').val());
+                // alert("id" + id);
+                //3. 再通過字首找到小計元素，獲取其文字
+                var text = $("#" + id + "Subtotal").text();
+                // alert(text);
+                //4. 累加計算
+                total += Number(id);
+                number += 1;
+                // alert(total);
+            }
+            if(number!=0){
+            	$('#cart-checkout-type').removeAttr('disabled');}
+            else{$('#cart-checkout-type').prop('disabled','disabled');}
+        });
+        // 5. 把總計顯示在總計元素上
+        $(".txts").text(number);//toFixed(2)函式的作用是把total保留2位
+        $(".totals").text(total);
+    }
+</script>
+		
 </body>
 
 </html>

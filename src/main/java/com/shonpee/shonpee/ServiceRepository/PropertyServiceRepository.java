@@ -21,8 +21,9 @@ public class PropertyServiceRepository  {
     @Transactional(readOnly = true)
 	public List<PropertyBean> select(PropertyBean bean) {
 		List<PropertyBean> result = null;
-		if(bean!=null && bean.getProductid1()!=null && !bean.getProductid1().equals(0)) {
-			Optional<PropertyBean> optional1= property.findById(bean.getProductid1());
+		
+		if(bean!=null && bean.getProductBean().getProductid()!=null && !bean.getProductBean().getProductid().equals(0)) {
+			Optional<PropertyBean> optional1= property.findById(bean.getProductBean().getProductid());
 			if(!optional1.isEmpty()) {
 				PropertyBean temp1 =optional1.get();
 				result= new ArrayList<PropertyBean>();
@@ -36,7 +37,7 @@ public class PropertyServiceRepository  {
 	
 	public PropertyBean update(PropertyBean bean) {
 		PropertyBean result = null;
-		if(bean!=null && bean.getProductid1()!=null) {
+		if(bean!=null && bean.getProductBean().getProductid()!=null) {
 			 if(property.existsById(bean.getPropertyid())) {
 				  result = property.save(bean);
 			  }
@@ -45,7 +46,7 @@ public class PropertyServiceRepository  {
 	}
 	public boolean delete(PropertyBean bean) {
 		boolean result = false;
-		if(bean!=null && bean.getProductid1()!=null) {
+		if(bean!=null && bean.getProductBean().getProductid()!=null) {
 			if(property.existsById(bean.getPropertyid())) {
 				  property.delete(bean); 
 				  result = true;

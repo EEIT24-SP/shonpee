@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,10 +17,13 @@ import lombok.Data;
 public class  PropertyBeanSecond {	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer propertyid;
-	private String propertyName;
-	private String propertyValue;
-	private Integer productid2;
-	
+
+	private Integer Propertyid;
+	private String PropertyName;
+	private String PropertyValue;
+//	private Integer propertyId2;
+	@ManyToOne
+	@JoinColumn(name = "Productid2")
+	private ProductBean productBean;
 
 }

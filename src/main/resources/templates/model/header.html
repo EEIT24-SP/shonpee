@@ -8,8 +8,9 @@
 <body>
 <div th:fragment="header">
   <nav class="Bear-header-top">
-    <ul>
-      <li> <a href="https://www.w3schools.com/html/default.asp"> <strong>賣家中心</strong> </a> </li>
+    <ul style="
+    margin-top: 0px;">
+      <li> <a href="/MyProduct"> <strong>賣家中心</strong> </a> </li>
       <li style="user-select: none;">|</li>
       <li> <a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong> </a> </li>
       <li style="user-select: none;"> |</li>
@@ -27,9 +28,12 @@
           <strong>通知總覽</strong></a> </li>
       <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
             alt=""><strong>幫助中心</strong> </a></li>
-      <li> <a  href="/main/acc"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
-
+      <li> <a  href="/main-page/acc"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
             id="ssaa" th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}"></strong></a></li>
+          
+            <li >
+             <a  href="/login-page" th:text="${#strings.isEmpty(session.UserName)?'':'登出'}"></a>
+             </li>
     </ul>
 
   </nav>
@@ -37,10 +41,9 @@
     <div class="Bear-header-bottom-container">
       <div class="Bear-header-bottom-container-left">
         <a href="/main-page">
-
           <div class="Bear-header-bottom-container-left-container">
             <div style="width: 40%;">
-              <img class="icon_Bear" src="../pic/Bear.svg" alt="">
+              <img class="icon_Bear" th:src="@{../pic/Bear.svg}" alt="">
             </div>
             <div style="font-size: 30px;">熊熊商城</div>
           </div>
@@ -58,10 +61,9 @@
 
       <div class="Bear-header-bottom-container-right">
         <a href="/main-page/cart">
-
           <div class="Bear-header-bottom-container-right-container">
             <img class="icon-Shop-Car" src="../pic/Shop_Car.svg" alt="">
-            <div class="cart-ccount-manger" id="ccount"></div>
+            <div class="cart-ccount-manger" id="ccount" th:text="${session.cartsize}"></div>
           </div>
         </a>
       </div>
