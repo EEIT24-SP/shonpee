@@ -44,7 +44,7 @@ body {
 .Bear-header-bottom {
     height: 100px;
     width: 100%;
-    min-width: 1400px;
+/*     min-width: 1400px; */
     text-align: center;
     background-color: #ffbb55;
 }
@@ -356,7 +356,6 @@ td {
     background-color: sandybrown;
     border: 0px;
     width: 100%;
-    min-width: 1400px;
     margin: auto;
 }
 /* /輪播css/ */
@@ -479,4 +478,46 @@ td {
 
 .footer-b{
     display: flex;
+}
+
+.header-container{
+	display: flex;
+	justify-content: space-between;
+}
+
+#useraccount{
+	display:flex;
+	margin:auto 120px auto 0;
+	font-size: 16px;
+	text-align: center;
+	align-items: center;
+	font-weight: 500;
+	
+	
+}
+
+#useraccount img{
+	display:flex;
+	
+}
+
+#useraccount a,#productcenter a{
+	text-decoration:none;
+	color:black;
+	display:flex;
+	margin: auto 0; 
+}
+
+#useraccount span{
+	display:flex;
+	font-size: 16px;
+	font-weight: 500;
+	margin-right: 15px;
+
+}
+
+#productcenter{
+	font-size: 16px;
+	font-weight: 500;
+	margin-left: 160px;
 }

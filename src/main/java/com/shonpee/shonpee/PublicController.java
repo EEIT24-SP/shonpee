@@ -112,16 +112,18 @@ public class PublicController {
 					if (productBean.getProductid().equals(OB.getProductBean().getProductid()) && productBean.getProductStatus()==null) {
 						System.out.println("進來了1");
 						String[] split = productBean.getProductPhoto().split(",");
-						String[] splitTypeValue = orderBean.getTypeValue().split(",");
+						String[] splitTypeValue = OB.getTypeValue().split(",");
 						CB.setCartPhoto(split[0]); 
 						CB.setTotalPrice(Integer.toString(OB.getTotal()));
 						CB.setMemberId(Name.toString());
 						CB.setQuantity(Integer.toString(OB.getQuantity()));
 						CB.setProductBean(productBean);
-						if (splitTypeValue.length > 1) { 
-							CB.setTypeValue1(splitTypeValue[0]);
-							CB.setTypeValue2(splitTypeValue[1]);
-						}
+						if ( splitTypeValue.length >0 ) {
+                            CB.setTypeValue1(splitTypeValue[0]);
+                            if(splitTypeValue.length >1) {
+                            CB.setTypeValue2(splitTypeValue[1]);
+                            }
+                        }
 						CR.save(CB);
 						int a = (Integer) session.getAttribute("cartsize");
 						int cartsize = a +1;
