@@ -1,5 +1,5 @@
 
-package com.shonpee.shonpee.ServiceRepository;
+package com.shonpee.shonpee.servicerepository;
 
 import java.util.List;
 import java.util.Optional;
