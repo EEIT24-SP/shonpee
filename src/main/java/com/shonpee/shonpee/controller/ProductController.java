@@ -71,6 +71,7 @@ public class ProductController {
 	public String mainPage(Model model, HttpSession session) {
 		model.addAttribute("categories", listFirstCategories());
 		Object Name = session.getAttribute("UserName");
+		System.out.println("Name="+Name);		
 		List<CartBean> list = cartRepository.findAll();
 		ArrayList<CartBean> cartcnt = new ArrayList<CartBean>();
 		// 搜尋會員,顯示符合當前帳號的購物車資料
@@ -207,7 +208,7 @@ public class ProductController {
 	public String NewProductpage(Model model, String productid, String productname, String category,HttpSession session,
 			Integer changecategorys) {
 		String UserName = String.valueOf(session.getAttribute("UserName"));
-		if(!UserName.isEmpty()) {
+		if(UserName!="null"||UserName!="") {
 			// 新增時 顯示分類和名字
 			if (productid == null || productid == "") {
 				System.out.println("Hippo===");
@@ -303,7 +304,7 @@ public class ProductController {
 		// 新增
 		// 放圖片的資料夾
 		String UserName = String.valueOf(session.getAttribute("UserName"));
-		if(!UserName.isEmpty()) {
+		if(UserName!="null"||UserName!="") {
 			File path = new File(uploadpath);
 			if (!path.exists()) {
 				path.mkdir();
@@ -507,7 +508,7 @@ public class ProductController {
 		// 搜索所有的資料
 		// 將會員資料新增的商品巡訪找出來
 		String UserName = String.valueOf(session.getAttribute("UserName"));
-		if(!UserName.isEmpty()) {
+		if(UserName!="null"||UserName!="") {
 			List<ProductBean> list= new ArrayList<>();
 			List<String> allphotos = new ArrayList<String>();
 			List<PropertyBean> PropertyFirstList = new ArrayList<PropertyBean>();
@@ -566,10 +567,19 @@ public class ProductController {
 		model.addAttribute("categories", listFirstCategories());
 		// 找出該分類的產品，放入頁面
 		List<ProductBean> productsOfTheCategory = productRepository.findByProductFirstCategoryId(categoryId);
+		List<String> photo = new ArrayList<String>();
+		for(ProductBean product:productsOfTheCategory) {
+			String[] productPhoto = product.getProductPhoto().split(",");
+			photo.add(productPhoto[0]);
+		}
+		model.addAttribute("photo",photo);
 		model.addAttribute("products", productsOfTheCategory);
 		return "main";
 	}
 
+	
+	
+	
 	// 以下是抽離的重複程式，沒有設定RequestMapping路徑
 	public List<Productcategory> listFirstCategories() {
 		List<Productcategory> firstProductcategories = productCategoryRepository.findByParentId(0);

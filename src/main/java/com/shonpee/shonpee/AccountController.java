@@ -37,8 +37,11 @@ public class AccountController {
 	// 個人資料頁
 	@RequestMapping(value = ("/main-page/acc"))
 	public String profile1(HttpSession session, Model model, MemberBean MB) {
-		String UserName = String.valueOf(session.getAttribute("UserName"));
-        if (UserName.isEmpty()) {
+		System.out.println("測試帳號是空的嗎??");
+
+		String UserName1 = String.valueOf(session.getAttribute("UserName"));
+        if (UserName1==""||UserName1==null||UserName1.isEmpty()||UserName1=="null") {
+
 			return "redirect:/login-page";
 		} else {
 			List<MemberBean> list = MR.findAll();
