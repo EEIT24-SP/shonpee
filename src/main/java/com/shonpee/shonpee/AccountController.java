@@ -37,7 +37,7 @@ public class AccountController {
 	@RequestMapping(value = ("/main-page/acc"))
 	public String profile1(HttpSession session, Model model, MemberBean MB) {
 		String UserName = String.valueOf(session.getAttribute("UserName"));
-        if (UserName.length()<=0) {
+        if (UserName.isEmpty() || UserName ==null||UserName == "null") {
 			return "redirect:/login-page";
 		} else {
 			List<MemberBean> list = MR.findAll();
