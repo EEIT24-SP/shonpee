@@ -22,7 +22,7 @@ public class ProductBean {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Productid;
+	private Integer productid;
 	private String productName;
 	private Integer productPrice;
 	private Integer productStock;
@@ -30,10 +30,10 @@ public class ProductBean {
 	private String productDetail;
 	private Integer productFirstCategoryId;
 	private Integer productSecondCategoryId;
-	private Integer productThirdCategoryId;
+	private Integer productThirdCategoryId;	
 	private Integer productStatus;
-
-	@ManyToOne
+	
+	@ManyToOne 
 	@JoinColumn(name = "member_id")
 	private MemberBean memberBean;
 }

@@ -1,182 +1,173 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-<meta charset="UTF-8" />
-<link rel="stylesheet" th:href="@{/css/account.css}" />
-<link rel="stylesheet" th:href="@{/css/Bear_Shop.css}" />
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/account.css}" />
+    <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}" />
 </head>
 <script src="../../js/user.js" defer></script>
 
 <body ondragstart="return false" oncopy="return false;">
 
 
-	<div th:insert="model/header::header"></div>
+    <div th:insert="model/header::header"></div>
 
 
-	<div class="main">
-		<div class="main-user" th:insert="model/leftBar::leftBar"></div>
+    <div class="main">
+        <div class="main-user" th:insert="model/leftBar::leftBar"></div>
 
 
-		<form action="" th:action="@{/main-page/shop-list__${index}__}" method="post">
-			<div style="width: 950px; display: flex; flex-direction: column; justify-content: center;">
-				<div style="display: flex; justify-content: center;">
-					<div class="main-right" th:each="abcd,iterStat : ${abc}">
-						<a th:href="@{/main-page/shop-list__${iterStat.index}__}">
-							<div class="titles-list" th:text="${abcd}" th:id="${iterStat.index}"></div>
-						</a>
-					</div>
-				</div>
-				
-
-				<div class="main-right-list" style="flex-direction: column;">
-					<div th:if="${arrOrder == null}" class="main-right-content">
-						<img src="../../pic/List.svg" alt="" />
-						<h2>尚未有訂單</h2>
-					</div>
-				</div>
+        <form action="" th:action="@{/main-page/shop-list__${index}__}" method="post">
+            <div style="width: 950px; display: flex; flex-direction: column; justify-content: center;">
+                <div style="display: flex; justify-content: center;">
+                    <div class="main-right" th:each="abcd,iterStat : ${abc}">
+                        <a th:href="@{/main-page/shop-list__${iterStat.index}__}">
+                            <div class="titles-list" th:text="${abcd}" th:id="${iterStat.index}"></div>
+                        </a>
+                    </div>
+                </div>
 
 
-					<div th:if="${arrOrder != null}" id="main-right-list-1" style="width: 100%;"
-						th:each="ODD:${arrOrder}">
+                <div class="main-right-list" style="flex-direction: column;">
+                    <div th:if="${arrOrder == null}" class="main-right-content">
+                        <img src="../../pic/List.svg" alt="" />
+                        <h2>尚未有訂單</h2>
+                    </div>
+                </div>
 
-					<input class="seller-Item-Status" type="hidden" th:name="ProductBean.ProductStatus" th:value="${ODD.ProductBean.ProductStatus}" >
+
+                <div th:if="${arrOrder != null}" id="main-right-list-1" style="width: 100%;" th:each="ODD:${arrOrder}">
+
+                    <input class="seller-Item-Status" type="hidden" th:name="ProductBean.ProductStatus" th:value="${ODD.ProductBean.ProductStatus}">
 
 
-						<div class="main-right-list-2">
-							<div class="main-right-list-border">
-								<div class="main-right-list-border-1">
-									<div class="main-right-list-border-2">
-										<div class="main-right-list-border-3">
-											<div class="main-right-list-border-4">
-												<div th:text="${ODD.ProductBean.MemberBean.UserAccount}">賣家名稱</div>
-											</div>
-											<div class="main-right-list-border-3-1">
-												<div th:switch="${ODD.status}">
-													<div th:case="0">等待付款</div>
-													<div th:case="1">待出貨</div>
-													<div th:case="2">待收貨</div>
-													<div th:case="3">訂單已完成</div>
-													<div th:case="4">交易不成立</div>
-												</div>
-											</div>
-										</div>
+                    <div class="main-right-list-2">
+                        <div class="main-right-list-border">
+                            <div class="main-right-list-border-1">
+                                <div class="main-right-list-border-2">
+                                    <div class="main-right-list-border-3">
+                                        <div class="main-right-list-border-4">
+                                            <div th:text="${ODD.ProductBean.MemberBean.UserAccount}">賣家名稱</div>
+                                        </div>
+                                        <div class="main-right-list-border-3-1">
+                                            <div th:switch="${ODD.status}">
+                                                <div th:case="0">等待付款</div>
+                                                <div th:case="1">待出貨</div>
+                                                <div th:case="2">待收貨</div>
+                                                <div th:case="3">訂單已完成</div>
+                                                <div th:case="4">交易不成立</div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-									</div>
-									<div class="main-right-list-border-1-1">
-										<div class="main-right-list-border-1-2">
-											<img th:src="${ODD.orderImg}" class="main-right-list-border-1-3" alt="" />
-											<div class="main-right-list-border-1-4">
-												<div th:text="${ODD.productBean.productName}">白人白漱口水</div>
+                                </div>
+                                <div class="main-right-list-border-1-1">
+                                    <div class="main-right-list-border-1-2">
+                                        <img th:src="${ODD.orderImg}" class="main-right-list-border-1-3" alt="" />
+                                        <div class="main-right-list-border-1-4">
+                                            <div th:text="${ODD.productBean.productName}">白人白漱口水</div>
 
-													<input class="typeValue" th:value="${ODD.typeValue}" readonly="readonly">
+                                            <input class="typeValue" th:value="${ODD.typeValue}" readonly="readonly">
 
-												<div><span>x</span>
-												<input type="text" th:value="${ODD.Quantity}">
-												</div>
-											</div>
-										</div>
-										<div class="main-right-list-border-1-5">
-											$
-											<div th:text=" ${ODD.total / ODD.Quantity}"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="main-right-list-3">
-							<div class="main-right-list-3-1">
-								<div class="main-right-list-3-2">
-									<div class="main-right-list-3-2-1">
-										<div>訂單金額:</div>
-										<input type="text" th:value="${ODD.total}" class="main-right-list-3-2-2">
-									</div>
-									<div class="main-right-list-3-2-3">
-										<div>
-											<div th:switch="${ODD.status}">
-												<div th:case="0">
-													<button type="submit" name="changeType" th:value="1" th:text="確認付款"
-														class="main-right-list-3-2-3-1"></button>
-													<input class="CTP1" type="hidden" th:value="${ODD.orderId}">
-												</div>
-												<div th:case="1">
-													<button type="submit" name="changeType" th:value="4" th:text="取消訂單"
-														class="main-right-list-3-2-3-1"></button>
-													<input class="CTP1" type="hidden" th:value="${ODD.orderId}">
-												</div>
-												<div th:case="2">
-													<button type="submit" name="changeType" th:value="3" th:text="完成訂單"
-														class="main-right-list-3-2-3-1"></button>
-													<input class="CTP1" type="hidden" th:value="${ODD.orderId}">
-												</div>
-												<div th:case="3">
-													<button type="submit" name="changeType" th:value="99" th:text="在買一次"
-														class="main-right-list-3-2-3-1"></button>
-													<input class="CTP2" type="hidden" th:value="${ODD.productBean.productId}">
-												</div>
-												<div th:case="4">
-													<button type="submit" name="changeType" th:value="99" th:text="在買一次"
-														class="main-right-list-3-2-3-1"></button>
-													<input class="CTP2" type="hidden" th:value="${ODD.ProductBean.Productid}" />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+                                            <div><span>x</span>
+                                                <input type="text" th:value="${ODD.Quantity}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="main-right-list-border-1-5">
+                                        $
+                                        <div th:text=" ${ODD.total / ODD.Quantity}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-right-list-3">
+                        <div class="main-right-list-3-1">
+                            <div class="main-right-list-3-2">
+                                <div class="main-right-list-3-2-1">
+                                    <div>訂單金額:</div>
+                                    <input type="text" th:value="${ODD.total}" class="main-right-list-3-2-2">
+                                </div>
+                                <div class="main-right-list-3-2-3">
+                                    <div>
+                                        <div th:switch="${ODD.status}">
+                                            <div th:case="0">
+                                                <button type="submit" name="changeType" th:value="1" th:text="確認付款" class="main-right-list-3-2-3-1"></button>
+                                                <input class="CTP1" type="hidden" th:value="${ODD.orderId}">
+                                            </div>
+                                            <div th:case="1">
+                                                <button type="submit" name="changeType" th:value="4" th:text="取消訂單" class="main-right-list-3-2-3-1"></button>
+                                                <input class="CTP1" type="hidden" th:value="${ODD.orderId}">
+                                            </div>
+                                            <div th:case="2">
+                                                <button type="submit" name="changeType" th:value="3" th:text="完成訂單" class="main-right-list-3-2-3-1"></button>
+                                                <input class="CTP1" type="hidden" th:value="${ODD.orderId}">
+                                            </div>
+                                            <div th:case="3">
+                                                <button type="submit" name="changeType" th:value="99" th:text="在買一次" class="main-right-list-3-2-3-1"></button>
+                                                <input class="CTP2" type="hidden" th:value="${ODD.productBean.productid}">
+                                            </div>
+                                            <div th:case="4">
+                                                <button type="submit" name="changeType" th:value="99" th:text="在買一次" class="main-right-list-3-2-3-1"></button>
+                                                <input class="CTP2" type="hidden" th:value="${ODD.productBean.productid}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
 
 
 
-					</div>
-				</div>
-			</div>
-		</form>
+                </div>
+            </div>
+    </div>
+    </form>
 
 
 
-	</div>
+    </div>
 
-	<br />
-	<br />
-	<hr class="main-page-container-hr" />
-	<br />
-	<br />
+    <br />
+    <br />
+    <hr class="main-page-container-hr" />
+    <br />
+    <br />
 
-	<div th:insert="model/footer::footer"></div>
+    <div th:insert="model/footer::footer"></div>
 
 
 
-	<SCRIPT SRC="../../JS/COOKIE.JS" TYPE="TEXT/JAVASCRIPT" CHARSET="UTF-8" DEFER></SCRIPT>
-	<SCRIPT TYPE="TEXT/JAVASCRIPT" SRC="../../JS/INDEX.JS" DEFER></SCRIPT>
-	<script src="../../js/user.js" defer></script>
-	<script type="text/javascript">
-		$('.main-right-list-3-2-3-1').on(
-				'click',
-				function() {
-					console.log($(this).parents().children('.seller-Item-Status').val());
-					if($(this).parents().children('.seller-Item-Status').val() == 0 
-							&& $(this).parents().children('.seller-Item-Status').val()!="" ){
-						alert('商品已下架');
-					}else if($(this).parents().children('.seller-Item-Status').val()== ""){
-						$(this).parent().children('.CTP1').prop('name', 'orderId');
-						$(this).parent().children('.CTP2').prop('name','ProductBean.Productid');
-						console.log($(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('.typeValue').prop('name','typeValue'));
-						$(this).parents().children('.main-right-list-3').find('.main-right-list-3-2-1').find('input').prop('name','total');
-						$(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('input').prop('name','Quantity');
-						$(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('.typeValue').prop('name','typeValue');
+    <SCRIPT SRC="../../JS/COOKIE.JS" TYPE="TEXT/JAVASCRIPT" CHARSET="UTF-8" DEFER></SCRIPT>
+    <SCRIPT TYPE="TEXT/JAVASCRIPT" SRC="../../JS/INDEX.JS" DEFER></SCRIPT>
+    <script src="../../js/user.js" defer></script>
+    <script type="text/javascript">
+        $('.main-right-list-3-2-3-1').on(
+            'click',
+            function() {
+                console.log($(this).parents().children('.seller-Item-Status').val());
+                if ($(this).parents().children('.seller-Item-Status').val() == 0 &&
+                    $(this).parents().children('.seller-Item-Status').val() != "") {
+                    alert('商品已下架');
+                } else if ($(this).parents().children('.seller-Item-Status').val() == "") {
+                    $(this).parent().children('.CTP1').prop('name', 'orderId');
+                    $(this).parent().children('.CTP2').prop('name', 'ProductBean.Productid');
+                    console.log($(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('.typeValue').prop('name', 'typeValue'));
+                    $(this).parents().children('.main-right-list-3').find('.main-right-list-3-2-1').find('input').prop('name', 'total');
+                    $(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('input').prop('name', 'Quantity');
+                    $(this).parents().children('.main-right-list-2').find('.main-right-list-border-1-4').find('.typeValue').prop('name', 'typeValue');
 
-					}
+                }
 
-					
-				})
-				
-		
-				
-	</script>
+
+            })
+    </script>
 
 </body>
 

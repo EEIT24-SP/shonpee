@@ -29,8 +29,7 @@ public class CartBean {
 
 	
 	@ManyToOne
-	@JoinColumn(name = "product_Id")
+	@JoinColumn(name = "product_id")
 	private ProductBean productBean;
 
 }
-

@@ -16,7 +16,6 @@ import com.shonpee.shonpee.repository.PropertyRepository;
 import com.shonpee.shonpee.repository.PropertySecondRepository;
 
 
- 
 @Service
 @Transactional
 public class ProductServiceRepository {

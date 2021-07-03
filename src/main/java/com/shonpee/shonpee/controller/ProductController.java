@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.shonpee.shonpee.domain.CartBean;
 import com.shonpee.shonpee.domain.MemberBean;
 import com.shonpee.shonpee.domain.ProductBean;
@@ -44,36 +45,34 @@ import com.shonpee.shonpee.servicerepository.PropertyServiceRepository;
 public class ProductController {
 
 	@Autowired
+	private MemberRepository memberRepository;
+	@Autowired
 	private ProductRepository productRepository;
 	@Autowired
 	private PropertyRepository propertyRepository;
-
+	@Autowired
+	private ProductcategoryRepository productCategoryRepository;
 	@Autowired
 	private PropertySecondRepository propertySecondRepository;
 	@Autowired
-	private CartRepository CR;
+	private CartRepository cartRepository;
 	@Autowired
 	private ProductServiceRepository productService;
 	@Autowired
 	private PropertyServiceRepository propertyServiceRepository;
 	@Autowired
 	private PropertySecondServiceRepository propertySecondServiceRepository;
-	@Autowired
-	private ProductcategoryRepository productCategoryRepository;
-	@Autowired
-	private MemberRepository memberRepository;
-	@Autowired
-	ProductRepository PR;
 
 	@Value("${upload-path}")
 	private String uploadpath;
 
+	// 首頁
 	@GetMapping("/main-page")
 	public String mainPage(Model model, HttpSession session) {
 		model.addAttribute("categories", listFirstCategories());
 		Object Name = session.getAttribute("UserName");
-		System.out.println("Name="+Name);
-		List<CartBean> list = CR.findAll();
+		System.out.println("Name="+Name);		
+		List<CartBean> list = cartRepository.findAll();
 		ArrayList<CartBean> cartcnt = new ArrayList<CartBean>();
 		// 搜尋會員,顯示符合當前帳號的購物車資料
 		for (CartBean cartBean : list) {
@@ -90,6 +89,8 @@ public class ProductController {
 		return "main";
 	}
 
+
+	// 產品頁
 	@GetMapping("/product/{productid}")
 	public String bearitem(@PathVariable("productid") Integer productid, Model model, HttpSession session) {
 		System.out.println("我是" + productid);
@@ -128,18 +129,19 @@ public class ProductController {
 		return "bear_item";
 	}
 
+
+	// 新增商品
 	@PostMapping(value = ("/product/{productid}"))
-	public String item(HttpSession session, Model model, CartBean CB, ProductBean PB, String typeValue1,
-			String typeValue2) {
+	public String item(HttpSession session, Model model, CartBean cart, ProductBean product, String typeValue1, String typeValue2) {
 		Object Name = session.getAttribute("UserName");
 		Object PDid = session.getAttribute("PDid");
-		System.out.println("我是PbSRC" + PB.getProductPhoto());
+		System.out.println("我是PbSRC" + product.getProductPhoto());
 		if (Name == null) {
 			return "redirect:/login-page";
 		}
 		List<MemberBean> list = memberRepository.findAll();
 		List<ProductBean> list1 = productRepository.findAll();
-		List<CartBean> list2 = CR.findAll();
+		List<CartBean> list2 = cartRepository.findAll();
 		System.out.println("post");
 		for (MemberBean memberBean : list) {
 			// 會員底下搜尋 如過購物車數量為0,則執行productBean新增置購物車
@@ -153,10 +155,10 @@ public class ProductController {
 					cartBean.setTotalPrice(Integer.toString(
 							Integer.parseInt(cartBean.getTotalPrice()) / Integer.parseInt(cartBean.getQuantity())));
 					cartBean.setQuantity(
-							Integer.toString(PB.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
+							Integer.toString(product.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
 					cartBean.setTotalPrice(Integer.toString(
 							Integer.parseInt(cartBean.getTotalPrice()) * Integer.parseInt(cartBean.getQuantity())));
-					CR.save(cartBean);
+					cartRepository.save(cartBean);
 					return "redirect:/product/" + PDid;
 				}
 			}
@@ -166,13 +168,13 @@ public class ProductController {
 				if (productBean.getProductid().equals(PDid)) {
 //					 System.out.println(productBean.getMemberBean().getUser_Account().equals("bee567"));
 					System.out.println("lissssssssssssss ");
-					CB.setQuantity(Integer.toString(PB.getProductStock()));
-					CB.setTotalPrice(Integer.toString(PB.getProductStock() * productBean.getProductPrice()));
-					CB.setProductBean(productBean);
-					CB.setMemberId((String) Name);
-					CB.setCartPhoto(PB.getProductPhoto());
+					cart.setQuantity(Integer.toString(product.getProductStock()));
+					cart.setTotalPrice(Integer.toString(product.getProductStock() * productBean.getProductPrice()));
+					cart.setProductBean(productBean);
+					cart.setMemberId((String) Name);
+					cart.setCartPhoto(product.getProductPhoto());
 					System.out.println("我是OBJ" + (String) Name);
-					CR.save(CB);
+					cartRepository.save(cart);
 					session.getAttribute("cartsize");
 					int a = (Integer) session.getAttribute("cartsize");
 					int cartsize = a + 1;
@@ -364,12 +366,12 @@ public class ProductController {
 				bean.setProductName(productname);
 				ProductBean newbean = productService.insert(bean);
 				Integer newid = newbean.getProductid();
-				ProductBean pb = new ProductBean();
-				pb.setProductid(newid);
-				propertyBean.setProductBean(pb);
+				ProductBean product = new ProductBean();
+				product.setProductid(newid);
+				propertyBean.setProductBean(product);
 				propertyBean.setPropertyName(propertyName);
 				propertyBean.setPropertyValue(propertyValue);
-				propertyBeanSecond.setProductBean(pb);
+				propertyBeanSecond.setProductBean(product);
 				propertyBeanSecond.setPropertyName(propertySecondName);
 				propertyBeanSecond.setPropertyValue(propertySecondValue);
 	
@@ -545,24 +547,23 @@ public class ProductController {
 	public String deleteProduct(@RequestParam("productid") Integer prodcutid) {
 		System.out.println("我是回傳ID" + prodcutid);
 		Optional<ProductBean> deleteProductBean = productRepository.findById(prodcutid);
-		List<CartBean> cartBeans = CR.findAll();
+		List<CartBean> cartBeans = cartRepository.findAll();
 		if (deleteProductBean.isPresent()) {
 			for (CartBean cartBean : cartBeans) {
 				if (cartBean.getProductBean().getProductid().equals(prodcutid)) {
-					CR.deleteById(cartBean.getCartId());
+					cartRepository.deleteById(cartBean.getCartId());
 				}
 			}
 			ProductBean prbean = deleteProductBean.get();
 			prbean.setProductStatus(0);
-			PR.save(prbean);
+			productRepository.save(prbean);
 		}
 		return "success";
 	}
 
-	@GetMapping("/main-page/{categoryId}")
+	@GetMapping("/category/{categoryId}")
 	public String showOneCategoryProducts(@PathVariable("categoryId") Integer categoryId, Model model) {
 		// 找出第一層的全部類別，放入頁面
-		List aaaList = listFirstCategories();
 		model.addAttribute("categories", listFirstCategories());
 		// 找出該分類的產品，放入頁面
 		List<ProductBean> productsOfTheCategory = productRepository.findByProductFirstCategoryId(categoryId);
