@@ -23,7 +23,7 @@ body {
     min-width: 1400px;
     /* list-style-type: none; */
     text-align: center;
-    background-color: #a06464;
+    background-color: linear-gradient(rgb(198, 90, 57) 0%, rgb(152, 75, 23) 100%);
 }
 
 .Bear-header-top li {

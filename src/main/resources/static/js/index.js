@@ -14,22 +14,22 @@ var ccount = document.getElementById("ccount"); //显示商品总数量的标签
 var btns = document.querySelectorAll(".item-cart-btn-join"); //所有的购物车按钮
 
 /*判断一下本地是否有一个购物车（datas），没有的话，创建一个空的购物车，有的话就直接拿来使用*/
-
-if (!listStr) { //没有购物车     datas  json
-	cookieObj.set({
-		name: "datas",
-		value: "[]"
-	});
-	listStr = cookieObj.get("datas");
-}
-
-var listObj = JSON.parse(listStr); //数组
-/*循环遍历数组，获取每一个对象中的pCount值相加总和*/
-var totalCount = 0; //默认为0
-for (var i = 0, len = listObj.length; i < len; i++) {
-	totalCount = listObj[i].pCount + totalCount;
-	// console.log(item_input_qty.value); 會報錯無法顯示數量
-}
+//
+//if (!listStr) { //没有购物车     datas  json
+//	cookieObj.set({
+//		name: "datas",
+//		value: "[]"
+//	});
+//	listStr = cookieObj.get("datas");
+//}
+//
+//var listObj = JSON.parse(listStr); //数组
+///*循环遍历数组，获取每一个对象中的pCount值相加总和*/
+//var totalCount = 0; //默认为0
+//for (var i = 0, len = listObj.length; i < len; i++) {
+//	totalCount = listObj[i].pCount + totalCount;
+//	// console.log(item_input_qty.value); 會報錯無法顯示數量
+//}
 // ccount.innerHTML = totalCount ;
 // console.log(listObj.length);
 window.onload=function(){

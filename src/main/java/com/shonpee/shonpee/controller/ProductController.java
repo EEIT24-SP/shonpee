@@ -68,6 +68,9 @@ public class ProductController {
 	@Value("${upload-path}")
 	private String uploadpath;
 
+	@Value("${deletePath}")
+	private String deletePath;
+	
 	@GetMapping("/main-page")
 	public String mainPage(Model model, HttpSession session) {
 		model.addAttribute("categories", listFirstCategories());
@@ -426,17 +429,14 @@ public class ProductController {
 							}
 						}
 					}
-					String frontPath = "C:/eclipseEE/shonpee/src/main/resources/static/";
 					for (String delephoto : deleteList) {
-						String deletephotoPath = frontPath + delephoto;
+						String deletephotoPath = deletePath + delephoto;
 						File delefile = new File(deletephotoPath);
 						if (delefile.exists()) {
 							boolean isdelete = delefile.delete();
 						}
 					}
 					// 排序新舊圖片順序
-					for (String arr : oldPhotoArr) {
-					}
 					for (int i = 0; i < newPhoto.length; i++) {
 						for (int j = 0; j < oldPhotoArr.length; j++) {
 							if (oldPhotoArr[j].equals("newpic")) {

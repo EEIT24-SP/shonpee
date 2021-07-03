@@ -2,10 +2,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/Bear_Shop.css">
     <link rel="stylesheet" th:href="@{/css/Main.css}">
     <link rel="stylesheet" th:href="@{/css/MainPagesort.css}">
     <link rel="stylesheet" th:href="@{/css/SellerIndex.css}">
+    <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
+    
     <!--商品列表样式表-->
     <!--cookie操作的js库-->
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
@@ -14,26 +15,26 @@
 
 <body ondragstart="return false" oncopy="return false;">
 
-    <div th:insert="model/header::header"></div>
+	<div th:insert="model/header::header"></div>
     <div class="main-page-container">
         <div class="main-page-container-outside">
             <div class="main-page-container-middle">
                 <div id="slider" class="main-page-container-inside">
                     <ul class="slieder-item-container">
                         <li>
-                            <a class="img-animate" href="#"> <img src="https://picsum.photos/600/300?image=700" alt="" /></a>
+                            <a class="img-animate" href="#"> <img src="../pic/Banners1.png" alt="" /></a>
                         </li>
                         <li>
-                            <a class="img-animate" href="#"><img src="https://picsum.photos/600/300?image=702" alt="" /></a>
+                            <a class="img-animate" href="#"><img src="../pic/Banners2.png" alt="" /></a>
                         </li>
                         <li>
-                            <a class="img-animate" href="#"><img src="https://picsum.photos/600/300?image=701" alt="" /></a>
+                            <a class="img-animate" href="#"><img src="../pic/Banners3.png" alt="" /></a>
                         </li>
                         <li>
-                            <a class="img-animate" href="#"><img src="https://picsum.photos/600/300?image=702" alt="" /></a>
+                            <a class="img-animate" href="#"><img src="../pic/Banners4.png" alt="" /></a>
                         </li>
                         <li>
-                            <a class="img-animate" href="#"><img src="https://picsum.photos/600/300?image=701" alt="" /></a>
+                            <a class="img-animate" href="#"><img src="../pic/Banners5.png" alt="" /></a>
                         </li>
                     </ul>
                     <div class="arrow-container">
@@ -49,20 +50,20 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-       
+        </div>      
     </div>
-
-    <div class="mainpage-sort-container">
-        <div class="category-wrapper" th:each="category : ${categories}">
-            <a th:href="@{/main-page/__${category.categoryId}__}">
-                <div class="sort-item">
-                    <div class="sort-item-image"><img th:src="@{__${category.categoryIcon}__}" alt=""></div>
-                    <div class="sort-item-title">[[${category.categoryName}]]</div>
-                </div>
-            </a>
-        </div>
+    <div class="category-container">    
+		<span class="category-title">分類</span>
+	    <div class="mainpage-sort-container">
+	        <div class="category-wrapper" th:each="category : ${categories}">
+	            <a th:href="@{/main-page/__${category.categoryId}__}">
+	                <div class="sort-item">
+	                    <div class="sort-item-image"><img th:src="@{__${category.categoryIcon}__}" alt=""></div>
+	                    <div class="sort-item-title">[[${category.categoryName}]]</div>
+	                </div>
+	            </a>
+	        </div>
+	    </div>
     </div>
 
     <div class="shop-search-container-right">

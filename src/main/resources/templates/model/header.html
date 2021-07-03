@@ -13,9 +13,9 @@
 	      	    <a href="/MyProduct"> <strong>賣家中心</strong> </a> 	      
 	      </div>
 	      <div id="useraccount"> 
-	 			<a href="/main-page/acc"><img src="../pic/Account.svg" style="width: 20px" alt="">
-		      	<span  th:text="${session.UserName==null?'會員帳戶':session.UserName}"></span></a>
-	   	  		<a  href="/login-page" th:text="${session.UserName==null?'':'登出'}"></a>		     
+	 			<a href="/main-page/acc"><img th:src="@{/pic/account.png}" style="width: 20px" alt="">
+		      	<span  th:text="${session.UserName==''||session.UserName==null?'會員帳戶':session.UserName}"></span></a>
+	   	  		<a  href="/login-page" th:text="${session.UserName==''||session.UserName==null?'登入':'登出'}"></a>		     
 	      </div>   	      
     </div>
 

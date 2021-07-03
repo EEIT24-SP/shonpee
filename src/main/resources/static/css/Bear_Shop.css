@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     resize: none;
+    background-color:rgba(130,130,130,0.1); 
 }
 
 .item {
@@ -20,10 +21,9 @@ body {
     white-space: nowrap;
     height: 25px;
     width: 100%;
-    min-width: 1400px;
     /* list-style-type: none; */
     text-align: center;
-    background-color: #a06464;
+    background-color: #583E2E;
     margin-top: 0px;
 }
 
@@ -46,7 +46,7 @@ body {
     width: 100%;
 /*     min-width: 1400px; */
     text-align: center;
-    background-color: #ffbb55;
+    background-color: #BE9063;
 }
 
 input {
@@ -55,7 +55,7 @@ input {
 }
 
 .Bear-header-btn {
-    background-color: rgb(255, 185, 56);
+    background-color: #be9063;
     border-radius: 5px;
     outline: 0px;
 }
@@ -96,7 +96,7 @@ input {
 .Bear-header-btn {
     width: 40px;
     height: 30px;
-    ;
+ 
     position: absolute;
     margin-top: 3px;
 }
@@ -222,6 +222,7 @@ td {
     margin: auto;
     display: flex;
     justify-content: center;
+    box-shadow: -1px 3px 5px 1px #A39278;
 }
 .Bear-header-bottom-container  a{
     text-decoration: none;
@@ -362,7 +363,7 @@ td {
 
 #slider, .slieder-item-container, .img-animate {
     width: 1200px;
-    height: 250px;
+    height: 350px;
 }
 
 #slider {
@@ -487,7 +488,7 @@ td {
 
 #useraccount{
 	display:flex;
-	margin:auto 120px auto 0;
+	margin:auto 90px auto 0;
 	font-size: 16px;
 	text-align: center;
 	align-items: center;
@@ -503,21 +504,24 @@ td {
 
 #useraccount a,#productcenter a{
 	text-decoration:none;
-	color:black;
+	color: #F1E0D6;
 	display:flex;
 	margin: auto 0; 
+	font-size: 15px;
+	font-weight: 600;
 }
 
 #useraccount span{
 	display:flex;
-	font-size: 16px;
-	font-weight: 500;
+	font-size: 15px;
+	font-weight: 600;
 	margin-right: 15px;
-
+	margin-left: 3px;
 }
 
 #productcenter{
 	font-size: 16px;
 	font-weight: 500;
-	margin-left: 160px;
+	margin-left: 115px;
+	color: #F1E0D6;
 }
