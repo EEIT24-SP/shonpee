@@ -188,12 +188,12 @@ body {
     display: flex;
 }
 
-.checkout-order-detail-title-contanier-content-a-select span {
+.checkout-order-detail-title-contanier-content-a-select p {
     font-size: 14px;
     color: rgb(153, 153, 153);
     height: 18px;
     width: 123px;
-    padding: 19px 0 0 16px;
+    padding: 5px 0 0 25px;
 }
 
 .checkout-order-detail-title-contanier-content-a-unitprice {

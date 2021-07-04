@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.shonpee.shonpee.ServiceRepository.PropertySecondServiceRepository;
-import com.shonpee.shonpee.ServiceRepository.PropertyServiceRepository;
 import com.shonpee.shonpee.domain.PropertyBean;
 import com.shonpee.shonpee.domain.PropertyBeanSecond;
+import com.shonpee.shonpee.servicerepository.PropertySecondServiceRepository;
+import com.shonpee.shonpee.servicerepository.PropertyServiceRepository;
 
 
 

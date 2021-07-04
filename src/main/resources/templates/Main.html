@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="../css/Bear_Shop.css">
     <link rel="stylesheet" th:href="@{/css/Main.css}">
     <link rel="stylesheet" th:href="@{/css/MainPagesort.css}">
-    <link rel="stylesheet" th:href="@{/css/SellerIndex.css}">
+    <!-- <link rel="stylesheet" th:href="@{/css/sellerIndex.css}"> -->
+    <link rel="stylesheet" th:href="@{/css/Main-products.css}">
     <!--商品列表样式表-->
     <!--cookie操作的js库-->
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
@@ -51,93 +52,12 @@
             </div>
         </div>
 
-        <div class="main-page-container-a">
-            <a href="./Baer-item.html">
-                <div class="main-page-container-a-list">
-                    <img class="main-page-container-a-list-img" src="../pic/FB.svg" alt="">
-                    <div class="main-container-a-div">
-                        現領購物金
-                    </div>
-                </div>
-            </a>
-            <a href="./Baer-item-2.html">
-                <div class="main-page-container-a-list">
-                    <img src="../pic/FB.svg" class="main-page-container-a-list-img" alt="">
-                    <div class="main-container-a-div">
-                        3C家電
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="main-page-container-a-list">
-                    <img src="../pic/FB.svg" class="main-page-container-a-list-img" alt="">
-                    <div class="main-container-a-div">
-                        整點搶5折券
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="main-page-container-a-list">
-                    <img src="../pic/FB.svg" class="main-page-container-a-list-img" alt="">
-                    <div class="main-container-a-div">
-                        熊熊團購
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="main-page-container-a-list">
-                    <img src="../pic/FB.svg" class="main-page-container-a-list-img" alt="">
-                    <div class="main-container-a-div">
-                        熊熊海外直送
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="main-page-container-a-list">
-                    <img src="../pic/FB.svg" class="main-page-container-a-list-img" alt="">
-                    <div class="main-container-a-div">
-                        熊熊超便宜
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="main-page-container-a-list">
-                    <img src="../pic/FB.svg" class="main-page-container-a-list-img" alt="">
-                    <div class="main-container-a-div">
-                        免運！熊熊直送
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="main-page-container-a-list">
-                    <img src="../pic/FB.svg" class="main-page-container-a-list-img" alt="">
-                    <div class="main-container-a-div">
-                        熊熊超市
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="main-page-container-a-list">
-                    <img src="../pic/FB.svg" class="main-page-container-a-list-img" alt="">
-                    <div class="main-container-a-div">
-                        最強活動集合
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="main-page-container-a-list">
-                    <img src="../pic/FB.svg" class="main-page-container-a-list-img" alt="">
-                    <div class="main-container-a-div">
-                        男人館
-                    </div>
-                </div>
-            </a>
-        </div>
+       
     </div>
 
     <div class="mainpage-sort-container">
         <div class="category-wrapper" th:each="category : ${categories}">
-            <a th:href="@{/main-page/__${category.categoryId}__}">
+            <a th:href="@{/category/__${category.categoryId}__}">
                 <div class="sort-item">
                     <div class="sort-item-image"><img th:src="@{__${category.categoryIcon}__}" alt=""></div>
                     <div class="sort-item-title">[[${category.categoryName}]]</div>
@@ -148,9 +68,9 @@
 
     <div class="shop-search-container-right">
         <div class="shop-search-container-right-products">
-            <div class="shop-search-right-product" th:each="product : ${products}">
+            <div class="shop-search-right-product" th:each="product,status : ${products}">
                 <a th:href="@{/product/__${product.productid}__}">
-                    <div><img th:src="@{__${product.productPhoto}__}" alt=""></div>
+                    <div><img th:each="photo,photostatus :${photo}"  th:src="${photo}"  th:if="${status.index == photostatus.index }" alt=""></div>
                     <div class="fastShipment"><img th:src="@{/pic/fastShipment.png}" alt=""></div>
                     <div class="shop-search-right-product-content">
                         <div class="shop-search-right-product-name">[[${product.productName}]]</div>
@@ -159,6 +79,9 @@
                         </div>
                         <div class="evaluation">
                             <div>庫存<span class="soldquantity">[[${product.productStock}]]</span></div>
+                        </div>
+                        <div class="seller">
+                            <div>商家<span >[[${product.memberBean.userAccount}]]</span></div>
                         </div>
                     </div>
                 </a>

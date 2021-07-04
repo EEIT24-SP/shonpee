@@ -34,10 +34,15 @@ public class AccountController {
 	@Autowired
 	ProductRepository PR;
 
+	// 個人資料頁
 	@RequestMapping(value = ("/main-page/acc"))
 	public String profile1(HttpSession session, Model model, MemberBean MB) {
+
 		String UserName = String.valueOf(session.getAttribute("UserName"));
         if (UserName.isEmpty() || UserName ==null||UserName == "null") {
+
+		System.out.println("測試帳號是空的嗎??");
+
 			return "redirect:/login-page";
 		} else {
 			List<MemberBean> list = MR.findAll();
@@ -52,6 +57,7 @@ public class AccountController {
 			return "account/profile";
 		}
 	}
+
 
 	@PostMapping(value = ("/main-page/acc"))
 	public String test2(@ModelAttribute MemberBean MB, HttpSession session, Model model,
@@ -91,6 +97,7 @@ public class AccountController {
 		return "redirect:/main-page/acc";
 	}
 
+	// 購物車頁
 	@RequestMapping("/main-page/cart")
 	public String cart(HttpSession session, Model model, CartBean CB) {
 		Object Name = session.getAttribute("UserName");
@@ -105,6 +112,8 @@ public class AccountController {
 		}
 		return "cart";
 	}
+
+
 	@PostMapping(value = ("/main-page/cart"))
 	public String cartview(CartBean CB, HttpSession session, Model model, String checkout, String delete, String CKBX) {
 		//取的複數ID,再依照符合ID加入結帳選單

@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.shonpee.shonpee.ServiceRepository.MemberServiceRepository;
 import com.shonpee.shonpee.domain.MemberBean;
+import com.shonpee.shonpee.servicerepository.MemberServiceRepository;
 
 @Controller
 public class LoginController {
@@ -25,7 +25,6 @@ public class LoginController {
 	@PostMapping(value = ("/login-page"))
 	public String control(String loginaccount, String loginpassword, String registered_account,
 			String registered_password, HttpSession session, Model model) {
-		
 		if ((loginaccount != null) && (loginpassword != null)) {
 			// 呼叫model
 			MemberBean beanLogin = memberService.login(loginaccount, loginpassword);

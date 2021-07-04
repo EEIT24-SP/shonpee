@@ -1,4 +1,4 @@
-package com.shonpee.shonpee.ServiceRepository;
+package com.shonpee.shonpee.servicerepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,6 @@ import com.shonpee.shonpee.repository.PropertyRepository;
 import com.shonpee.shonpee.repository.PropertySecondRepository;
 
 
- 
 @Service
 @Transactional
 public class ProductServiceRepository {
