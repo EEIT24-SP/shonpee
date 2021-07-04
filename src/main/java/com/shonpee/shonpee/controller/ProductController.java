@@ -134,6 +134,7 @@ public class ProductController {
 			String typeValue2) {
 		Object Name = session.getAttribute("UserName");
 		Object PDid = session.getAttribute("PDid");
+		System.out.println("我是type"+CB.getTypeValue1());
 		System.out.println("我是PbSRC" + PB.getProductPhoto());
 		if (Name == null) {
 			return "redirect:/login-page";
@@ -148,7 +149,8 @@ public class ProductController {
 			for (CartBean cartBean : list2) {
 				System.out.println("post2");
 				// 如果有商品,則判別商品ID是否重複,重複則自行遞增
-				if (cartBean.getProductBean().getProductid().equals(PDid) && cartBean.getMemberId().equals(Name)) {
+				if (cartBean.getProductBean().getProductid().equals(PDid) && cartBean.getMemberId().equals(Name)
+						&& cartBean.getTypeValue1() ==CB.getTypeValue1() && cartBean.getTypeValue2()==CB.getTypeValue2()) {
 					System.out.println("post3");
 					System.out.println(cartBean.getMemberId());
 					cartBean.setTotalPrice(Integer.toString(
