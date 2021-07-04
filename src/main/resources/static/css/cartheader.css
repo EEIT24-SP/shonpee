@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     resize: none;
+    background-color:rgba(130,130,130,0.1); 
 }
 
 .item {
@@ -12,6 +13,7 @@ body {
     background: #9999FF;
     text-align: center;
     line-height: 50px;
+    
 }
 
 .Bear-header-top {
@@ -21,15 +23,13 @@ body {
     width: 100%;
     /* list-style-type: none; */
     text-align: center;
-    background-color: #a06464;
+    background-color: #583E2E;
+    margin-top: 0px;
 }
 
 .Bear-header-top li {
     display: inline-block;
 }
-
-
-/* 用 inline把list變成一排 */
 
 .Bear-header-top li:hover {
     background-color: #656565;
@@ -44,8 +44,9 @@ body {
 .Bear-header-bottom {
     height: 100px;
     width: 100%;
+/*     min-width: 1400px; */
     text-align: center;
-    background-color: #ffbb55;
+    background-color: #BE9063;
 }
 
 input {
@@ -54,7 +55,7 @@ input {
 }
 
 .Bear-header-btn {
-    background-color: rgb(255, 185, 56);
+    background-color: #be9063;
     border-radius: 5px;
     outline: 0px;
 }
@@ -95,7 +96,7 @@ input {
 .Bear-header-btn {
     width: 40px;
     height: 30px;
-    ;
+ 
     position: absolute;
     margin-top: 3px;
 }
@@ -152,7 +153,6 @@ td {
 }
 
 
-/*隱藏*/
 
 .footer {
     width: 1200px;
@@ -160,6 +160,8 @@ td {
     /* background-color: rgb(204, 204, 204); */
     margin: auto;
 }
+
+
 
 .footer-footer {
     display: flex;
@@ -172,7 +174,6 @@ td {
     width: 60%;
 }
 
-
 /* td{
     border: 2px solid rgb(255, 135, 135);
   } */
@@ -181,11 +182,13 @@ td {
     height: 5px;
     background-color: sandybrown;
     border: 0px;
-    width: 100%;
-    margin: auto;
+
+ width: 100%;
+     margin: auto;
 }
 
-.footer-a {
+
+.footer-a{
     width: 240px;
     line-height: 35px;
     font-size: 13px;
@@ -211,21 +214,23 @@ td {
     font-size: x-small;
 }
 
+
+
 .Bear-header-bottom-container {
     width: 100%;
     height: 100px;
     margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    box-shadow: -1px 3px 5px 1px #A39278;
 }
-
-.Bear-header-bottom-container a {
+.Bear-header-bottom-container  a{
     text-decoration: none;
     color: white;
+
 }
 
 .Bear-header-bottom-container-left {
-    width: 30%;
     height: 100px;
     display: flex;
     align-items: center;
@@ -252,8 +257,7 @@ td {
     align-items: center;
     justify-content: center;
 }
-
-.Bear-header-bottom-container-right a {
+.Bear-header-bottom-container-right a{
     text-decoration: none;
 }
 
@@ -283,7 +287,6 @@ td {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 0 0 30px;
 }
 
 .main-page-container-outside {
@@ -355,15 +358,12 @@ td {
     width: 100%;
     margin: auto;
 }
-
-
 /* /輪播css/ */
 
-#slider,
-.slieder-item-container,
-.img-animate {
+#slider, .slieder-item-container, .img-animate {
     width: 1200px;
-    height: 250px;
+    height: 350px;
+    border-radius: 10px;
 }
 
 #slider {
@@ -396,6 +396,7 @@ td {
 .img-animate>img {
     width: 100%;
     height: 100%;
+    border-radius: 10px;
 }
 
 #slider:hover .arrow-container {
@@ -429,7 +430,7 @@ td {
     width: 20px;
     height: 20px;
     /* background-color: transparent; */
-    /* 模块背景为透明 */
+    /* 璅∪��銝粹��� */
     border-color: #ffffff;
     border-style: solid;
     border-width: 5px 5px 0px 0px;
@@ -444,7 +445,7 @@ td {
     width: 20px;
     height: 20px;
     /* background-color: transparent; */
-    /* 模块背景为透明 */
+    /* 璅∪��銝粹��� */
     border-color: #ffffff;
     border-style: solid;
     border-width: 5px 5px 0px 0px;
@@ -477,6 +478,55 @@ td {
     background: red;
 }
 
-.footer-b {
+.footer-b{
     display: flex;
+}
+
+.header-container{
+	display: flex;
+	justify-content: space-between;
+}
+
+#useraccount{
+	display:flex;
+	margin:auto 90px auto 0;
+	font-size: 16px;
+	text-align: center;
+	align-items: center;
+	font-weight: 500;
+	
+	
+}
+
+#useraccount img{
+	display:flex;
+	
+}
+
+#useraccount a,#productcenter a{
+	text-decoration:none;
+	color: #F1E0D6;
+	display:flex;
+	margin: auto 0; 
+	font-size: 15px;
+	font-weight: 600;
+}
+
+#useraccount span{
+	display:flex;
+	font-size: 15px;
+	font-weight: 600;
+	margin-right: 15px;
+	margin-left: 3px;
+}
+
+#productcenter{
+	font-size: 16px;
+	font-weight: 500;
+	margin-left: 115px;
+	color: #F1E0D6;
+}
+
+#searchinput{
+	width: 100px;
 }

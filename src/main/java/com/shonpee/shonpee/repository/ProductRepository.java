@@ -22,5 +22,10 @@ public interface ProductRepository extends JpaRepository<ProductBean, Integer>,J
     @Query(value="Select * from product where Member_id = ?1",nativeQuery = true)
     public List<ProductBean> findProductBeanbyMember(String data);
 
+    @Query(value="Select * from product where Product_name LIKE %?1% ",nativeQuery = true)
+    public List<ProductBean> findProductBeanbyName(String data);
+    
     List<ProductBean> findByProductFirstCategoryId(Integer productFirstCategoryId);
+    
+    
 }

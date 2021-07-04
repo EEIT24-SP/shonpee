@@ -5,93 +5,26 @@
 <meta charset="UTF-8">
 <title>購物車</title>
 <!--購物車样式表-->
-<link rel="stylesheet" type="text/css" href="../css/cart.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/cart.css}" />
 <!--操作cookie的js文件-->
-<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="../js/cookie.js"></script>
-<link rel="stylesheet" href="../css/Bear_Shop.css">
+<script type="text/javascript" th:src="@{/js/jquery-3.4.1.js}"></script>
+<script type="text/javascript" th:src="@{/js/cookie.js}"></script>
+<link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
 </head>
 
 <body style="background-color: rgb(235, 235, 235);">
-	 <nav class="Bear-header-top">
-    <ul style="
-    margin-top: 0px;">
-      <li> <a href="https://www.w3schools.com/html/default.asp"> <strong>賣家中心</strong> </a> </li>
-      <li style="user-select: none;">|</li>
-      <li> <a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong> </a> </li>
-      <li style="user-select: none;"> |</li>
-      <li> <a href="https://www.w3schools.com/html/default.asp"> <strong>追蹤我們</strong></a> </li>
-      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/FB.svg"
-          alt=""></a>
-      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/Line.svg"
-          alt=""></a>
-      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/IG.svg"
-          alt=""></a>
-      <li style="user-select: none; visibility: hidden;">
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      </li>
-      <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Bell.svg" style="width: 18px;" alt="">
-          <strong>通知總覽</strong></a> </li>
-      <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
-            alt=""><strong>幫助中心</strong> </a></li>
-      <li> <a  href="/main-page/acc"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
-            id="ssaa" th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}"></strong></a></li>
-          
-            <li >
-             <a  href="/login-page" th:text="${#strings.isEmpty(session.UserName)?'':'登出'}"></a>
-             </li>
-    </ul>
-
-  </nav>    
-	
-	<nav
-		style="height: 100px; width: 100%; min-width: 1400px; text-align: center; background-color: #ffffff; border-bottom: 1px solid rgba(121, 121, 121, 0.3);">
-
-		<div class="Bear-header-bottom-container">
-			<div style="width: 30%; height: 100px; display: flex; align-items: center;">
-				<a href="/main-page">
-					<div style="display: flex; align-items: center; width: 340px;">
-						<div>
-							<img style="width: 100px; height: 80px;" src="../pic/Bear.svg" alt="">
-						</div>
-						<div
-							style="font-size: 25px; border-right: 1px solid orange; padding: 10px; height: 20px; display: flex; align-items: center; color: tomato;">
-							熊熊商城</div>
-						<div style="font-size: 20px; padding: 10px; color: tomato;">購物車</div>
-
-					</div>
-				</a>
-			</div>
-
-			<div
-				style="height: 100px; display: flex; align-items: center; justify-content: flex-end; width: 55%;">
-				<div style="background-color: tomato; width: 600px; height: 37px; border-radius: 5px;">
-					<input type="text"
-						style="width: 550px; height: 30px; margin-left: -40px; margin-top: 3px; border-radius: 5px;"
-						placeholder="輸入搜尋文字" value="">
-					<button onclick="btn_Bgc()" class="cart-header-btn">
-						<img src="../pic/Search.svg" alt="">
-					</button>
-				</div>
-			</div>
-		</div>
-	</nav>
-
+<div th:insert="model/cartheader::cartheader"></div>	
 	<div class="cart-mid" id="cart-mid-id">
 				<div class="cart-mid" id="cart-page-product-header">
 			<div>
-				<input type="checkbox" class="cart-page-checkboxTotal">
 				<div class="cart-page-product-header__product">商品</div>
 				<div class="cart-page-product-header__unit-price">單價</div>
 				<div class="cart-page-product-header__quantity">數量</div>
 				<div class="cart-page-product-header__total-price">總計</div>
 				<div class="cart-page-product-header__action">操作</div>
 			</div>
-		</div>
-		
-		
-	<form action=""  th:action="@{/main-page/cart}"  method="post">
-		
+		</div>		
+	<form action=""  th:action="@{/main-page/cart}"  method="post">		
 		<div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
 		 <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden"> 
 			<div class="cart-page-shop-header">
@@ -99,16 +32,10 @@
 					<input  class="cart-page-checkbox">
 					<div>
 						<img src="../pic/store.svg" class="cart-page-shop-header-icon">
-						 <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly"> 
-						 
+						 <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly"> 						 
 					</div>
 				</div>
 			</div>
-			
-
-						
-
-
 				<div class="cart-page-product">
 					<div class="cart-page-product-allitems">
 						<div>
@@ -160,10 +87,6 @@
 	</div>
 	<div id="cart-page-flex-fixed-footer">
 		<div id="cart-page-flex-fixed-footer-thredroll">
-			<div id="cart-page-flex-fixed-footer-thredroll-checkbox">
-				<input type="checkbox" name="" id="">
-				<button>全選</button>
-			</div>
 			<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts">
 				<button  id="cart-checkout-type" disabled="disabled" name="checkout"  value="checkout">去買單</button>
 				<div>

@@ -67,6 +67,7 @@
     </div>
 
     <div class="shop-search-container-right">
+    <div class="searchresult" th:if="${searchname}"><span class="searchspan" th:text="|搜尋結果：${searchname}|"></span></div>
         <div class="shop-search-container-right-products">
             <div class="shop-search-right-product" th:each="product,status : ${products}">
                 <a th:href="@{/product/__${product.productid}__}">
