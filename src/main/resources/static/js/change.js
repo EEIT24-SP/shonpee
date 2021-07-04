@@ -25,35 +25,23 @@
                 obj.style.opacity = '0';
             }, 1000);
     }
-var value1 =0;
 $('.property-value-first').on("click",function(){
-if(value1 ==0){
+	
+ $('.property-value-first').removeClass('property-select');
+ $('.property-value-first').attr("name","");
+
   	$(this).attr("name","typeValue1");
     $(this).addClass('property-select');
-    value1= value1+1;
-    console.log(value1);
-}else if(value1>0){
-
- $(this).removeClass('property-select');
- $('.property-value-first').attr("name","");
-     value1= 0;
-}
-
-
   
 })
 
-var value2 =0;
 $('.property-value-second').on("click",function(){
-if(value2==0){
+
+ $('.property-value-second').removeClass('property-select');
+    $('.property-value-second').attr("name","");
   	$(this).attr("name","typeValue2");
     $(this).addClass('property-select');
-    value2= value2 + 1;
-        console.log(value2);
-}else if(value2 > 0){
- $(this).removeClass('property-select');
-    $('.property-value-second').attr("name","");
-        value2= 0;
+
     
-   }
+  
 })
