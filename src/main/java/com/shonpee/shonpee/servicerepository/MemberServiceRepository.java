@@ -1,15 +1,13 @@
 package com.shonpee.shonpee.servicerepository;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 
-import com.shonpee.shonpee.repository.MemberRepository;
 import com.shonpee.shonpee.domain.MemberBean;
+import com.shonpee.shonpee.repository.MemberRepository;
 
 @Service
 @Transactional

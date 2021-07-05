@@ -105,7 +105,7 @@ public class AccountController {
 		ArrayList<CartBean> arrL = new ArrayList<CartBean>();
 		// 搜尋會員,顯示符合當前帳號的購物車資料
 		for (CartBean cartBean : list) {
-			if (cartBean.getMemberId().equals(Name)) {
+			if (cartBean.getMemberId().equals(Name)) {				
 				arrL.add(cartBean);
 				model.addAttribute("cartitem", arrL);
 			}
