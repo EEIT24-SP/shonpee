@@ -278,4 +278,14 @@ function add_address() {
         }
     }
     
+      $("#FileTypeIcon").change(function () {
+        var file = this.files[0];
+        if (window.FileReader) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function (e) {
+                $(".main-right-profile-right-container-img").attr("src", e.target.result);
+            }
+        }
+    })
 

@@ -176,14 +176,14 @@ public class ProductController {
 			for (CartBean cartBean : list2) {
 				System.out.println("post2");
 				// 如果有商品,則判別商品ID是否重複,重複則自行遞增
-				if (cartBean.getProductBean().getProductid().equals(PDid) && cartBean.getMemberId().equals(Name)
-						&& cartBean.getTypeValue1() ==cart.getTypeValue1() && cartBean.getTypeValue2()==cart.getTypeValue2()) {
+				if (cartBean.getProductBean().getProductid().equals(PDid) && cartBean.getMemberId().equals(UserName)
+						&& cartBean.getTypeValue1() ==CB.getTypeValue1() && cartBean.getTypeValue2()==CB.getTypeValue2()) {
 					System.out.println("post3");
 					System.out.println(cartBean.getMemberId());
 					cartBean.setTotalPrice(Integer.toString(
 							Integer.parseInt(cartBean.getTotalPrice()) / Integer.parseInt(cartBean.getQuantity())));
 					cartBean.setQuantity(
-							Integer.toString(product.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
+							Integer.toString(PB.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
 					cartBean.setTotalPrice(Integer.toString(
 							Integer.parseInt(cartBean.getTotalPrice()) * Integer.parseInt(cartBean.getQuantity())));
 					cartRepository.save(cartBean);
@@ -202,7 +202,7 @@ public class ProductController {
 					CB.setMemberId((String) UserName);
 					CB.setCartPhoto(PB.getProductPhoto());
 					System.out.println("我是OBJ" + (String) UserName);
-					CR.save(CB);
+					cartRepository.save(CB);
 
 					session.getAttribute("cartsize");
 					int a = (Integer) session.getAttribute("cartsize");
@@ -587,7 +587,7 @@ public class ProductController {
 		return "success";
 	}
 
-	@GetMapping("/category/{categoryId}")
+	@GetMapping("/main-page/{categoryId}")
 	public String showOneCategoryProducts(@PathVariable("categoryId") Integer categoryId, Model model) {
 		// 找出第一層的全部類別，放入頁面
 		model.addAttribute("categories", listFirstCategories());
