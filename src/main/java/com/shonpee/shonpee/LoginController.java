@@ -18,7 +18,7 @@ public class LoginController {
  
 	@RequestMapping(value = "/login-page") 
 	public String login(HttpSession session) { 
-		session.setAttribute("UserName","");
+		session.setAttribute("UserName",null);
 		return "login";
 	}
 

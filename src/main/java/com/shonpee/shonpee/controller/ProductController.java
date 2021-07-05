@@ -176,7 +176,8 @@ public class ProductController {
 			for (CartBean cartBean : list2) {
 				System.out.println("post2");
 				// 如果有商品,則判別商品ID是否重複,重複則自行遞增
-				if (cartBean.getProductBean().getProductid().equals(PDid) && cartBean.getMemberId().equals(UserName)) {
+				if (cartBean.getProductBean().getProductid().equals(PDid) && cartBean.getMemberId().equals(Name)
+						&& cartBean.getTypeValue1() ==cart.getTypeValue1() && cartBean.getTypeValue2()==cart.getTypeValue2()) {
 					System.out.println("post3");
 					System.out.println(cartBean.getMemberId());
 					cartBean.setTotalPrice(Integer.toString(
