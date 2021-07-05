@@ -11,22 +11,8 @@
 </head>
 
 <body>
-    <div class="header-navbar-container">
-        <div class="header-navbar-left">
-            <div>
-                <a href=""><img src="/pic/Bear.svg" alt=""></a>
-            </div>
-            <div>
-                <div><a th:href="@{/main-page}">首頁</a></div>
-                <div><a th:href="@{/MyProduct}">賣家商品</a></div>
-                <div><a th:href="@{/mysales}">賣家銷售</a></div>
-            </div>
-        </div>
-        <div class="header-navbar-right">
-            <div class="head-account"><img src="/pic/bear.png" alt=""><span>account1234</span></div>
-            <div class="logout"><span>登出</span></div>
-        </div>
-    </div>
+ <div th:insert="model/sellerhead::sellerhead"></div>
+
     <div class="sellerorder-page">
         <div class="sellerorder-container">
             <div class="sellerorder-content">
@@ -71,9 +57,7 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript ">
-        var contextPath = "[[@{/}]] ";
-    </script>
+
 </body>
 
 

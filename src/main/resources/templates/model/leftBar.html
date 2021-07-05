@@ -8,12 +8,12 @@
 <div  th:fragment="leftBar" >
       <div class="main-user-head">
         <div class="main-user-head-border">
-          <img th:src="@{${session.accphoto}}!=''?@{${session.accphoto}}:'../pic/bear.png'" class="main-user-head-border-img" src="../../pic/Bear.svg" alt="" />
+          <img th:src="@{${session.accphoto}}!=''?@{${session.accphoto}}:'../pic/logosmall.jpg'" class="main-user-head-border-img" src="../../pic/Bear.svg" alt="" />
         </div>
         <div class="main-user-head-text">
           <div class="main-user-head-text-a">
             <div class="main-user-head-text-b">
-              <div th:text="${session.UserName}"></div>
+              <div class="name" th:text="${session.UserName}"></div>
               <div>
                 <a href="/main-page/acc">編輯個人檔案</a>
               </div>
