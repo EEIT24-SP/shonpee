@@ -15,7 +15,7 @@ public class UploadConfig extends WebMvcConfigurerAdapter {
     // bobanderic2000's path
     @Override                                                          
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/pic/**").addResourceLocations("file:C:/Users/boban/JavaEE_workspace/shonpee/src/main/resources/static/pic/");
+        registry.addResourceHandler("/pic/**").addResourceLocations("file:D:/java/eclipse-workspace-JEE/shonpee/src/main/resources/static/pic/");
     }
 }
 

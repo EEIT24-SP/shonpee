@@ -90,3 +90,28 @@
         input_day_sel_list.style.visibility = 'hidden'
         input_day_cnt = 0;
     }
+    
+     $("#FileTypeIcon").change(function () {
+        var file = this.files[0];
+        if (window.FileReader) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function (e) {
+                $(".main-right-profile-right-container-img").attr("src", e.target.result);
+            }
+        }
+    });
+    
+    $('.main-right-profile-list-neme-c input').on('change',function(){
+    	
+    	 var regu =
+    		　 　 "^(([0-9a-zA-Z]+)|([0-9a-zA-Z]+[_.0-9a-zA-Z-]*[0-9a-zA-Z]+))@([a-zA-Z0-9-]+[.])+([a-zA-Z]{2}|net|NET|com|COM|gov|GOV|mil|MIL|org|ORG|edu|EDU|int|INT)$"
+    		　　 var re = new RegExp(regu);
+    		　　 if ($(this).val().search(re) != -1) {
+    		　　 return true;
+    		　　 } else {
+    		　　 window.alert ("請輸入有效合法的E-mail地址 ！")
+    		　　 return false;
+    		　　 }
+    	console.log($(this).val());
+    });

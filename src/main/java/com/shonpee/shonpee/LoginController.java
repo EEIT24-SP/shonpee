@@ -19,6 +19,7 @@ public class LoginController {
 	@RequestMapping(value = "/login-page") 
 	public String login(HttpSession session) { 
 		session.setAttribute("UserName",null);
+		session.setAttribute("accphoto", null);
 		return "login";
 	}
 

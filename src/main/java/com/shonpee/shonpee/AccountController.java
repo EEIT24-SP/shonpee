@@ -2,6 +2,7 @@ package com.shonpee.shonpee;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -103,11 +104,31 @@ public class AccountController {
 		Object Name = session.getAttribute("UserName");
 		List<CartBean> list = CR.findAll();
 		ArrayList<CartBean> arrL = new ArrayList<CartBean>();
+		List<MemberBean> list2 = MR.findAll();
+		String UserName = String.valueOf(session.getAttribute("UserName"));
+        if (UserName.isEmpty() || UserName ==null||UserName == "null") {
+
+		System.out.println("測試帳號是空的嗎??");
+
+			return "redirect:/login-page";
+		}
+		
+		
+		for (MemberBean memberBean : list2) {
+			if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
+				model.addAttribute("acc", memberBean);
+				session.setAttribute("accphoto", memberBean.getMemberPhoto());
+				session.setAttribute("accid", memberBean.getMemberId());
+			}
+		}
 		// 搜尋會員,顯示符合當前帳號的購物車資料
 		for (CartBean cartBean : list) {
-			if (cartBean.getMemberId().equals(Name)) {
+			if (cartBean.getMemberId().equals(Name)&&cartBean.getProductBean().getProductStatus()== null) {
 				arrL.add(cartBean);
+				Collections.reverse(arrL);
 				model.addAttribute("cartitem", arrL);
+			}else if(cartBean.getProductBean().getProductStatus()==0) {
+				CR.delete(cartBean);
 			}
 		}
 		return "cart";

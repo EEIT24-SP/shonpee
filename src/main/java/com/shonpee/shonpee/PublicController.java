@@ -1,6 +1,7 @@
 package com.shonpee.shonpee;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -77,6 +78,7 @@ public class PublicController {
 			for (OrderBean orderBean : listAll) {
 				if (orderBean.getMemberId().equals(Name)) {
 					arrOrder.add(orderBean);
+					Collections.reverse(arrOrder);
 					model.addAttribute("arrOrder", arrOrder);
 					System.out.println("全部頁面成功");
 				}

@@ -44,7 +44,7 @@
 								<div class="main-right-profile-list-email-a">Email</div>
 								<div class="main-right-profile-list-neme-b">
 									<div class="main-right-profile-list-neme-c">
-										<input th:name="|email|" th:value="*{email}">
+										<input type="email" th:name="|email|" th:value="*{email}">
 									</div>
 								</div>
 
@@ -53,7 +53,7 @@
 								<div class="main-right-profile-list-phone-a">手機號碼</div>
 								<div class="main-right-profile-list-neme-b">
 									<div class="main-right-profile-list-neme-c">
-								<input type="text" th:name="|tel|" th:value="*{tel}">
+								<input onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="10" size="10" type="text" th:name="|tel|" th:value="*{tel}">
 								</div>
 								</div>
 
@@ -159,9 +159,9 @@
 						<div class="main-right-profile-right-container">
 							<img class="main-right-profile-right-container-img" th:src="*{memberPhoto}" alt="">
 							<div class="main-right-profile-right-container-a">
-								<label for="file"> <input type="file" id="FileTypeIcon"
-									class="main-right-profile-right-container-img-2" th:name="file">
-								</label>
+								<label for="file">
+                    <input type="file" id="FileTypeIcon"  class="main-right-profile-right-container-img-2" th:name="file">
+                            </label>
 							</div>
 							<div>檔案大小:最大1MB</div>
 							<div>檔案限制: .JPEG, .PNG</div>
@@ -183,9 +183,7 @@
 	<div th:insert="model/footer::footer"></div>
 	<script src="../../js/profile.js"></script>
 	<script src="../../js/user.js" defer></script>
-	<script type="text/javascript">
-		
-	</script>
+	
 
 </body>
 
