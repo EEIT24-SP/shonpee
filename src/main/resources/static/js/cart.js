@@ -1,4 +1,5 @@
-$('.cart-page-checkboxTotal').on('click',function(){
+
+	$('.cart-page-checkboxTotal').on('click',function(){
 		if($('.cart-page-checkbox').prop('checked')==false){
 		$('.cart-page-checkbox').prop('checked','checked');
 		}else{
@@ -68,29 +69,12 @@ $('.cart-page-checkboxTotal').on('click',function(){
 				$(".totals").text(Mtotal)
 				}
 			}
+			// var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value');
+
 		});
-		
-		$('.numcount').on('change',function () {
-			var QT =$(this).val();
-			var price = $(this).parents().children('.product-unit-price').children('.unit-price').val();
-			$(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(QT) * parseInt(price)));
-          var total=0
-          $(".cart-page-checkbox").each(function () {
-              var isChecked = $(this).prop("checked");
-              // 如果多選框被選中
-              if(isChecked == true) {
-            	  var id = parseInt( $(this).parents().children('.product-total-price-box').children('.product-total-price').val());
-                  //4. 累加計算
-                  total += Number(id); 
-              }
-          })
-              $(".totals").text(total);
-		});
-		
-		
-		
-		
-		 $(function() {
+
+
+    $(function() {
         // 載入完頁面時,計算總計
         showTotal();
         console.log( showTotal());

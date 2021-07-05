@@ -8,7 +8,7 @@
 <div  th:fragment="leftBar" >
       <div class="main-user-head">
         <div class="main-user-head-border">
-          <img th:src="@{${session.accphoto}}" class="main-user-head-border-img" src="../../pic/Bear.svg" alt="" />
+          <img th:src="@{${session.accphoto}}!=''?@{${session.accphoto}}:'../pic/bear.png'" class="main-user-head-border-img" src="../../pic/Bear.svg" alt="" />
         </div>
         <div class="main-user-head-text">
           <div class="main-user-head-text-a">
@@ -33,13 +33,13 @@
               <li>
                 <a href="/main-page/acc">個人檔案</a>
               </li>
-              <li>
-                <a href="/main-page/card">銀行帳號/信用卡</a>
-              </li>
-              <li><a href="/main-page/address">地址</a></li>
-              <li>
-                <a href="/main-page/password">更改密碼</a>
-              </li>
+<!--               <li> -->
+<!--                 <a href="/main-page/card">銀行帳號/信用卡</a> -->
+<!--               </li> -->
+<!--               <li><a href="/main-page/address">地址</a></li> -->
+<!--               <li> -->
+<!--                 <a href="/main-page/password">更改密碼</a> -->
+<!--               </li> -->
             </ul>
           </td>
         </tr>

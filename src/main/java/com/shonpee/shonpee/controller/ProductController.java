@@ -6,12 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-import javax.persistence.Id;
+
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -66,7 +65,32 @@ public class ProductController {
 	@Value("${upload-path}")
 	private String uploadpath;
 
-	// 首頁
+
+	@Value("${deletePath}")
+	private String deletePath;
+	
+	@PostMapping("/main-page/search")
+	public String search(Model model,String searchname) {
+		model.addAttribute("categories", listFirstCategories());
+		model.addAttribute("searchname", searchname);
+		List<ProductBean> searchproducts = productRepository.findProductBeanbyName(searchname);
+		List<ProductBean> search= new ArrayList<ProductBean>();
+		List<String> photo = new ArrayList<String>();
+		for(ProductBean product:searchproducts) {
+			if(product.getProductStatus()==null) {
+				System.out.println("product="+product);
+
+				String[] productPhoto = product.getProductPhoto().split(",");
+				photo.add(productPhoto[0]);
+				search.add(product);
+			}
+			
+		}
+		model.addAttribute("photo",photo);
+		model.addAttribute("products", search);
+		return "main";
+	}
+
 	@GetMapping("/main-page")
 	public String mainPage(Model model, HttpSession session) {
 		model.addAttribute("categories", listFirstCategories());
@@ -132,11 +156,14 @@ public class ProductController {
 
 	// 新增商品
 	@PostMapping(value = ("/product/{productid}"))
-	public String item(HttpSession session, Model model, CartBean cart, ProductBean product, String typeValue1, String typeValue2) {
-		Object Name = session.getAttribute("UserName");
-		Object PDid = session.getAttribute("PDid");
 
-		if (Name == null) {
+	public String item(HttpSession session, Model model, CartBean CB, ProductBean PB, String typeValue1,
+			String typeValue2) {
+		String UserName = String.valueOf(session.getAttribute("UserName"));		
+		Object PDid = session.getAttribute("PDid");
+		System.out.println("我是PbSRC" + PB.getProductPhoto());
+		if (UserName == ""||UserName=="null"||UserName.isEmpty()) {
+
 			return "redirect:/login-page";
 		}
 		List<MemberBean> list = memberRepository.findAll();
@@ -149,14 +176,14 @@ public class ProductController {
 			for (CartBean cartBean : list2) {
 				System.out.println("post2");
 				// 如果有商品,則判別商品ID是否重複,重複則自行遞增
-				if (cartBean.getProductBean().getProductid().equals(PDid) && cartBean.getMemberId().equals(Name)
-						&& cartBean.getTypeValue1() ==cart.getTypeValue1() && cartBean.getTypeValue2()==cart.getTypeValue2()) {
+				if (cartBean.getProductBean().getProductid().equals(PDid) && cartBean.getMemberId().equals(UserName)
+						&& cartBean.getTypeValue1() ==CB.getTypeValue1() && cartBean.getTypeValue2()==CB.getTypeValue2()) {
 					System.out.println("post3");
 					System.out.println(cartBean.getMemberId());
 					cartBean.setTotalPrice(Integer.toString(
 							Integer.parseInt(cartBean.getTotalPrice()) / Integer.parseInt(cartBean.getQuantity())));
 					cartBean.setQuantity(
-							Integer.toString(product.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
+							Integer.toString(PB.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
 					cartBean.setTotalPrice(Integer.toString(
 							Integer.parseInt(cartBean.getTotalPrice()) * Integer.parseInt(cartBean.getQuantity())));
 					cartRepository.save(cartBean);
@@ -169,13 +196,14 @@ public class ProductController {
 				if (productBean.getProductid().equals(PDid)) {
 //					 System.out.println(productBean.getMemberBean().getUser_Account().equals("bee567"));
 					System.out.println("lissssssssssssss ");
-					cart.setQuantity(Integer.toString(product.getProductStock()));
-					cart.setTotalPrice(Integer.toString(product.getProductStock() * productBean.getProductPrice()));
-					cart.setProductBean(productBean);
-					cart.setMemberId((String) Name);
-					cart.setCartPhoto(product.getProductPhoto());
-					System.out.println("我是OBJ" + (String) Name);
-					cartRepository.save(cart);
+					CB.setQuantity(Integer.toString(PB.getProductStock()));
+					CB.setTotalPrice(Integer.toString(PB.getProductStock() * productBean.getProductPrice()));
+					CB.setProductBean(productBean);
+					CB.setMemberId((String) UserName);
+					CB.setCartPhoto(PB.getProductPhoto());
+					System.out.println("我是OBJ" + (String) UserName);
+					cartRepository.save(CB);
+
 					session.getAttribute("cartsize");
 					int a = (Integer) session.getAttribute("cartsize");
 					int cartsize = a + 1;
@@ -429,17 +457,14 @@ public class ProductController {
 							}
 						}
 					}
-					String frontPath = "C:/eclipseEE/shonpee/src/main/resources/static/";
 					for (String delephoto : deleteList) {
-						String deletephotoPath = frontPath + delephoto;
+						String deletephotoPath = deletePath + delephoto;
 						File delefile = new File(deletephotoPath);
 						if (delefile.exists()) {
 							boolean isdelete = delefile.delete();
 						}
 					}
 					// 排序新舊圖片順序
-					for (String arr : oldPhotoArr) {
-					}
 					for (int i = 0; i < newPhoto.length; i++) {
 						for (int j = 0; j < oldPhotoArr.length; j++) {
 							if (oldPhotoArr[j].equals("newpic")) {
@@ -562,22 +587,34 @@ public class ProductController {
 		return "success";
 	}
 
-	@GetMapping("/category/{categoryId}")
+	@GetMapping("/main-page/{categoryId}")
 	public String showOneCategoryProducts(@PathVariable("categoryId") Integer categoryId, Model model) {
 		// 找出第一層的全部類別，放入頁面
 		model.addAttribute("categories", listFirstCategories());
+		Optional<Productcategory> category=productCategoryRepository.findById(categoryId);
+		if(category.isPresent()) {
+			model.addAttribute("searchname", category.get().getCategoryName());
+		}
+		
 		// 找出該分類的產品，放入頁面
 		List<ProductBean> productsOfTheCategory = productRepository.findByProductFirstCategoryId(categoryId);
+		List<ProductBean> onSalesProducts= new ArrayList<ProductBean>();
 		List<String> photo = new ArrayList<String>();
 		for(ProductBean product:productsOfTheCategory) {
-			String[] productPhoto = product.getProductPhoto().split(",");
-			photo.add(productPhoto[0]);
+			if(product.getProductStatus()==null) {
+				String[] productPhoto = product.getProductPhoto().split(",");
+				photo.add(productPhoto[0]);
+				onSalesProducts.add(product);
+			}
+			
 		}
 		model.addAttribute("photo",photo);
-		model.addAttribute("products", productsOfTheCategory);
+		model.addAttribute("products", onSalesProducts);
 		return "main";
 	}
 
+
+	
 	
 	
 	

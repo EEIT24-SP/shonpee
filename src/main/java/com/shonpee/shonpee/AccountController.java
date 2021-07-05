@@ -127,7 +127,7 @@ public class AccountController {
 				arrL.add(cartBean);
 				Collections.reverse(arrL);
 				model.addAttribute("cartitem", arrL);
-			}else if(cartBean.getProductBean().getProductStatus()==0) {
+			}else if(cartBean.getProductBean().getProductStatus()==0) {	
 				CR.delete(cartBean);
 			}
 		}

@@ -2,198 +2,109 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<title>購物車</title>
-<!--購物車样式表-->
-<link rel="stylesheet" type="text/css" href="../css/cart.css" />
-<!--操作cookie的js文件-->
-<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
-<link rel="stylesheet" href="../css/Bear_Shop.css">
+    <meta charset="UTF-8">
+    <title>購物車</title>
+    <!--購物車样式表-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cart.css}" />
+    <!--操作cookie的js文件-->
+    <script defer type="text/javascript" th:src="@{/js/jquery-3.4.1.js}"></script>
+    <script defer type="text/javascript" th:src="@{/js/cart.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
 </head>
 
 <body style="background-color: rgb(235, 235, 235);">
-	 <nav class="Bear-header-top">
-    <ul style="
-    margin-top: 0px;">
-      <li> <a href="https://www.w3schools.com/html/default.asp"> <strong>賣家中心</strong> </a> </li>
-      <li style="user-select: none;">|</li>
-      <li> <a href="https://www.w3schools.com/html/default.asp"><strong>下載</strong> </a> </li>
-      <li style="user-select: none;"> |</li>
-      <li> <a href="https://www.w3schools.com/html/default.asp"> <strong>追蹤我們</strong></a> </li>
-      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/FB.svg"
-          alt=""></a>
-      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/Line.svg"
-          alt=""></a>
-      <a href="https://www.w3schools.com/html/default.asp"><img class="Bear-header-top-icon" src="../pic/IG.svg"
-          alt=""></a>
-      <li style="user-select: none; visibility: hidden;">
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      </li>
-      <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Bell.svg" style="width: 18px;" alt="">
-          <strong>通知總覽</strong></a> </li>
-      <li> <a href="https://www.w3schools.com/html/default.asp"><img src="../pic/Help_icon.svg"
-            alt=""><strong>幫助中心</strong> </a></li>
-      <li> <a  href="/main-page/acc"><img src="../pic/Account.svg" style="width: 20px" alt=""><strong
-            id="ssaa" th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}"></strong></a></li>
-          
-            <li >
-             <a  href="/login-page" th:text="${#strings.isEmpty(session.UserName)?'':'登出'}"></a>
-             </li>
-    </ul>
+    <div th:insert="model/cartheader::cartheader"></div>
+    <div class="cart-mid" id="cart-mid-id">
+        <div class="cart-mid" id="cart-page-product-header">
+            <div>
+                <div class="cart-page-product-header__product">商品</div>
+                <div class="cart-page-product-header__unit-price">單價</div>
+                <div class="cart-page-product-header__quantity">數量</div>
+                <div class="cart-page-product-header__total-price">總計</div>
+                <div class="cart-page-product-header__action">操作</div>
+            </div>
+        </div>
+        <form action="" th:action="@{/main-page/cart}" method="post">
+            <div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
+                <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden">
+                <div class="cart-page-shop-header">
+                    <div>
+                        <input class="cart-page-checkbox">
+                        <div>
+                            <img th:src="@{/pic/shop.png}" class="cart-page-shop-header-icon">
+                            <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-page-product">
+                    <div class="cart-page-product-allitems">
+                        <div>
+                            <input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97">
+                            <div> <img th:name="|cartPhoto|" th:src="${userto.cartPhoto}" alt="" class="product-img">
+                            </div>
+                            <div class="product-description-box">
+                                <div>
+                                    <input type="hidden" th:name="|productBean.productName|" th:value="${userto.productBean.productName}">
+                                    <div style="text-overflow : ellipsis;" th:name="|productBean.productName|" th:text="${userto.productBean.productName}"></div>
 
-  </nav>    
-	
-	<nav
-		style="height: 100px; width: 100%; min-width: 1400px; text-align: center; background-color: #ffffff; border-bottom: 1px solid rgba(121, 121, 121, 0.3);">
+                                </div>
+                            </div>
+                            <div class="product-size">
+                                <div class="product-size-button">
+                                    規格
+                                    <div class="product-size-button-icon"></div>
+                                </div>
+                                <div>
+                                    <input class="typevalue1" th:value="${userto.typeValue1}" readonly="readonly">
+                                    <input class="typevalue2" th:value="${userto.typeValue2}" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="product-unit-price">
+                                <input type="text" class="unit-price" th:name="|productBean.productPrice|" th:value="${userto.productBean.productPrice}" readonly="readonly">
+                            </div>
+                            <div class="product-quanftity">
+                                <div>
+                                    <button class="minus" type="button">-</button>
+                                    <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" class="numcount" th:value="${userto.Quantity}" th:oninput="|if(value>${userto.productBean.ProductStock})value=${userto.productBean.ProductStock}|" value="1">
+                                    <button class="plus" type="button">+</button>
+                                </div>
+                                <div class="lastcountdiv">剩下 <span class="lastcount" th:text="${userto.productBean.productStock}"></span> 件</div>
+                            </div>
+                            <div class="product-total-price-box">
+                                <input readonly="readonly" class="product-total-price" type="text" th:value="${userto.TotalPrice}">
+                            </div>
+                            <div class="product-action">
+                                <button type="submit" name="delete" class="product-action-delet" value="GG">刪除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div id="cart-page-flex-fixed-footer">
+        <div id="cart-page-flex-fixed-footer-thredroll">
+            <div id="cart-page-flex-fixed-footer-thredroll-settleaccounts">
+                <button id="cart-checkout-type" disabled="disabled" name="checkout" value="checkout">去買單</button>
+                <div>
+                    <div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total">
+                        <div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total-price" class="totals">$0</div>
+                        <div>總金額<span class="txts"></span>個商品:</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-		<div class="Bear-header-bottom-container">
-			<div style="width: 30%; height: 100px; display: flex; align-items: center;">
-				<a href="/main-page">
-					<div style="display: flex; align-items: center; width: 340px;">
-						<div>
-							<img style="width: 100px; height: 80px;" src="../pic/Bear.svg" alt="">
-						</div>
-						<div
-							style="font-size: 25px; border-right: 1px solid orange; padding: 10px; height: 20px; display: flex; align-items: center; color: tomato;">
-							熊熊商城</div>
-						<div style="font-size: 20px; padding: 10px; color: tomato;">購物車</div>
+    </form>
 
-					</div>
-				</a>
-			</div>
+    <br>
+    <br>
+    <hr class="main-page-container-hr" />
+    <br>
+    <br>
 
-			<div
-				style="height: 100px; display: flex; align-items: center; justify-content: flex-end; width: 55%;">
-				<div style="background-color: tomato; width: 600px; height: 37px; border-radius: 5px;">
-					<input type="text"
-						style="width: 550px; height: 30px; margin-left: -40px; margin-top: 3px; border-radius: 5px;"
-						placeholder="輸入搜尋文字" value="">
-					<button onclick="btn_Bgc()" class="cart-header-btn">
-						<img src="../pic/Search.svg" alt="">
-					</button>
-				</div>
-			</div>
-		</div>
-	</nav>
-
-	<div class="cart-mid" id="cart-mid-id">
-				<div class="cart-mid" id="cart-page-product-header">
-			<div>
-				<input type="checkbox" class="cart-page-checkboxTotal">
-				<div class="cart-page-product-header__product">商品</div>
-				<div class="cart-page-product-header__unit-price">單價</div>
-				<div class="cart-page-product-header__quantity">數量</div>
-				<div class="cart-page-product-header__total-price">總計</div>
-				<div class="cart-page-product-header__action">操作</div>
-			</div>
-		</div>
-		
-		
-	<form action=""  th:action="@{/main-page/cart}"  method="post">
-		
-		<div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
-		 <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden"> 
-			<div class="cart-page-shop-header">
-				<div>
-					<input  class="cart-page-checkbox">
-					<div>
-						<img src="../pic/store.svg" class="cart-page-shop-header-icon">
-						 <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly"> 
-						 
-					</div>
-				</div>
-			</div>
-			
-
-						
-
-
-				<div class="cart-page-product">
-					<div class="cart-page-product-allitems">
-						<div>
-							<input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97"> 
-						<div>	<img 
-                     th:name="|cartPhoto|" th:src="${userto.cartPhoto}"
-								alt="" class="product-img">
-								</div>
-							<div class="product-description-box">
-								<div>
-								<input type="hidden"  th:name="|productBean.productName|" th:value="${userto.productBean.productName}">
-								<div  style="text-overflow : ellipsis;"  th:name="|productBean.productName|" th:text="${userto.productBean.productName}"></div>
-								
-								</div>
-							</div>
-							<div class="product-size">
-								<div class="product-size-button" >
-									規格
-									<div class="product-size-button-icon"></div>
-								</div>
-								<div >
-								<input class="typevalue1" th:value="${userto.typeValue1}" readonly="readonly">
-								<input class="typevalue2" th:value="${userto.typeValue2}" readonly="readonly">
-								</div>
-							</div>
-							<div class="product-unit-price">
-							<input type="text" class="unit-price"  th:name="|productBean.productPrice|" 
-							th:value="${userto.productBean.productPrice}" readonly="readonly" >
-							</div>
-							<div class="product-quanftity">
-								<div>
-									<button class="minus"  type="button">-</button>
-							<input type="text" onkeyup="value=value.replace(/[^\d]/g,'')"  class="numcount"  th:value="${userto.Quantity}"  value="1" >
-									<button  class="plus"  type="button">+</button>
-								</div>
-								<div>剩下10000件</div>
-							</div>
-							<div class="product-total-price-box">
-								<input readonly="readonly" class="product-total-price" type="text"  th:value="${userto.TotalPrice}">
-							</div>
-							<div class="product-action">
-								<button type="submit"  name="delete" class="product-action-delet" value="GG">刪除</button>
-								<button class="product-action-like">
-									<div>找相似<img src="../pic/triangle.svg" alt=""></div>
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-		</div>
-	</div>
-	<div id="cart-page-flex-fixed-footer">
-		<div id="cart-page-flex-fixed-footer-thredroll">
-			<div id="cart-page-flex-fixed-footer-thredroll-checkbox">
-				<input type="checkbox" name="" id="">
-				<button>全選</button>
-			</div>
-			<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts">
-				<button  id="cart-checkout-type" disabled="disabled" name="checkout"  value="checkout">去買單</button>
-				<div>
-					<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total">
-						<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total-price" class="totals">$0</div>
-						<div>總金額<span class="txts"></span>個商品:</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-</form>
-
-
-
-
-
-	<br>
-	<br>
-	<hr class="main-page-container-hr" />
-	<br>
-	<br>
-
-	
     <div th:insert="model/footer::footer"></div>
 
-		<script type="text/javascript" src="../js/Cart.js"></script>
-		
 </body>
 
 </html>
