@@ -44,29 +44,27 @@ import com.shonpee.shonpee.servicerepository.PropertyServiceRepository;
 public class ProductController {
 
 	@Autowired
+	private MemberRepository memberRepository;
+	@Autowired
 	private ProductRepository productRepository;
 	@Autowired
 	private PropertyRepository propertyRepository;
-
+	@Autowired
+	private ProductcategoryRepository productCategoryRepository;
 	@Autowired
 	private PropertySecondRepository propertySecondRepository;
 	@Autowired
-	private CartRepository CR;
+	private CartRepository cartRepository;
 	@Autowired
 	private ProductServiceRepository productService;
 	@Autowired
 	private PropertyServiceRepository propertyServiceRepository;
 	@Autowired
 	private PropertySecondServiceRepository propertySecondServiceRepository;
-	@Autowired
-	private ProductcategoryRepository productCategoryRepository;
-	@Autowired
-	private MemberRepository memberRepository;
-	@Autowired
-	ProductRepository PR;
 
 	@Value("${upload-path}")
 	private String uploadpath;
+
 
 	@Value("${deletePath}")
 	private String deletePath;
@@ -92,12 +90,13 @@ public class ProductController {
 		model.addAttribute("products", search);
 		return "main";
 	}
+
 	@GetMapping("/main-page")
 	public String mainPage(Model model, HttpSession session) {
 		model.addAttribute("categories", listFirstCategories());
 		Object Name = session.getAttribute("UserName");
-		System.out.println("Name="+Name);
-		List<CartBean> list = CR.findAll();
+		System.out.println("Name="+Name);		
+		List<CartBean> list = cartRepository.findAll();
 		ArrayList<CartBean> cartcnt = new ArrayList<CartBean>();
 		// 搜尋會員,顯示符合當前帳號的購物車資料
 		for (CartBean cartBean : list) {
@@ -114,6 +113,8 @@ public class ProductController {
 		return "main";
 	}
 
+
+	// 產品頁
 	@GetMapping("/product/{productid}")
 	public String bearitem(@PathVariable("productid") Integer productid, Model model, HttpSession session) {
 		System.out.println("我是" + productid);
@@ -152,18 +153,22 @@ public class ProductController {
 		return "bear_item";
 	}
 
+
+	// 新增商品
 	@PostMapping(value = ("/product/{productid}"))
+
 	public String item(HttpSession session, Model model, CartBean CB, ProductBean PB, String typeValue1,
 			String typeValue2) {
 		String UserName = String.valueOf(session.getAttribute("UserName"));		
 		Object PDid = session.getAttribute("PDid");
 		System.out.println("我是PbSRC" + PB.getProductPhoto());
 		if (UserName == ""||UserName=="null"||UserName.isEmpty()) {
+
 			return "redirect:/login-page";
 		}
 		List<MemberBean> list = memberRepository.findAll();
 		List<ProductBean> list1 = productRepository.findAll();
-		List<CartBean> list2 = CR.findAll();
+		List<CartBean> list2 = cartRepository.findAll();
 		System.out.println("post");
 		for (MemberBean memberBean : list) {
 			// 會員底下搜尋 如過購物車數量為0,則執行productBean新增置購物車
@@ -177,10 +182,10 @@ public class ProductController {
 					cartBean.setTotalPrice(Integer.toString(
 							Integer.parseInt(cartBean.getTotalPrice()) / Integer.parseInt(cartBean.getQuantity())));
 					cartBean.setQuantity(
-							Integer.toString(PB.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
+							Integer.toString(product.getProductStock() + Integer.parseInt(cartBean.getQuantity())));
 					cartBean.setTotalPrice(Integer.toString(
 							Integer.parseInt(cartBean.getTotalPrice()) * Integer.parseInt(cartBean.getQuantity())));
-					CR.save(cartBean);
+					cartRepository.save(cartBean);
 					return "redirect:/product/" + PDid;
 				}
 			}
@@ -197,6 +202,7 @@ public class ProductController {
 					CB.setCartPhoto(PB.getProductPhoto());
 					System.out.println("我是OBJ" + (String) UserName);
 					CR.save(CB);
+
 					session.getAttribute("cartsize");
 					int a = (Integer) session.getAttribute("cartsize");
 					int cartsize = a + 1;
@@ -388,12 +394,12 @@ public class ProductController {
 				bean.setProductName(productname);
 				ProductBean newbean = productService.insert(bean);
 				Integer newid = newbean.getProductid();
-				ProductBean pb = new ProductBean();
-				pb.setProductid(newid);
-				propertyBean.setProductBean(pb);
+				ProductBean product = new ProductBean();
+				product.setProductid(newid);
+				propertyBean.setProductBean(product);
 				propertyBean.setPropertyName(propertyName);
 				propertyBean.setPropertyValue(propertyValue);
-				propertyBeanSecond.setProductBean(pb);
+				propertyBeanSecond.setProductBean(product);
 				propertyBeanSecond.setPropertyName(propertySecondName);
 				propertyBeanSecond.setPropertyValue(propertySecondValue);
 	
@@ -566,27 +572,27 @@ public class ProductController {
 	public String deleteProduct(@RequestParam("productid") Integer prodcutid) {
 		System.out.println("我是回傳ID" + prodcutid);
 		Optional<ProductBean> deleteProductBean = productRepository.findById(prodcutid);
-		List<CartBean> cartBeans = CR.findAll();
+		List<CartBean> cartBeans = cartRepository.findAll();
 		if (deleteProductBean.isPresent()) {
 			for (CartBean cartBean : cartBeans) {
 				if (cartBean.getProductBean().getProductid().equals(prodcutid)) {
-					CR.deleteById(cartBean.getCartId());
+					cartRepository.deleteById(cartBean.getCartId());
 				}
 			}
 			ProductBean prbean = deleteProductBean.get();
 			prbean.setProductStatus(0);
-			PR.save(prbean);
+			productRepository.save(prbean);
 		}
 		return "success";
 	}
 
-	@GetMapping("/main-page/{categoryId}")
+	@GetMapping("/category/{categoryId}")
 	public String showOneCategoryProducts(@PathVariable("categoryId") Integer categoryId, Model model) {
 		// 找出第一層的全部類別，放入頁面
 		model.addAttribute("categories", listFirstCategories());
 		Optional<Productcategory> category=productCategoryRepository.findById(categoryId);
 		if(category.isPresent()) {
-			 model.addAttribute("searchname", category.get().getCategoryName());
+			model.addAttribute("searchname", category.get().getCategoryName());
 		}
 		
 		// 找出該分類的產品，放入頁面

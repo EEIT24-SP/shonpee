@@ -1,4 +1,3 @@
-
 package com.shonpee.shonpee.servicerepository;
 
 import java.util.Optional;
@@ -24,16 +23,13 @@ public class MemberServiceRepository {
             System.out.println(!optional.isEmpty());
             if (password != null && password.length() != 0) {
                 String pass = bean.getPassword(); // 輸入帳號對應的密碼
-//                System.out.println(pass);
                 String temp = password; // 使用者輸入的密碼
-//                System.out.println(temp);
                 // 先做註冊(加密)再來試試看
                 if (pass.equals(temp)) {
-//                    System.out.println("okokokokok");
+                    System.out.println("okokokokok");
                     return bean;
                 }
             }
-
         }
         return null;
     }
@@ -43,22 +39,15 @@ public class MemberServiceRepository {
     }
 
     public MemberBean registered_member(String account, String password) {
-        System.out.println("小夫我近來摟");
         Optional<MemberBean> optional = MemberDao.findById(account);
-        System.out.println(optional);
-//        MemberBean bean = optional.get();
-        System.out.println(optional.isPresent());
         if (!optional.isPresent()) {// 如果帳號沒有重複
-//            System.out.println("noooooorepet");
-            String psword = MemberDao.QueryAnnotationParams(password);// 查詢密碼有沒有重複
-//            System.out.println("password="+psword);
+            String psword = MemberDao.queryAnnotationParams(password);// 查詢密碼有沒有重複
+            System.out.println("password="+psword);
             if (psword == null) {
                 MemberBean bean = new MemberBean();
                 bean.setUserAccount(account);
                 bean.setPassword(password);
                 bean = MemberDao.save(bean);
-//                System.out.println("申請成功");
-//                System.out.println(bean);
                 return bean;
             } //else {
 //                model.addAttribute("erro","密碼已被註冊" );
