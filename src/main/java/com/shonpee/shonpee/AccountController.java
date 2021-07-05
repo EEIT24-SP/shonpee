@@ -123,13 +123,13 @@ public class AccountController {
 		}
 		// 搜尋會員,顯示符合當前帳號的購物車資料
 		for (CartBean cartBean : list) {
-			if (cartBean.getMemberId().equals(Name)&&cartBean.getProductBean().getProductStatus()== null) {
+			if (cartBean.getMemberId().equals(Name) && cartBean.getProductBean().getProductStatus() == null) {
 				arrL.add(cartBean);
-				Collections.reverse(arrL);
-				model.addAttribute("cartitem", arrL);
-			}else if(cartBean.getProductBean().getProductStatus()==0) {	
+			}else if(cartBean.getProductBean().getProductStatus()!=null) {	
 				CR.delete(cartBean);
 			}
+			Collections.reverse(arrL);
+			model.addAttribute("cartitem", arrL);
 		}
 		return "cart";
 	}
