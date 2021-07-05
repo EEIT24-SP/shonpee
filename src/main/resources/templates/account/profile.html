@@ -59,15 +59,6 @@
 
 							</div>
 
-							<div class="main-right-profile-list-store">
-								<div class="main-right-profile-list-store-a">賣場名稱</div>
-								<div class="main-right-profile-list-store-b">
-									<div class="main-right-profile-list-store-c">
-										<input class="main-right-profile-list-store-input" type="text">
-									</div>
-								</div>
-							</div>
-
 							<div class="main-right-profile-list-sex">
 								<div class="main-right-profile-list-sex-a">性別</div>
 								<div>
@@ -157,7 +148,7 @@
 							</div>
 						</div>
 						<div class="main-right-profile-right-container">
-							<img class="main-right-profile-right-container-img" th:src="*{memberPhoto}" alt="">
+							<img class="main-right-profile-right-container-img" th:src="*{memberPhoto}!=null?*{memberPhoto}:'../pic/bear.png'"  alt="請上傳圖片">
 							<div class="main-right-profile-right-container-a">
 								<label for="file"> <input type="file" id="FileTypeIcon"
 									class="main-right-profile-right-container-img-2" th:name="file">

@@ -1,6 +1,8 @@
- $('.sort-item').mouseenter(function () {
+ 
+
+ $('.category-wrapper').mouseenter(function () {
     $(this).addClass('moveup')
 });
-$('.sort-item').mouseleave(function () {
+$('.category-wrapper').mouseleave(function () {
     $(this).removeClass('moveup')
 });
