@@ -1,34 +1,31 @@
-
 $(".delete-button").on("click", function() {
-	console.log($(this).attr('value'));
-	var apple = $(this).attr('value');
-	$.confirm({
-		title: '請確認是否進行刪除',
-		animation: 'zoom',
-		closeAnimation: 'scale',
-		content: '刪除後資料不可以復原喔!!!',
-		buttons: {
-			確認: function() {
-				$.ajax({
-					type: "GET",
-					url: "/DeleteProduct",
-					async:false,
-					data: {
-						"productid": apple,
+    var apple = $(this).attr('value');
+    $.confirm({
+        title: '請確認是否進行刪除',
+        animation: 'zoom',
+        closeAnimation: 'scale',
+        content: '刪除後資料不可以復原喔!!!',
+        buttons: {
+            確認: function() {
+                $.ajax({
+                    type: "GET",
+                    url: "/DeleteProduct",
+                    async: false,
+                    data: {
+                        "productid": apple,
 
-					},
-					success: function(data) {
-						 window.location.reload();
-						console.log("刪除成功!!")
-					},
-					error: function(e) {
-						alert("OOPS!!!刪除錯誤囉!!!")
-					}
-				})
-			},
-			我再想想: function() {
+                    },
+                    success: function(data) {
+                        window.location.reload();
+                    },
+                    error: function(e) {
+                        alert("OOPS!!!刪除錯誤囉!!!")
+                    }
+                })
+            },
+            我再想想: function() {
 
-			}
-		}
-	});
+            }
+        }
+    });
 });

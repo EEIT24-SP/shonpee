@@ -1,7 +1,5 @@
-
-
-$(document).ready(function () {
-    $('.Category-item').click(function () {
+$(document).ready(function() {
+    $('.Category-item').click(function() {
         $('.Category-item').removeClass('background-grey');
         $(this).addClass('background-grey');
 
@@ -412,12 +410,12 @@ $(document).ready(function () {
         } else {
             $("#span2").css('display', 'none');
         }
-		
-		
-		
+
+
+
     })
 
-    $('.Category-item-second').click(function () {
+    $('.Category-item-second').click(function() {
         $('.Category-item-second').removeClass('background-grey');
         $(this).addClass('background-grey');
         $('.Category-third-container').removeClass('display-block');
@@ -427,15 +425,14 @@ $(document).ready(function () {
 
     })
 
-    $('.Category-item-third').click(function () {
+    $('.Category-item-third').click(function() {
         $('.Category-item-third').removeClass('background-grey');
         $(this).addClass('background-grey');
         $("#span2").addClass('display-block')
         $('#category-third').text($(this).children().eq(0).text());
     })
 
-    var change = $('.input-text').on('keyup', function (e) {
-        console.log($(".input-text").val().length)
+    var change = $('.input-text').on('keyup', function(e) {
         e.preventDefault();
         $(".msg").css("display", "none");
         $(this).removeClass("border-red");
@@ -443,12 +440,12 @@ $(document).ready(function () {
         $(".input-length").text($(".input-text").val().length)
     })
 
-    $(".input-text").blur(function () {
+    $(".input-text").blur(function() {
         if ($(this).val() == null || $(this).val() == "") {
-        
+
             $(".msg").css("display", "block");
             $(this).addClass("border-red");
-   
+
 
         } else if ($(this) != null || $(this).change == "") {
             $(".msg").css("display", "none");
@@ -457,39 +454,25 @@ $(document).ready(function () {
 
         }
     })
-    
 
-    $(".btn").on("click", function () {
-       
-        if ($('#category-first').text() != '' && $('#category-second').text() != '' && $(".input-text").val() !=''){
-	        if ($('#category-second').text() == '教科參考書' || $('#category-second').text() == '雜誌期刊' || $('#category-second').text() == '文學小說'
-	            || $('#category-second').text() == '旅遊相關書籍' || $('#category-second').text() == '語言學習相關書籍') {
-	          
-	          $('#btn').attr('value',$('#category-first').text()+","+$('#category-second').text());
-	          console.log( $('#btn').attr('value'));
-	   
 
-	          
-	        } else {
-	            if ($('#category-third').text() != '') {
-	                
-	           		$('#btn').attr('value',$('#category-first').text()+","+$('#category-second').text()+","+$('#category-third').text()); 
-	           		 console.log( $('#btn').attr('value'));
-	               
-       			} else {
-                alert("資料尚未完成!!!")
-                 return false;
+    $(".btn").on("click", function() {
 
+        if ($('#category-first').text() != '' && $('#category-second').text() != '' && $(".input-text").val() != '') {
+            if ($('#category-second').text() == '教科參考書' || $('#category-second').text() == '雜誌期刊' || $('#category-second').text() == '文學小說' ||
+                $('#category-second').text() == '旅遊相關書籍' || $('#category-second').text() == '語言學習相關書籍') {
+                $('#btn').attr('value', $('#category-first').text() + "," + $('#category-second').text());
+            } else {
+                if ($('#category-third').text() != '') {
+                    $('#btn').attr('value', $('#category-first').text() + "," + $('#category-second').text() + "," + $('#category-third').text());
+                } else {
+                    alert("資料尚未完成!!!")
+                    return false;
+                }
             }
+        } else {
+            alert("資料尚未完成!!!")
+            return false;
         }
-    }else {
-        alert("資料尚未完成!!!")
-
-        return false;
-
-    }
     })
 })
-
-
-

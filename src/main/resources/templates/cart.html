@@ -9,6 +9,7 @@
     <!--操作cookie的js文件-->
     <script defer type="text/javascript" th:src="@{/js/jquery-3.4.1.js}"></script>
     <script defer type="text/javascript" th:src="@{/js/cart.js}"></script>
+    <script defer type="text/javascript" th:src="@{/js/itemInputQty.js}"></script>
     <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
 </head>
 
@@ -29,7 +30,6 @@
                 <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden">
                 <div class="cart-page-shop-header">
                     <div>
-                        <input class="cart-page-checkbox">
                         <div>
                             <img th:src="@{/pic/shop.png}" class="cart-page-shop-header-icon">
                             <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly">
@@ -39,7 +39,7 @@
                 <div class="cart-page-product">
                     <div class="cart-page-product-allitems">
                         <div>
-                            <input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97">
+                            <input type="checkbox" class="cart-page-checkbox" name="CKBX">
                             <div> <img th:name="|cartPhoto|" th:src="${userto.cartPhoto}" alt="" class="product-img">
                             </div>
                             <div class="product-description-box">

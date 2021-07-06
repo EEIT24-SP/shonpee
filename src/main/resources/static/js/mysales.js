@@ -60,7 +60,6 @@ function ajaxChangeStatusShipped(updatingOrderId, statusNumBeforeChanging) {
     }).fail(function() {
         ////////// 可以在畫面塞入錯誤訊息提示，可以請使用者重新整理再操作，或是其他補救措施
         // TODO
-        console.log("AJAX -> FAIL");
     });
 }
 
@@ -77,7 +76,6 @@ function ajaxChangeStatusCanceled(cancelingOrderId) {
     }).fail(function() {
         ////////// 可以在畫面塞入錯誤訊息提示，可以請使用者重新整理再操作，或是其他補救措施
         // TODO
-        console.log("AJAX -> FAIL");
     });
 }
 

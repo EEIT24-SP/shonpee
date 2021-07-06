@@ -38,12 +38,8 @@ public class AccountController {
 	// 個人資料頁
 	@RequestMapping(value = ("/main-page/acc"))
 	public String profile1(HttpSession session, Model model, MemberBean MB) {
-
 		String UserName = String.valueOf(session.getAttribute("UserName"));
         if (UserName.isEmpty() || UserName ==null||UserName == "null") {
-
-		System.out.println("測試帳號是空的嗎??");
-
 			return "redirect:/login-page";
 		} else {
 			List<MemberBean> list = MR.findAll();
@@ -52,7 +48,6 @@ public class AccountController {
 					model.addAttribute("acc", memberBean);
 					session.setAttribute("accphoto", memberBean.getMemberPhoto());
 					session.setAttribute("accid", memberBean.getMemberId());
-
 				}
 			}
 			return "account/profile";
@@ -65,7 +60,6 @@ public class AccountController {
 			@RequestParam(value = "file") MultipartFile file) {
 		String fileName = file.getOriginalFilename();
 		String filepath = uploadpath + "/" + fileName;
-		System.out.println("我是檔案名"+fileName);
 		//檔案不是空才寫入
 		if (!fileName.isEmpty()) {
 			try {
@@ -107,13 +101,8 @@ public class AccountController {
 		List<MemberBean> list2 = MR.findAll();
 		String UserName = String.valueOf(session.getAttribute("UserName"));
         if (UserName.isEmpty() || UserName ==null||UserName == "null") {
-
-		System.out.println("測試帳號是空的嗎??");
-
 			return "redirect:/login-page";
 		}
-		
-		
 		for (MemberBean memberBean : list2) {
 			if (memberBean.getUserAccount().equals(session.getAttribute("UserName"))) {
 				model.addAttribute("acc", memberBean);
@@ -121,6 +110,7 @@ public class AccountController {
 				session.setAttribute("accid", memberBean.getMemberId());
 			}
 		}
+
 		// 搜尋會員,顯示符合當前帳號的購物車資料
 		for (CartBean cartBean : list) {
 			if (cartBean.getMemberId().equals(Name) && cartBean.getProductBean().getProductStatus() == null) {
@@ -143,7 +133,6 @@ public class AccountController {
 			List<CartBean> list = CR.findAll();
 			for (CartBean cartBean : list) {
 				if (cartBean.getCartId().equals(Integer.parseInt(delete))) {
-					System.out.println("成功刪除CB=" + cartBean.getCartId() + "DELETE=" + delete);
 					CR.deleteById(Integer.parseInt(delete));
 					int a = (Integer) session.getAttribute("cartsize");
 					int cartsize = a - 1;
@@ -151,7 +140,6 @@ public class AccountController {
 					return "redirect:/main-page/cart";
 				}
 			}
-
 		} else if(checkout == null) {
 			return "redirect:/main-page/cart";			
 		} else if (checkout != null) {
@@ -160,7 +148,6 @@ public class AccountController {
 			String[] splitQuantity = CB.getQuantity().split(",", -1);
 			String[] splittypeValue1 = CB.getTypeValue1().split(",",-1);
 			String[] splittypeValue2 = CB.getTypeValue2().split(",",-1);
-			System.out.println("送出表單");
 			String Name = session.getAttribute("UserName").toString();
 			List<CartBean> list = CR.findAll();
 			ArrayList<CartBean> CBlist = new ArrayList<CartBean>();
@@ -174,48 +161,17 @@ public class AccountController {
 						cartBean.setTotalPrice(splitTotalPrice[i]);
 						cartBean.setTypeValue1(splittypeValue1[i]);
 						cartBean.setTypeValue2(splittypeValue2[i]);
-						System.out.println("VALUE的值"+splittypeValue2[i]);
 						CR.save(cartBean);
 						CBlist.add(cartBean);
-						System.out.println("wwwwwwwwhhhhhhhhaaaaatttttttt");
 					}
 				}
 			}	
 			// 搜尋會員,顯示符合當前帳號的購物車資料
-			System.out.println(CBlist);
 			session.setAttribute("checkoutCB", CBlist);
 			return "redirect:/checkout";
 		}
-
 		return "redirect:/main-page/cart";
 	}
 
-//程式範本暫存區	
-//進入商品面	
-//	@RequestMapping(value = ("/main-page/item"))
-//	public String itemview(HttpSession session, Model model, MemberBean MB) {
-//		Object Name = session.getAttribute("UserName");
-//		List<MemberBean> list = MR.findAll();
-//		for (MemberBean memberBean : list) {
-//			if (memberBean.getUserAccount().equals(Name)) {
-//				List<ProductBean> list1 = PR.findAll();
-//				for (ProductBean productBean : list1) {
-//					if (productBean.getMemberBean().getUserAccount().equals(Name)
-//							&& productBean.getProductid().equals(10)) {
-//						model.addAttribute("item", productBean);
-//						String[] split = productBean.getProductPhoto().split(",");
-//						model.addAttribute("photolist", split);
-//						for (int i = 0; i < split.length; i++) {
-//							System.out.println("我是SP" + split.length);
-//						}
-//
-//						// 預設
-//						System.out.println(productBean.getProductid());
-//						session.setAttribute("itemid", productBean.getProductid());
-//					}
-//				}
-//			}
-//
-//		}
 }
 
