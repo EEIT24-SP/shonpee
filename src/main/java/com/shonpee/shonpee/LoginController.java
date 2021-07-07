@@ -19,6 +19,7 @@ public class LoginController {
 	@RequestMapping(value = "/login-page") 
 	public String login(HttpSession session) { 
 		session.setAttribute("UserName",null);
+		session.setAttribute("accphoto", null);
 		return "login";
 	}
 
@@ -29,11 +30,9 @@ public class LoginController {
 			// 呼叫model
 			MemberBean beanLogin = memberService.login(loginaccount, loginpassword);
 			if (beanLogin == null) {
-				System.out.println("fail");
 				model.addAttribute("loginfalse",true);
 				return "login";
 			} else {
-//				System.out.println(session.getAttribute("user"));
 				session.setAttribute("UserName", beanLogin.getUserAccount());
 				return "redirect:/main-page";
 			}

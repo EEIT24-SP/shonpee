@@ -9,7 +9,7 @@
 				从购物车中取出该商品，然后更pCount值追加1
 				否则：创建一个新的对象，保存到购物中。同时该商品的数量为1
  */
-var item_input_qty = document.getElementById('item-input-qty');//控制輸入數量
+var item_input_qty = document.getElementById('item-input-qty'); //控制輸入數量
 var ccount = document.getElementById("ccount"); //显示商品总数量的标签节点对象
 var btns = document.querySelectorAll(".item-cart-btn-join"); //所有的购物车按钮
 
@@ -28,71 +28,63 @@ var btns = document.querySelectorAll(".item-cart-btn-join"); //所有的购物�
 //var totalCount = 0; //默认为0
 //for (var i = 0, len = listObj.length; i < len; i++) {
 //	totalCount = listObj[i].pCount + totalCount;
-//	// console.log(item_input_qty.value); 會報錯無法顯示數量
 //}
 // ccount.innerHTML = totalCount ;
-// console.log(listObj.length);
-window.onload=function(){
-	if (ccount.innerText != 0) {
-		ccount.style.visibility='visible';
-	}
-	else if(ccount.innerText == 0){
-		ccount.style.visibility='hidden';
-	}
-	// console.log(listObj.length);
+window.onload = function() {
+    if (ccount.innerText != 0) {
+        ccount.style.visibility = 'visible';
+    } else if (ccount.innerText == 0) {
+        ccount.style.visibility = 'hidden';
+    }
 }
 
 
 
 /*循环为每一个按钮添加点击事件*/
 for (var i = 0, len = btns.length; i < len; i++) {
-	btns[i].onclick = function () {
-		ccount.style.visibility='visible';
-		ccount.innerHTML = listObj.length;
-		var dl = this.parentNode.parentNode.parentNode.parentNode
-		var pid = dl.getAttribute("pid");//获取自定义属性
-		var arrs = dl.children;//获取所有子节点
-		// console.log(arrs[1].children[0].children[1].innerHTML)
-		
-//顯示成功加入購物車資訊
-		var obj = document.getElementById("success-msg");
-            obj.style.opacity = '1';
-			obj.style.zIndex = '1';
-            window.setTimeout(
-                function removethis() {
-					var obj = document.getElementById("success-msg");
-                    obj.style.opacity = '0';
-					obj.style.zIndex = '-1';
-                }, 1000);
-				
+    btns[i].onclick = function() {
+        ccount.style.visibility = 'visible';
+        ccount.innerHTML = listObj.length;
+        var dl = this.parentNode.parentNode.parentNode.parentNode
+        var pid = dl.getAttribute("pid"); //获取自定义属性
+        var arrs = dl.children; //获取所有子节点
 
-//把數量回傳至上方
-		if (checkObjByPid(pid)) {
-			listObj = updateObjById(pid, parseInt(item_input_qty.value))
-			console.log(listObj.length)
-		} else {
-			var imgSrc = arrs[0].children[0].firstElementChild.children[0].src
-			var pName = arrs[1].children[0].innerHTML
-			var pDesc = arrs[1].children[0].children[0].innerHTML
-			var pDesc_type = arrs[1].children[8].children[0].children[1].innerHTML
-			var price = arrs[1].children[2].children[0].children[1].innerHTML
-			var obj = {
-				pid: pid,
-				pImg: imgSrc,
-				pName: pName,
-				pDesc: pDesc,
-				pDesc_type:pDesc_type,
-				price: price,
-				pCount: parseInt(item_input_qty.value)
-			};
-			listObj.push(obj)
-			listObj = updateData(listObj);
-		}
-		//在圖示上如果id重複,id數量不會疊加
-		ccount.innerHTML = listObj.length;
-		//以下會疊加
-		// ccount.innerHTML = getTotalCount();
-	}
+        //顯示成功加入購物車資訊
+        var obj = document.getElementById("success-msg");
+        obj.style.opacity = '1';
+        obj.style.zIndex = '1';
+        window.setTimeout(
+            function removethis() {
+                var obj = document.getElementById("success-msg");
+                obj.style.opacity = '0';
+                obj.style.zIndex = '-1';
+            }, 1000);
+
+
+        //把數量回傳至上方
+        if (checkObjByPid(pid)) {
+            listObj = updateObjById(pid, parseInt(item_input_qty.value))
+        } else {
+            var imgSrc = arrs[0].children[0].firstElementChild.children[0].src;
+            var pName = arrs[1].children[0].innerHTML;
+            var pDesc = arrs[1].children[0].children[0].innerHTML;
+            var pDesc_type = arrs[1].children[8].children[0].children[1].innerHTML;
+            var price = arrs[1].children[2].children[0].children[1].innerHTML;
+            var obj = {
+                pid: pid,
+                pImg: imgSrc,
+                pName: pName,
+                pDesc: pDesc,
+                pDesc_type: pDesc_type,
+                price: price,
+                pCount: parseInt(item_input_qty.value)
+            };
+            listObj.push(obj)
+            listObj = updateData(listObj);
+        }
+        //在圖示上如果id重複,id數量不會疊加
+        ccount.innerHTML = listObj.length;
+        //以下會疊加
+        // ccount.innerHTML = getTotalCount();
+    }
 }
-
-

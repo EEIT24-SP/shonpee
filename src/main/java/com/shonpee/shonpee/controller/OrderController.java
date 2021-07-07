@@ -111,30 +111,21 @@ public class OrderController {
 
 	@RequestMapping(value = "/checkout")
 	public String checkout(HttpSession session, Model model, String ordering, OrderBean OB) {
-		System.out.println("------------checkout----------");
-		System.out.println(session.getAttribute("checkoutCB"));
-//		System.out.println("session資料="+session.getAttribute("checkoutCB"));
 		ArrayList<CartBean> cartlist = (ArrayList<CartBean>) (session.getAttribute("checkoutCB"));
 		List<ProductBean> Plist = productDao.findAll();
-//		System.out.println(cartlist);
 		model.addAttribute("cartlist", cartlist);
 		int total = 0;
 		for (int i = 0; i < cartlist.size(); i++) { // 總金額
 			total += Integer.parseInt(cartlist.get(i).getTotalPrice());
 		}
 		int allquantity = cartlist.size();
-//		System.out.println(allquantity);
 		model.addAttribute("allquantity", allquantity);
 		model.addAttribute("alltotal", total);
-		System.out.println(allquantity);
 		if (ordering != null) {
-			System.out.println("----------order---------");
 			// 增加productlist 判斷
 			for (ProductBean productBean : Plist) {
 				for (int j = 0; j < cartlist.size(); j++) {// 尋訪cart
 					if (cartlist.get(j).getProductBean().getProductid().equals(productBean.getProductid())) {
-						System.out.println("fffoorrrrrrrrrrrr");
-						System.out.println(cartlist.get(j).getCartId());
 						OB.setMemberId(cartlist.get(j).getMemberId());
 						OB.setProductBean(productBean);
 						OB.setOrderImg(cartlist.get(j).getCartPhoto());
@@ -145,7 +136,6 @@ public class OrderController {
 						OB.setQuantity(Integer.parseInt(cartlist.get(j).getQuantity()));
 						OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())
 								* (Integer.parseInt(cartlist.get(j).getQuantity())));
-//				System.out.println((cartlist.get(j).getProductBean().getProduct_Price())*(Integer.parseInt(cartlist.get(j).getQuantity())));
 						OB.setPayment(0);
 						OB.setStatus(1);
 						OB.setShippedDate(null);

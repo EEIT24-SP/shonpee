@@ -1,163 +1,159 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-<link rel="stylesheet" th:href="@{/css/BearShop.css}">
-<meta charset="UTF-8">
-<link rel="stylesheet" th:href="@{/css/item.css}">
-<script defer th:src="@{/js/change.js}"></script>
-<script defer th:src="@{/js/user.js}"></script>
-<script defer th:src="@{/js/index.js}"></script>
-<link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
-<link rel="stylesheet" th:href="@{/css/footer.css}" />
-
-
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/BearShop.css}">
+    <link rel="stylesheet" th:href="@{/css/item.css}">
+    <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <script th:src="@{/js/itemInputQty.js}"></script>
+    <script th:src="@{/js/product.js}"></script>
+    <script defer th:src="@{/js/change.js}"></script>
+    <script defer th:src="@{/js/user.js}"></script>
+    <script defer th:src="@{/js/index.js}"></script>
 </head>
+
 <body ondragstart="return false" oncopy="return false;">
-	<div th:insert="model/header::header"></div>
-	<form action="" th:action="@{/product/}+${session.PDid}" method="post">
-		<div class="item-container">
-			<div  class="item-container-a">
-				<div class="item-container-left">
-					<div>
-						<div class="item-container-left-a">
-						<input id="main-img-value" type="hidden" th:name="|productPhoto|">
-							<img id="main-img"  class="item-container-left-a-img" th:src="${item1.productPhoto}" th:value="${item1.productPhoto}" alt="">
-						</div>
-						<div class="item-container-left-b">
-							<input id="photolength" th:value="${photolist.length}" type="hidden">
+    <div th:insert="model/header::header"></div>
+    <form action="" th:action="@{/product/}+${session.PDid}" method="post">
+        <div class="item-container">
+            <div class="item-container-a">
+                <div class="item-container-left">
+                    <div>
+                        <div class="item-container-left-a">
+                            <input id="main-img-value" type="hidden" th:name="|productPhoto|">
+                            <img id="main-img" class="item-container-left-a-img" th:src="${item1.productPhoto}" th:value="${item1.productPhoto}" alt="">
+                        </div>
+                        <div class="item-container-left-b">
+                            <input id="photolength" th:value="${photolist.length}" type="hidden">
 
-							<div class="item-container-left-img" th:each="photo,userStat:${photolist}">
-								<img alt="" style="height: 90%; width: 89px; background-color: royalblue;"
-									onmouseover="mousehover_img(this)" th:id="|view-img-${(userStat.index)}|" th:src="${photo}">
-							</div>
-						</div>
-						<div class="item-container-left-pre" onclick="pre()">
-							<div class="arrow-left"></div>
-						</div>
+                            <div class="item-container-left-img" th:each="photo,userStat:${photolist}">
+                                <img alt="" style="height: 90%; width: 89px; background-color: royalblue;" onmouseover="mousehover_img(this)" th:id="|view-img-${(userStat.index)}|" th:src="${photo}">
+                            </div>
+                        </div>
+                        <div class="item-container-left-pre" onclick="pre()">
+                            <div class="arrow-left"></div>
+                        </div>
 
-						<div class="item-container-left-nex" onclick="nex()">
-							<div class="arrow-right"></div>
-						</div>
-					</div>
+                        <div class="item-container-left-nex" onclick="nex()">
+                            <div class="arrow-right"></div>
+                        </div>
+                    </div>
 
 
-				</div>
-
-				<div class="item-container-right">
-					<div class="item-container-right-a">
-						<strong th:name="|productName|" th:text="${item1.productName}"> 花崗大理石 保護殼套 MacBook
-							Pro Air 11 12 13 15 16 Mac 殼 筆電殼 防摔 注音鍵盤膜 16 Mac 殼 筆電殼 防摔 注音鍵盤膜 </strong>
-					</div>
-
-					                <div class="item-container-right-b-b">
-                    <div class="soldcount"><span id="soldnumber">2</span> 已售出</div>
                 </div>
-					<div class="item-container-right-c">
-					 <span class="mark">$</span>
-							<input type="text" id="item-price" th:name="|productPrice|" th:value="${item1.productPrice}"
-								readonly="readonly">
-					</div>
 
-					<div class="property-container-first">
-						<div class="property-type" th:text="${propertyNameFirst}">規格</div>
-						<div class="property-value-container-outside">
-							<div class="property-value-container" th:each="value1 : ${valuefirst}">
-								<input readonly="readonly" type="text" th:if="${value1}!=''" th:value="${value1}" class="property-value-first">
-							</div>						
-						</div>
-					</div>
-					<div class="property-container">
-						<div class="property-type" th:text="${propertyNameSecond}">規格</div>
-						<div class="property-value-container-outside">
-							<div class="property-value-container" th:each="value2 : ${valuesecond}">
-								<input readonly="readonly" type="text" th:if="${value2}!=''" th:value="${value2}" class="property-value-second">
-							</div>						
-						</div>						
-					</div>
+                <div class="item-container-right">
+                    <div class="item-container-right-a">
+                        <strong th:name="|productName|" th:text="${item1.productName}"></strong>
+                    </div>
+                    <div class="item-container-right-b-b">
+                        <div class="soldcount"><span id="soldnumber">2</span> 已售出</div>
+                    </div>
+                    <div class="item-container-right-c">
+                        <span class="mark">$</span>
+                        <input type="text" id="item-price" th:name="|productPrice|" th:value="${item1.productPrice}" readonly="readonly">
+                    </div>
 
-
-
-
-					<div class="item-container-count">
-						<div class="item-number-count">數量</div>
-						<div class="item-container-right-plus">
-							<button id="minus-btn" type="button" onclick="item_minus()">-</button>
-							<input id="item-input-qty" type="text" th:name="|productStock|" th:oninput="|if(value>${item1.ProductStock})value=${item1.ProductStock}|"  value="1" >
-							<button id="plus-btn" type="button" onclick="item_plus()">+</button>
-						</div>
-						<div class="item-container-right-j-b">
-							還剩
-							<div id="lastcount" th:value="${item1.ProductStock}"  th:text="${item1.ProductStock}"></div>
-							件
-						</div>
-
-					</div>
-					<div class="item-container-right-k">
-						<button type="submit" id="item-cart-count-check" onclick="item_cart_count_check()" 
-							class="item-cart-btn-join">加入購物車</button>
-					</div>
-				</div>
-			</div>
-			<div class="insert-cart-animation">
-				<div id="success-msg">
-					<div class="insert-cart-animation-a">
-						<div class="insert-cart-animation-a-a">
-							<img src="../pic/tick.png" alt="">
-							<div>成功加入購物車！</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
-
-	<div class="item-seller">
-		<div class="item-seller-a">
-			<div class="item-seller-a-a">
-				<img src="../pic/Bear.svg" alt="">
-
-				<div class="item-seller-a-a-a">
-					<div th:text="${item1.memberBean.userAccount}">Bear555</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-		<div style=" display: flex; justify-content: center;">
-			<div class="item-seller-c">
-				<div class="item-seller-c-a">
-					<div class="item-seller-c-a-a">商品詳情</div>
-					<span class="detail" th:text="${item1.productDetail}"></span>
-				</div>
-			</div>
-		</div>
+                    <div class="property-container-first">
+                        <div class="property-type" th:text="${propertyNameFirst}">規格</div>
+                        <div class="property-value-container-outside">
+                            <div class="property-value-container" th:each="value1 : ${valuefirst}">
+                                <input readonly="readonly" type="text" th:if="${value1}!=''" th:value="${value1}" class="property-value-first">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-container">
+                        <div class="property-type" th:text="${propertyNameSecond}">規格</div>
+                        <div class="property-value-container-outside">
+                            <div class="property-value-container" th:each="value2 : ${valuesecond}">
+                                <input readonly="readonly" type="text" th:if="${value2}!=''" th:value="${value2}" class="property-value-second">
+                            </div>
+                        </div>
+                    </div>
 
 
-	
-
-	<br>
-	<br>
-	<br>
-	<br>
-
-	    <div th:insert="model/footer::footer"></div>
-	
 
 
-	<script src="/js/change.js"></script>
-	<script type="text/javascript" src="/js/index.js" defer></script>
-	<script src="/js/user.js"></script>
-	<script type="text/javascript" src="/js/server.js"></script>
-	<script>
-		function waithide() {
-			var obj = document.getElementById("success-msg");
-			obj.style.opacity = '1';
-			window.setTimeout(function removethis() {
-				obj.style.opacity = '0';
-			}, 1000);
-		}
-	</script>
+                    <div class="item-container-count">
+                        <div class="item-number-count">數量</div>
+                        <div class="item-container-right-plus">
+                            <button id="minus-btn" type="button" onclick="item_minus()">-</button>
+                            <input id="item-input-qty" type="text" th:name="|productStock|" th:oninput="|if(value>${item1.ProductStock})value=${item1.ProductStock}|" value="1">
+                            <button id="plus-btn" type="button" onclick="item_plus()">+</button>
+                        </div>
+                        <div class="item-container-right-j-b">
+                            還剩
+                            <div id="lastcount" th:value="${item1.ProductStock}" th:text="${item1.ProductStock}"></div>
+                            件
+                        </div>
+
+                    </div>
+                    <div class="item-container-right-k">
+                        <button type="submit" id="item-cart-count-check" onclick="item_cart_count_check()" class="item-cart-btn-join">加入購物車</button>
+                    </div>
+                </div>
+            </div>
+            <div class="insert-cart-animation">
+                <div id="success-msg">
+                    <div class="insert-cart-animation-a">
+                        <div class="insert-cart-animation-a-a">
+                            <img src="../pic/tick.png" alt="">
+                            <div>成功加入購物車！</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="item-seller">
+        <div class="item-seller-a">
+            <div class="item-seller-a-a">
+                <img src="../pic/Bear.svg" alt="">
+
+                <div class="item-seller-a-a-a">
+                    <div th:text="${item1.memberBean.userAccount}">Bear555</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style=" display: flex; justify-content: center;">
+        <div class="item-seller-c">
+            <div class="item-seller-c-a">
+                <div class="item-seller-c-a-a">商品詳情</div>
+                <span class="detail" th:text="${item1.productDetail}"></span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div th:insert="model/footer::footer"></div>
+
+
+
+    <script src="/js/change.js"></script>
+    <script type="text/javascript" src="/js/index.js" defer></script>
+    <script src="/js/user.js"></script>
+    <script type="text/javascript" src="/js/server.js"></script>
+    <script>
+        function waithide() {
+            var obj = document.getElementById("success-msg");
+            obj.style.opacity = '1';
+            window.setTimeout(function removethis() {
+                obj.style.opacity = '0';
+            }, 1000);
+        }
+    </script>
 </body>
 
 </html>

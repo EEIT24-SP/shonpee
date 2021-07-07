@@ -2,123 +2,113 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<title>購物車</title>
-<!--購物車样式表-->
-<link rel="stylesheet" type="text/css" th:href="@{/css/cart.css}" />
-<!--操作cookie的js文件-->
-<script defer type="text/javascript" th:src="@{/js/jquery-3.4.1.js}"></script>
-<script defer type="text/javascript" th:src="@{/js/cart.js}"></script>
-<link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
-<link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <meta charset="UTF-8">
+    <title>購物車</title>
+    <!--購物車样式表-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cart.css}" />
+    <!--操作cookie的js文件-->
+    <script defer type="text/javascript" th:src="@{/js/jquery-3.4.1.js}"></script>
+    <script defer type="text/javascript" th:src="@{/js/cart.js}"></script>
+    <script defer type="text/javascript" th:src="@{/js/itemInputQty.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
 
 </head>
 
 <body style="background-color: rgb(235, 235, 235);">
-<div th:insert="model/cartheader::cartheader"></div>	
-	<div class="cart-mid" id="cart-mid-id">
-				<div class="cart-mid" id="cart-page-product-header">
-			<div>
-				<div class="cart-page-product-header__product">商品</div>
-				<div class="cart-page-product-header__unit-price">單價</div>
-				<div class="cart-page-product-header__quantity">數量</div>
-				<div class="cart-page-product-header__total-price">總計</div>
-				<div class="cart-page-product-header__action">操作</div>
-			</div>
-		</div>		
-	<form action=""  th:action="@{/main-page/cart}"  method="post">		
-		<div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
-		 <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden"> 
-			<div class="cart-page-shop-header">
-				<div>
-					<input  class="cart-page-checkbox">
-					<div>
-						<img th:src="@{/pic/shop.png}" class="cart-page-shop-header-icon">
-						 <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly"> 						 
-					</div>
-				</div>
-			</div>
-				<div class="cart-page-product">
-					<div class="cart-page-product-allitems">
-						<div>
-							<input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97"> 
-						<div>	<img 
-                     th:name="|cartPhoto|" th:src="${userto.cartPhoto}"
-								alt="" class="product-img">
-								</div>
-							<div class="product-description-box">
-								<div>
-								<input type="text"  th:name="|productBean.productName|" th:value="${userto.productBean.productName}">
-								</div>
-							</div>
-							<div class="product-size">
-								<div class="product-size-button" >
-									規格
-								</div>
-								<div >
-								<input class="typevalue1" th:value="${userto.typeValue1}" readonly="readonly">
-								<input class="typevalue2" th:value="${userto.typeValue2}" readonly="readonly">
-								</div>
-							</div>
-							<div class="product-unit-price">
-							<input type="text" class="unit-price"  th:name="|productBean.productPrice|" 
-							th:value="${userto.productBean.productPrice}" readonly="readonly" >
-							</div>
-							<div class="product-quanftity">
-								<div>
-									<button class="minus"  type="button">-</button>
-									<input type="text"  class="numcount" th:value="${userto.Quantity}" th:oninput="|if(value>${userto.productBean.ProductStock})value=${userto.productBean.ProductStock}|"  value="1" >
-									<button  class="plus"  type="button">+</button>
-								</div>
-								<div class="lastcountdiv"  >剩下 <span class="lastcount" th:text="${userto.productBean.productStock}"></span> 件</div>
-							</div>
-							<div class="product-total-price-box">
-								<input readonly="readonly" class="product-total-price" type="text"  th:value="${userto.TotalPrice}">
-							</div>
-							<div class="product-action">
-								<button type="submit"  name="delete" class="product-action-delet" value="GG">刪除</button>
-							</div>
-						</div>
-					</div>
-				</div>
-		</div>
-	</div>
-	<div id="cart-page-flex-fixed-footer">
-		<div id="cart-page-flex-fixed-footer-thredroll">
-			<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts">
-				<button  id="cart-checkout-type" disabled="disabled" name="checkout"  value="checkout">去買單</button>
-				<div>
-					<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total">
-						<div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total-price" class="totals">$0</div>
-						<div>總金額<span class="txts"></span>個商品:</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div th:insert="model/cartheader::cartheader"></div>
+    <div class="cart-mid" id="cart-mid-id">
+        <div class="cart-mid" id="cart-page-product-header">
+            <div>
+                <div class="cart-page-product-header__product">商品</div>
+                <div class="cart-page-product-header__unit-price">單價</div>
+                <div class="cart-page-product-header__quantity">數量</div>
+                <div class="cart-page-product-header__total-price">總計</div>
+                <div class="cart-page-product-header__action">操作</div>
+            </div>
+        </div>
+        <form action="" th:action="@{/main-page/cart}" method="post">
+            <div class="cart-page-shop-section" style="margin-top: 20px;" th:each="userto,iterStat : ${cartitem}">
+                <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden">
+                <div class="cart-page-shop-header">
+                    <div>
+                        <input class="cart-page-checkbox">
+                        <div>
+                            <img th:src="@{/pic/shop.png}" class="cart-page-shop-header-icon">
+                            <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-page-product">
+                    <div class="cart-page-product-allitems">
+                        <div>
+                            <input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97">
+                            <div> <img th:name="|cartPhoto|" th:src="${userto.cartPhoto}" alt="" class="product-img">
+                            </div>
+                            <div class="product-description-box">
+                                <div>
+                                    <input type="text" th:name="|productBean.productName|" th:value="${userto.productBean.productName}">
+                                </div>
+                            </div>
+                            <div class="product-size">
+                                <div class="product-size-button">
+                                    規格
+                                </div>
+                                <div>
+                                    <input class="typevalue1" th:value="${userto.typeValue1}" readonly="readonly">
+                                    <input class="typevalue2" th:value="${userto.typeValue2}" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="product-unit-price">
+                                <input type="text" class="unit-price" th:name="|productBean.productPrice|" th:value="${userto.productBean.productPrice}" readonly="readonly">
+                            </div>
+                            <div class="product-quanftity">
+                                <div>
+                                    <button class="minus" type="button">-</button>
+                                    <input type="text" class="numcount" th:value="${userto.Quantity}" th:oninput="|if(value>${userto.productBean.ProductStock})value=${userto.productBean.ProductStock}|" value="1">
+                                    <button class="plus" type="button">+</button>
+                                </div>
+                                <div class="lastcountdiv">剩下 <span class="lastcount" th:text="${userto.productBean.productStock}"></span> 件</div>
+                            </div>
+                            <div class="product-total-price-box">
+                                <input readonly="readonly" class="product-total-price" type="text" th:value="${userto.TotalPrice}">
+                            </div>
+                            <div class="product-action">
+                                <button type="submit" name="delete" class="product-action-delet" value="GG">刪除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div id="cart-page-flex-fixed-footer">
+        <div id="cart-page-flex-fixed-footer-thredroll">
+            <div id="cart-page-flex-fixed-footer-thredroll-settleaccounts">
+                <button id="cart-checkout-type" disabled="disabled" name="checkout" value="checkout">去買單</button>
+                <div>
+                    <div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total">
+                        <div id="cart-page-flex-fixed-footer-thredroll-settleaccounts-total-price" class="totals">$0</div>
+                        <div>總金額<span class="txts"></span>個商品:</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-</form>
+    </form>
 
 
 
 
 
-	<br>
-	<br>
-	<br>
-	<br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-	
+
     <div th:insert="model/footer::footer"></div>
 
-
-
-
-
-	
-
-
-		
 </body>
 
 </html>

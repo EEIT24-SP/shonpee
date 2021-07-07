@@ -20,7 +20,6 @@ public class OrderBeanTests {
 	@Test
 	public void selectTest() {
 		OrderBean aOrder = session.get(OrderBean.class, 1);
-		System.out.println("此訂單為 : " + aOrder);
 	}
 	
 }

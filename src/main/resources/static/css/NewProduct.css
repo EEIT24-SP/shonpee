@@ -476,9 +476,9 @@ a:visited {
     cursor: pointer;
     font-size: 16px;
     display:inline-block;
+    width: 35px;
 
 }
-
 
 .onsale-submit{
     padding: 10px 60px;

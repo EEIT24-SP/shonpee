@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<div th:fragment="header">
-  <nav class="Bear-header-top">
-    <div class="header-container" style=" margin-top: 0px;">
-	      <div id="productcenter">
-	      	    <a href="/MyProduct"> <strong>賣家中心</strong> </a> 	      
-	      </div>
-	      <div id="useraccount"> 
-	 			<a href="/main-page/acc"><img th:src="@{/pic/account.png}" style="width: 20px" alt="">
-		      	<span  th:text="${session.UserName==''||session.UserName==null?'會員帳戶':session.UserName}"></span></a>
-	   	  		<a  href="/login-page" th:text="${session.UserName==''||session.UserName==null?'登入':'登出'}"></a>		     
-	      </div>   	      
-    </div>
 
-  </nav>
-  <nav class="Bear-header-bottom">
-    <div class="Bear-header-bottom-container">
-      <div class="Bear-header-bottom-container-left">
-        <a href="/main-page">
-          <div class="Bear-header-bottom-container-left-container">
-            <div style="width: 40%;">
-              <img class="icon_Bear" th:src="@{/pic/logo.jpg}" alt="">
+<head>
+    <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <div th:fragment="header">
+        <nav class="Bear-header-top">
+            <div class="header-container" style=" margin-top: 0px;">
+                <div id="productcenter">
+                    <a th:href="@{/MyProduct}"> <strong>賣家中心</strong> </a>
+                </div>
+                <div id="useraccount">
+                    <a href="/main-page/acc"><img th:src="@{/pic/account.png}" style="width: 20px" alt="">
+                        <span th:text="${session.UserName==''||session.UserName==null?'會員帳戶':session.UserName}"></span></a>
+                    <a href="/login-page" th:text="${session.UserName==''||session.UserName==null?'登入':'登出'}"></a>
+                </div>
             </div>
-            <div style="font-size: 30px;">熊皮購物</div>
-          </div>
-        </a>
-      </div>
-	<form th:action="@{/main-page/search}" method="Post">
-      <div class="Bear-header-bottom-container-middle">
-        <div class="Bear-header-bottom-search">
-          <input type="text" class="Bear-header-input" name="searchname" placeholder="輸入搜尋文字" value="">
-          <button  class="Bear-header-btn">
+
+        </nav>
+        <nav class="Bear-header-bottom">
+            <div class="Bear-header-bottom-container">
+                <div class="Bear-header-bottom-container-left">
+                    <a href="/main-page">
+                        <div class="Bear-header-bottom-container-left-container">
+                            <div style="width: 40%;">
+                                <img class="icon_Bear" th:src="@{/pic/logo.jpg}" alt="">
+                            </div>
+                            <div style="font-size: 30px;">熊皮購物</div>
+                        </div>
+                    </a>
+                </div>
+                <form th:action="@{/main-page/search}" method="Post">
+                    <div class="Bear-header-bottom-container-middle">
+                        <div class="Bear-header-bottom-search">
+                            <input type="text" class="Bear-header-input" name="searchname" placeholder="輸入搜尋文字" value="">
+                            <button class="Bear-header-btn">
             <img src="../pic/Search.svg" alt="">
           </button>
-        </div>
-      </div>
-	</form>
-      <div class="Bear-header-bottom-container-right">
-        <a href="/main-page/cart">
-          <div class="Bear-header-bottom-container-right-container">
-            <img class="icon-Shop-Car" src="../pic/Shop_Car.svg" alt="">
-            <div class="cart-ccount-manger" id="ccount" th:text="${session.cartsize}"></div>
-          </div>
-        </a>
-      </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="Bear-header-bottom-container-right">
+                    <a href="/main-page/cart">
+                        <div class="Bear-header-bottom-container-right-container">
+                            <img class="icon-Shop-Car" src="../pic/Shop_Car.svg" alt="">
+                            <div class="cart-ccount-manger" id="ccount" th:text="${session.cartsize}"></div>
+                        </div>
+                    </a>
+                </div>
 
+            </div>
+        </nav>
     </div>
-  </nav>
-</div>
 </body>
+
 </html>

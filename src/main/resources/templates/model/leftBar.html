@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
 </head>
+
 <body>
-<div  th:fragment="leftBar" >
-      <div class="main-user-head">
-        <div class="main-user-head-border">
-          <img th:src="@{${session.accphoto}}!=''?@{${session.accphoto}}:'../pic/logosmall.jpg'" class="main-user-head-border-img" src="../../pic/Bear.svg" alt="" />
-        </div>
-        <div class="main-user-head-text">
-          <div class="main-user-head-text-a">
-            <div class="main-user-head-text-b">
-              <div class="name" th:text="${session.UserName}"></div>
-              <div>
-                <a href="/main-page/acc">編輯個人檔案</a>
-              </div>
+    <div th:fragment="leftBar">
+        <div class="main-user-head">
+            <div class="main-user-head-border">
+                <img th:src="@{${session.accphoto}}!=''?@{${session.accphoto}}:'../pic/logosmall.jpg'" class="main-user-head-border-img" alt="" />
             </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <table class="main-table">
-        <tr>
-          <td class="acc">
-            <div onclick="btn_list_profile()">
-              <img class="main-table-acc-img" src="../../pic/Account.svg" alt="" />
-              <span class="main-left-list-name">我的帳戶</span>
+            <div class="main-user-head-text">
+                <div class="main-user-head-text-a">
+                    <div class="main-user-head-text-b">
+                        <div class="name" th:text="${session.UserName}"></div>
+                        <div>
+                            <a href="/main-page/acc">編輯個人檔案</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <ul id="acc-profile" class="acc-list">
-              <li>
-                <a href="/main-page/acc">個人檔案</a>
-              </li>
-<!--               <li> -->
-<!--                 <a href="/main-page/card">銀行帳號/信用卡</a> -->
-<!--               </li> -->
-<!--               <li><a href="/main-page/address">地址</a></li> -->
-<!--               <li> -->
-<!--                 <a href="/main-page/password">更改密碼</a> -->
-<!--               </li> -->
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img class="main-table-acc-img" src="../../pic/List.svg" alt="" />
-            <span class="main-left-list-name"><a href="/main-page/shop-list">購買清單</a> </span>
-          </td>
-        </tr>
-      </table>
+        </div>
+        <br />
+        <table class="main-table">
+            <tr>
+                <td class="acc">
+                    <div onclick="btn_list_profile()">
+                        <img class="main-table-acc-img" src="../../pic/Account.svg" alt="" />
+                        <span class="main-left-list-name">我的帳戶</span>
+                    </div>
+                    <ul id="acc-profile" class="acc-list">
+                        <li>
+                            <a href="/main-page/acc">個人檔案</a>
+                        </li>
+                        <!--               <li> -->
+                        <!--                 <a href="/main-page/card">銀行帳號/信用卡</a> -->
+                        <!--               </li> -->
+                        <!--               <li><a href="/main-page/address">地址</a></li> -->
+                        <!--               <li> -->
+                        <!--                 <a href="/main-page/password">更改密碼</a> -->
+                        <!--               </li> -->
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img class="main-table-acc-img" src="../../pic/List.svg" alt="" />
+                    <span class="main-left-list-name"><a href="/main-page/shop-list">購買清單</a> </span>
+                </td>
+            </tr>
+        </table>
     </div>
 
 </body>
+
 </html>
