@@ -68,7 +68,7 @@
                                     <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" class="numcount" th:value="${userto.Quantity}" th:oninput="|if(value>${userto.productBean.ProductStock})value=${userto.productBean.ProductStock}|" value="1">
                                     <button class="plus" type="button">+</button>
                                 </div>
-                                <div class="lastcountdiv">剩下 <span class="lastcount" th:text="${userto.productBean.productStock}"></span> 件</div>
+                                <div class="lastcountdiv">剩下 <span  class="lastcount" th:text="${userto.productBean.productStock}"></span> 件</div>
                             </div>
                             <div class="product-total-price-box">
                                 <input readonly="readonly" class="product-total-price" type="text" th:value="${userto.TotalPrice}">

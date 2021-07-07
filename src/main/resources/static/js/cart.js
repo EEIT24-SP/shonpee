@@ -45,12 +45,17 @@ $('.plus').on('click', function() {
     var temp = $(this).parent().children('.numcount').prop('value');
     // 單項商品總計
     var total = $(this).parents().children('.product-total-price-box').children('.product-total-price').val();
-    // 數量+1
-    $(this).parents().children('.numcount').prop('value', parseInt(temp) + 1);
+    // 商品庫存
+    let productstock = parseInt($(this).parent().parent().find('.lastcount').text());
     // 單價
     var price = $(this).parents().children('.product-unit-price').children('.unit-price').val();
+    // 是否小於商品庫存數量+1
+    console.log(productstock);
+    if($(this).parents().children('.numcount').prop('value') < productstock ){
+    	$(this).parents().children('.numcount').prop('value', parseInt(temp) + 1);
+    $(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(total) + parseInt(price)));    	
+    }
     // 單項商品總計更新
-    $(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(total) + parseInt(price)));
     var isChecked = $(this).parents().children('.cart-page-checkbox').prop("checked");
     if (isChecked == true) {
         // 結帳總金額更新
