@@ -29,6 +29,8 @@ public class LoginController {
 			// 呼叫model
 			MemberBean beanLogin = memberService.login(loginaccount, loginpassword);
 			if (beanLogin == null) {
+				System.out.println("fail");
+				model.addAttribute("loginfalse",true);
 				return "login";
 			} else {
 //				System.out.println(session.getAttribute("user"));

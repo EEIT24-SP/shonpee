@@ -154,12 +154,6 @@ td {
 
 /*隱藏*/
 
-.footer {
-    width: 1200px;
-    height: 490px;
-    /* background-color: rgb(204, 204, 204); */
-    margin: auto;
-}
 
 .footer-footer {
     display: flex;
