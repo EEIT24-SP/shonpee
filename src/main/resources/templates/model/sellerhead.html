@@ -12,16 +12,18 @@
 <body>
     <div th:fragment="sellerhead" class="header-navbar-container">
         <div class="header-navbar-left">
-            <div><a href=""><img src="/pic/Bear.svg" alt=""></a></div>
+            <div><a href=""><img th:src="@{/pic/logosmall.jpg}" alt=""></a></div>
             <div>
-                <div><a href="/main-page">首頁</a></div>
-                <div><a href="/MyProduct">賣家商品</a></div>
-                <div><a href="">賣家銷售</a></div>
+                <div><a th:href="@{/main-page}">首頁</a></div>
+                <div><a th:href="@{/MyProduct}">賣家商品</a></div>
+                <div><a th:href="@{/seller-orders}">賣家銷售</a></div>
             </div>
         </div>
         <div class="header-navbar-right">
-            <div class="head-account"><img src="/pic/bear.png" alt=""><span th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}">account</span></div>
-            <div class="logout"><span>登出</span></div>
+            <div class="head-account"><img th:src="@{${session.accphoto}}!=''?@{${session.accphoto}}:'../pic/logosmall.jpg'" alt="">
+            	<span th:text="${#strings.isEmpty(session.UserName)?'會員帳戶':session.UserName}">account</span>
+            </div>
+            <div class="logout"> <a th:href="@{/login-page}"><span>登出</span></a></div>
         </div>
     </div>
 </body>
