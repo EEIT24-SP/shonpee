@@ -569,7 +569,7 @@ public class ProductController {
 		List<ProductBean> onSalesProducts= new ArrayList<ProductBean>();
 		List<String> photo = new ArrayList<String>();
 		for(ProductBean product:productsOfTheCategory) {
-			if(product.getProductStatus()==null) {
+			if(product.getProductStatus()==null&&product.getProductStock()>0) {
 				String[] productPhoto = product.getProductPhoto().split(",");
 				photo.add(productPhoto[0]);
 				onSalesProducts.add(product);

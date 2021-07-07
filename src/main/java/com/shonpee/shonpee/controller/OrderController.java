@@ -95,6 +95,10 @@ public class OrderController {
 			OrderBean cancelingOrder = OptOrder.get();
 			cancelingOrder.setStatus(4);
 			OrderBean canceledOrder = orderDao.save(cancelingOrder);
+			//更新商品數量回原數量
+			Integer productStock= canceledOrder.getProductBean().getProductStock()+canceledOrder.getQuantity();
+			canceledOrder.getProductBean().setProductStock(productStock);;
+			productDao.save(canceledOrder.getProductBean());
 			// 產生ResponseEntity，內裝Map，傳回Response和更新後資料
 			Map<String, Object> canceledOrderDataMap = new HashMap<String, Object>();
 			canceledOrderDataMap.put("orderId", canceledOrder.getOrderId());
@@ -126,25 +130,36 @@ public class OrderController {
 			for (ProductBean productBean : Plist) {
 				for (int j = 0; j < cartlist.size(); j++) {// 尋訪cart
 					if (cartlist.get(j).getProductBean().getProductid().equals(productBean.getProductid())) {
-						OB.setMemberId(cartlist.get(j).getMemberId());
-						OB.setProductBean(productBean);
-						OB.setOrderImg(cartlist.get(j).getCartPhoto());
-						OB.setTypeValue(cartlist.get(j).getTypeValue1() + cartlist.get(j).getTypeValue2());
-						Date OBtime = new Date();
-//			      SimpleDateFormat OBtime = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
-						OB.setOrderDate(OBtime);
-						OB.setQuantity(Integer.parseInt(cartlist.get(j).getQuantity()));
-						OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())
-								* (Integer.parseInt(cartlist.get(j).getQuantity())));
-						OB.setPayment(0);
-						OB.setStatus(1);
-						OB.setShippedDate(null);
-						OB.setRequiredDate(null);
-						orderDao.save(OB);
-						cartDao.deleteById(cartlist.get(j).getCartId());
-						int a = (Integer) session.getAttribute("cartsize");
-						int cartsize = a - 1;
-						session.setAttribute("cartsize", cartsize);
+						Integer productStock = productBean.getProductStock();
+						//商品數量減去訂單數量 
+						Integer newProductStock = (productStock-Integer.parseInt(cartlist.get(j).getQuantity()));
+						//少於數量則不做
+						if(newProductStock>=0) {
+							productBean.setProductStock(newProductStock);
+							productDao.save(productBean);							
+						
+							OB.setMemberId(cartlist.get(j).getMemberId());
+							OB.setProductBean(productBean);
+							OB.setOrderImg(cartlist.get(j).getCartPhoto());
+							OB.setTypeValue(cartlist.get(j).getTypeValue1() + cartlist.get(j).getTypeValue2());
+							Date OBtime = new Date();
+	//			      SimpleDateFormat OBtime = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
+							OB.setOrderDate(OBtime);
+							OB.setQuantity(Integer.parseInt(cartlist.get(j).getQuantity()));
+							OB.setTotal((cartlist.get(j).getProductBean().getProductPrice())
+									* (Integer.parseInt(cartlist.get(j).getQuantity())));
+							OB.setPayment(0);
+							OB.setStatus(1);
+							OB.setShippedDate(null);
+							OB.setRequiredDate(null);
+							orderDao.save(OB);
+							cartDao.deleteById(cartlist.get(j).getCartId());
+							int a = (Integer) session.getAttribute("cartsize");
+							int cartsize = a - 1;
+							session.setAttribute("cartsize", cartsize);
+						}else {
+							return "redirect:/main-page/shop-list";
+						}
 					}
 				}
 			}
