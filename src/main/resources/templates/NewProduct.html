@@ -244,7 +244,7 @@
     <div class="submit-container fixbottom">
        <input type="text" id="oldPhoto"  name="oldPhoto"  style="display:none">
         <div>
-            <div class="cancle-submit" ><a th:href="@{/MyProduct}">取消</a></div>
+            <a th:href="@{/MyProduct}"><div class="cancle-submit" >取消</div></a>
             <button  name="allcategorys" id="submitbtn" class="onsale-submit"  th:text="${name}!=null?'修改':'上架'" >上架</button>
         </div>
     </div>

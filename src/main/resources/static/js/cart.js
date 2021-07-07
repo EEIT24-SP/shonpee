@@ -122,3 +122,11 @@ function showTotal() {
     $(".txts").text(number); //toFixed(2)函式的作用是把total保留2位
     $(".totals").text(total);
 }
+
+$('.numcount').on('keyup', function(e) {
+    this.value = this.value.replace(/[^0-9]/g, '')
+    e.preventDefault();
+
+});
+
+

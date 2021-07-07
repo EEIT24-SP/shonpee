@@ -501,7 +501,7 @@ public class ProductController {
 		// 搜索所有的資料
 		// 將會員資料新增的商品巡訪找出來
 		String UserName = String.valueOf(session.getAttribute("UserName"));
-		if(UserName!="null"||UserName!="") {
+		if(UserName!="null"&&UserName!="") {
 			List<ProductBean> list= new ArrayList<>();
 			List<String> allphotos = new ArrayList<String>();
 			List<PropertyBean> PropertyFirstList = new ArrayList<PropertyBean>();
@@ -527,14 +527,14 @@ public class ProductController {
 			model.addAttribute("allphotos", allphotos);
 			model.addAttribute("PropertyFirstList", PropertyFirstList);
 			model.addAttribute("PropertySecondList", PropertySecondList);
-			
+			return "MyProduct";
 		}else {
-			return "redirect:main-page"; 
+			return "redirect:login-page"; 
 		}
 		
 		
 
-		return "MyProduct";
+		
 	}
 
 	@RequestMapping("/DeleteProduct")

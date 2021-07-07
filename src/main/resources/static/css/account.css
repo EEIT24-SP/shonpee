@@ -1,5 +1,4 @@
 body {
-  /* -webkit-user-select: none; */
   background-color: rgba(245, 245, 245);
 }
 
@@ -7,24 +6,9 @@ body {
   max-height: 0;
   line-height: 40px;
   overflow-y: hidden;
-  /* -webkit-transition: max-height 0.1s ease-in-out;
-  -moz-transition: max-height 0.1s ease-in-out;
-  -o-transition: max-height 0.1s ease-in-out;
-  transition: max-height 0.1s ease-in-out; */
   transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-/*�����瘜�*/
-
-/* .acc-list{
-  position: absolute;
-  visibility: hidden;
-    } */
-
-/* .acc:hover>.acc-list{
-      position: relative;
-    visibility: visible;           
-  }    */
 
 .main-left-list-name:hover {
   cursor: pointer;
@@ -66,6 +50,7 @@ a:active {
   margin: auto;
   display: flex;
   margin-top: 30px;
+  min-height: 480px;
 }
 .main-user{
   width: 25%
@@ -150,12 +135,12 @@ a:active {
   justify-content: center;
   align-items: center;
   border-radius: 3px;
+  background: rgb(235,235,235);
 }
 
 .main-right-content {
   margin-top: 15px;
   width: 100%;
-  background:rgb(235,235,235);
   
 }
 .main-right-content>img{
@@ -289,7 +274,6 @@ cursor: pointer;
 
 .main-right-profile-left-container {
   width: 696px;
-  height: 496px;
   margin: 10px;
 }
 
