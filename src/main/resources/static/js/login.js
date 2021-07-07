@@ -1,3 +1,4 @@
+
 function change_login() {
     document.getElementById("login_mid_right_login").style.zIndex = 1;
     document.getElementById("login_mid_right_registered").style.zIndex = 0;
@@ -153,7 +154,7 @@ function login_approve() {
     } else {
 		document.getElementById('loginbutton').type="submit";
     }
-    if((document.getElementById('loginbutton').type)=="button"){
+    if(name=="loginfalse"){
     	document.getElementById('login_mid_right_APE_erro').style.visibility = 'visible';
     }
 }

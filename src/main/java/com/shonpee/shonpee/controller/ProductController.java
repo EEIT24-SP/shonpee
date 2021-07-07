@@ -547,11 +547,15 @@ public class ProductController {
 					allphotos.add(photos[0]);
 					Integer PID = Product.getProductid();
 					System.out.println("PID=" + PID);
-					PropertyBean PropertyProduct = propertyRepository.findPropertyBeanByProdcutID(PID);
-					PropertyFirstList.add(PropertyProduct);
+					if(propertyRepository.findPropertyBeanByProdcutID(PID)!=null) {
+						PropertyBean PropertyProduct = propertyRepository.findPropertyBeanByProdcutID(PID);
+						PropertyFirstList.add(PropertyProduct);
+					}
+					if(propertySecondRepository.findPropertyBeanByProdcutID(PID)!=null) {
 					PropertyBeanSecond propertyProductSecond = propertySecondRepository.findPropertyBeanByProdcutID(PID);
-					PropertySecondList.add(propertyProductSecond);
-					list.add(Product);
+						PropertySecondList.add(propertyProductSecond);
+						list.add(Product);
+					}
 				}
 			}
 			model.addAttribute("MemberProduct", list);	

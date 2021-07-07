@@ -154,12 +154,7 @@ td {
 
 
 
-.footer {
-    width: 1200px;
-    height: 490px;
-    /* background-color: rgb(204, 204, 204); */
-    margin: auto;
-}
+
 
 
 
@@ -337,8 +332,7 @@ td {
 }
 
 .main-page-container-a-list {
-    width: 100px;
-    ;
+    width: 100px;;
     height: 67px;
     display: flex;
     flex-direction: column;
@@ -354,7 +348,7 @@ td {
 
 .main-page-container-hr {
     height: 5px;
-    background-color: sandybrown;
+    background-color: #BE9063;
     border: 0px;
     width: 100%;
     margin: auto;
