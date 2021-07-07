@@ -30,9 +30,9 @@ public class LoginController {
 			// 呼叫model
 			MemberBean beanLogin = memberService.login(loginaccount, loginpassword);
 			if (beanLogin == null) {
+				model.addAttribute("loginfalse",true);
 				return "login";
 			} else {
-//				System.out.println(session.getAttribute("user"));
 				session.setAttribute("UserName", beanLogin.getUserAccount());
 				return "redirect:/main-page";
 			}

@@ -74,7 +74,6 @@ public class PublicController {
 					arrOrder.add(orderBean);
 					Collections.reverse(arrOrder);
 					model.addAttribute("arrOrder", arrOrder);
-					System.out.println("全部頁面成功");
 				}
 			}
 			return "shop_list/shop_list";
@@ -83,10 +82,8 @@ public class PublicController {
 			if (orderBean.getMemberId().equals(Name)) {
 				arrOrder.add(orderBean);
 				model.addAttribute("arrOrder", arrOrder);
-				System.out.println("成功");
 			}
 		}
-		System.out.println(index);
 		return "shop_list/shop_list";
 	}
 
@@ -94,9 +91,6 @@ public class PublicController {
 	public String changeType(@PathVariable("index") int index, @RequestParam(value = "changeType") Integer changeType,
 			OrderBean OB, CartBean CB, HttpSession session) {
 		Object Name = session.getAttribute("UserName");
-		System.out.println("我是" + index);
-		System.out.println("轉向成功");
-		System.out.println(OB.getQuantity());
 		List<OrderBean> list = OR.findByOrderId(OB.getOrderId());
 		List<OrderBean> listBA = OR.findAll();
 		List<ProductBean> PDlist = PR.findAll();
@@ -104,9 +98,7 @@ public class PublicController {
 		if (changeType == 99) {
 			for (OrderBean orderBean : listBA) {
 				for (ProductBean productBean : PDlist) {
-					System.out.println("進來了");
 					if (productBean.getProductid().equals(OB.getProductBean().getProductid()) && productBean.getProductStatus()==null) {
-						System.out.println("進來了1");
 						String[] split = productBean.getProductPhoto().split(",");
 						String[] splitTypeValue = OB.getTypeValue().split(",");
 						CB.setCartPhoto(split[0]); 
@@ -124,11 +116,9 @@ public class PublicController {
 						int a = (Integer) session.getAttribute("cartsize");
 						int cartsize = a +1;
 						session.setAttribute("cartsize", cartsize);
-						System.out.println("準備再次購買" + productBean.getProductid());
 						return "redirect:/main-page/cart";
 					}
 				}if(OB.getProductBean().getProductStatus() == null) {
-					System.out.println("商品已下架");
 					return "redirect:/main-page/shop-list" + index;
 				}
 			}
@@ -138,7 +128,6 @@ public class PublicController {
 		for (OrderBean orderBean : list) {
 			orderBean.setStatus(changeType);
 			OR.save(orderBean);
-			System.out.println("更改成功" + orderBean.getStatus());
 		}
 
 		return "redirect:/main-page/shop-list" + index;

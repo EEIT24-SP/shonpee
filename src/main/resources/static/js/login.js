@@ -141,7 +141,7 @@ function login_approve() {
     } else {
         document.getElementById('loginbutton').type = "submit";
     }
-    if ((document.getElementById('loginbutton').type) == "button") {
+    if (name == "loginfalse") {
         document.getElementById('login_mid_right_APE_erro').style.visibility = 'visible';
     }
 }

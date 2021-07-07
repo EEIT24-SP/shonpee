@@ -3,8 +3,10 @@
 <head>
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../../css/account.css" />
-    <link rel="stylesheet" href="../../css/Bear_Shop.css" />
+    <link rel="stylesheet" th:href="@{/css/account.css}" />
+    <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+
 </head>
 
 <body ondragstart="return false" oncopy="return false;">
@@ -139,11 +141,11 @@
                             </div>
                         </div>
                         <div class="main-right-profile-right-container">
-                            <img class="main-right-profile-right-container-img" th:src="*{memberPhoto}!=null?*{memberPhoto}:'../pic/bear.png'" alt="請上傳圖片">
+                            <img class="main-right-profile-right-container-img" th:src="*{memberPhoto}!=null?*{memberPhoto}:'../pic/logosmall.jpg'" alt="請上傳圖片">
                             <div class="main-right-profile-right-container-a">
                                 <label for="file">
-                    				<input type="file" id="FileTypeIcon"  class="main-right-profile-right-container-img-2" th:name="file">
-                            	</label>
+                    			<input type="file" id="FileTypeIcon"  class="main-right-profile-right-container-img-2" th:name="file">
+                            </label>
                             </div>
                             <div>檔案大小:最大1MB</div>
                             <div>檔案限制: .JPEG, .PNG</div>
@@ -158,14 +160,14 @@
 
     <br>
     <br>
-    <hr class="main-page-container-hr" />
     <br>
     <br>
 
     <div th:insert="model/footer::footer"></div>
     <script src="../../js/profile.js"></script>
     <script src="../../js/user.js" defer></script>
-
+    <script type="text/javascript">
+    </script>
 
 </body>
 

@@ -1,0 +1,74 @@
+.footer{
+	color:white;
+	width: 100%;
+	display: flex;
+	justify-content:center; 
+	height: 250px;
+	background-image: url(/pic/footerbackground7.jpg);
+	box-shadow: 0px -3px 5px 0px rgba(76, 74, 73, 0.35);
+	border-top: 1px solid #a39278;
+	background-size:contain;
+	background-repeat: repeat;
+	position: relative;
+}
+
+.footer-container{
+	display:flex;
+	 justify-content:space-between;
+	 width: 60%;
+}
+
+.about-us{
+	margin-top:20px;
+	line-height:35px;
+	font-size: 16px;
+	align-items: baseline;
+	
+}
+
+.contract-us{
+	margin-top:20px;
+	line-height: 35px;
+	font-size: 16px;
+	
+}
+
+.about-us > div:nth-child(1) {
+	padding: 0 0 0 25px;
+	font-size: 17px;
+	
+}
+
+.contract-us > div:nth-child(1) {
+	font-size: 17px;
+	padding: 0 0 0 25px;
+}
+
+.about-us img{
+	margin-right: 8px;
+	margin-top:5px;
+}
+
+.contract-us img{
+	margin-right: 8px;
+	margin-top:5px;
+}
+
+.footer a{
+	color:#F1E0D6;	
+}
+
+#footerbear{
+	position: absolute;
+	bottom: 225px;
+	left:30px;
+	width: 100px;
+}
+
+#footertree{
+	position: absolute;
+	bottom: 243px;
+	width: 100px;
+	right: 33px;
+	
+}

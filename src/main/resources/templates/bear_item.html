@@ -1,15 +1,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/BearShop.css}">
     <link rel="stylesheet" th:href="@{/css/item.css}">
+    <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
     <script th:src="@{/js/itemInputQty.js}"></script>
     <script th:src="@{/js/product.js}"></script>
     <script defer th:src="@{/js/change.js}"></script>
+    <script defer th:src="@{/js/user.js}"></script>
     <script defer th:src="@{/js/index.js}"></script>
-
 </head>
 
 <body ondragstart="return false" oncopy="return false;">
@@ -46,7 +48,6 @@
                     <div class="item-container-right-a">
                         <strong th:name="|productName|" th:text="${item1.productName}"></strong>
                     </div>
-
                     <div class="item-container-right-b-b">
                         <div class="soldcount"><span id="soldnumber">2</span> 已售出</div>
                     </div>
@@ -90,7 +91,7 @@
 
                     </div>
                     <div class="item-container-right-k">
-                        <button type="submit" id="item-cart-count-check" class="item-cart-btn-join">加入購物車</button>
+                        <button type="submit" id="item-cart-count-check" onclick="item_cart_count_check()" class="item-cart-btn-join">加入購物車</button>
                     </div>
                 </div>
             </div>
@@ -133,12 +134,26 @@
 
     <br>
     <br>
-    <hr class="main-page-container-hr" />
     <br>
     <br>
 
     <div th:insert="model/footer::footer"></div>
 
+
+
+    <script src="/js/change.js"></script>
+    <script type="text/javascript" src="/js/index.js" defer></script>
+    <script src="/js/user.js"></script>
+    <script type="text/javascript" src="/js/server.js"></script>
+    <script>
+        function waithide() {
+            var obj = document.getElementById("success-msg");
+            obj.style.opacity = '1';
+            window.setTimeout(function removethis() {
+                obj.style.opacity = '0';
+            }, 1000);
+        }
+    </script>
 </body>
 
 </html>

@@ -1,85 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<html xmlns:th="http://www.thymeleaf.org/%22%3E">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
+
 <body th:fragment="footer">
-
-<div class="footer">
-    <div style="display: flex;">
-      <div style=" width: 240px;line-height: 35px;font-size: 13px;">
-        <div><b>客服中心</b></div>
-        <div>幫助中心</div>
-        <div>熊熊商城</div>
-        <div>付款方式</div>
-        <div>蝦幣</div>
-        <div>運費補助</div>
-        <div>退貨退款</div>
-        <div>延長訂單撥款</div>
-        <div>聯絡客服</div>
-        <div>防詐騙宣導</div>
-
-      </div>
-      <div style=" width: 240px;line-height: 35px;font-size: 13px;">
-        <div><b>關於熊熊</b></div>
-        <div>關於熊熊</div>
-        <div>加入我們</div>
-        <div>熊熊條款</div>
-        <div>隱私權政策</div>
-        <div>熊熊商城</div>
-        <div>賣家中心</div>
-        <div>限時特賣</div>
-        <div>聯絡媒體</div>
-      </div>
-      <div style=" width: 240px;line-height: 35px;font-size: 13px;">
-        <div><b>付款</b></div>
-        <div><img src="../pic/visa-b.png" style="width: 50px;" alt=""></div>
-        <div>物流合作</div>
-        <div><img src="" alt="">塞圖片</div>
-      </div>
-      <div style=" width: 240px;line-height: 35px;font-size: 13px;">
-        <div><b>關注我們</b></div>
-        <div> <img src="../pic/fb-b.png" class="footer-table-img" alt=""> Facebook</div>
-        <div><img src="../pic/ig-b.png" class="footer-table-img" alt=""> Instagram</div>
-        <div><img src="../pic/line-b.png" class="footer-table-img" alt=""> Line</div>
-        <div><img src="../pic/in-b.png" class="footer-table-img" alt=""> LinkedIn</div>
-        <div><img src="../pic/bear-b.png" class="footer-table-img" alt=""> 熊熊輯部落格</div>
-      </div>
-      <div style=" width: 240px;line-height: 35px;font-size: 13px;">
-        <div><b>下載熊熊</b></div>
-        <div>
-          <img src="../pic/QRcode.png" class="footer-table-QRcode" alt="">
+    <div class="footer">
+        <img id="footerbear" alt="" src="/pic/onlybear.png">
+        <img id="footertree" alt="" src="/pic/trees.png">
+        <div class="footer-container">
+            <div class="about-us">
+                <div><b>關於我們</b></div>
+                <div style=" font-size: 14px;">
+                    <a href="https://www.iii.org.tw/"><img class="footer-table-img" alt="" th:src="@{/pic/rightarrow.png}">台中資策會</a>
+                </div>
+                <div style=" font-size: 14px;">
+                    <a href="https://www.youtube.com/channel/UCAmAou-O23Eb-6rQWy2w0Ew"><img class="footer-table-img" alt="" th:src="@{/pic/rightarrow.png}">JAVA班成果結訓發表</a>
+                </div>
+            </div>
+            <div class="contract-us">
+                <div><b>聯繫我們</b></div>
+                <div>
+                    <a href="https://github.com/bobanderic2000"><img th:src="@{/pic/github.png}" class="footer-table-img" alt=""> 蔡宗昶(bobanderic2000)</a>
+                </div>
+                <div>
+                    <a href="https://github.com/allen87295"><img th:src="@{/pic/github.png}" class="footer-table-img" alt=""> 黃楊均(allen87295)</a>
+                </div>
+                <div>
+                    <a href="https://github.com/akikuma2762"><img th:src="@{/pic/github.png}" class="footer-table-img" alt=""> 林秋雄(akikuma2762)</a>
+                </div>
+                <div>
+                    <a href="https://github.com/pujun87"><img th:src="@{/pic/github.png}" class="footer-table-img" alt=""> 曾溥鈞(pujun87)</a>
+                </div>
+                <div>
+                    <a href="https://github.com/StjerneLai"> <img th:src="@{/pic/github.png}" class="footer-table-img" alt=""> 賴欣(StjerneLai)</a>
+                </div>
+            </div>
         </div>
-        <div>
-          <img src="../pic/apple.svg" class="footer-table-img" alt=""> Apple Store
-        </div>
-        <div>
-          <img src="../pic/googleplay.svg" class="footer-table-img" alt=""> Google Play
-        </div>
-        <div>
-          <img src="../pic/googleplay.svg" class="footer-table-img" alt=""> Google Play
-        </div>
-
-      </div>
     </div>
-    <hr>
-    <div class="footer-footer">
-      <div class="footer-footer-copyright">© 2021 Bear. 版權所有。</div>
-      <div>
-        國家和地區:
-        新加坡
-        印尼
-        台灣
-        泰國
-        馬來西亞
-        越南
-        菲律賓
-        巴西
-      </div>
-
-    </div>
-  </div>
-
 </body>
+
 </html>

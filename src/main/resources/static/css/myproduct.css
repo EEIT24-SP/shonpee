@@ -145,15 +145,17 @@ a{
 .insert-button{
     padding:10px 20px;
     margin: 30px 80px 10px 0;
-    background-color: #ffd86e;
-    border: rgb(155, 155, 155) 1px solid;
+    background-color: rgb(255, 226, 172);
     border-radius: 3px;
     color: black;
     text-align:center;
+    border: #d7ad88 solid 1px;
+    color: #583E2E;
+        
 }
 
 .insert-button:hover{
-    background-color: #ffe291;
+    background-color: rgb(255, 226, 172,0.7);
     cursor: pointer;
 }
 

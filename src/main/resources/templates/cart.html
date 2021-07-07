@@ -11,6 +11,8 @@
     <script defer type="text/javascript" th:src="@{/js/cart.js}"></script>
     <script defer type="text/javascript" th:src="@{/js/itemInputQty.js}"></script>
     <link rel="stylesheet" th:href="@{/css/Bear_Shop.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+
 </head>
 
 <body style="background-color: rgb(235, 235, 235);">
@@ -30,6 +32,7 @@
                 <input th:name="|cartId|" th:value="${userto.cartId}" class="Cart_id" readonly="readonly" type="hidden">
                 <div class="cart-page-shop-header">
                     <div>
+                        <input class="cart-page-checkbox">
                         <div>
                             <img th:src="@{/pic/shop.png}" class="cart-page-shop-header-icon">
                             <input th:name="|memberId|" th:value="${userto.ProductBean.MemberBean.UserAccount}" readonly="readonly">
@@ -39,20 +42,17 @@
                 <div class="cart-page-product">
                     <div class="cart-page-product-allitems">
                         <div>
-                            <input type="checkbox" class="cart-page-checkbox" name="CKBX">
+                            <input type="checkbox" class="cart-page-checkbox" name="CKBX" value="97">
                             <div> <img th:name="|cartPhoto|" th:src="${userto.cartPhoto}" alt="" class="product-img">
                             </div>
                             <div class="product-description-box">
                                 <div>
-                                    <input type="hidden" th:name="|productBean.productName|" th:value="${userto.productBean.productName}">
-                                    <div style="text-overflow : ellipsis;" th:name="|productBean.productName|" th:text="${userto.productBean.productName}"></div>
-
+                                    <input type="text" th:name="|productBean.productName|" th:value="${userto.productBean.productName}">
                                 </div>
                             </div>
                             <div class="product-size">
                                 <div class="product-size-button">
                                     規格
-                                    <div class="product-size-button-icon"></div>
                                 </div>
                                 <div>
                                     <input class="typevalue1" th:value="${userto.typeValue1}" readonly="readonly">
@@ -65,10 +65,10 @@
                             <div class="product-quanftity">
                                 <div>
                                     <button class="minus" type="button">-</button>
-                                    <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" class="numcount" th:value="${userto.Quantity}" th:oninput="|if(value>${userto.productBean.ProductStock})value=${userto.productBean.ProductStock}|" value="1">
+                                    <input type="text" class="numcount" th:value="${userto.Quantity}" th:oninput="|if(value>${userto.productBean.ProductStock})value=${userto.productBean.ProductStock}|" value="1">
                                     <button class="plus" type="button">+</button>
                                 </div>
-                                <div class="lastcountdiv">剩下 <span  class="lastcount" th:text="${userto.productBean.productStock}"></span> 件</div>
+                                <div class="lastcountdiv">剩下 <span class="lastcount" th:text="${userto.productBean.productStock}"></span> 件</div>
                             </div>
                             <div class="product-total-price-box">
                                 <input readonly="readonly" class="product-total-price" type="text" th:value="${userto.TotalPrice}">
@@ -97,11 +97,15 @@
 
     </form>
 
+
+
+
+
     <br>
     <br>
-    <hr class="main-page-container-hr" />
     <br>
     <br>
+
 
     <div th:insert="model/footer::footer"></div>
 

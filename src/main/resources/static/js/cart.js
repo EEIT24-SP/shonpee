@@ -50,10 +50,9 @@ $('.plus').on('click', function() {
     // 單價
     var price = $(this).parents().children('.product-unit-price').children('.unit-price').val();
     // 是否小於商品庫存數量+1
-    console.log(productstock);
-    if($(this).parents().children('.numcount').prop('value') < productstock ){
-    	$(this).parents().children('.numcount').prop('value', parseInt(temp) + 1);
-    $(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(total) + parseInt(price)));    	
+    if ($(this).parents().children('.numcount').prop('value') < productstock) {
+        $(this).parents().children('.numcount').prop('value', parseInt(temp) + 1);
+        $(this).parents().children('.product-total-price-box').children('.product-total-price').prop('value', (parseInt(total) + parseInt(price)));
     }
     // 單項商品總計更新
     var isChecked = $(this).parents().children('.cart-page-checkbox').prop("checked");
