@@ -91,6 +91,7 @@ public class OrderController {
 	public ResponseEntity<Map<String, Object>> cancelOrder(@PathVariable("orderId") Integer cancelingOrderId) {
 		Optional<OrderBean> OptOrder = orderDao.findById(cancelingOrderId);
 		if (OptOrder.isPresent() && OptOrder.get().getStatus().equals(1)) {
+			
 			// 更新狀態為4(不成立)，並以JPA存入資料庫
 			OrderBean cancelingOrder = OptOrder.get();
 			cancelingOrder.setStatus(4);
@@ -126,6 +127,16 @@ public class OrderController {
 			for (ProductBean productBean : Plist) {
 				for (int j = 0; j < cartlist.size(); j++) {// 尋訪cart
 					if (cartlist.get(j).getProductBean().getProductid().equals(productBean.getProductid())) {
+						//銷售數量更新-------------
+						if(cartlist.get(j).getProductBean().getProductSell()==null) {
+							cartlist.get(j).getProductBean().setProductSell(0);
+							cartlist.get(j).getProductBean().setProductSell(productBean.getProductSell()+Integer.parseInt(cartlist.get(j).getQuantity()));
+							productDao.save(productBean);
+						}else {
+							productBean.setProductSell(productBean.getProductSell()+Integer.parseInt(cartlist.get(j).getQuantity()));
+							productDao.save(productBean);
+						}
+						//----------------------
 						OB.setMemberId(cartlist.get(j).getMemberId());
 						OB.setProductBean(productBean);
 						OB.setOrderImg(cartlist.get(j).getCartPhoto());
