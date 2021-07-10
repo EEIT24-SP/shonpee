@@ -117,7 +117,13 @@ public class ProductController {
 		List<ProductBean> list = productRepository.findAll();
 		for (ProductBean productBean : list) {
 			if (productBean.getProductid().equals(productid)) {
+				if(productBean.getProductSell()==null) {
+					productBean.setProductSell(0);
+					productRepository.save(productBean);
+				}
+				model.addAttribute("memberimg", productBean.getMemberBean().getMemberPhoto());
 				model.addAttribute("item1", productBean);
+				
 				String[] split = productBean.getProductPhoto().split(",");
 				model.addAttribute("photolist", split);
 			}
@@ -367,6 +373,7 @@ public class ProductController {
 				Integer newid = newbean.getProductid();
 				ProductBean product = new ProductBean();
 				product.setProductid(newid);
+				product.setProductSell(0);
 				propertyBean.setProductBean(product);
 				propertyBean.setPropertyName(propertyName);
 				propertyBean.setPropertyValue(propertyValue);
