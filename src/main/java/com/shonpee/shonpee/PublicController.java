@@ -127,7 +127,15 @@ public class PublicController {
 // 不符合重新購買的 單純改變狀態
 		for (OrderBean orderBean : list) {
 			orderBean.setStatus(changeType);
-			OR.save(orderBean);
+			OrderBean order = OR.save(orderBean);
+			//取回訂單商品庫存
+			if(order.getStatus()==4) {
+				System.out.println( "pd stock="+ order.getProductBean().getProductStock());
+				System.out.println( "od stock="+ order.getQuantity());
+
+				order.getProductBean().setProductStock(order.getProductBean().getProductStock()+order.getQuantity());
+				PR.save(order.getProductBean());
+			}
 		}
 
 		return "redirect:/main-page/shop-list" + index;

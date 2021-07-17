@@ -162,6 +162,7 @@ public class AccountController {
 						cartBean.setTypeValue1(splittypeValue1[i]);
 						cartBean.setTypeValue2(splittypeValue2[i]);
 						CR.save(cartBean);
+						
 						CBlist.add(cartBean);
 					}
 				}
